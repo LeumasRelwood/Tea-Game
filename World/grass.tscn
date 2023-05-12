@@ -19,6 +19,7 @@ offset = Vector2(-8, -8)
 collision_layer = 8
 collision_mask = 2
 show_hit = false
+harvestable = false
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 position = Vector2(8, 8)

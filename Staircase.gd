@@ -1,7 +1,7 @@
 extends Area2D
 
-@export var StairFactor = Vector2.ZERO
+@export var StairAngle = Vector2.ZERO
 
 func _ready():
-	StairFactor.y = 0.5
+	StairAngle = Vector2(0, 1)
 	

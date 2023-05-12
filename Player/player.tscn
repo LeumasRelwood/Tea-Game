@@ -1,10 +1,9 @@
-[gd_scene load_steps=58 format=3 uid="uid://c6kxh6gid7m1s"]
+[gd_scene load_steps=69 format=3 uid="uid://c6kxh6gid7m1s"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_a5v42"]
 [ext_resource type="Texture2D" uid="uid://c5cg2bkesfk8s" path="res://Player/Player.png" id="2_4s7uj"]
 [ext_resource type="PackedScene" uid="uid://db0v1bogdq074" path="res://Hit and Hurtboxes/hitbox.tscn" id="3_wcqxa"]
 [ext_resource type="Script" path="res://Player/swordhitbox.gd" id="4_20ep3"]
-[ext_resource type="Script" path="res://Player/HarvestArea2D.gd" id="5_gwa5l"]
 [ext_resource type="Script" path="res://Player/StairSensor.gd" id="6_w0aix"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tdkpv"]
@@ -522,8 +521,128 @@ tracks/0/keys = {
 "values": [7, 8, 9, 10, 11, 6]
 }
 
+[sub_resource type="Animation" id="Animation_oa4ae"]
+resource_name = "InteractRight"
+length = 0.1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hitbox pivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hitbox pivot/SwordHitbox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.06),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_whyq2"]
+resource_name = "InteractLeft"
+length = 0.1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hitbox pivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.14159]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hitbox pivot/SwordHitbox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.06),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_hc2ls"]
+resource_name = "InteractUp"
+length = 0.1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hitbox pivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.5708]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hitbox pivot/SwordHitbox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.06),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_ts6yr"]
+resource_name = "InteractDown"
+length = 0.1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hitbox pivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-4.71239]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hitbox pivot/SwordHitbox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.06),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hdsmb"]
 _data = {
+"InteractDown": SubResource("Animation_ts6yr"),
+"InteractLeft": SubResource("Animation_whyq2"),
+"InteractRight": SubResource("Animation_oa4ae"),
+"InteractUp": SubResource("Animation_hc2ls"),
 "RESET": SubResource("Animation_6lcjq"),
 "RollDown": SubResource("Animation_ld6nc"),
 "RollLeft": SubResource("Animation_2nkxd"),
@@ -593,6 +712,31 @@ min_space = Vector2(-1, -1.1)
 max_space = Vector2(1, 1.1)
 blend_mode = 1
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rw55q"]
+animation = &"InteractDown"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8agu3"]
+animation = &"InteractUp"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_i1obq"]
+animation = &"InteractRight"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_t0v62"]
+animation = &"InteractLeft"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_f2g4u"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_rw55q")
+blend_point_0/pos = Vector2(0, 1.1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_8agu3")
+blend_point_1/pos = Vector2(0, -1.1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_i1obq")
+blend_point_2/pos = Vector2(1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_t0v62")
+blend_point_3/pos = Vector2(-1, 0)
+min_space = Vector2(-1, -1.1)
+max_space = Vector2(1, 1.1)
+blend_mode = 1
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_agthi"]
 animation = &"RollDown"
 
@@ -658,26 +802,35 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ysbmu"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lxrd7"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8jks2"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_syj0w"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dlrhd"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_yuj0o"]
 states/Attack/node = SubResource("AnimationNodeBlendSpace2D_cgd5j")
-states/Attack/position = Vector2(318.231, -66)
+states/Attack/position = Vector2(195.231, -61)
 states/End/position = Vector2(708, 28)
 states/Idle/node = SubResource("AnimationNodeBlendSpace2D_pwufg")
 states/Idle/position = Vector2(318.231, 28)
+states/Interact/node = SubResource("AnimationNodeBlendSpace2D_f2g4u")
+states/Interact/position = Vector2(395.231, 146)
 states/Roll/node = SubResource("AnimationNodeBlendSpace2D_xy7e6")
-states/Roll/position = Vector2(318.231, 120)
+states/Roll/position = Vector2(195.231, 112)
 states/Run/node = SubResource("AnimationNodeBlendSpace2D_o8vhs")
 states/Run/position = Vector2(575.231, 28)
 states/Start/position = Vector2(144, 28)
-transitions = ["Idle", "Run", SubResource("AnimationNodeStateMachineTransition_44f67"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_hoali"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_lgiss"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_kallj"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_ykxui"), "Idle", "Roll", SubResource("AnimationNodeStateMachineTransition_x0fnx"), "Roll", "Idle", SubResource("AnimationNodeStateMachineTransition_ysbmu")]
-graph_offset = Vector2(-108.769, -95)
+transitions = ["Idle", "Run", SubResource("AnimationNodeStateMachineTransition_44f67"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_hoali"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_lgiss"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_kallj"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_ykxui"), "Idle", "Roll", SubResource("AnimationNodeStateMachineTransition_x0fnx"), "Roll", "Idle", SubResource("AnimationNodeStateMachineTransition_ysbmu"), "Idle", "Interact", SubResource("AnimationNodeStateMachineTransition_lxrd7"), "Interact", "Idle", SubResource("AnimationNodeStateMachineTransition_8jks2"), "Interact", "Run", SubResource("AnimationNodeStateMachineTransition_syj0w"), "Run", "Interact", SubResource("AnimationNodeStateMachineTransition_dlrhd")]
+graph_offset = Vector2(-81.769, -119)
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_k1ymp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q2mev"]
-height = 32.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eqwb3"]
 height = 32.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ly2c7"]
@@ -706,39 +859,29 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_yuj0o")
 anim_player = NodePath("../AnimationPlayer")
-active = true
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_k1ymp")
 parameters/Attack/blend_position = Vector2(0, 1)
 parameters/Idle/blend_position = Vector2(0, 1)
+parameters/Interact/blend_position = Vector2(-0.00286531, 0.00360656)
 parameters/Roll/blend_position = Vector2(0, 1)
 parameters/Run/blend_position = Vector2(0, 1)
 
 [node name="Hitbox pivot" type="Node2D" parent="."]
 position = Vector2(0, -4)
-rotation = 1.5708
+rotation = -1.5708
 
 [node name="SwordHitbox" parent="Hitbox pivot" instance=ExtResource("3_wcqxa")]
 position = Vector2(15, 0)
 collision_layer = 2
-collision_mask = 9
+collision_mask = 40
 script = ExtResource("4_20ep3")
 
 [node name="CollisionShape2D" parent="Hitbox pivot/SwordHitbox" index="0"]
 shape = SubResource("CapsuleShape2D_q2mev")
 disabled = true
 
-[node name="HarvestArea2D" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 32
-script = ExtResource("5_gwa5l")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HarvestArea2D"]
-position = Vector2(0, 11)
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_eqwb3")
-
 [node name="StairSensor" type="Area2D" parent="."]
-collision_layer = 2
+collision_layer = 0
 script = ExtResource("6_w0aix")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StairSensor"]
@@ -747,7 +890,6 @@ shape = SubResource("CapsuleShape2D_ly2c7")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="area_entered" from="Hitbox pivot/SwordHitbox" to="." method="_on_sword_hitbox_area_entered"]
-[connection signal="area_entered" from="HarvestArea2D" to="." method="_on_harvest_area_2d_area_entered"]
 [connection signal="area_entered" from="StairSensor" to="." method="_on_stair_sensor_area_entered"]
 [connection signal="area_exited" from="StairSensor" to="." method="_on_stair_sensor_area_exited"]
 

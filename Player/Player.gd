@@ -15,19 +15,20 @@ var state = MOVE
 var roll_vector = Vector2.DOWN
 var onStair = 0
 var StairFactor = Vector2.ZERO
+var StairAngle = Vector2.ZERO
 
 @onready var animation_player = $AnimationPlayer
 @onready var animation_tree = $AnimationTree
 @onready var animation_state = animation_tree.get("parameters/playback")
 @onready var swordHitBox = $"Hitbox pivot/SwordHitbox"
+@onready var swordhitboxcollision = $"Hitbox pivot/SwordHitbox/CollisionShape2D"
 @onready var TeaInventory = 0
-@onready var harvestcollision = $HarvestArea2D/CollisionShape2D
 @onready var StairSensor = $StairSensor
 
 func _ready():
 	animation_tree.active=true
 	swordHitBox.knockback_vector = roll_vector
-	harvestcollision.disabled = true
+	print("Stair Factor is " + str(StairFactor))
 
 func _physics_process(_delta):
 	match state:
@@ -37,23 +38,22 @@ func _physics_process(_delta):
 			roll_state()
 		ATTACK:
 			attack_state()
-			
+
 
 func move_state():
-	if onStair != 0:
+	if onStair:
 		if Input.is_action_pressed("ui_right"):
-			StairFactor.y = StairFactor.y
+			StairFactor = abs(StairAngle) * -1
 		elif Input.is_action_pressed("ui_left"):
-			StairFactor.y = StairFactor.y * -1
-		print(StairFactor)
-	else:
-		StairFactor = Vector2.ZERO
+			StairFactor = abs(StairAngle)
+		else:
+			StairFactor = Vector2.ZERO
 	
 	var input_vector = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
-	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up") + StairFactor.y
+	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+	input_vector += StairFactor
 	input_vector = input_vector.normalized()
-	harvestcollision.disabled = true
 	
 	if input_vector != Vector2.ZERO:
 		roll_vector = input_vector
@@ -62,6 +62,7 @@ func move_state():
 		animation_tree.set("parameters/Run/blend_position", input_vector)
 		animation_tree.set("parameters/Attack/blend_position", input_vector)
 		animation_tree.set("parameters/Roll/blend_position", input_vector)
+		animation_tree.set("parameters/Interact/blend_position", input_vector)
 		animation_state.travel("Run")
 		velocity += input_vector * ACCELERATION
 		velocity = velocity.limit_length(MAX_SPEED)
@@ -77,6 +78,10 @@ func move_state():
 		
 	if Input.is_action_just_pressed("Roll") and input_vector != Vector2.ZERO:
 		state = ROLL
+		
+	if Input.is_action_just_pressed("Interact"):
+		animation_state.travel("Interact")
+
 
 func roll_state():
 	velocity = roll_vector * ROLL_SPEED
@@ -87,12 +92,17 @@ func roll_animation_finished():
 	velocity = velocity.move_toward(Vector2.ZERO, FRICTION)
 	state = MOVE
 
+
+
 func attack_state():
 	velocity = velocity.move_toward(Vector2.ZERO, FRICTION)
 	move_and_slide()
 	animation_state.travel("Attack")
-	harvestcollision.disabled = false
 	
+func _on_sword_hitbox_area_entered(area):
+	var harvestable = area.harvestable
+	if harvestable:
+		harvest_bush()
 	
 func attack_animation_finished():
 	state = MOVE
@@ -104,9 +114,6 @@ func attack_animation_finished():
 
 
 
-func _on_harvest_area_2d_area_entered(area):
-	if area.harvestable != 0:
-		harvest_bush()
 
 func harvest_bush():
 	TeaInventory += 1
@@ -115,9 +122,13 @@ func harvest_bush():
 
 
 
+
 func _on_stair_sensor_area_entered(area):
-	var StairFactor = area.StairFactor
-	onStair = 1
+	onStair = true
+	StairAngle = area.StairAngle
 
 func _on_stair_sensor_area_exited(area):
-	onStair = 0
+	onStair = false
+	StairFactor = Vector2.ZERO
+
+

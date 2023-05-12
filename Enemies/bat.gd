@@ -57,3 +57,4 @@ func _on_stats_no_health():
 	var deathEffect = DeathEffect.instantiate()
 	get_parent().add_child(deathEffect)
 	deathEffect.global_position = global_position
+

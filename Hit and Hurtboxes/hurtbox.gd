@@ -1,6 +1,7 @@
 extends Area2D
 
 @export var show_hit = true
+@export var harvestable = true
 
 const HitEffect = preload("res://Effects/hit_effect.tscn")
 

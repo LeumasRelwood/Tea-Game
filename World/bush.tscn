@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://World/bush.gd" id="1_d2thc"]
 [ext_resource type="Texture2D" uid="uid://6bmldywsusls" path="res://World/Bush.png" id="1_nxq17"]
-[ext_resource type="Script" path="res://World/HarvestableArea2D.gd" id="3_io2bd"]
+[ext_resource type="Script" path="res://Hit and Hurtboxes/hurtbox.gd" id="3_rqwou"]
 
 [sub_resource type="Animation" id="Animation_j0gsi"]
 length = 0.001
@@ -48,6 +48,7 @@ height = 28.0
 radius = 14.0
 
 [node name="Bush" type="StaticBody2D"]
+collision_mask = 2
 script = ExtResource("1_d2thc")
 metadata/_edit_group_ = true
 
@@ -67,7 +68,8 @@ shape = SubResource("CapsuleShape2D_1g2m8")
 [node name="HarvestableArea2D" type="Area2D" parent="."]
 collision_layer = 32
 collision_mask = 2
-script = ExtResource("3_io2bd")
+script = ExtResource("3_rqwou")
+show_hit = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HarvestableArea2D"]
 position = Vector2(0, -3)

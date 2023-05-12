@@ -6,7 +6,7 @@ const GrassEffect = preload("res://Effects/grass_effect.tscn")
 @onready var HarvestableArea2D = $HarvestableArea2D
 
 func _on_area_2d_area_entered(area):
-	if HarvestableArea2D.harvestable != 0:
+	if HarvestableArea2D.harvestable:
 		harvest_bush()
 	else:
 		pass
