@@ -890,6 +890,7 @@ layer_0/tile_data = PackedInt32Array(327682, 0, 3, 327683, 65536, 3, 327684, 655
 position = Vector2(160, 88)
 collision_mask = 2
 script = ExtResource("4_3q1jf")
+StairFactor = Vector2(0, 0.5)
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Staircase"]

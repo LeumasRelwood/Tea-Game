@@ -13,6 +13,7 @@ enum {
 
 var state = MOVE
 var roll_vector = Vector2.DOWN
+var onStair = 0
 var StairFactor = Vector2.ZERO
 
 @onready var animation_player = $AnimationPlayer
@@ -39,10 +40,18 @@ func _physics_process(_delta):
 			
 
 func move_state():
+	if onStair != 0:
+		if Input.is_action_pressed("ui_right"):
+			StairFactor.y = StairFactor.y
+		elif Input.is_action_pressed("ui_left"):
+			StairFactor.y = StairFactor.y * -1
+		print(StairFactor)
+	else:
+		StairFactor = Vector2.ZERO
+	
 	var input_vector = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
-	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
-	input_vector.y += StairFactor
+	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up") + StairFactor.y
 	input_vector = input_vector.normalized()
 	harvestcollision.disabled = true
 	
@@ -107,12 +116,8 @@ func harvest_bush():
 
 
 func _on_stair_sensor_area_entered(area):
-	if Input.is_action_pressed("ui_right"):
-		StairFactor.y = area.StairFactor.y
-	elif Input.is_action_pressed("ui_left"):
-		StairFactor.y = area.StairFactor.y * -1
-	print(StairFactor)
-
+	var StairFactor = area.StairFactor
+	onStair = 1
 
 func _on_stair_sensor_area_exited(area):
-	StairFactor = Vector2.ZERO
+	onStair = 0
