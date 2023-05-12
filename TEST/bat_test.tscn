@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bojgt4dwuychd"]
+
+[ext_resource type="Texture2D" uid="uid://yfps3vbrmthi" path="res://Enemies/Bat.png" id="1_p1jep"]
+[ext_resource type="Script" path="res://TEST/bat_test.gd" id="1_p27a8"]
+
+[node name="BAT TEST" type="Node2D"]
+script = ExtResource("1_p27a8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 3)
+texture = ExtResource("1_p1jep")
+hframes = 5
+frame = 3

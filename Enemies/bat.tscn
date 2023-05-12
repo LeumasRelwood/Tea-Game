@@ -1,0 +1,105 @@
+[gd_scene load_steps=17 format=3 uid="uid://d4juewovfssfl"]
+
+[ext_resource type="Texture2D" uid="uid://yfps3vbrmthi" path="res://Enemies/Bat.png" id="1_8ohd3"]
+[ext_resource type="Script" path="res://Enemies/bat.gd" id="1_cayno"]
+[ext_resource type="Texture2D" uid="uid://1073fujxd4wc" path="res://Shadows/SmallShadow.png" id="2_8x4i4"]
+[ext_resource type="PackedScene" uid="uid://db0v1bogdq074" path="res://Hit and Hurtboxes/hitbox.tscn" id="2_hv01l"]
+[ext_resource type="PackedScene" uid="uid://cfh3c2h78s7kr" path="res://Hit and Hurtboxes/hurtbox.tscn" id="3_jm536"]
+[ext_resource type="PackedScene" uid="uid://d3bhgb8pvld0o" path="res://stats.tscn" id="6_1ajha"]
+[ext_resource type="PackedScene" uid="uid://bgtxdir6sej3s" path="res://Enemies/player_detection_zone.tscn" id="7_cmua7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ufj0e"]
+atlas = ExtResource("1_8ohd3")
+region = Rect2(0, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xo7hs"]
+atlas = ExtResource("1_8ohd3")
+region = Rect2(16, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8gjtv"]
+atlas = ExtResource("1_8ohd3")
+region = Rect2(32, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dpv2m"]
+atlas = ExtResource("1_8ohd3")
+region = Rect2(48, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sl2ny"]
+atlas = ExtResource("1_8ohd3")
+region = Rect2(64, 0, 16, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3g23f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ufj0e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xo7hs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8gjtv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dpv2m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sl2ny")
+}],
+"loop": true,
+"name": &"Flying",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fiuhb"]
+radius = 4.12311
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tx4ig"]
+radius = 6.0
+height = 18.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cbg7u"]
+radius = 61.0082
+
+[node name="Bat" type="CharacterBody2D"]
+collision_layer = 16
+script = ExtResource("1_cayno")
+max_speed = 60
+
+[node name="AnimatedSpriteBat" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3g23f")
+animation = &"Flying"
+frame_progress = 0.921549
+offset = Vector2(0, -12)
+
+[node name="ShadowSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_8x4i4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_fiuhb")
+
+[node name="Hitbox" parent="." instance=ExtResource("2_hv01l")]
+
+[node name="Hurtbox" parent="." instance=ExtResource("3_jm536")]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+position = Vector2(0, -13)
+shape = SubResource("CapsuleShape2D_tx4ig")
+
+[node name="Stats" parent="." instance=ExtResource("6_1ajha")]
+max_health = 2
+
+[node name="PlayerDetectionZone" parent="." instance=ExtResource("7_cmua7")]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" parent="PlayerDetectionZone" index="0"]
+shape = SubResource("CircleShape2D_cbg7u")
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="no_health" from="Stats" to="." method="_on_stats_no_health"]
+
+[editable path="Hurtbox"]
+[editable path="PlayerDetectionZone"]

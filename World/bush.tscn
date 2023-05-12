@@ -1,0 +1,76 @@
+[gd_scene load_steps=9 format=3 uid="uid://cu2s67h2xiwbu"]
+
+[ext_resource type="Script" path="res://World/bush.gd" id="1_d2thc"]
+[ext_resource type="Texture2D" uid="uid://6bmldywsusls" path="res://World/Bush.png" id="1_nxq17"]
+[ext_resource type="Script" path="res://World/HarvestableArea2D.gd" id="3_io2bd"]
+
+[sub_resource type="Animation" id="Animation_7r0ma"]
+resource_name = "grow_harvest_cycle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_j0gsi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jrc17"]
+_data = {
+"RESET": SubResource("Animation_j0gsi"),
+"grow_harvest_cycle": SubResource("Animation_7r0ma")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1g2m8"]
+radius = 7.0
+height = 28.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_anvmh"]
+radius = 14.0
+
+[node name="Bush" type="StaticBody2D"]
+script = ExtResource("1_d2thc")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -3)
+texture = ExtResource("1_nxq17")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jrc17")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_1g2m8")
+
+[node name="HarvestableArea2D" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 2
+script = ExtResource("3_io2bd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HarvestableArea2D"]
+position = Vector2(0, -3)
+shape = SubResource("CircleShape2D_anvmh")
+
+[connection signal="area_entered" from="HarvestableArea2D" to="." method="_on_area_2d_area_entered"]

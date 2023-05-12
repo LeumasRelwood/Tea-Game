@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bephn3x6qanxp"]
+
+[ext_resource type="Texture2D" uid="uid://bjlfhky3d32ex" path="res://World/Tree.png" id="1_aer81"]
+
+[node name="Test PNG Collisions" type="StaticBody2D"]
+collision_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.4, -21.6)
+texture = ExtResource("1_aer81")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-0.4, -21.6)
+polygon = PackedVector2Array(13, -23.8, 13, -20.5, 16, -15.1, 16, 22, 13.2, 24, -11.1, 24, -16, 22.2, -16, -13.4, -11, -23.5, 11, -24)

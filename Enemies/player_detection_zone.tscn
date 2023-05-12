@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgtxdir6sej3s"]
+
+[ext_resource type="Script" path="res://Enemies/player_detection_zone.gd" id="1_nvg36"]
+
+[node name="PlayerDetectionZone" type="Area2D"]
+script = ExtResource("1_nvg36")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
