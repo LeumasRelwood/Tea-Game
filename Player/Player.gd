@@ -13,6 +13,7 @@ enum {
 
 var state = MOVE
 var roll_vector = Vector2.DOWN
+var StairFactor = Vector2.ZERO
 
 @onready var animation_player = $AnimationPlayer
 @onready var animation_tree = $AnimationTree
@@ -20,6 +21,7 @@ var roll_vector = Vector2.DOWN
 @onready var swordHitBox = $"Hitbox pivot/SwordHitbox"
 @onready var TeaInventory = 0
 @onready var harvestcollision = $HarvestArea2D/CollisionShape2D
+@onready var StairSensor = $StairSensor
 
 func _ready():
 	animation_tree.active=true
@@ -40,6 +42,7 @@ func move_state():
 	var input_vector = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+	input_vector.y += StairFactor
 	input_vector = input_vector.normalized()
 	harvestcollision.disabled = true
 	
@@ -101,3 +104,15 @@ func harvest_bush():
 	print("You have " + str(TeaInventory) + "Kgs of tea.")
 
 
+
+
+func _on_stair_sensor_area_entered(area):
+	if Input.is_action_pressed("ui_right"):
+		StairFactor.y = area.StairFactor.y
+	elif Input.is_action_pressed("ui_left"):
+		StairFactor.y = area.StairFactor.y * -1
+	print(StairFactor)
+
+
+func _on_stair_sensor_area_exited(area):
+	StairFactor = Vector2.ZERO

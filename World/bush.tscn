@@ -4,21 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://6bmldywsusls" path="res://World/Bush.png" id="1_nxq17"]
 [ext_resource type="Script" path="res://World/HarvestableArea2D.gd" id="3_io2bd"]
 
-[sub_resource type="Animation" id="Animation_7r0ma"]
-resource_name = "grow_harvest_cycle"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0.5, 0.5), Vector2(1, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_j0gsi"]
 length = 0.001
 tracks/0/type = "value"
@@ -32,6 +17,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_7r0ma"]
+resource_name = "grow_harvest_cycle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jrc17"]

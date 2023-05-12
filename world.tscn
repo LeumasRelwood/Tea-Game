@@ -1,12 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://dwbjcpcux4bjp"]
+[gd_scene load_steps=15 format=3 uid="uid://dwbjcpcux4bjp"]
 
 [ext_resource type="PackedScene" uid="uid://c6kxh6gid7m1s" path="res://Player/player.tscn" id="1_2whqa"]
 [ext_resource type="Texture2D" uid="uid://b3j5ngdc1abij" path="res://World/GrassBackground.png" id="1_7grry"]
 [ext_resource type="Texture2D" uid="uid://b754kwqghuij1" path="res://World/DirtTileset.png" id="1_mky7q"]
 [ext_resource type="PackedScene" uid="uid://cu2s67h2xiwbu" path="res://World/bush.tscn" id="2_lj7ph"]
 [ext_resource type="Texture2D" uid="uid://csq0vp641ice4" path="res://World/CliffTileset.png" id="3_7pbrw"]
+[ext_resource type="Script" path="res://Staircase.gd" id="4_3q1jf"]
 [ext_resource type="PackedScene" uid="uid://cka1w1gbejhi2" path="res://World/grass.tscn" id="6_m3pun"]
 [ext_resource type="PackedScene" uid="uid://d4juewovfssfl" path="res://Enemies/bat.tscn" id="7_3o3jl"]
+[ext_resource type="Texture2D" uid="uid://bjlfhky3d32ex" path="res://World/Tree.png" id="8_n4fyq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vwtus"]
 texture = ExtResource("1_mky7q")
@@ -884,6 +886,24 @@ cell_quadrant_size = 32
 format = 2
 layer_0/tile_data = PackedInt32Array(327682, 0, 3, 327683, 65536, 3, 327684, 65536, 3, 327685, 65536, 3, 327686, 65536, 3, 327687, 458752, 3, 262151, 196608, 0, 131079, 458752, 3, 131078, 0, 3, 65543, 196608, 0, 9, 196608, 0, 65545, 196608, 1, 131081, 196608, 2, 262153, 0, 3, 262154, 131072, 3, 2, 196608, 2, -65534, 196608, 0, 262144, 196608, 0, 327680, 458752, 2, 393216, 131072, 2, 393215, 0, 0, 458751, 0, 2)
 
+[node name="Staircase" type="Area2D" parent="."]
+position = Vector2(160, 88)
+collision_mask = 2
+script = ExtResource("4_3q1jf")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Staircase"]
+position = Vector2(12.4307, -12.4307)
+rotation = 0.785398
+scale = Vector2(1, 1.73249)
+texture = ExtResource("8_n4fyq")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Staircase"]
+position = Vector2(12.4307, -12.4307)
+rotation = 0.785398
+scale = Vector2(1, 1.73249)
+polygon = PackedVector2Array(13, -23.8, 13, -20.5, 16, -15.1, 16, 22, 13.2, 24, -11.1, 24, -16, 22.2, -16, -13.4, -11, -23.5, 11, -24)
+
 [node name="YSort" type="Node2D" parent="."]
 y_sort_enabled = true
 
@@ -939,7 +959,9 @@ position = Vector2(48, 144)
 position = Vector2(64, 144)
 
 [node name="Bat2" parent="YSort" instance=ExtResource("7_3o3jl")]
-position = Vector2(208, 168)
+position = Vector2(208, 200)
 
 [node name="Bat3" parent="YSort" instance=ExtResource("7_3o3jl")]
-position = Vector2(88, 168)
+position = Vector2(72, 200)
+
+[connection signal="area_entered" from="Staircase" to="Staircase" method="_on_area_entered"]
