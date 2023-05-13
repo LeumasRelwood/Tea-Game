@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+const bush = preload("res://World/bush.tscn")
+
 @export var MAX_SPEED = 100
 @export var ACCELERATION = 15
 @export var FRICTION = 15
@@ -16,6 +18,7 @@ var roll_vector = Vector2.DOWN
 var onStair = 0
 var StairFactor = Vector2.ZERO
 var StairAngle = Vector2.ZERO
+var input_vector = Vector2.ZERO
 
 @onready var animation_player = $AnimationPlayer
 @onready var animation_tree = $AnimationTree
@@ -49,7 +52,6 @@ func move_state():
 		else:
 			StairFactor = Vector2.ZERO
 	
-	var input_vector = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	input_vector += StairFactor
@@ -81,6 +83,9 @@ func move_state():
 		
 	if Input.is_action_just_pressed("Interact"):
 		animation_state.travel("Interact")
+		
+	if Input.is_action_just_pressed("Plant"):
+		plant_bush()
 
 
 func roll_state():
@@ -109,8 +114,11 @@ func attack_animation_finished():
 	
 	
 
-	
-	
+func plant_bush():
+	var Bush = bush.instantiate()
+	get_parent().add_child(Bush)
+	Bush.global_position = (global_position + input_vector)
+
 
 
 

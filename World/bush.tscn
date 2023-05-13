@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cu2s67h2xiwbu"]
+[gd_scene load_steps=10 format=3 uid="uid://cu2s67h2xiwbu"]
 
 [ext_resource type="Script" path="res://World/bush.gd" id="1_d2thc"]
 [ext_resource type="Texture2D" uid="uid://6bmldywsusls" path="res://World/Bush.png" id="1_nxq17"]
@@ -47,6 +47,9 @@ height = 28.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_anvmh"]
 radius = 14.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_dvpp3"]
+radius = 14.0
+
 [node name="Bush" type="StaticBody2D"]
 collision_mask = 2
 script = ExtResource("1_d2thc")
@@ -67,7 +70,7 @@ shape = SubResource("CapsuleShape2D_1g2m8")
 
 [node name="HarvestableArea2D" type="Area2D" parent="."]
 collision_layer = 32
-collision_mask = 2
+collision_mask = 64
 script = ExtResource("3_rqwou")
 show_hit = false
 
@@ -75,4 +78,11 @@ show_hit = false
 position = Vector2(0, -3)
 shape = SubResource("CircleShape2D_anvmh")
 
+[node name="DragBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DragBox"]
+position = Vector2(0, -3)
+shape = SubResource("CircleShape2D_dvpp3")
+
 [connection signal="area_entered" from="HarvestableArea2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="input_event" from="DragBox" to="." method="_on_drag_box_input_event"]
