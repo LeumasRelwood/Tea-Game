@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dwbjcpcux4bjp"]
+[gd_scene load_steps=17 format=3 uid="uid://dwbjcpcux4bjp"]
 
 [ext_resource type="PackedScene" uid="uid://c6kxh6gid7m1s" path="res://Player/player.tscn" id="1_2whqa"]
 [ext_resource type="Texture2D" uid="uid://b3j5ngdc1abij" path="res://World/GrassBackground.png" id="1_7grry"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://cka1w1gbejhi2" path="res://World/grass.tscn" id="6_m3pun"]
 [ext_resource type="PackedScene" uid="uid://d4juewovfssfl" path="res://Enemies/bat.tscn" id="7_3o3jl"]
 [ext_resource type="Texture2D" uid="uid://bjlfhky3d32ex" path="res://World/Tree.png" id="8_n4fyq"]
+[ext_resource type="PackedScene" uid="uid://h4yfsm1446ls" path="res://World/gui.tscn" id="10_b0lvu"]
+[ext_resource type="LabelSettings" path="res://UI/GUI labels.tres" id="12_l3byq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vwtus"]
 texture = ExtResource("1_mky7q")
@@ -914,8 +916,8 @@ position = Vector2(136, 32)
 [node name="Bushes" type="Node2D" parent="YSort"]
 y_sort_enabled = true
 
-[node name="Bush3" parent="YSort/Bushes" instance=ExtResource("2_lj7ph")]
-position = Vector2(32, 40)
+[node name="Bush" parent="YSort/Bushes" instance=ExtResource("2_lj7ph")]
+position = Vector2(48, 48)
 
 [node name="Grass" type="Node2D" parent="YSort"]
 y_sort_enabled = true
@@ -953,10 +955,25 @@ position = Vector2(48, 144)
 [node name="Grass13" parent="YSort/Grass" instance=ExtResource("6_m3pun")]
 position = Vector2(64, 144)
 
-[node name="Bat" parent="." instance=ExtResource("7_3o3jl")]
+[node name="Bat" parent="YSort" instance=ExtResource("7_3o3jl")]
 position = Vector2(40, 168)
 
-[node name="Bat2" parent="." instance=ExtResource("7_3o3jl")]
+[node name="Bat2" parent="YSort" instance=ExtResource("7_3o3jl")]
 position = Vector2(272, 160)
 
+[node name="GUI" parent="." instance=ExtResource("10_b0lvu")]
+
+[node name="Clock" parent="GUI" index="0"]
+text = "Hello World"
+label_settings = ExtResource("12_l3byq")
+
+[node name="TeaCounter" parent="GUI" index="1"]
+offset_left = 256.0
+offset_right = 344.0
+offset_bottom = 26.0
+text = "0Kgs of Tea"
+label_settings = ExtResource("12_l3byq")
+
 [connection signal="area_entered" from="Staircase" to="Staircase" method="_on_area_entered"]
+
+[editable path="GUI"]

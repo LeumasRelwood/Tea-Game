@@ -20,18 +20,17 @@ var StairFactor = Vector2.ZERO
 var StairAngle = Vector2.ZERO
 var input_vector = Vector2.ZERO
 
+@onready var global = get_node("/root/Global")
 @onready var animation_player = $AnimationPlayer
 @onready var animation_tree = $AnimationTree
 @onready var animation_state = animation_tree.get("parameters/playback")
 @onready var swordHitBox = $"Hitbox pivot/SwordHitbox"
 @onready var swordhitboxcollision = $"Hitbox pivot/SwordHitbox/CollisionShape2D"
-@onready var TeaInventory = 0
 @onready var StairSensor = $StairSensor
 
 func _ready():
 	animation_tree.active=true
 	swordHitBox.knockback_vector = roll_vector
-	print("Stair Factor is " + str(StairFactor))
 
 func _physics_process(_delta):
 	match state:
@@ -124,8 +123,8 @@ func plant_bush():
 
 
 func harvest_bush():
-	TeaInventory += 1
-	print("You have " + str(TeaInventory) + "Kgs of tea.")
+	global.tealeaves += 1
+	print("You have " + str(global.tealeaves) + "Kgs of tea.")
 
 
 
