@@ -1,12 +1,40 @@
 extends Area2D
 
-@export var show_hit = true
 @export var harvestable = true
 
 const HitEffect = preload("res://Effects/hit_effect.tscn")
 
-func _on_area_entered(area):
-	if show_hit:
+func create_hit_effect():
 		var hitEffect = HitEffect.instantiate()
 		get_parent().add_child(hitEffect)
 		hitEffect.global_position = global_position
+
+
+
+signal invincibility_started
+signal invincibility_ended
+@onready var timer = $Timer
+@onready var invincible = false:
+	get:
+		return invincible
+	set(value):
+		invincible = value
+		if invincible:
+			emit_signal("invincibility_started")
+		else:
+			emit_signal("invincibility_ended")
+
+func _on_timer_timeout():
+	self.invincible = false
+
+func start_invincibility(duration):
+	self.invincible = true
+	timer.start(duration)
+
+func _on_invincibility_started():
+	set_deferred("monitorable", false)
+	set_deferred("monitoring", false)
+
+func _on_invincibility_ended():
+	set_deferred("monitorable", true)
+	set_deferred("monitoring", true)

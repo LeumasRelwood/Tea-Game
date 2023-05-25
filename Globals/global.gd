@@ -1,6 +1,7 @@
 extends Node2D
 
-var tealeaves = 0
+signal time_changed(value)
+
 var time_multiplier = 2
 var minute = 1
 var hour = 1
@@ -8,7 +9,10 @@ var day = 1
 var month = 1
 var year = 1
 var displaytime = 0.0
-var time = 0
+var time = 0:
+	set(value):
+		time = value
+		emit_signal("time_changed", value)
 
 func _process(delta):
 	time += delta * time_multiplier

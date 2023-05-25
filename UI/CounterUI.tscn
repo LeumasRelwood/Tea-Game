@@ -1,11 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://h4yfsm1446ls"]
+[gd_scene load_steps=2 format=3 uid="uid://bw18h83q04os2"]
 
-[ext_resource type="Script" path="res://World/GUI.gd" id="1_dycx0"]
+[ext_resource type="Script" path="res://UI/CounterUI.gd" id="1_a5vke"]
 
-[node name="GUI" type="Control"]
+[node name="CounterUI" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-script = ExtResource("1_dycx0")
+script = ExtResource("1_a5vke")
 
 [node name="Clock" type="Label" parent="."]
 layout_mode = 0

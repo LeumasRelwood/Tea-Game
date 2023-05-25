@@ -2,7 +2,8 @@ extends CharacterBody2D
 
 const DeathEffect = preload("res://Effects/death_effect.tscn")
 @onready var playerdetectionzone = $PlayerDetectionZone
-@onready var animatedSpriteBat = $AnimatedSpriteBat
+@onready var sprite = $AnimatedSpriteBat
+@onready var hurtbox = $Hurtbox
 @onready var stats = $Stats
 var knockbackvector = Vector2.ZERO
 @export var knockbackamount = 200
@@ -19,8 +20,9 @@ enum {
 var state = IDLE
 
 func _ready():
-	animatedSpriteBat.frame = 0
-	animatedSpriteBat.play("Flying")
+	randomize()
+	sprite.frame = randi_range(0, sprite.sprite_frames.get_frame_count("Flying")-1)
+	sprite.play("Flying")
 
 func _physics_process(delta):
 	
@@ -39,7 +41,7 @@ func _physics_process(delta):
 				velocity = velocity.move_toward(direction * max_speed, acceleration)
 			else:
 				state = IDLE
-			animatedSpriteBat.flip_h = velocity.x < 0
+			sprite.flip_h = velocity.x < 0
 	
 	move_and_slide()
 	
@@ -51,6 +53,7 @@ func _on_hurtbox_area_entered(area):
 	stats.health -= area.damage
 	knockbackvector = area.knockback_vector
 	velocity = knockbackvector * knockbackamount
+	hurtbox.create_hit_effect()
 	
 func _on_stats_no_health():
 	queue_free()

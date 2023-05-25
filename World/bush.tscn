@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cu2s67h2xiwbu"]
+[gd_scene load_steps=8 format=3 uid="uid://cu2s67h2xiwbu"]
 
 [ext_resource type="Script" path="res://World/bush.gd" id="1_d2thc"]
 [ext_resource type="Texture2D" uid="uid://6bmldywsusls" path="res://World/Bush.png" id="1_nxq17"]
+[ext_resource type="Texture2D" uid="uid://c66k67cj7x324" path="res://Shadows/LargeShadow.png" id="2_qeslg"]
 [ext_resource type="Script" path="res://Hit and Hurtboxes/hurtbox.gd" id="3_rqwou"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1g2m8"]
@@ -19,9 +20,14 @@ collision_mask = 2
 script = ExtResource("1_d2thc")
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -3)
+[node name="ShadowSprite" type="Sprite2D" parent="."]
+position = Vector2(0, 2)
 scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_qeslg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -1.5)
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_nxq17")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -32,7 +38,6 @@ shape = SubResource("CapsuleShape2D_1g2m8")
 collision_layer = 32
 collision_mask = 64
 script = ExtResource("3_rqwou")
-show_hit = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HarvestableArea2D"]
 position = Vector2(0, -3)

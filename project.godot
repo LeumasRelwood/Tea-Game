@@ -17,7 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Global="*res://World/global.gd"
+Global="*res://Globals/global.tscn"
+PlayerStats="*res://Globals/PlayerStats.tscn"
 
 [display]
 

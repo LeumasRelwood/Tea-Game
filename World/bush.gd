@@ -1,6 +1,7 @@
 extends StaticBody2D
 
 @onready var sprite2d = $Sprite2D
+@onready var ShadowSprite = $ShadowSprite
 @onready var HarvestableArea2D = $HarvestableArea2D
 @onready var CollisionShape = $CollisionShape2D
 @onready var global = get_node("/root/Global")
@@ -16,9 +17,7 @@ var numberofstages = 4
 		growthstage = value
 		CollisionShape.scale = Vector2(.5, .5).lerp(Vector2(1, 1), growthprogress / growthcomplete)
 		sprite2d.scale = Vector2(.5, .5).lerp(Vector2(1, 1), growthprogress / growthcomplete)
-		print(sprite2d.scale)
-		
-#$Sprite2D.position = $A.position.lerp($B.position, t)
+		ShadowSprite.scale = Vector2(.5, .5).lerp(Vector2(1, 1), growthprogress / growthcomplete)
 
 func _on_area_2d_area_entered(area):
 	if HarvestableArea2D.harvestable:
@@ -30,6 +29,7 @@ func harvest_bush():
 	growthprogress = 0
 	growthstage = 1
 	sprite2d.scale = Vector2(0.5, 0.5)
+	ShadowSprite.scale = Vector2(0.5, 0.5)
 	CollisionShape.scale = Vector2(0.5, 0.5)
 
 

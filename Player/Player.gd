@@ -21,9 +21,11 @@ var StairAngle = Vector2.ZERO
 var input_vector = Vector2.ZERO
 
 @onready var global = get_node("/root/Global")
+@onready var playerstats = get_node("/root/PlayerStats")
 @onready var animation_player = $AnimationPlayer
 @onready var animation_tree = $AnimationTree
 @onready var animation_state = animation_tree.get("parameters/playback")
+@onready var hurtbox = $Hurtbox
 @onready var swordHitBox = $"Hitbox pivot/SwordHitbox"
 @onready var swordhitboxcollision = $"Hitbox pivot/SwordHitbox/CollisionShape2D"
 @onready var StairSensor = $StairSensor
@@ -31,6 +33,7 @@ var input_vector = Vector2.ZERO
 func _ready():
 	animation_tree.active=true
 	swordHitBox.knockback_vector = roll_vector
+	playerstats.no_health.connect(queue_free)
 
 func _physics_process(_delta):
 	match state:
@@ -123,8 +126,8 @@ func plant_bush():
 
 
 func harvest_bush():
-	global.tealeaves += 1
-	print("You have " + str(global.tealeaves) + "Kgs of tea.")
+	playerstats.tealeaves += 1
+	print("You have " + str(playerstats.tealeaves) + "Kgs of tea.")
 
 
 
@@ -139,3 +142,9 @@ func _on_stair_sensor_area_exited(area):
 	StairFactor = Vector2.ZERO
 
 
+
+
+func _on_hurtbox_area_entered(area):
+	playerstats.health -= 1
+	hurtbox.start_invincibility(0.5)
+	hurtbox.create_hit_effect()

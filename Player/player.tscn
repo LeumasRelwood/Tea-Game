@@ -1,9 +1,11 @@
-[gd_scene load_steps=69 format=3 uid="uid://c6kxh6gid7m1s"]
+[gd_scene load_steps=72 format=3 uid="uid://c6kxh6gid7m1s"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_a5v42"]
 [ext_resource type="Texture2D" uid="uid://c5cg2bkesfk8s" path="res://Player/Player.png" id="2_4s7uj"]
+[ext_resource type="Texture2D" uid="uid://vwkmp50rslsv" path="res://Shadows/MediumShadow.png" id="2_8sqgc"]
 [ext_resource type="PackedScene" uid="uid://db0v1bogdq074" path="res://Hit and Hurtboxes/hitbox.tscn" id="3_wcqxa"]
 [ext_resource type="Script" path="res://Player/swordhitbox.gd" id="4_20ep3"]
+[ext_resource type="PackedScene" uid="uid://cfh3c2h78s7kr" path="res://Hit and Hurtboxes/hurtbox.tscn" id="6_kr2dt"]
 [ext_resource type="Script" path="res://Player/StairSensor.gd" id="6_w0aix"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tdkpv"]
@@ -1029,9 +1031,17 @@ height = 32.0
 radius = 3.0
 height = 12.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eednf"]
+radius = 5.0
+height = 16.0
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_a5v42")
+
+[node name="ShadowSprite" type="Sprite2D" parent="."]
+position = Vector2(0, 2)
+texture = ExtResource("2_8sqgc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -9)
@@ -1081,9 +1091,19 @@ script = ExtResource("6_w0aix")
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_ly2c7")
 
+[node name="Hurtbox" parent="." instance=ExtResource("6_kr2dt")]
+collision_layer = 4
+collision_mask = 16
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+position = Vector2(0, -5)
+shape = SubResource("CapsuleShape2D_eednf")
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="area_entered" from="Hitbox pivot/SwordHitbox" to="." method="_on_sword_hitbox_area_entered"]
 [connection signal="area_entered" from="StairSensor" to="." method="_on_stair_sensor_area_entered"]
 [connection signal="area_exited" from="StairSensor" to="." method="_on_stair_sensor_area_exited"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 
 [editable path="Hitbox pivot/SwordHitbox"]
+[editable path="Hurtbox"]
