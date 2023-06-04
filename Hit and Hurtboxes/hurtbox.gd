@@ -1,6 +1,7 @@
 extends Area2D
 
 @export var harvestable = true
+@onready var collisionShape = $CollisionShape2D
 
 const HitEffect = preload("res://Effects/hit_effect.tscn")
 
@@ -32,9 +33,8 @@ func start_invincibility(duration):
 	timer.start(duration)
 
 func _on_invincibility_started():
-	set_deferred("monitorable", false)
-	set_deferred("monitoring", false)
+	collisionShape.set_deferred("disabled", true)
 
 func _on_invincibility_ended():
-	set_deferred("monitorable", true)
-	set_deferred("monitoring", true)
+	collisionShape.set_deferred("disabled", false)
+

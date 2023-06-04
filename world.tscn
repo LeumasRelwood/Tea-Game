@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://bkshwh6ugovgf"]
+[gd_scene load_steps=20 format=3 uid="uid://bkshwh6ugovgf"]
 
 [ext_resource type="PackedScene" uid="uid://c6kxh6gid7m1s" path="res://Player/player.tscn" id="1_2whqa"]
 [ext_resource type="Texture2D" uid="uid://b3j5ngdc1abij" path="res://World/GrassBackground.png" id="1_7grry"]
+[ext_resource type="PackedScene" uid="uid://cj462uvp4qvw7" path="res://camera_2d.tscn" id="1_36ixg"]
 [ext_resource type="Texture2D" uid="uid://b754kwqghuij1" path="res://World/DirtTileset.png" id="1_mky7q"]
 [ext_resource type="PackedScene" uid="uid://cu2s67h2xiwbu" path="res://World/bush.tscn" id="2_lj7ph"]
 [ext_resource type="Texture2D" uid="uid://csq0vp641ice4" path="res://World/CliffTileset.png" id="3_7pbrw"]
@@ -872,12 +873,21 @@ sources/0 = SubResource("TileSetAtlasSource_mywjx")
 
 [node name="World" type="Node2D"]
 
+[node name="Camera2D" parent="." instance=ExtResource("1_36ixg")]
+position = Vector2(136, 32)
+
+[node name="TopLeft" parent="Camera2D/Limits" index="0"]
+position = Vector2(-128, -64)
+
+[node name="BottomRight" parent="Camera2D/Limits" index="1"]
+position = Vector2(416, 256)
+
 [node name="Background" type="Sprite2D" parent="."]
 texture_repeat = 2
 position = Vector2(160, 90)
 texture = ExtResource("1_7grry")
 region_enabled = true
-region_rect = Rect2(0, 0, 320, 180)
+region_rect = Rect2(0, 0, 958.272, 628.454)
 
 [node name="DirtPathTileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_sdia7")
@@ -888,7 +898,7 @@ layer_0/tile_data = PackedInt32Array(327690, 131072, 1, 393226, 131072, 1, 45876
 tile_set = SubResource("TileSet_3c2r0")
 cell_quadrant_size = 32
 format = 2
-layer_0/tile_data = PackedInt32Array(327682, 0, 3, 327683, 65536, 3, 327684, 65536, 3, 327685, 65536, 3, 327686, 65536, 3, 327687, 458752, 3, 262151, 196608, 0, 131079, 458752, 3, 131078, 0, 3, 65543, 196608, 0, 9, 196608, 0, 65545, 196608, 1, 131081, 196608, 2, 262153, 0, 3, 262154, 131072, 3, 2, 196608, 2, -65534, 196608, 0, 262144, 196608, 0, 327680, 458752, 2, 393216, 131072, 2, 393215, 0, 0, 458751, 0, 2)
+layer_0/tile_data = PackedInt32Array(327682, 0, 3, 327683, 65536, 3, 327684, 65536, 3, 327685, 65536, 3, 327686, 65536, 3, 327687, 458752, 3, 262151, 196608, 0, 131079, 458752, 3, 131078, 0, 3, 65543, 196608, 0, 9, 196608, 0, 65545, 196608, 1, 131081, 196608, 2, 262153, 0, 3, 262154, 131072, 3, 2, 196608, 2, -65534, 196608, 1, 262144, 196608, 0, 327680, 458752, 2, 393216, 131072, 1, 393215, 0, 0, 458751, 0, 1, -65540, 262144, 0, -4, 196608, 1, 65532, 196608, 1, 131068, 196608, 1, 196604, 196608, 1, 262140, 196608, 1, 327676, 196608, 1, 393212, 196608, 1, 458748, 196608, 1, 524284, 262144, 3, 524285, 65536, 3, 524286, 65536, 3, 524287, 393216, 3, 458752, 327680, 3, 458753, 65536, 3, 458754, 65536, 3, 458755, 65536, 3, 458756, 65536, 3, 458757, 65536, 3, 458758, 65536, 3, 458759, 65536, 3, 458760, 65536, 3, 458761, 65536, 3, 458762, 65536, 3, 458763, 65536, 3, 458764, 458752, 3, 393228, 196608, 1, 327692, 196608, 1, 262156, 196608, 1, 196620, 196608, 1, 131084, 196608, 1, 65548, 196608, 1, 12, 196608, 1, -65524, 196608, 1, -131060, 458752, 0, -131061, 65536, 3, -131062, 65536, 3, -131063, 65536, 3, -131064, 65536, 3, -131065, 65536, 3, -131066, 65536, 3, -131067, 65536, 3, -131068, 65536, 3, -131069, 65536, 3, -131070, 524288, 0, -131071, 65536, 3, -131072, 65536, 3, -65537, 65536, 3, -65538, 65536, 3, -65539, 65536, 3)
 
 [node name="Staircase" type="Area2D" parent="."]
 position = Vector2(160, 88)
@@ -914,6 +924,9 @@ y_sort_enabled = true
 
 [node name="Player" parent="YSort" instance=ExtResource("1_2whqa")]
 position = Vector2(136, 32)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/Player"]
+remote_path = NodePath("../../../Camera2D")
 
 [node name="Bushes" type="Node2D" parent="YSort"]
 y_sort_enabled = true
@@ -972,24 +985,27 @@ position = Vector2(176, 24)
 [node name="Tree2" parent="YSort/Trees" instance=ExtResource("10_wvl3n")]
 position = Vector2(16, 56)
 
-[node name="CounterUI" parent="." instance=ExtResource("10_b0lvu")]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Clock" parent="CounterUI" index="0"]
+[node name="CounterUI" parent="CanvasLayer" instance=ExtResource("10_b0lvu")]
+
+[node name="Clock" parent="CanvasLayer/CounterUI" index="0"]
 text = "Timer"
 label_settings = ExtResource("12_l3byq")
 
-[node name="TeaCounter" parent="CounterUI" index="1"]
+[node name="TeaCounter" parent="CanvasLayer/CounterUI" index="1"]
 offset_left = 256.0
 offset_right = 344.0
 offset_bottom = 26.0
 text = "0Kgs of Tea"
 label_settings = ExtResource("12_l3byq")
 
-[node name="HealthUI" parent="." instance=ExtResource("12_foq2c")]
+[node name="HealthUI" parent="CanvasLayer" instance=ExtResource("12_foq2c")]
 offset_top = 16.0
 offset_bottom = 29.0
 
 [connection signal="area_entered" from="Staircase" to="Staircase" method="_on_area_entered"]
 
-[editable path="CounterUI"]
-[editable path="HealthUI"]
+[editable path="Camera2D"]
+[editable path="CanvasLayer/CounterUI"]
+[editable path="CanvasLayer/HealthUI"]

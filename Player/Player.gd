@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 const bush = preload("res://World/bush.tscn")
+const PlayerHurtSound = preload("res://Music and Sounds/player_hurt_sound.tscn")
 
 @export var MAX_SPEED = 100
 @export var ACCELERATION = 15
@@ -23,6 +24,7 @@ var input_vector = Vector2.ZERO
 @onready var global = get_node("/root/Global")
 @onready var playerstats = get_node("/root/PlayerStats")
 @onready var animation_player = $AnimationPlayer
+@onready var blink_animation_player = $BlinkAnimationPlayer
 @onready var animation_tree = $AnimationTree
 @onready var animation_state = animation_tree.get("parameters/playback")
 @onready var hurtbox = $Hurtbox
@@ -145,6 +147,14 @@ func _on_stair_sensor_area_exited(area):
 
 
 func _on_hurtbox_area_entered(area):
-	playerstats.health -= 1
-	hurtbox.start_invincibility(0.5)
+	playerstats.health -= area.damage
+	hurtbox.start_invincibility(0.6)
 	hurtbox.create_hit_effect()
+	var playerHurtSound = PlayerHurtSound.instantiate()
+	get_tree().current_scene.add_child(playerHurtSound)
+
+func _on_hurtbox_invincibility_started():
+	blink_animation_player.play("Start")
+
+func _on_hurtbox_invincibility_ended():
+	blink_animation_player.play("Stop")

@@ -14,6 +14,9 @@ var time = 0:
 		time = value
 		emit_signal("time_changed", value)
 
+func _ready():
+	randomize()
+
 func _process(delta):
 	time += delta * time_multiplier
 	displaytime += delta * time_multiplier

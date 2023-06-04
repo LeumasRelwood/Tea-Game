@@ -91,6 +91,7 @@ Plant={
 2d_physics/layer_6="HarvestableArea"
 2d_physics/layer_7="PlayerHarvestArea"
 2d_physics/layer_8="Stairs"
+2d_physics/layer_17="SoftCollisions"
 
 [rendering]
 
