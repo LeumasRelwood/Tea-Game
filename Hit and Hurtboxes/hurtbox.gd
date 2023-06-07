@@ -11,7 +11,7 @@ func create_hit_effect():
 		hitEffect.global_position = global_position
 
 
-
+signal player_interact
 signal invincibility_started
 signal invincibility_ended
 @onready var timer = $Timer
@@ -38,3 +38,5 @@ func _on_invincibility_started():
 func _on_invincibility_ended():
 	collisionShape.set_deferred("disabled", false)
 
+func player_interact_area():
+	emit_signal("player_interact")

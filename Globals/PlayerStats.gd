@@ -1,14 +1,12 @@
 extends Node
 
+
+
 signal no_health
 signal health_changed(value)
 signal max_health_changed(value)
 signal tealeaves_changed(value)
-var tealeaves = 0:
-	set(value):
-		tealeaves = value
-		emit_signal("tealeaves_changed", value)
-		
+
 @export var max_health = 1:
 	set(value):
 		max_health = value

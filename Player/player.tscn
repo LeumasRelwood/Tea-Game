@@ -1,15 +1,16 @@
-[gd_scene load_steps=80 format=3 uid="uid://c6kxh6gid7m1s"]
+[gd_scene load_steps=81 format=3 uid="uid://bpgrgqmsja4op"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_a5v42"]
 [ext_resource type="Texture2D" uid="uid://c5cg2bkesfk8s" path="res://Player/Player.png" id="2_4s7uj"]
 [ext_resource type="Texture2D" uid="uid://vwkmp50rslsv" path="res://Shadows/MediumShadow.png" id="2_8sqgc"]
 [ext_resource type="Shader" path="res://Shaders/WhiteColorShader.gdshader" id="3_ki0jf"]
 [ext_resource type="PackedScene" uid="uid://db0v1bogdq074" path="res://Hit and Hurtboxes/hitbox.tscn" id="3_wcqxa"]
-[ext_resource type="Script" path="res://Player/swordhitbox.gd" id="4_20ep3"]
 [ext_resource type="AudioStream" uid="uid://b1guaq8offf6j" path="res://Music and Sounds/Evade.wav" id="4_nw45r"]
 [ext_resource type="AudioStream" uid="uid://bk7j8efnoa2um" path="res://Music and Sounds/Swipe.wav" id="4_t74y1"]
 [ext_resource type="PackedScene" uid="uid://cfh3c2h78s7kr" path="res://Hit and Hurtboxes/hurtbox.tscn" id="6_kr2dt"]
 [ext_resource type="Script" path="res://Player/StairSensor.gd" id="6_w0aix"]
+[ext_resource type="Script" path="res://Player/PlayerInteractArea.gd" id="8_cyia0"]
+[ext_resource type="Resource" uid="uid://cd5jl5odx0ski" path="res://TEST/TestInventory.tres" id="9_bicv8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4mqea"]
 shader = ExtResource("3_ki0jf")
@@ -38,7 +39,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Hitbox pivot/SwordHitbox/CollisionShape2D:disabled")
+tracks/1/path = NodePath("Hitbox pivot/PlayerInteractArea/CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -50,26 +51,26 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Hitbox pivot/SwordHitbox:collision_mask")
+tracks/2/path = NodePath("Hitbox pivot/PlayerInteractArea:collision_layer")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [32]
+"values": [64]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Hitbox pivot/SwordHitbox:collision_layer")
+tracks/3/path = NodePath("Hitbox pivot/PlayerInteractArea:collision_mask")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [64]
+"values": [32]
 }
 
 [sub_resource type="Animation" id="Animation_whyq2"]
@@ -91,7 +92,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Hitbox pivot/SwordHitbox/CollisionShape2D:disabled")
+tracks/1/path = NodePath("Hitbox pivot/PlayerInteractArea/CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -103,7 +104,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Hitbox pivot/SwordHitbox:collision_mask")
+tracks/2/path = NodePath("Hitbox pivot/PlayerInteractArea:collision_mask")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -115,7 +116,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Hitbox pivot/SwordHitbox:collision_layer")
+tracks/3/path = NodePath("Hitbox pivot/PlayerInteractArea:collision_layer")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -144,7 +145,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Hitbox pivot/SwordHitbox/CollisionShape2D:disabled")
+tracks/1/path = NodePath("Hitbox pivot/PlayerInteractArea/CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -156,7 +157,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Hitbox pivot/SwordHitbox:collision_mask")
+tracks/2/path = NodePath("Hitbox pivot/PlayerInteractArea:collision_mask")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -168,7 +169,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Hitbox pivot/SwordHitbox:collision_layer")
+tracks/3/path = NodePath("Hitbox pivot/PlayerInteractArea:collision_layer")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -197,7 +198,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Hitbox pivot/SwordHitbox/CollisionShape2D:disabled")
+tracks/1/path = NodePath("Hitbox pivot/PlayerInteractArea/CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -209,7 +210,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Hitbox pivot/SwordHitbox:collision_mask")
+tracks/2/path = NodePath("Hitbox pivot/PlayerInteractArea:collision_mask")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -221,7 +222,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Hitbox pivot/SwordHitbox:collision_layer")
+tracks/3/path = NodePath("Hitbox pivot/PlayerInteractArea:collision_layer")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -248,7 +249,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Hitbox pivot/SwordHitbox/CollisionShape2D:disabled")
+tracks/1/path = NodePath("Hitbox pivot/PlayerInteractArea/CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -482,7 +483,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Hitbox pivot/SwordHitbox/CollisionShape2D:disabled")
+tracks/3/path = NodePath("Hitbox pivot/PlayerInteractArea/CollisionShape2D:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -494,7 +495,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Hitbox pivot/SwordHitbox:collision_mask")
+tracks/4/path = NodePath("Hitbox pivot/PlayerInteractArea:collision_mask")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -506,7 +507,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Hitbox pivot/SwordHitbox:collision_layer")
+tracks/5/path = NodePath("Hitbox pivot/PlayerInteractArea:collision_layer")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -575,7 +576,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Hitbox pivot/SwordHitbox/CollisionShape2D:disabled")
+tracks/3/path = NodePath("Hitbox pivot/PlayerInteractArea/CollisionShape2D:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -587,7 +588,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Hitbox pivot/SwordHitbox:collision_mask")
+tracks/4/path = NodePath("Hitbox pivot/PlayerInteractArea:collision_mask")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -599,7 +600,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Hitbox pivot/SwordHitbox:collision_layer")
+tracks/5/path = NodePath("Hitbox pivot/PlayerInteractArea:collision_layer")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -668,7 +669,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Hitbox pivot/SwordHitbox/CollisionShape2D:disabled")
+tracks/3/path = NodePath("Hitbox pivot/PlayerInteractArea/CollisionShape2D:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -680,7 +681,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Hitbox pivot/SwordHitbox:collision_mask")
+tracks/4/path = NodePath("Hitbox pivot/PlayerInteractArea:collision_mask")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -692,7 +693,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Hitbox pivot/SwordHitbox:collision_layer")
+tracks/5/path = NodePath("Hitbox pivot/PlayerInteractArea:collision_layer")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -761,7 +762,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Hitbox pivot/SwordHitbox/CollisionShape2D:disabled")
+tracks/3/path = NodePath("Hitbox pivot/PlayerInteractArea/CollisionShape2D:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -773,7 +774,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Hitbox pivot/SwordHitbox:collision_mask")
+tracks/4/path = NodePath("Hitbox pivot/PlayerInteractArea:collision_mask")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -785,7 +786,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Hitbox pivot/SwordHitbox:collision_layer")
+tracks/5/path = NodePath("Hitbox pivot/PlayerInteractArea:collision_layer")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -983,6 +984,21 @@ _data = {
 "runup": SubResource("Animation_tlfrl")
 }
 
+[sub_resource type="Animation" id="Animation_wwain"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="Animation" id="Animation_hdltt"]
 resource_name = "Start"
 length = 0.2
@@ -1003,21 +1019,6 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_v4v8e"]
 resource_name = "Stop"
 length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:material:shader_parameter/active")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_wwain"]
-length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1220,6 +1221,7 @@ height = 16.0
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_a5v42")
+inventory_data = ExtResource("9_bicv8")
 
 [node name="ShadowSprite" type="Sprite2D" parent="."]
 position = Vector2(0, 2)
@@ -1258,15 +1260,16 @@ parameters/Run/blend_position = Vector2(0, 1)
 
 [node name="Hitbox pivot" type="Node2D" parent="."]
 position = Vector2(0, -4)
-rotation = 4.71239
+rotation = -4.71239
 
-[node name="SwordHitbox" parent="Hitbox pivot" instance=ExtResource("3_wcqxa")]
+[node name="PlayerInteractArea" parent="Hitbox pivot" instance=ExtResource("3_wcqxa")]
 position = Vector2(15, 0)
-collision_layer = 2
-collision_mask = 8
-script = ExtResource("4_20ep3")
+collision_layer = 64
+collision_mask = 32
+script = ExtResource("8_cyia0")
+inventory_data = ExtResource("9_bicv8")
 
-[node name="CollisionShape2D" parent="Hitbox pivot/SwordHitbox" index="0"]
+[node name="CollisionShape2D" parent="Hitbox pivot/PlayerInteractArea" index="0"]
 shape = SubResource("CapsuleShape2D_q2mev")
 disabled = true
 
@@ -1290,12 +1293,12 @@ shape = SubResource("CapsuleShape2D_eednf")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
-[connection signal="area_entered" from="Hitbox pivot/SwordHitbox" to="." method="_on_sword_hitbox_area_entered"]
+[connection signal="area_entered" from="Hitbox pivot/PlayerInteractArea" to="." method="_on_player_interact_area_area_entered"]
 [connection signal="area_entered" from="StairSensor" to="." method="_on_stair_sensor_area_entered"]
 [connection signal="area_exited" from="StairSensor" to="." method="_on_stair_sensor_area_exited"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="invincibility_ended" from="Hurtbox" to="." method="_on_hurtbox_invincibility_ended"]
 [connection signal="invincibility_started" from="Hurtbox" to="." method="_on_hurtbox_invincibility_started"]
 
-[editable path="Hitbox pivot/SwordHitbox"]
+[editable path="Hitbox pivot/PlayerInteractArea"]
 [editable path="Hurtbox"]

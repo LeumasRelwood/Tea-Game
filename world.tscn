@@ -1,19 +1,28 @@
-[gd_scene load_steps=20 format=3 uid="uid://bkshwh6ugovgf"]
+[gd_scene load_steps=32 format=3 uid="uid://bkshwh6ugovgf"]
 
-[ext_resource type="PackedScene" uid="uid://c6kxh6gid7m1s" path="res://Player/player.tscn" id="1_2whqa"]
+[ext_resource type="PackedScene" uid="uid://bpgrgqmsja4op" path="res://Player/player.tscn" id="1_2whqa"]
 [ext_resource type="Texture2D" uid="uid://b3j5ngdc1abij" path="res://World/GrassBackground.png" id="1_7grry"]
 [ext_resource type="PackedScene" uid="uid://cj462uvp4qvw7" path="res://camera_2d.tscn" id="1_36ixg"]
 [ext_resource type="Texture2D" uid="uid://b754kwqghuij1" path="res://World/DirtTileset.png" id="1_mky7q"]
+[ext_resource type="Script" path="res://world.gd" id="1_pt8ln"]
 [ext_resource type="PackedScene" uid="uid://cu2s67h2xiwbu" path="res://World/bush.tscn" id="2_lj7ph"]
 [ext_resource type="Texture2D" uid="uid://csq0vp641ice4" path="res://World/CliffTileset.png" id="3_7pbrw"]
 [ext_resource type="Script" path="res://World/Staircase.gd" id="4_nhvpt"]
 [ext_resource type="PackedScene" uid="uid://cka1w1gbejhi2" path="res://World/grass.tscn" id="6_m3pun"]
+[ext_resource type="Script" path="res://InventoryManagers/InventoryInterface.gd" id="6_ofg27"]
 [ext_resource type="PackedScene" uid="uid://dx11eeda1o2rp" path="res://Enemies/bat.tscn" id="7_3o3jl"]
+[ext_resource type="PackedScene" uid="uid://dw8etjyyewe8g" path="res://InventoryManagers/slot.tscn" id="8_m71rl"]
 [ext_resource type="Texture2D" uid="uid://bjlfhky3d32ex" path="res://World/Tree.png" id="8_n4fyq"]
 [ext_resource type="PackedScene" uid="uid://bw18h83q04os2" path="res://UI/CounterUI.tscn" id="10_b0lvu"]
 [ext_resource type="PackedScene" uid="uid://yokjl35u412w" path="res://World/tree.tscn" id="10_wvl3n"]
 [ext_resource type="PackedScene" uid="uid://dvaoa8lonnk82" path="res://UI/health_ui.tscn" id="12_foq2c"]
 [ext_resource type="LabelSettings" uid="uid://7tgrr3fs72vu" path="res://UI/GUI labels.tres" id="12_l3byq"]
+[ext_resource type="PackedScene" uid="uid://bxy5ij2avjjte" path="res://InventoryManagers/inventory.tscn" id="15_j1xfr"]
+[ext_resource type="PackedScene" uid="uid://csdjukr06mf1j" path="res://World/Interactables/chest.tscn" id="20_m8i2b"]
+[ext_resource type="Script" path="res://InventoryManagers/InventoryData.gd" id="21_csm58"]
+[ext_resource type="Resource" uid="uid://pmtlla62nuex" path="res://Items/ITEMS/TeaPlant.tres" id="22_65quw"]
+[ext_resource type="Script" path="res://InventoryManagers/SlotData.gd" id="23_gglij"]
+[ext_resource type="Resource" uid="uid://bvjnvkwicu6hh" path="res://Items/ITEMS/FreshTeaLeaves.tres" id="24_vqjga"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vwtus"]
 texture = ExtResource("1_mky7q")
@@ -871,7 +880,22 @@ terrain_set_0/terrain_0/name = "dirtcliff"
 terrain_set_0/terrain_0/color = Color(0.501961, 0.941176, 0.25098, 1)
 sources/0 = SubResource("TileSetAtlasSource_mywjx")
 
+[sub_resource type="Resource" id="Resource_rfwx4"]
+script = ExtResource("23_gglij")
+item_data = ExtResource("22_65quw")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_dbqx2"]
+script = ExtResource("23_gglij")
+item_data = ExtResource("24_vqjga")
+quantity = 25
+
+[sub_resource type="Resource" id="Resource_fji6u"]
+script = ExtResource("21_csm58")
+slot_datas = Array[ExtResource("23_gglij")]([SubResource("Resource_rfwx4"), SubResource("Resource_dbqx2"), null, null])
+
 [node name="World" type="Node2D"]
+script = ExtResource("1_pt8ln")
 
 [node name="Camera2D" parent="." instance=ExtResource("1_36ixg")]
 position = Vector2(136, 32)
@@ -881,6 +905,52 @@ position = Vector2(-128, -64)
 
 [node name="BottomRight" parent="Camera2D/Limits" index="1"]
 position = Vector2(416, 256)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="CounterUI" parent="UI" instance=ExtResource("10_b0lvu")]
+
+[node name="Clock" parent="UI/CounterUI" index="0"]
+text = "Timer"
+label_settings = ExtResource("12_l3byq")
+
+[node name="TeaCounter" parent="UI/CounterUI" index="1"]
+offset_left = 256.0
+offset_right = 344.0
+offset_bottom = 26.0
+text = "0Kgs of Tea"
+label_settings = ExtResource("12_l3byq")
+
+[node name="HealthUI" parent="UI" instance=ExtResource("12_foq2c")]
+offset_top = 16.0
+offset_bottom = 29.0
+
+[node name="InventoryInterface" type="Control" parent="UI"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("6_ofg27")
+
+[node name="PlayerInventory" parent="UI/InventoryInterface" instance=ExtResource("15_j1xfr")]
+layout_mode = 0
+offset_left = 235.0
+offset_top = 16.0
+offset_right = 275.0
+offset_bottom = 56.0
+
+[node name="ExternalInventory" parent="UI/InventoryInterface" instance=ExtResource("15_j1xfr")]
+visible = false
+layout_mode = 0
+offset_left = 8.0
+offset_top = 40.0
+offset_right = 48.0
+offset_bottom = 80.0
+
+[node name="GrabbedSlot" parent="UI/InventoryInterface" instance=ExtResource("8_m71rl")]
+visible = false
+modulate = Color(1, 1, 1, 0.45098)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
 
 [node name="Background" type="Sprite2D" parent="."]
 texture_repeat = 2
@@ -985,27 +1055,12 @@ position = Vector2(176, 24)
 [node name="Tree2" parent="YSort/Trees" instance=ExtResource("10_wvl3n")]
 position = Vector2(16, 56)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="CounterUI" parent="CanvasLayer" instance=ExtResource("10_b0lvu")]
-
-[node name="Clock" parent="CanvasLayer/CounterUI" index="0"]
-text = "Timer"
-label_settings = ExtResource("12_l3byq")
-
-[node name="TeaCounter" parent="CanvasLayer/CounterUI" index="1"]
-offset_left = 256.0
-offset_right = 344.0
-offset_bottom = 26.0
-text = "0Kgs of Tea"
-label_settings = ExtResource("12_l3byq")
-
-[node name="HealthUI" parent="CanvasLayer" instance=ExtResource("12_foq2c")]
-offset_top = 16.0
-offset_bottom = 29.0
+[node name="Chest" parent="YSort" instance=ExtResource("20_m8i2b")]
+position = Vector2(112, 8)
+inventory_data = SubResource("Resource_fji6u")
 
 [connection signal="area_entered" from="Staircase" to="Staircase" method="_on_area_entered"]
 
 [editable path="Camera2D"]
-[editable path="CanvasLayer/CounterUI"]
-[editable path="CanvasLayer/HealthUI"]
+[editable path="UI/CounterUI"]
+[editable path="UI/HealthUI"]

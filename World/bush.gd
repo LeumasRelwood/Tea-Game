@@ -1,5 +1,6 @@
 extends StaticBody2D
 
+@export var slot_data: SlotData
 @onready var sprite2d = $Sprite2D
 @onready var ShadowSprite = $ShadowSprite
 @onready var HarvestableArea2D = $HarvestableArea2D
@@ -21,16 +22,17 @@ var numberofstages = 4
 
 func _on_area_2d_area_entered(area):
 	if HarvestableArea2D.harvestable:
-		harvest_bush()
+		harvest_bush(area)
 	else:
 		pass
 
-func harvest_bush():
-	growthprogress = 0
-	growthstage = 1
-	sprite2d.scale = Vector2(0.5, 0.5)
-	ShadowSprite.scale = Vector2(0.5, 0.5)
-	CollisionShape.scale = Vector2(0.5, 0.5)
+func harvest_bush(area):
+	if area.inventory_data.pick_up_slot_data(slot_data):
+		growthprogress = 0
+		growthstage = 1
+		sprite2d.scale = Vector2(0.5, 0.5)
+		ShadowSprite.scale = Vector2(0.5, 0.5)
+		CollisionShape.scale = Vector2(0.5, 0.5)
 
 
 

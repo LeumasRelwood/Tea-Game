@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://csdjukr06mf1j"]
+
+[ext_resource type="Texture2D" uid="uid://dosb5mdqi8wbx" path="res://World/Interactables/chest-131982518657265365.png" id="1_phm6u"]
+[ext_resource type="Script" path="res://World/Interactables/chest.gd" id="1_yu0re"]
+[ext_resource type="PackedScene" uid="uid://cfh3c2h78s7kr" path="res://Hit and Hurtboxes/hurtbox.tscn" id="2_gtvp4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ndtmh"]
+size = Vector2(20, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k1f8y"]
+
+[node name="Chest" type="StaticBody2D" groups=["external_inventory"]]
+script = ExtResource("1_yu0re")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(9.53674e-07, 9.53674e-07)
+scale = Vector2(0.0429688, 0.0429688)
+texture = ExtResource("1_phm6u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_ndtmh")
+
+[node name="Hurtbox" parent="." instance=ExtResource("2_gtvp4")]
+collision_layer = 32
+collision_mask = 64
+harvestable = false
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+shape = SubResource("RectangleShape2D_k1f8y")
+
+[connection signal="player_interact" from="Hurtbox" to="." method="_on_hurtbox_player_interact"]
+
+[editable path="Hurtbox"]

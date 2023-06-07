@@ -8,6 +8,8 @@ const PlayerHurtSound = preload("res://Music and Sounds/player_hurt_sound.tscn")
 @export var FRICTION = 15
 @export var ROLL_SPEED = 100
 
+signal toggle_inventory
+
 enum {
 	MOVE,
 	ROLL,
@@ -28,13 +30,14 @@ var input_vector = Vector2.ZERO
 @onready var animation_tree = $AnimationTree
 @onready var animation_state = animation_tree.get("parameters/playback")
 @onready var hurtbox = $Hurtbox
-@onready var swordHitBox = $"Hitbox pivot/SwordHitbox"
+@onready var player_interact_area = $"Hitbox pivot/PlayerInteractArea"
 @onready var swordhitboxcollision = $"Hitbox pivot/SwordHitbox/CollisionShape2D"
 @onready var StairSensor = $StairSensor
+@export var inventory_data: InventoryData
 
 func _ready():
 	animation_tree.active=true
-	swordHitBox.knockback_vector = roll_vector
+	player_interact_area.knockback_vector = roll_vector
 	playerstats.no_health.connect(queue_free)
 
 func _physics_process(_delta):
@@ -63,7 +66,7 @@ func move_state():
 	
 	if input_vector != Vector2.ZERO:
 		roll_vector = input_vector
-		swordHitBox.knockback_vector = input_vector
+		player_interact_area.knockback_vector = input_vector
 		animation_tree.set("parameters/Idle/blend_position", input_vector)
 		animation_tree.set("parameters/Run/blend_position", input_vector)
 		animation_tree.set("parameters/Attack/blend_position", input_vector)
@@ -90,6 +93,9 @@ func move_state():
 		
 	if Input.is_action_just_pressed("Plant"):
 		plant_bush()
+	
+	if Input.is_action_just_pressed("inventory"):
+		toggle_inventory.emit()
 
 
 func roll_state():
@@ -101,17 +107,13 @@ func roll_animation_finished():
 	velocity = velocity.move_toward(Vector2.ZERO, FRICTION)
 	state = MOVE
 
-
-
 func attack_state():
 	velocity = velocity.move_toward(Vector2.ZERO, FRICTION)
 	move_and_slide()
 	animation_state.travel("Attack")
-	
-func _on_sword_hitbox_area_entered(area):
-	var harvestable = area.harvestable
-	if harvestable:
-		harvest_bush()
+
+func _on_player_interact_area_area_entered(area):
+	area.player_interact_area()
 	
 func attack_animation_finished():
 	state = MOVE
@@ -122,15 +124,6 @@ func plant_bush():
 	var Bush = bush.instantiate()
 	get_parent().add_child(Bush)
 	Bush.global_position = (global_position + input_vector)
-
-
-
-
-
-func harvest_bush():
-	playerstats.tealeaves += 1
-	print("You have " + str(playerstats.tealeaves) + "Kgs of tea.")
-
 
 
 
@@ -158,3 +151,4 @@ func _on_hurtbox_invincibility_started():
 
 func _on_hurtbox_invincibility_ended():
 	blink_animation_player.play("Stop")
+

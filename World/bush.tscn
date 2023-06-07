@@ -1,9 +1,16 @@
-[gd_scene load_steps=8 format=3 uid="uid://cu2s67h2xiwbu"]
+[gd_scene load_steps=11 format=3 uid="uid://cu2s67h2xiwbu"]
 
 [ext_resource type="Script" path="res://World/bush.gd" id="1_d2thc"]
 [ext_resource type="Texture2D" uid="uid://6bmldywsusls" path="res://World/Bush.png" id="1_nxq17"]
+[ext_resource type="Resource" uid="uid://bvjnvkwicu6hh" path="res://Items/ITEMS/FreshTeaLeaves.tres" id="2_ageie"]
 [ext_resource type="Texture2D" uid="uid://c66k67cj7x324" path="res://Shadows/LargeShadow.png" id="2_qeslg"]
+[ext_resource type="Script" path="res://InventoryManagers/SlotData.gd" id="3_dyj5s"]
 [ext_resource type="Script" path="res://Hit and Hurtboxes/hurtbox.gd" id="3_rqwou"]
+
+[sub_resource type="Resource" id="Resource_mxl04"]
+script = ExtResource("3_dyj5s")
+item_data = ExtResource("2_ageie")
+quantity = 1
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1g2m8"]
 radius = 7.0
@@ -18,6 +25,7 @@ radius = 14.0
 [node name="Bush" type="StaticBody2D"]
 collision_mask = 2
 script = ExtResource("1_d2thc")
+slot_data = SubResource("Resource_mxl04")
 metadata/_edit_group_ = true
 
 [node name="ShadowSprite" type="Sprite2D" parent="."]
