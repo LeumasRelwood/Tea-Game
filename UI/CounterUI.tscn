@@ -11,8 +11,3 @@ script = ExtResource("1_a5vke")
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
-
-[node name="TeaCounter" type="Label" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0

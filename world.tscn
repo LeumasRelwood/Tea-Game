@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bkshwh6ugovgf"]
+[gd_scene load_steps=33 format=3 uid="uid://bkshwh6ugovgf"]
 
 [ext_resource type="PackedScene" uid="uid://bpgrgqmsja4op" path="res://Player/player.tscn" id="1_2whqa"]
 [ext_resource type="Texture2D" uid="uid://b3j5ngdc1abij" path="res://World/GrassBackground.png" id="1_7grry"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dx11eeda1o2rp" path="res://Enemies/bat.tscn" id="7_3o3jl"]
 [ext_resource type="PackedScene" uid="uid://dw8etjyyewe8g" path="res://InventoryManagers/slot.tscn" id="8_m71rl"]
 [ext_resource type="Texture2D" uid="uid://bjlfhky3d32ex" path="res://World/Tree.png" id="8_n4fyq"]
+[ext_resource type="PackedScene" uid="uid://bxeaagi03qgrd" path="res://InventoryManagers/hot_bar_inventory.tscn" id="9_44i8a"]
 [ext_resource type="PackedScene" uid="uid://bw18h83q04os2" path="res://UI/CounterUI.tscn" id="10_b0lvu"]
 [ext_resource type="PackedScene" uid="uid://yokjl35u412w" path="res://World/tree.tscn" id="10_wvl3n"]
 [ext_resource type="PackedScene" uid="uid://dvaoa8lonnk82" path="res://UI/health_ui.tscn" id="12_foq2c"]
@@ -914,13 +915,6 @@ position = Vector2(416, 256)
 text = "Timer"
 label_settings = ExtResource("12_l3byq")
 
-[node name="TeaCounter" parent="UI/CounterUI" index="1"]
-offset_left = 256.0
-offset_right = 344.0
-offset_bottom = 26.0
-text = "0Kgs of Tea"
-label_settings = ExtResource("12_l3byq")
-
 [node name="HealthUI" parent="UI" instance=ExtResource("12_foq2c")]
 offset_top = 16.0
 offset_bottom = 29.0
@@ -951,6 +945,12 @@ visible = false
 modulate = Color(1, 1, 1, 0.45098)
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
+
+[node name="HotBarInventory" parent="UI" instance=ExtResource("9_44i8a")]
+offset_left = 100.0
+offset_top = 147.0
+offset_right = 180.0
+offset_bottom = 167.0
 
 [node name="Background" type="Sprite2D" parent="."]
 texture_repeat = 2

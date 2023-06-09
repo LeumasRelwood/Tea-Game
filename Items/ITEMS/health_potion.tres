@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemDataConsumable" load_steps=3 format=3 uid="uid://c4h803gxj0fji"]
+
+[ext_resource type="Script" path="res://Items/item_data_consumable.gd" id="1_3tg6v"]
+[ext_resource type="Texture2D" uid="uid://dl3362k10u5jm" path="res://Items/item_atlas.tres" id="2_6uy8m"]
+
+[resource]
+script = ExtResource("1_3tg6v")
+heal_value = 1
+name = "Health Potion"
+description = "Smells like strawberries..."
+stackable = true
+texture = ExtResource("2_6uy8m")

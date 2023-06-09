@@ -2,10 +2,12 @@ extends Node2D
 
 @onready var inventory_interface = $UI/InventoryInterface
 @onready var player = $YSort/Player
+@onready var hot_bar_inventory = $UI/HotBarInventory
 
 func _ready():
 	player.toggle_inventory.connect(toggle_inventory_interface)
 	inventory_interface.set_player_inventory_data(player.inventory_data)
+	hot_bar_inventory.set_inventory_data(player.inventory_data)
 	
 	for node in get_tree().get_nodes_in_group("external_inventory"):
 		node.toggle_inventory.connect(toggle_inventory_interface)

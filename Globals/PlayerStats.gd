@@ -1,6 +1,6 @@
 extends Node
 
-
+var player
 
 signal no_health
 signal health_changed(value)
@@ -24,3 +24,6 @@ var health = max_health:
 
 func _ready():
 	self.health = max_health
+
+func use_slot_data(slot_data: SlotData) -> void:
+	slot_data.item_data.use(player)

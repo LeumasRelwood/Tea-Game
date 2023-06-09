@@ -8,3 +8,6 @@ class_name ItemData
 
 #enum ItemType { GENERIC, CONSUMABLE, QUEST, EQUIPMENT}
 #@export var type : ItemType
+
+func use(target) -> void:
+	pass
