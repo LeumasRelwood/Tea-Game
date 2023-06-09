@@ -34,6 +34,7 @@ var input_vector = Vector2.ZERO
 @onready var swordhitboxcollision = $"Hitbox pivot/SwordHitbox/CollisionShape2D"
 @onready var StairSensor = $StairSensor
 @export var inventory_data: InventoryData
+@export var equip_inventory_data: InventoryDataEquip
 
 func _ready():
 	animation_tree.active=true

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemDataEquip" load_steps=4 format=3 uid="uid://ccib8o6ibhk8r"]
+
+[ext_resource type="Script" path="res://Items/item_data_equip.gd" id="1_lphoj"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4g1dh"]
+load_path = "res://.godot/imported/#1 - Transparent Icons.png-8892caa8bbd25309d6ee2c3cb21bced5.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k53pk"]
+atlas = SubResource("CompressedTexture2D_4g1dh")
+region = Rect2(96, 224, 32, 32)
+
+[resource]
+script = ExtResource("1_lphoj")
+defence = 1
+name = "Iron Helm"
+description = "Will protect your noggin."
+stackable = false
+texture = SubResource("AtlasTexture_k53pk")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://bkshwh6ugovgf"]
+[gd_scene load_steps=35 format=3 uid="uid://bkshwh6ugovgf"]
 
 [ext_resource type="PackedScene" uid="uid://bpgrgqmsja4op" path="res://Player/player.tscn" id="1_2whqa"]
 [ext_resource type="Texture2D" uid="uid://b3j5ngdc1abij" path="res://World/GrassBackground.png" id="1_7grry"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://dvaoa8lonnk82" path="res://UI/health_ui.tscn" id="12_foq2c"]
 [ext_resource type="LabelSettings" uid="uid://7tgrr3fs72vu" path="res://UI/GUI labels.tres" id="12_l3byq"]
 [ext_resource type="PackedScene" uid="uid://bxy5ij2avjjte" path="res://InventoryManagers/inventory.tscn" id="15_j1xfr"]
+[ext_resource type="Script" path="res://InventoryManagers/InventoryDataEquip.gd" id="16_es7mm"]
 [ext_resource type="PackedScene" uid="uid://csdjukr06mf1j" path="res://World/Interactables/chest.tscn" id="20_m8i2b"]
 [ext_resource type="Script" path="res://InventoryManagers/InventoryData.gd" id="21_csm58"]
 [ext_resource type="Resource" uid="uid://pmtlla62nuex" path="res://Items/ITEMS/TeaPlant.tres" id="22_65quw"]
@@ -881,6 +882,10 @@ terrain_set_0/terrain_0/name = "dirtcliff"
 terrain_set_0/terrain_0/color = Color(0.501961, 0.941176, 0.25098, 1)
 sources/0 = SubResource("TileSetAtlasSource_mywjx")
 
+[sub_resource type="Resource" id="Resource_v1qws"]
+script = ExtResource("16_es7mm")
+slot_datas = Array[ExtResource("23_gglij")]([null, null])
+
 [sub_resource type="Resource" id="Resource_rfwx4"]
 script = ExtResource("23_gglij")
 item_data = ExtResource("22_65quw")
@@ -931,6 +936,13 @@ offset_left = 235.0
 offset_top = 16.0
 offset_right = 275.0
 offset_bottom = 56.0
+
+[node name="EquipInventory" parent="UI/InventoryInterface" instance=ExtResource("15_j1xfr")]
+layout_mode = 0
+offset_left = 190.0
+offset_top = 15.0
+offset_right = 230.0
+offset_bottom = 55.0
 
 [node name="ExternalInventory" parent="UI/InventoryInterface" instance=ExtResource("15_j1xfr")]
 visible = false
@@ -994,6 +1006,7 @@ y_sort_enabled = true
 
 [node name="Player" parent="YSort" instance=ExtResource("1_2whqa")]
 position = Vector2(136, 32)
+equip_inventory_data = SubResource("Resource_v1qws")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/Player"]
 remote_path = NodePath("../../../Camera2D")
