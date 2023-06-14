@@ -1,62 +1,149 @@
-[gd_scene load_steps=3 format=3 uid="uid://cisfpnf2a5cc5"]
+[gd_scene load_steps=10 format=3 uid="uid://behomoagxuhtf"]
 
 [ext_resource type="Script" path="res://InventoryManagers/withering_menu.gd" id="1_7atc0"]
 [ext_resource type="PackedScene" uid="uid://bxy5ij2avjjte" path="res://InventoryManagers/inventory.tscn" id="1_33eoi"]
+[ext_resource type="PackedScene" uid="uid://dao8bny7qec8a" path="res://InventoryManagers/RecipeItemContainers/white_tea_recipe_item_container.tscn" id="3_nsocj"]
+[ext_resource type="PackedScene" uid="uid://dvnhh2swe8mmd" path="res://InventoryManagers/RecipeItemContainers/black_tea_recipe_item_container.tscn" id="4_qj1gl"]
+[ext_resource type="PackedScene" uid="uid://ml838x4n743w" path="res://InventoryManagers/RecipeItemContainers/oolong_tea_recipe_item_container.tscn" id="5_fkq5q"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3aja0"]
+font_size = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_0wmcg"]
+font_size = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_tjjmt"]
+font_size = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_g025k"]
+font_size = 8
 
 [node name="WitheringMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -76.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7atc0")
 
-[node name="InventoryInput" parent="." instance=ExtResource("1_33eoi")]
+[node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 0
-offset_left = 2.0
-offset_top = 78.0
-offset_right = 42.0
+offset_right = 150.0
 offset_bottom = 118.0
 
-[node name="InventoryOutput" parent="." instance=ExtResource("1_33eoi")]
-layout_mode = 0
-offset_left = 142.0
-offset_top = 78.0
-offset_right = 182.0
-offset_bottom = 118.0
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
 
-[node name="HeaderLabel" type="Label" parent="."]
-layout_mode = 0
-offset_left = 70.0
-offset_top = 6.0
-offset_right = 110.0
-offset_bottom = 29.0
+[node name="HeaderLabel" type="Label" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+text = "Withering Rack"
+label_settings = SubResource("LabelSettings_3aja0")
 
-[node name="InputLabel" type="Label" parent="."]
-layout_mode = 0
-offset_left = 2.0
-offset_top = 49.0
-offset_right = 42.0
-offset_bottom = 72.0
+[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/margin_top = 19
 
-[node name="OutputLabel" type="Label" parent="."]
-layout_mode = 0
-offset_left = 141.0
-offset_top = 49.0
-offset_right = 181.0
-offset_bottom = 72.0
+[node name="CapacityLabel" type="Label" parent="PanelContainer/MarginContainer2"]
+layout_mode = 2
+text = "Capacity: 5 Fresh Tea Leaves"
+label_settings = SubResource("LabelSettings_0wmcg")
 
-[node name="StartButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 66.0
-offset_top = 134.0
-offset_right = 110.0
-offset_bottom = 144.0
+[node name="MarginContainer4" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 40
 
-[node name="RecipeScrollContainer" type="ScrollContainer" parent="."]
-layout_mode = 0
-offset_left = 49.0
-offset_top = 51.0
-offset_right = 135.0
-offset_bottom = 124.0
+[node name="InputLabel" type="Label" parent="PanelContainer/MarginContainer4"]
+layout_mode = 2
+text = "Input"
+label_settings = SubResource("LabelSettings_tjjmt")
+
+[node name="MarginContainer5" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 7
+
+[node name="OutputLabel" type="Label" parent="PanelContainer/MarginContainer5"]
+layout_mode = 2
+text = "Output"
+label_settings = SubResource("LabelSettings_g025k")
+
+[node name="MarginContainer8" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 15
+
+[node name="MarginContainer6" type="MarginContainer" parent="PanelContainer/MarginContainer8"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/margin_left = 2
+
+[node name="InventoryInput" parent="PanelContainer/MarginContainer8/MarginContainer6" instance=ExtResource("1_33eoi")]
+layout_mode = 2
+
+[node name="MarginContainer6" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 10
+
+[node name="MarginContainer7" type="MarginContainer" parent="PanelContainer/MarginContainer6"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
+[node name="InventoryOutput" parent="PanelContainer/MarginContainer6/MarginContainer7" instance=ExtResource("1_33eoi")]
+layout_mode = 2
+
+[node name="MarginContainer3" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/margin_bottom = 10
+
+[node name="StartButton" type="Button" parent="PanelContainer/MarginContainer3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Start Withering"
+
+[node name="RecipeScrollContainer" type="ScrollContainer" parent="PanelContainer"]
+custom_minimum_size = Vector2(80, 45)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/RecipeScrollContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/RecipeScrollContainer/MarginContainer"]
+custom_minimum_size = Vector2(70, 40)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="WhiteTeaRecipeItemContainer" parent="PanelContainer/RecipeScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_nsocj")]
+layout_mode = 2
+
+[node name="BlackTeaRecipeItemContainer" parent="PanelContainer/RecipeScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("4_qj1gl")]
+layout_mode = 2
+
+[node name="OolongTeaRecipeItemContainer" parent="PanelContainer/RecipeScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("5_fkq5q")]
+layout_mode = 2

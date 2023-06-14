@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dx11eeda1o2rp" path="res://Enemies/bat.tscn" id="7_3o3jl"]
 [ext_resource type="PackedScene" uid="uid://dw8etjyyewe8g" path="res://InventoryManagers/slot.tscn" id="8_m71rl"]
 [ext_resource type="Texture2D" uid="uid://bjlfhky3d32ex" path="res://World/Tree.png" id="8_n4fyq"]
-[ext_resource type="PackedScene" uid="uid://cisfpnf2a5cc5" path="res://InventoryManagers/withering_menu.tscn" id="8_qbujd"]
+[ext_resource type="PackedScene" uid="uid://behomoagxuhtf" path="res://InventoryManagers/withering_menu.tscn" id="8_qbujd"]
 [ext_resource type="PackedScene" uid="uid://bxeaagi03qgrd" path="res://InventoryManagers/hot_bar_inventory.tscn" id="9_44i8a"]
 [ext_resource type="PackedScene" uid="uid://bw18h83q04os2" path="res://UI/CounterUI.tscn" id="10_b0lvu"]
 [ext_resource type="PackedScene" uid="uid://yokjl35u412w" path="res://World/tree.tscn" id="10_wvl3n"]
@@ -950,6 +950,7 @@ offset_right = 275.0
 offset_bottom = 56.0
 
 [node name="EquipInventory" parent="UI/InventoryInterface" instance=ExtResource("15_j1xfr")]
+visible = false
 layout_mode = 0
 offset_left = 190.0
 offset_top = 15.0
@@ -967,6 +968,10 @@ offset_bottom = 80.0
 [node name="WitheringMenu" parent="UI/InventoryInterface" instance=ExtResource("8_qbujd")]
 visible = false
 layout_mode = 1
+offset_left = 74.0
+offset_top = 27.0
+offset_right = 74.0
+offset_bottom = 27.0
 
 [node name="GrabbedSlot" parent="UI/InventoryInterface" instance=ExtResource("8_m71rl")]
 visible = false

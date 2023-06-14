@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://ml838x4n743w"]
+
+[ext_resource type="PackedScene" uid="uid://c85dkxf7abl0u" path="res://InventoryManagers/RecipeItemContainers/recipe_item_container.tscn" id="1_fuc8u"]
+[ext_resource type="Resource" uid="uid://bwvxerw8el4eb" path="res://Items/ITEMS/OolongTea(withered).tres" id="2_mf2bx"]
+
+[node name="OolongTeaRecipeItemContainer" instance=ExtResource("1_fuc8u")]
+recipe_item = ExtResource("2_mf2bx")
+
+[node name="Label" parent="MarginContainer" index="0"]
+text = "Oolong tea.
+Value: 40gp"

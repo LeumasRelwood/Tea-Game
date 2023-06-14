@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=7 format=3 uid="uid://dk0cqkn21p4u0"]
+
+[ext_resource type="Resource" uid="uid://bongxlb3eamwp" path="res://Items/ITEMS/FreshTeaLeaves.tres" id="1_mndqh"]
+[ext_resource type="Script" path="res://Items/Item_data.gd" id="1_p4fup"]
+[ext_resource type="Script" path="res://InventoryManagers/SlotData.gd" id="2_atdkp"]
+
+[sub_resource type="Resource" id="Resource_7tla5"]
+script = ExtResource("2_atdkp")
+item_data = ExtResource("1_mndqh")
+quantity = 1
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_benhh"]
+load_path = "res://.godot/imported/#1 - Transparent Icons.png-8892caa8bbd25309d6ee2c3cb21bced5.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jmdvh"]
+atlas = SubResource("CompressedTexture2D_benhh")
+region = Rect2(224, 608, 32, 32)
+
+[resource]
+script = ExtResource("1_p4fup")
+name = "White Tea (Withered)"
+description = "Next step: Drying"
+stackable = true
+texture = SubResource("AtlasTexture_jmdvh")
+recipe = Array[ExtResource("2_atdkp")]([SubResource("Resource_7tla5")])

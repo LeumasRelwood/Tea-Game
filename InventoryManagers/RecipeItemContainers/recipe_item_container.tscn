@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=3 uid="uid://c85dkxf7abl0u"]
+
+[ext_resource type="PackedScene" uid="uid://bxy5ij2avjjte" path="res://InventoryManagers/inventory.tscn" id="1_10cyu"]
+[ext_resource type="Script" path="res://InventoryManagers/RecipeItemContainers/recipe_item_container.gd" id="1_mlnbf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4x234"]
+font_size = 6
+
+[node name="RecipeItemContainer" type="MarginContainer"]
+script = ExtResource("1_mlnbf")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/margin_left = 2
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+text = "White tea.
+Value: 15gp"
+label_settings = SubResource("LabelSettings_4x234")
+
+[node name="MarginContainer3" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/margin_right = 3
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer3"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/margin_right = 0
+
+[node name="Inventory" parent="MarginContainer3/MarginContainer2" instance=ExtResource("1_10cyu")]
+visible = false
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer3/MarginContainer2"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="."]
+show_behind_parent = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 10

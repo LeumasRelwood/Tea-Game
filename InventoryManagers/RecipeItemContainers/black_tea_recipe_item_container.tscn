@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvnhh2swe8mmd"]
+
+[ext_resource type="PackedScene" uid="uid://c85dkxf7abl0u" path="res://InventoryManagers/RecipeItemContainers/recipe_item_container.tscn" id="1_jn2sq"]
+[ext_resource type="Resource" uid="uid://c8hyhu406wsuj" path="res://Items/ITEMS/BlackTea(withered).tres" id="2_0jecp"]
+
+[node name="BlackTeaRecipeItemContainer" instance=ExtResource("1_jn2sq")]
+recipe_item = ExtResource("2_0jecp")
+
+[node name="Label" parent="MarginContainer" index="0"]
+text = "Black tea.
+Value: 25gp"
