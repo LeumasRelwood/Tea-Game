@@ -5,6 +5,7 @@ class_name ItemData
 @export_multiline var description : String
 @export var stackable : bool = false
 @export var texture : AtlasTexture
+@export var recipe : Array[SlotData]
 
 #enum ItemType { GENERIC, CONSUMABLE, QUEST, EQUIPMENT}
 #@export var type : ItemType

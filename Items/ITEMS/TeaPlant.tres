@@ -13,3 +13,4 @@ name = "Tea Plant"
 description = "Ready to be planted."
 stackable = false
 texture = SubResource("AtlasTexture_4wdpb")
+recipe = Array[Resource("res://InventoryManagers/SlotData.gd")]([])

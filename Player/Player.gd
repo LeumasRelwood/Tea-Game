@@ -41,6 +41,7 @@ func _ready():
 	player_interact_area.knockback_vector = roll_vector
 	playerstats.no_health.connect(queue_free)
 	playerstats.player = self
+	print(inventory_data.slot_datas[0].item_data.name)
 
 func _physics_process(_delta):
 	match state:
@@ -137,7 +138,6 @@ func _on_stair_sensor_area_entered(area):
 func _on_stair_sensor_area_exited(area):
 	onStair = false
 	StairFactor = Vector2.ZERO
-
 
 func heal(heal_value: int) -> void:
 	if playerstats.health < playerstats.max_health:

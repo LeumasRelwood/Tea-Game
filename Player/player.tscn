@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cfh3c2h78s7kr" path="res://Hit and Hurtboxes/hurtbox.tscn" id="6_kr2dt"]
 [ext_resource type="Script" path="res://Player/StairSensor.gd" id="6_w0aix"]
 [ext_resource type="Script" path="res://Player/PlayerInteractArea.gd" id="8_cyia0"]
-[ext_resource type="Resource" uid="uid://cd5jl5odx0ski" path="res://TEST/TestInventory.tres" id="9_bicv8"]
+[ext_resource type="Resource" uid="uid://cfgx3dyy6ncic" path="res://TEST/TestInventory.tres" id="9_bicv8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4mqea"]
 shader = ExtResource("3_ki0jf")

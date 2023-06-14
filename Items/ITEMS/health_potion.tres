@@ -1,11 +1,32 @@
-[gd_resource type="Resource" script_class="ItemDataConsumable" load_steps=3 format=3 uid="uid://bmik2pyvwv7wx"]
+[gd_resource type="Resource" script_class="ItemDataConsumableHealth" load_steps=9 format=3 uid="uid://do7lsbryc1md6"]
 
-[ext_resource type="Script" path="res://Items/item_data_consumable.gd" id="1_3tg6v"]
-[ext_resource type="Texture2D" uid="uid://dl3362k10u5jm" path="res://Items/item_atlas.tres" id="2_6uy8m"]
+[ext_resource type="Script" path="res://Items/item_data_consumable_health.gd" id="1_l3shj"]
+[ext_resource type="Resource" uid="uid://bongxlb3eamwp" path="res://Items/ITEMS/FreshTeaLeaves.tres" id="1_xva02"]
+[ext_resource type="Script" path="res://InventoryManagers/SlotData.gd" id="2_1emjt"]
+[ext_resource type="Resource" uid="uid://hqlta75n7whf" path="res://Items/ITEMS/apple.tres" id="3_cfrwa"]
+
+[sub_resource type="Resource" id="Resource_f8mwn"]
+script = ExtResource("2_1emjt")
+item_data = ExtResource("1_xva02")
+quantity = 2
+
+[sub_resource type="Resource" id="Resource_j1053"]
+script = ExtResource("2_1emjt")
+item_data = ExtResource("3_cfrwa")
+quantity = 1
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4g1dh"]
+load_path = "res://.godot/imported/#1 - Transparent Icons.png-8892caa8bbd25309d6ee2c3cb21bced5.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uon66"]
+atlas = SubResource("CompressedTexture2D_4g1dh")
+region = Rect2(0, 288, 32, 32)
 
 [resource]
-script = ExtResource("1_3tg6v")
+script = ExtResource("1_l3shj")
+heal_value = 1
 name = "Health Potion"
-description = "Smells like strawberries..."
+description = "Heals 1 HP"
 stackable = true
-texture = ExtResource("2_6uy8m")
+texture = SubResource("AtlasTexture_uon66")
+recipe = Array[ExtResource("2_1emjt")]([SubResource("Resource_f8mwn"), SubResource("Resource_j1053")])

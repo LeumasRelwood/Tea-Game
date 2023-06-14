@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bkshwh6ugovgf"]
+[gd_scene load_steps=40 format=3 uid="uid://bkshwh6ugovgf"]
 
 [ext_resource type="PackedScene" uid="uid://bpgrgqmsja4op" path="res://Player/player.tscn" id="1_2whqa"]
 [ext_resource type="Texture2D" uid="uid://b3j5ngdc1abij" path="res://World/GrassBackground.png" id="1_7grry"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dx11eeda1o2rp" path="res://Enemies/bat.tscn" id="7_3o3jl"]
 [ext_resource type="PackedScene" uid="uid://dw8etjyyewe8g" path="res://InventoryManagers/slot.tscn" id="8_m71rl"]
 [ext_resource type="Texture2D" uid="uid://bjlfhky3d32ex" path="res://World/Tree.png" id="8_n4fyq"]
+[ext_resource type="PackedScene" uid="uid://cisfpnf2a5cc5" path="res://InventoryManagers/withering_menu.tscn" id="8_qbujd"]
 [ext_resource type="PackedScene" uid="uid://bxeaagi03qgrd" path="res://InventoryManagers/hot_bar_inventory.tscn" id="9_44i8a"]
 [ext_resource type="PackedScene" uid="uid://bw18h83q04os2" path="res://UI/CounterUI.tscn" id="10_b0lvu"]
 [ext_resource type="PackedScene" uid="uid://yokjl35u412w" path="res://World/tree.tscn" id="10_wvl3n"]
@@ -24,7 +25,9 @@
 [ext_resource type="Script" path="res://InventoryManagers/InventoryData.gd" id="21_csm58"]
 [ext_resource type="Resource" uid="uid://pmtlla62nuex" path="res://Items/ITEMS/TeaPlant.tres" id="22_65quw"]
 [ext_resource type="Script" path="res://InventoryManagers/SlotData.gd" id="23_gglij"]
-[ext_resource type="Resource" uid="uid://bvjnvkwicu6hh" path="res://Items/ITEMS/FreshTeaLeaves.tres" id="24_vqjga"]
+[ext_resource type="Resource" uid="uid://bongxlb3eamwp" path="res://Items/ITEMS/FreshTeaLeaves.tres" id="24_vqjga"]
+[ext_resource type="PackedScene" uid="uid://28fco0feg03n" path="res://World/Interactables/withering_rack.tscn" id="26_ffchu"]
+[ext_resource type="Script" path="res://InventoryManagers/InventoryDataWithering.gd" id="28_h5jv4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vwtus"]
 texture = ExtResource("1_mky7q")
@@ -900,6 +903,14 @@ quantity = 25
 script = ExtResource("21_csm58")
 slot_datas = Array[ExtResource("23_gglij")]([SubResource("Resource_rfwx4"), SubResource("Resource_dbqx2"), null, null])
 
+[sub_resource type="Resource" id="Resource_ooqwl"]
+script = ExtResource("28_h5jv4")
+slot_datas = Array[ExtResource("23_gglij")]([null])
+
+[sub_resource type="Resource" id="Resource_6tpxb"]
+script = ExtResource("21_csm58")
+slot_datas = Array[ExtResource("23_gglij")]([null])
+
 [node name="World" type="Node2D"]
 script = ExtResource("1_pt8ln")
 
@@ -931,6 +942,7 @@ anchors_preset = 0
 script = ExtResource("6_ofg27")
 
 [node name="PlayerInventory" parent="UI/InventoryInterface" instance=ExtResource("15_j1xfr")]
+visible = false
 layout_mode = 0
 offset_left = 235.0
 offset_top = 16.0
@@ -951,6 +963,10 @@ offset_left = 8.0
 offset_top = 40.0
 offset_right = 48.0
 offset_bottom = 80.0
+
+[node name="WitheringMenu" parent="UI/InventoryInterface" instance=ExtResource("8_qbujd")]
+visible = false
+layout_mode = 1
 
 [node name="GrabbedSlot" parent="UI/InventoryInterface" instance=ExtResource("8_m71rl")]
 visible = false
@@ -1072,8 +1088,15 @@ position = Vector2(16, 56)
 position = Vector2(112, 8)
 inventory_data = SubResource("Resource_fji6u")
 
+[node name="WitheringRack" parent="YSort" instance=ExtResource("26_ffchu")]
+position = Vector2(154, -17)
+inventory_data_input = SubResource("Resource_ooqwl")
+inventory_data_output = SubResource("Resource_6tpxb")
+
 [connection signal="area_entered" from="Staircase" to="Staircase" method="_on_area_entered"]
 
 [editable path="Camera2D"]
 [editable path="UI/CounterUI"]
 [editable path="UI/HealthUI"]
+[editable path="UI/InventoryInterface/ExternalInventory"]
+[editable path="UI/InventoryInterface/WitheringMenu"]
