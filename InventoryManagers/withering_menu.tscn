@@ -120,6 +120,7 @@ theme_override_constants/margin_bottom = 10
 [node name="StartButton" type="Button" parent="PanelContainer/MarginContainer3"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
+disabled = true
 text = "Start Withering"
 
 [node name="RecipeScrollContainer" type="ScrollContainer" parent="PanelContainer"]
@@ -147,3 +148,8 @@ layout_mode = 2
 
 [node name="OolongTeaRecipeItemContainer" parent="PanelContainer/RecipeScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("5_fkq5q")]
 layout_mode = 2
+
+[connection signal="pressed" from="PanelContainer/MarginContainer3/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="recipe_selected" from="PanelContainer/RecipeScrollContainer/MarginContainer/VBoxContainer/WhiteTeaRecipeItemContainer" to="." method="_on_white_tea_recipe_item_container_recipe_selected"]
+[connection signal="recipe_selected" from="PanelContainer/RecipeScrollContainer/MarginContainer/VBoxContainer/BlackTeaRecipeItemContainer" to="." method="_on_black_tea_recipe_item_container_recipe_selected"]
+[connection signal="recipe_selected" from="PanelContainer/RecipeScrollContainer/MarginContainer/VBoxContainer/OolongTeaRecipeItemContainer" to="." method="_on_oolong_tea_recipe_item_container_recipe_selected"]

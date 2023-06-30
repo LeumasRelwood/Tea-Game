@@ -5,3 +5,8 @@
 
 [node name="WhiteTeaRecipeItemContainer" instance=ExtResource("1_3yu82")]
 recipe_item = ExtResource("2_2drav")
+
+[node name="Button" parent="." index="2"]
+action_mode = 0
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
