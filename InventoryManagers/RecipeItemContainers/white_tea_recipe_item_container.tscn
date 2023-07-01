@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c85dkxf7abl0u" path="res://InventoryManagers/RecipeItemContainers/recipe_item_container.tscn" id="1_3yu82"]
 [ext_resource type="Resource" uid="uid://dk0cqkn21p4u0" path="res://Items/ITEMS/WhiteTea(withered).tres" id="2_2drav"]
 
-[node name="WhiteTeaRecipeItemContainer" instance=ExtResource("1_3yu82")]
+[node name="WhiteTeaRecipeItemContainer" groups=["withering_recipes"] instance=ExtResource("1_3yu82")]
 recipe_item = ExtResource("2_2drav")
 
 [node name="Button" parent="." index="2"]

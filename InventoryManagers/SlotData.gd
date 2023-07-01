@@ -4,7 +4,7 @@ class_name SlotData
 const max_stack_size: int = 99
 
 @export var item_data: ItemData
-@export_range(1, max_stack_size) var quantity: int = 1: set = set_quantity
+@export_range(0, max_stack_size) var quantity: int = 1: set = set_quantity
 
 func can_merge_with(other_slot_data: SlotData) -> bool:
 	return item_data == other_slot_data.item_data \

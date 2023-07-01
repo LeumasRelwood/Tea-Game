@@ -76,3 +76,11 @@ func pick_up_slot_data(slot_data: SlotData) -> bool:
 
 func on_slot_clicked(index: int, button) -> void:
 	inventory_interact.emit(self, index, button)
+
+func set_item_output(selected_recipe, craft_quantity, index: int):
+	print(selected_recipe)
+	var slot_data = slot_datas[index]
+	slot_data.item_data = selected_recipe
+	slot_data.quantity += craft_quantity
+	
+	inventory_updated.emit(self)

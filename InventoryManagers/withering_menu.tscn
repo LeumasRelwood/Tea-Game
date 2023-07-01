@@ -143,10 +143,10 @@ size_flags_vertical = 4
 [node name="WhiteTeaRecipeItemContainer" parent="PanelContainer/RecipeScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_nsocj")]
 layout_mode = 2
 
-[node name="BlackTeaRecipeItemContainer" parent="PanelContainer/RecipeScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("4_qj1gl")]
+[node name="BlackTeaRecipeItemContainer" parent="PanelContainer/RecipeScrollContainer/MarginContainer/VBoxContainer" groups=["withering_recipes"] instance=ExtResource("4_qj1gl")]
 layout_mode = 2
 
-[node name="OolongTeaRecipeItemContainer" parent="PanelContainer/RecipeScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("5_fkq5q")]
+[node name="OolongTeaRecipeItemContainer" parent="PanelContainer/RecipeScrollContainer/MarginContainer/VBoxContainer" groups=["withering_recipes"] instance=ExtResource("5_fkq5q")]
 layout_mode = 2
 
 [connection signal="pressed" from="PanelContainer/MarginContainer3/StartButton" to="." method="_on_start_button_pressed"]

@@ -6,6 +6,8 @@ const Slot = preload("res://InventoryManagers/slot.tscn")
 
 @onready var item_grid: GridContainer = $MarginContainer/ItemGrid
 
+var inventoryData: InventoryData
+
 func set_inventory_data(inventory_data: InventoryData) -> void:
 	inventory_data.inventory_updated.connect(populate_item_grid)
 	populate_item_grid(inventory_data)
@@ -14,6 +16,7 @@ func clear_inventory_data(inventory_data: InventoryData) -> void:
 	inventory_data.inventory_updated.disconnect(populate_item_grid)
 
 func populate_item_grid(inventory_data: InventoryData) -> void:
+	inventoryData = inventory_data
 	emit_signal("is_start_button_disabled", inventory_data)
 	
 	for child in item_grid.get_children():
@@ -26,3 +29,6 @@ func populate_item_grid(inventory_data: InventoryData) -> void:
 		slot.slot_clicked.connect(inventory_data.on_slot_clicked)
 		
 		slot.set_slot_data(slot_data)
+
+func set_item_output(selected_recipe, craft_quantity, index):
+	inventoryData.set_item_output(selected_recipe, craft_quantity, index)
