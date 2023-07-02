@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://bkshwh6ugovgf"]
+[gd_scene load_steps=40 format=3 uid="uid://bkshwh6ugovgf"]
 
 [ext_resource type="PackedScene" uid="uid://bpgrgqmsja4op" path="res://Player/player.tscn" id="1_2whqa"]
 [ext_resource type="Texture2D" uid="uid://b3j5ngdc1abij" path="res://World/GrassBackground.png" id="1_7grry"]
@@ -28,7 +28,6 @@
 [ext_resource type="Resource" uid="uid://bongxlb3eamwp" path="res://Items/ITEMS/FreshTeaLeaves.tres" id="24_vqjga"]
 [ext_resource type="PackedScene" uid="uid://28fco0feg03n" path="res://World/Interactables/withering_rack.tscn" id="26_ffchu"]
 [ext_resource type="Script" path="res://InventoryManagers/InventoryDataWithering.gd" id="28_h5jv4"]
-[ext_resource type="Script" path="res://Items/Item_data.gd" id="29_gcker"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vwtus"]
 texture = ExtResource("1_mky7q")
@@ -904,37 +903,13 @@ quantity = 25
 script = ExtResource("21_csm58")
 slot_datas = Array[ExtResource("23_gglij")]([SubResource("Resource_rfwx4"), SubResource("Resource_dbqx2"), null, null])
 
-[sub_resource type="Resource" id="Resource_c1s5a"]
-script = ExtResource("29_gcker")
-name = ""
-description = ""
-stackable = false
-recipe = Array[ExtResource("23_gglij")]([])
-
-[sub_resource type="Resource" id="Resource_j5p83"]
-script = ExtResource("23_gglij")
-item_data = SubResource("Resource_c1s5a")
-quantity = 0
-
 [sub_resource type="Resource" id="Resource_ooqwl"]
 script = ExtResource("28_h5jv4")
-slot_datas = Array[ExtResource("23_gglij")]([SubResource("Resource_j5p83")])
-
-[sub_resource type="Resource" id="Resource_oojqs"]
-script = ExtResource("29_gcker")
-name = ""
-description = ""
-stackable = false
-recipe = Array[ExtResource("23_gglij")]([])
-
-[sub_resource type="Resource" id="Resource_rwsr5"]
-script = ExtResource("23_gglij")
-item_data = SubResource("Resource_oojqs")
-quantity = 0
+slot_datas = Array[ExtResource("23_gglij")]([null])
 
 [sub_resource type="Resource" id="Resource_6tpxb"]
 script = ExtResource("21_csm58")
-slot_datas = Array[ExtResource("23_gglij")]([SubResource("Resource_rwsr5")])
+slot_datas = Array[ExtResource("23_gglij")]([null])
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_pt8ln")

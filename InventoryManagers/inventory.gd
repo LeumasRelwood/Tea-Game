@@ -30,5 +30,11 @@ func populate_item_grid(inventory_data: InventoryData) -> void:
 		
 		slot.set_slot_data(slot_data)
 
-func set_item_output(selected_recipe, craft_quantity, index):
-	inventoryData.set_item_output(selected_recipe, craft_quantity, index)
+func craft_with_slot_data(quantity, index: int) -> void:
+	inventoryData.craft_with_slot_data(quantity, index)
+
+func set_item_output(selected_recipe, craft_quantity, index) -> bool:
+	if inventoryData.set_item_output(selected_recipe, craft_quantity, index):
+		return true
+	return false
+

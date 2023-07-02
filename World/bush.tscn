@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://World/bush.gd" id="1_d2thc"]
 [ext_resource type="Texture2D" uid="uid://6bmldywsusls" path="res://World/Bush.png" id="1_nxq17"]
-[ext_resource type="Resource" uid="uid://bvjnvkwicu6hh" path="res://Items/ITEMS/FreshTeaLeaves.tres" id="2_ageie"]
+[ext_resource type="Resource" uid="uid://bongxlb3eamwp" path="res://Items/ITEMS/FreshTeaLeaves.tres" id="2_ageie"]
 [ext_resource type="Texture2D" uid="uid://c66k67cj7x324" path="res://Shadows/LargeShadow.png" id="2_qeslg"]
 [ext_resource type="Script" path="res://InventoryManagers/SlotData.gd" id="3_dyj5s"]
 [ext_resource type="Script" path="res://Hit and Hurtboxes/hurtbox.gd" id="3_rqwou"]

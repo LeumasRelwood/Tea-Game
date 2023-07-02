@@ -18,8 +18,8 @@ func grab_slot_data(index: int) -> SlotData:
 
 func drop_slot_data(grabbed_slot_data: SlotData, index: int) -> SlotData:
 	var slot_data = slot_datas[index]
-	
 	var return_slot_data: SlotData
+	
 	if slot_data and slot_data.can_fully_merge_with(grabbed_slot_data):
 		slot_data.fully_merge_with(grabbed_slot_data)
 	else:
@@ -58,6 +58,16 @@ func use_slot_data(index: int) -> void:
 	
 	inventory_updated.emit(self)
 
+func craft_with_slot_data(quantity, index: int) -> void:
+	var slot_data = slot_datas[index]
+	#if not slot_data:
+		#return
+	slot_data.quantity -= quantity
+	if slot_data.quantity < 1:
+		slot_datas[index] = null
+	
+	inventory_updated.emit(self)
+
 func pick_up_slot_data(slot_data: SlotData) -> bool:
 	
 	for index in slot_datas.size():
@@ -77,10 +87,12 @@ func pick_up_slot_data(slot_data: SlotData) -> bool:
 func on_slot_clicked(index: int, button) -> void:
 	inventory_interact.emit(self, index, button)
 
-func set_item_output(selected_recipe, craft_quantity, index: int):
-	print(selected_recipe)
-	var slot_data = slot_datas[index]
-	slot_data.item_data = selected_recipe
-	slot_data.quantity += craft_quantity
-	
-	inventory_updated.emit(self)
+func set_item_output(selected_recipe, craft_quantity, index: int) -> bool:
+	if not slot_datas[index]:
+		slot_datas[index] = selected_recipe
+		slot_datas[index].quantity = craft_quantity
+		inventory_updated.emit(self)
+		return true
+	return false
+
+
