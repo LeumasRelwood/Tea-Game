@@ -17,7 +17,7 @@ func clear_inventory_data(inventory_data: InventoryData) -> void:
 
 func populate_item_grid(inventory_data: InventoryData) -> void:
 	inventoryData = inventory_data
-	emit_signal("is_start_button_disabled", inventory_data)
+	emit_signal("is_start_button_disabled")
 	
 	for child in item_grid.get_children():
 		child.queue_free()

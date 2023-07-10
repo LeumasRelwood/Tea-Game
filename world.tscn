@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://bkshwh6ugovgf"]
+[gd_scene load_steps=42 format=3 uid="uid://bkshwh6ugovgf"]
 
 [ext_resource type="PackedScene" uid="uid://bpgrgqmsja4op" path="res://Player/player.tscn" id="1_2whqa"]
 [ext_resource type="Texture2D" uid="uid://b3j5ngdc1abij" path="res://World/GrassBackground.png" id="1_7grry"]
@@ -911,6 +911,14 @@ slot_datas = Array[ExtResource("23_gglij")]([null])
 script = ExtResource("21_csm58")
 slot_datas = Array[ExtResource("23_gglij")]([null])
 
+[sub_resource type="Resource" id="Resource_qwg5n"]
+script = ExtResource("28_h5jv4")
+slot_datas = Array[ExtResource("23_gglij")]([null])
+
+[sub_resource type="Resource" id="Resource_n6224"]
+script = ExtResource("21_csm58")
+slot_datas = Array[ExtResource("23_gglij")]([null])
+
 [node name="World" type="Node2D"]
 script = ExtResource("1_pt8ln")
 
@@ -1094,9 +1102,14 @@ position = Vector2(112, 8)
 inventory_data = SubResource("Resource_fji6u")
 
 [node name="WitheringRack" parent="YSort" instance=ExtResource("26_ffchu")]
-position = Vector2(154, -17)
+position = Vector2(225, 7)
 inventory_data_input = SubResource("Resource_ooqwl")
 inventory_data_output = SubResource("Resource_6tpxb")
+
+[node name="WitheringRack2" parent="YSort" instance=ExtResource("26_ffchu")]
+position = Vector2(116, 87)
+inventory_data_input = SubResource("Resource_qwg5n")
+inventory_data_output = SubResource("Resource_n6224")
 
 [connection signal="area_entered" from="Staircase" to="Staircase" method="_on_area_entered"]
 

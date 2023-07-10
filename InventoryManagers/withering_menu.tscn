@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://behomoagxuhtf"]
+[gd_scene load_steps=13 format=3 uid="uid://behomoagxuhtf"]
 
 [ext_resource type="Script" path="res://InventoryManagers/withering_menu.gd" id="1_7atc0"]
 [ext_resource type="PackedScene" uid="uid://bxy5ij2avjjte" path="res://InventoryManagers/inventory.tscn" id="1_33eoi"]
+[ext_resource type="Theme" uid="uid://dbvmo5viem8os" path="res://UI/withering_menu.tres" id="1_bm7xo"]
 [ext_resource type="PackedScene" uid="uid://dao8bny7qec8a" path="res://InventoryManagers/RecipeItemContainers/white_tea_recipe_item_container.tscn" id="3_nsocj"]
 [ext_resource type="PackedScene" uid="uid://dvnhh2swe8mmd" path="res://InventoryManagers/RecipeItemContainers/black_tea_recipe_item_container.tscn" id="4_qj1gl"]
 [ext_resource type="PackedScene" uid="uid://ml838x4n743w" path="res://InventoryManagers/RecipeItemContainers/oolong_tea_recipe_item_container.tscn" id="5_fkq5q"]
@@ -18,14 +19,22 @@ font_size = 8
 [sub_resource type="LabelSettings" id="LabelSettings_g025k"]
 font_size = 8
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_32tdk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1qm3q"]
+
 [node name="WitheringMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -76.0
+offset_left = 3.0
+offset_top = -16.0
+offset_right = -73.0
+offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_bm7xo")
 script = ExtResource("1_7atc0")
 
 [node name="Timer" type="Timer" parent="."]
@@ -54,7 +63,7 @@ label_settings = SubResource("LabelSettings_3aja0")
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-theme_override_constants/margin_top = 19
+theme_override_constants/margin_top = 13
 
 [node name="CapacityLabel" type="Label" parent="PanelContainer/MarginContainer2"]
 layout_mode = 2
@@ -101,6 +110,7 @@ theme_override_constants/margin_left = 2
 
 [node name="InventoryInput" parent="PanelContainer/MarginContainer8/MarginContainer6" instance=ExtResource("1_33eoi")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_32tdk")
 
 [node name="MarginContainer6" type="MarginContainer" parent="PanelContainer"]
 layout_mode = 2
@@ -117,12 +127,13 @@ size_flags_vertical = 4
 
 [node name="InventoryOutput" parent="PanelContainer/MarginContainer6/MarginContainer7" instance=ExtResource("1_33eoi")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1qm3q")
 
 [node name="MarginContainer3" type="MarginContainer" parent="PanelContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
-theme_override_constants/margin_bottom = 10
+theme_override_constants/margin_bottom = 12
 
 [node name="StartButton" type="Button" parent="PanelContainer/MarginContainer3"]
 layout_mode = 2
@@ -135,6 +146,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 1
 
 [node name="ProgressBar" type="ProgressBar" parent="PanelContainer/MarginContainer7"]
 custom_minimum_size = Vector2(60, 8)
@@ -142,14 +154,16 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 5
 
 [node name="RecipeScrollContainer" type="ScrollContainer" parent="PanelContainer"]
-custom_minimum_size = Vector2(80, 45)
+custom_minimum_size = Vector2(80, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer/RecipeScrollContainer"]
 layout_mode = 2
+theme_override_constants/margin_left = 1
 theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 1
 theme_override_constants/margin_bottom = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/RecipeScrollContainer/MarginContainer"]

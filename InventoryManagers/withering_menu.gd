@@ -11,9 +11,11 @@ extends Control
 @onready var timer = $Timer
 @onready var progress_clicker_timer = $Timer/ProgressClickerTimer
 @onready var progress_bar = $PanelContainer/MarginContainer7/ProgressBar
-@onready var progress = 0
 
-var selected_recipe: SlotData
+#put progress and selected recipe into the machines, not interface
+#might also have to code inventory input and output to read machine's inventory
+@onready var progress = 0
+@export var selected_recipe: SlotData
 
 func _ready():
 	timer.wait_time = process_time
@@ -22,32 +24,35 @@ func _ready():
 	for node in get_tree().get_nodes_in_group("withering_recipes"):
 		node.recipe_selected.connect(whithering_recipe_selected)
 
-#func _process(delta):
-	#progress = timer.get_time_left / process_time
-	#progress_bar.value = progress
-
-func is_start_button_disabled(inventory_data: InventoryData):
-	#check to see that output inventory is also clear
-	#check to see that recipe is selected
-	for slot_data in inventory_data.slot_datas:
-		if not slot_data:
-			start_button.disabled = true
-		else:
-			start_button.disabled = false
+func is_start_button_disabled():
+	if selected_recipe:
+		for slot_data in inventory_input.inventoryData.slot_datas:
+			if not slot_data:
+				start_button.disabled = true
+			else:
+				if not inventory_output.inventoryData.slot_datas[0]:
+					start_button.disabled = false
+				else:
+					start_button.disabled = true
 
 func _on_start_button_pressed():
-	timer.start()
-	progress_clicker_timer.start()
+	if not start_button.disabled:
+		timer.start()
+		progress_clicker_timer.start()
+		start_button.disabled = true
+		inventory_input.craft_with_slot_data(craft_quantity, 0)
 
 func whithering_recipe_selected(recipe_item: SlotData):
 	selected_recipe = recipe_item
+	is_start_button_disabled()
 
 func _on_timer_timeout():
 	if inventory_output.set_item_output(selected_recipe, craft_quantity, 0):
-		inventory_input.craft_with_slot_data(craft_quantity, 0)
 		progress_clicker_timer.stop()
 		progress = 0
 		progress_bar.value = progress
+		is_start_button_disabled()
+
 
 func _on_progress_clicker_timer_timeout():
 	progress += progress_clicker_time / process_time * 100

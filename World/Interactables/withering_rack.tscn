@@ -1,8 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://28fco0feg03n"]
+[gd_scene load_steps=9 format=3 uid="uid://28fco0feg03n"]
 
 [ext_resource type="PackedScene" uid="uid://cfh3c2h78s7kr" path="res://Hit and Hurtboxes/hurtbox.tscn" id="1_rqggd"]
+[ext_resource type="Script" path="res://InventoryManagers/InventoryDataWithering.gd" id="2_0ms6t"]
 [ext_resource type="Texture2D" uid="uid://2tvapvqdxy0n" path="res://World/Interactables/witheringrack.jpg" id="2_v17pa"]
 [ext_resource type="Script" path="res://World/Interactables/withering_rack.gd" id="2_y5ij2"]
+
+[sub_resource type="Resource" id="Resource_bjksk"]
+script = ExtResource("2_0ms6t")
+slot_datas = Array[Resource("res://InventoryManagers/SlotData.gd")]([null])
+
+[sub_resource type="Resource" id="Resource_aou57"]
+script = ExtResource("2_0ms6t")
+slot_datas = Array[Resource("res://InventoryManagers/SlotData.gd")]([null])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0vjeg"]
 size = Vector2(45, 19)
@@ -13,6 +22,8 @@ size = Vector2(43.3145, 29.1902)
 [node name="WitheringRack" type="StaticBody2D" groups=["external_withering"]]
 collision_mask = 2
 script = ExtResource("2_y5ij2")
+inventory_data_input = SubResource("Resource_bjksk")
+inventory_data_output = SubResource("Resource_aou57")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.074, 0.074)
