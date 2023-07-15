@@ -1,0 +1,68 @@
+[gd_scene load_steps=13 format=3 uid="uid://xmpeve5tqr8b"]
+
+[ext_resource type="PackedScene" uid="uid://dcxmbk5mje5kv" path="res://Globals/Economy/city.tscn" id="1_cydpd"]
+[ext_resource type="Script" path="res://Globals/Economy/global_economy.gd" id="1_dyjvm"]
+[ext_resource type="Resource" uid="uid://bwl2w43e45pd8" path="res://Items/ITEMS/WhiteTea.tres" id="2_couff"]
+[ext_resource type="Script" path="res://Globals/Economy/commodity_market.gd" id="3_i34df"]
+[ext_resource type="Resource" uid="uid://wm0q07dfhg0q" path="res://Items/ITEMS/BlackTea.tres" id="4_qcpnp"]
+[ext_resource type="Resource" uid="uid://ccdr50kfe1w5l" path="res://Items/ITEMS/OolongTea.tres" id="5_ue50y"]
+
+[sub_resource type="Resource" id="Resource_pahoq"]
+script = ExtResource("3_i34df")
+commodity_name = ""
+item_data = ExtResource("2_couff")
+buy_offers = Array[Resource("res://Globals/Economy/buy_offer.gd")]([])
+sell_offers = Array[Resource("res://Globals/Economy/sell_offer.gd")]([])
+average_market_price = 0.0
+quantity_of_transactions = 0
+
+[sub_resource type="Resource" id="Resource_sw7kf"]
+script = ExtResource("3_i34df")
+commodity_name = ""
+item_data = ExtResource("4_qcpnp")
+buy_offers = Array[Resource("res://Globals/Economy/buy_offer.gd")]([])
+sell_offers = Array[Resource("res://Globals/Economy/sell_offer.gd")]([])
+average_market_price = 0.0
+quantity_of_transactions = 0
+
+[sub_resource type="Resource" id="Resource_rv1ut"]
+script = ExtResource("3_i34df")
+commodity_name = ""
+item_data = ExtResource("5_ue50y")
+buy_offers = Array[Resource("res://Globals/Economy/buy_offer.gd")]([])
+sell_offers = Array[Resource("res://Globals/Economy/sell_offer.gd")]([])
+average_market_price = 0.0
+quantity_of_transactions = 0
+
+[sub_resource type="Resource" id="Resource_jg84c"]
+script = ExtResource("3_i34df")
+commodity_name = ""
+buy_offers = Array[Resource("res://Globals/Economy/buy_offer.gd")]([])
+sell_offers = Array[Resource("res://Globals/Economy/sell_offer.gd")]([])
+average_market_price = 0.0
+quantity_of_transactions = 0
+
+[sub_resource type="Resource" id="Resource_wo0i3"]
+script = ExtResource("3_i34df")
+commodity_name = ""
+buy_offers = Array[Resource("res://Globals/Economy/buy_offer.gd")]([])
+sell_offers = Array[Resource("res://Globals/Economy/sell_offer.gd")]([])
+average_market_price = 0.0
+quantity_of_transactions = 0
+
+[sub_resource type="Resource" id="Resource_wrudj"]
+script = ExtResource("3_i34df")
+commodity_name = ""
+buy_offers = Array[Resource("res://Globals/Economy/buy_offer.gd")]([])
+sell_offers = Array[Resource("res://Globals/Economy/sell_offer.gd")]([])
+average_market_price = 0.0
+quantity_of_transactions = 0
+
+[node name="GlobalEconomy" type="Node"]
+script = ExtResource("1_dyjvm")
+wholesale_market = Array[ExtResource("3_i34df")]([SubResource("Resource_pahoq"), SubResource("Resource_sw7kf"), SubResource("Resource_rv1ut")])
+retail_market = Array[ExtResource("3_i34df")]([SubResource("Resource_jg84c"), SubResource("Resource_wo0i3"), SubResource("Resource_wrudj")])
+
+[node name="City" parent="." instance=ExtResource("1_cydpd")]
+
+[editable path="City"]

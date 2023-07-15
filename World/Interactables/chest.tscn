@@ -1,8 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://csdjukr06mf1j"]
+[gd_scene load_steps=8 format=3 uid="uid://csdjukr06mf1j"]
 
 [ext_resource type="Texture2D" uid="uid://dosb5mdqi8wbx" path="res://World/Interactables/chest-131982518657265365.png" id="1_phm6u"]
 [ext_resource type="Script" path="res://World/Interactables/chest.gd" id="1_yu0re"]
+[ext_resource type="Script" path="res://InventoryManagers/InventoryData.gd" id="2_2xnxp"]
 [ext_resource type="PackedScene" uid="uid://cfh3c2h78s7kr" path="res://Hit and Hurtboxes/hurtbox.tscn" id="2_gtvp4"]
+
+[sub_resource type="Resource" id="Resource_rxr7x"]
+script = ExtResource("2_2xnxp")
+slot_datas = Array[Resource("res://InventoryManagers/SlotData.gd")]([null, null, null, null, null, null, null, null])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ndtmh"]
 size = Vector2(26, 8)
@@ -12,6 +17,7 @@ size = Vector2(28, 20)
 
 [node name="Chest" type="StaticBody2D" groups=["external_inventory"]]
 script = ExtResource("1_yu0re")
+inventory_data = SubResource("Resource_rxr7x")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(9.53674e-07, 9.53674e-07)

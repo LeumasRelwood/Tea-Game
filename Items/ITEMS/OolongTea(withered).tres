@@ -1,8 +1,22 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=7 format=3 uid="uid://bwvxerw8el4eb"]
+[gd_resource type="Resource" script_class="ItemDataWithered" load_steps=10 format=3 uid="uid://bwvxerw8el4eb"]
 
-[ext_resource type="Resource" uid="uid://bongxlb3eamwp" path="res://Items/ITEMS/FreshTeaLeaves.tres" id="1_wqhmg"]
+[ext_resource type="Resource" uid="uid://dyy4bd2uene0h" path="res://Items/ITEMS/FreshTeaLeaves.tres" id="1_wqhmg"]
 [ext_resource type="Script" path="res://InventoryManagers/SlotData.gd" id="2_npvy7"]
+[ext_resource type="Script" path="res://Items/item_data_withered.gd" id="3_0qkae"]
 [ext_resource type="Script" path="res://Items/Item_data.gd" id="3_6l3lh"]
+
+[sub_resource type="Resource" id="Resource_ef7sx"]
+script = ExtResource("3_6l3lh")
+name = ""
+description = ""
+stackable = false
+recipe = Array[ExtResource("2_npvy7")]([])
+base_value = 0
+
+[sub_resource type="Resource" id="Resource_lmbqv"]
+script = ExtResource("2_npvy7")
+item_data = SubResource("Resource_ef7sx")
+quantity = 1
 
 [sub_resource type="Resource" id="Resource_agj2f"]
 script = ExtResource("2_npvy7")
@@ -12,14 +26,16 @@ quantity = 1
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4g1dh"]
 load_path = "res://.godot/imported/#1 - Transparent Icons.png-8892caa8bbd25309d6ee2c3cb21bced5.ctex"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xyvpm"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0qev"]
 atlas = SubResource("CompressedTexture2D_4g1dh")
-region = Rect2(192, 608, 32, 32)
+region = Rect2(480, 352, 32, 32)
 
 [resource]
-script = ExtResource("3_6l3lh")
+script = ExtResource("3_0qkae")
+next_stage = SubResource("Resource_lmbqv")
 name = "Oolong Tea (withered)"
 description = "Next Step: Rolling"
 stackable = true
-texture = SubResource("AtlasTexture_xyvpm")
+texture = SubResource("AtlasTexture_g0qev")
 recipe = Array[ExtResource("2_npvy7")]([SubResource("Resource_agj2f")])
+base_value = 0

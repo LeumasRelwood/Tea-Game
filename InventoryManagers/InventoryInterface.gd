@@ -2,17 +2,21 @@ extends Control
 
 signal force_close_external
 signal force_close_withering
+signal force_close_drying
+signal force_close_tea_storage
 
 var grabbed_slot_data: SlotData
-var external_inventory_owner
+var external_inventory_owner = null
 
 @onready var player_inventory = $PlayerInventory
 @onready var grabbed_slot = $GrabbedSlot
 @onready var external_inventory = $ExternalInventory
-@onready var equip_inventory = $EquipInventory
 @onready var withering_menu = $WitheringMenu
+@onready var drying_menu = $DryingMenu
+@onready var tea_storage_inventory = $TeaStorageInventory
 
 func _physics_process(delta: float) -> void:
+	
 	if grabbed_slot.visible:
 		grabbed_slot.global_position = get_global_mouse_position() + Vector2(1, 1)
 	
@@ -23,14 +27,14 @@ func _physics_process(delta: float) -> void:
 			force_close_external.emit(external_inventory_owner)
 		elif withering_menu.visible:
 			force_close_withering.emit(external_inventory_owner)
+		elif drying_menu.visible:
+			force_close_drying.emit(external_inventory_owner)
+		elif tea_storage_inventory.visible:
+			force_close_tea_storage.emit(external_inventory_owner)
 
 func set_player_inventory_data(inventory_data: InventoryData) -> void:
 	inventory_data.inventory_interact.connect(on_inventory_interact)
 	player_inventory.set_inventory_data(inventory_data)	
-
-func set_equip_inventory_data(inventory_data: InventoryData) -> void:
-	inventory_data.inventory_interact.connect(on_inventory_interact)
-	equip_inventory.set_inventory_data(inventory_data)
 
 func set_external_inventory(_external_inventory_owner) -> void:
 	external_inventory_owner = _external_inventory_owner
@@ -61,13 +65,55 @@ func set_external_withering(_external_inventory_owner) -> void:
 
 func clear_external_withering() -> void:
 	if external_inventory_owner:
-		var inventory_data = external_inventory_owner.inventory_data
+		var inventory_data_input = external_inventory_owner.inventory_data_input
+		var inventory_data_output = external_inventory_owner.inventory_data_output
 		
-		inventory_data.inventory_interact.disconnect(on_inventory_interact)
-		withering_menu.inventory_input.clear_inventory_data(inventory_data)
-		withering_menu.inventory_output.clear_inventory_data(inventory_data)
+		inventory_data_input.inventory_interact.disconnect(on_inventory_interact)
+		inventory_data_output.inventory_interact.disconnect(on_inventory_interact)
+		withering_menu.inventory_input.clear_inventory_data(inventory_data_input)
+		withering_menu.inventory_output.clear_inventory_data(inventory_data_output)
 		
 		withering_menu.hide()
+		external_inventory_owner = null
+
+func set_external_drying(_external_inventory_owner) -> void:
+	external_inventory_owner = _external_inventory_owner
+	var inventory_data_input = external_inventory_owner.inventory_data_input
+	var inventory_data_output = external_inventory_owner.inventory_data_output
+	
+	inventory_data_input.inventory_interact.connect(on_inventory_interact)
+	inventory_data_output.inventory_interact.connect(on_inventory_interact)
+	drying_menu.inventory_input.set_inventory_data(inventory_data_input)
+	drying_menu.inventory_output.set_inventory_data(inventory_data_output)
+
+func clear_external_drying() -> void:
+	if external_inventory_owner:
+		var inventory_data_input = external_inventory_owner.inventory_data_input
+		var inventory_data_output = external_inventory_owner.inventory_data_output
+		
+		inventory_data_input.inventory_interact.disconnect(on_inventory_interact)
+		inventory_data_output.inventory_interact.disconnect(on_inventory_interact)
+		drying_menu.inventory_input.clear_inventory_data(inventory_data_input)
+		drying_menu.inventory_output.clear_inventory_data(inventory_data_output)
+		
+		drying_menu.hide()
+		external_inventory_owner = null
+
+func set_external_tea_storage(_external_inventory_owner) -> void:
+	external_inventory_owner = _external_inventory_owner
+	var tea_storage_inventory_data = external_inventory_owner.tea_storage_inventory_data
+	
+	tea_storage_inventory_data.inventory_interact.connect(on_inventory_interact)
+	tea_storage_inventory.storage_inventory.set_inventory_data(tea_storage_inventory_data)
+
+func clear_external_tea_storage() -> void:
+	if external_inventory_owner:
+		var tea_storage_inventory_data = external_inventory_owner.tea_storage_inventory_data
+		
+		tea_storage_inventory_data.inventory_interact.disconnect(on_inventory_interact)
+		tea_storage_inventory.inventory_input.clear_inventory_data(tea_storage_inventory_data)
+		
+		tea_storage_inventory.hide()
 		external_inventory_owner = null
 
 func on_inventory_interact(inventory_data: InventoryData, index: int, button: int) -> void:

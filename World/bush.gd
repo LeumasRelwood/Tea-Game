@@ -6,6 +6,8 @@ extends StaticBody2D
 @onready var HarvestableArea2D = $HarvestableArea2D
 @onready var CollisionShape = $CollisionShape2D
 @onready var global = get_node("/root/Global")
+@onready var sprite_2d = $Sprite2D
+var rng = RandomNumberGenerator.new()
 var MouseSelected = false
 var mouse_offset = Vector2.ZERO
 var growthprogress = 0
@@ -19,6 +21,12 @@ var numberofstages = 4
 		CollisionShape.scale = Vector2(.5, .5).lerp(Vector2(1, 1), growthprogress / growthcomplete)
 		sprite2d.scale = Vector2(.5, .5).lerp(Vector2(1, 1), growthprogress / growthcomplete)
 		ShadowSprite.scale = Vector2(.5, .5).lerp(Vector2(1, 1), growthprogress / growthcomplete)
+
+func _ready():
+	var shader_offset = rng.randf_range(0.0, 15)
+	var shader_speed = rng.randf_range(0.03, 0.05)
+	sprite_2d.material.set("shader_param/offset", shader_offset)
+	sprite_2d.material.set("shader_param/speed", shader_speed)
 
 func _on_area_2d_area_entered(area):
 	if HarvestableArea2D.harvestable:
@@ -34,8 +42,6 @@ func harvest_bush(area):
 		ShadowSprite.scale = Vector2(0.5, 0.5)
 		CollisionShape.scale = Vector2(0.5, 0.5)
 
-
-
 func _process(delta):
 	if growthprogress >= growthcomplete:
 		HarvestableArea2D.harvestable = true
@@ -43,7 +49,6 @@ func _process(delta):
 		HarvestableArea2D.harvestable = false
 		growthprogress += delta * global.time_multiplier
 		growthstage = clamp(snapped(growthprogress, growthcomplete / numberofstages) / (growthcomplete / numberofstages), 1, numberofstages)
-
 
 	if MouseSelected:
 		followMouse()

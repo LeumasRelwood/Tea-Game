@@ -1,29 +1,37 @@
-[gd_scene load_steps=9 format=3 uid="uid://28fco0feg03n"]
+[gd_scene load_steps=10 format=3 uid="uid://28fco0feg03n"]
 
 [ext_resource type="PackedScene" uid="uid://cfh3c2h78s7kr" path="res://Hit and Hurtboxes/hurtbox.tscn" id="1_rqggd"]
 [ext_resource type="Script" path="res://InventoryManagers/InventoryDataWithering.gd" id="2_0ms6t"]
 [ext_resource type="Texture2D" uid="uid://2tvapvqdxy0n" path="res://World/Interactables/witheringrack.jpg" id="2_v17pa"]
 [ext_resource type="Script" path="res://World/Interactables/withering_rack.gd" id="2_y5ij2"]
+[ext_resource type="Script" path="res://InventoryManagers/InventoryDataWithered.gd" id="3_pdcr5"]
 
 [sub_resource type="Resource" id="Resource_bjksk"]
 script = ExtResource("2_0ms6t")
 slot_datas = Array[Resource("res://InventoryManagers/SlotData.gd")]([null])
 
-[sub_resource type="Resource" id="Resource_aou57"]
-script = ExtResource("2_0ms6t")
+[sub_resource type="Resource" id="Resource_y23mx"]
+script = ExtResource("3_pdcr5")
 slot_datas = Array[Resource("res://InventoryManagers/SlotData.gd")]([null])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0vjeg"]
-size = Vector2(45, 19)
+size = Vector2(46, 19)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jpjlc"]
-size = Vector2(43.3145, 29.1902)
+size = Vector2(44.2561, 29.1902)
 
 [node name="WitheringRack" type="StaticBody2D" groups=["external_withering"]]
 collision_mask = 2
 script = ExtResource("2_y5ij2")
 inventory_data_input = SubResource("Resource_bjksk")
-inventory_data_output = SubResource("Resource_aou57")
+inventory_data_output = SubResource("Resource_y23mx")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="ProgressClickerTimer" type="Timer" parent="Timer"]
+wait_time = 0.5
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.074, 0.074)
@@ -38,10 +46,12 @@ collision_layer = 32
 collision_mask = 64
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
-position = Vector2(1, 0.5)
+position = Vector2(0.5, 0.5)
 scale = Vector2(1.062, 1.062)
 shape = SubResource("RectangleShape2D_jpjlc")
 
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer/ProgressClickerTimer" to="." method="_on_progress_clicker_timer_timeout"]
 [connection signal="player_interact" from="Hurtbox" to="." method="_on_hurtbox_player_interact"]
 
 [editable path="Hurtbox"]

@@ -17,7 +17,6 @@ func clear_inventory_data(inventory_data: InventoryData) -> void:
 
 func populate_item_grid(inventory_data: InventoryData) -> void:
 	inventoryData = inventory_data
-	emit_signal("is_start_button_disabled")
 	
 	for child in item_grid.get_children():
 		child.queue_free()
@@ -29,6 +28,8 @@ func populate_item_grid(inventory_data: InventoryData) -> void:
 		slot.slot_clicked.connect(inventory_data.on_slot_clicked)
 		
 		slot.set_slot_data(slot_data)
+	
+		emit_signal("is_start_button_disabled")
 
 func craft_with_slot_data(quantity, index: int) -> void:
 	inventoryData.craft_with_slot_data(quantity, index)

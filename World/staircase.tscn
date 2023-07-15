@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2oevl0c7sr5c"]
+
+[ext_resource type="Script" path="res://World/Staircase.gd" id="1_7go0t"]
+[ext_resource type="Texture2D" uid="uid://bjlfhky3d32ex" path="res://World/tree.png" id="2_nk5gf"]
+
+[node name="Staircase" type="Area2D"]
+collision_layer = 128
+collision_mask = 2
+script = ExtResource("1_7go0t")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(11, 0)
+rotation = 0.785398
+scale = Vector2(0.057, 0.102)
+texture = ExtResource("2_nk5gf")
+region_enabled = true
+region_rect = Rect2(0, 0, 845.875, 815.326)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(7, -0.999997)
+rotation = 0.785398
+scale = Vector2(1, 1.73249)
+polygon = PackedVector2Array(13, -23.8, 13, -20.5, 16, -15.1, 16, 22, 13.2, 24, -11.1, 24, -16, 22.2, -16, -13.4, -11, -23.5, 11, -24)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

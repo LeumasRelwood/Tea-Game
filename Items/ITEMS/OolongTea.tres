@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemDataFinishedTea" load_steps=4 format=3 uid="uid://ccdr50kfe1w5l"]
+
+[ext_resource type="Script" path="res://Items/item_data_finished_tea.gd" id="1_n3203"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4g1dh"]
+load_path = "res://.godot/imported/#1 - Transparent Icons.png-8892caa8bbd25309d6ee2c3cb21bced5.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nr5ki"]
+atlas = SubResource("CompressedTexture2D_4g1dh")
+region = Rect2(160, 640, 32, 32)
+
+[resource]
+script = ExtResource("1_n3203")
+name = "Oolong Tea"
+description = "Oolong tea leaves ready for the consumer."
+stackable = true
+texture = SubResource("AtlasTexture_nr5ki")
+recipe = Array[Resource("res://InventoryManagers/SlotData.gd")]([])
+base_value = 40

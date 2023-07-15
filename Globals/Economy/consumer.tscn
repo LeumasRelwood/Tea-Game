@@ -1,0 +1,26 @@
+[gd_scene load_steps=9 format=3 uid="uid://cet0ya3qd4n6p"]
+
+[ext_resource type="Script" path="res://Globals/Economy/consumer.gd" id="1_3jay0"]
+[ext_resource type="Resource" uid="uid://bwl2w43e45pd8" path="res://Items/ITEMS/WhiteTea.tres" id="2_p7kyi"]
+[ext_resource type="Script" path="res://InventoryManagers/SlotData.gd" id="3_18612"]
+[ext_resource type="Resource" uid="uid://wm0q07dfhg0q" path="res://Items/ITEMS/BlackTea.tres" id="4_ih4ya"]
+[ext_resource type="Resource" uid="uid://ccdr50kfe1w5l" path="res://Items/ITEMS/OolongTea.tres" id="5_sdnd6"]
+
+[sub_resource type="Resource" id="Resource_n28h7"]
+script = ExtResource("3_18612")
+item_data = ExtResource("2_p7kyi")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_6m1qr"]
+script = ExtResource("3_18612")
+item_data = ExtResource("4_ih4ya")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_7aqpg"]
+script = ExtResource("3_18612")
+item_data = ExtResource("5_sdnd6")
+quantity = 1
+
+[node name="Consumer" type="Node" groups=["consumers"]]
+script = ExtResource("1_3jay0")
+inventory = Array[ExtResource("3_18612")]([SubResource("Resource_n28h7"), SubResource("Resource_6m1qr"), SubResource("Resource_7aqpg")])

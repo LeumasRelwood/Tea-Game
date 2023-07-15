@@ -1,0 +1,15 @@
+[gd_scene load_steps=5 format=3 uid="uid://dcxmbk5mje5kv"]
+
+[ext_resource type="Script" path="res://Globals/Economy/city.gd" id="1_iurk1"]
+[ext_resource type="PackedScene" uid="uid://cet0ya3qd4n6p" path="res://Globals/Economy/consumer.tscn" id="2_q5chk"]
+[ext_resource type="PackedScene" uid="uid://cvnlc1kkso0fk" path="res://Globals/Economy/producer.tscn" id="3_6gi7v"]
+[ext_resource type="PackedScene" uid="uid://b5t706swlpm3u" path="res://Globals/Economy/merchant.tscn" id="4_e0mot"]
+
+[node name="City" type="Node2D" groups=["cities"]]
+script = ExtResource("1_iurk1")
+
+[node name="Producer" parent="." instance=ExtResource("3_6gi7v")]
+
+[node name="Merchant" parent="." instance=ExtResource("4_e0mot")]
+
+[node name="Consumer" parent="." instance=ExtResource("2_q5chk")]
