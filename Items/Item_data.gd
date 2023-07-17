@@ -6,7 +6,6 @@ class_name ItemData
 @export var stackable : bool = false
 @export var texture : AtlasTexture
 @export var recipe : Array[SlotData]
-@export var base_value: int
 
 #enum ItemType { GENERIC, CONSUMABLE, QUEST, EQUIPMENT}
 #@export var type : ItemType

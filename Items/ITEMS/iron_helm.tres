@@ -17,4 +17,3 @@ description = "Will protect your noggin."
 stackable = false
 texture = SubResource("AtlasTexture_k53pk")
 recipe = Array[Resource("res://InventoryManagers/SlotData.gd")]([])
-base_value = 0

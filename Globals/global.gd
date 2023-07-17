@@ -3,8 +3,8 @@ extends Node2D
 signal time_changed(value)
 
 var time_multiplier = 2
-var minute = 0
-var hour = 0
+var minute = 1
+var hour = 1
 var day = 1
 var month = 1
 var year = 1
@@ -25,9 +25,9 @@ func _process(delta):
 		minute += 1
 		if minute == 61:
 			minute = 1
-			hour += 1 
-			if hour == 24:
-				hour = 0
+			hour +=1 
+			if hour == 25:
+				hour = 1
 				day += 1
 				if day == 31:
 					day = 1

@@ -94,3 +94,5 @@ func set_item_output(selected_recipe, craft_quantity, index: int) -> bool:
 		inventory_updated.emit(self)
 		return true
 	return false
+
+

@@ -13,7 +13,7 @@ corner_radius_bottom_right = 1
 corner_radius_bottom_left = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gpcey"]
-bg_color = Color(0.92549, 0.909804, 0.737255, 0.458824)
+bg_color = Color(0.901961, 0.878431, 0.662745, 0.384314)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1

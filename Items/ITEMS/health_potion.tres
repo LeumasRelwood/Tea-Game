@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ItemDataConsumableHealth" load_steps=9 format=3 uid="uid://do7lsbryc1md6"]
 
 [ext_resource type="Script" path="res://Items/item_data_consumable_health.gd" id="1_l3shj"]
-[ext_resource type="Resource" uid="uid://dyy4bd2uene0h" path="res://Items/ITEMS/FreshTeaLeaves.tres" id="1_xva02"]
+[ext_resource type="Resource" uid="uid://bongxlb3eamwp" path="res://Items/ITEMS/FreshTeaLeaves.tres" id="1_xva02"]
 [ext_resource type="Script" path="res://InventoryManagers/SlotData.gd" id="2_1emjt"]
 [ext_resource type="Resource" uid="uid://hqlta75n7whf" path="res://Items/ITEMS/apple.tres" id="3_cfrwa"]
 
@@ -30,4 +30,3 @@ description = "Heals 1 HP"
 stackable = true
 texture = SubResource("AtlasTexture_uon66")
 recipe = Array[ExtResource("2_1emjt")]([SubResource("Resource_f8mwn"), SubResource("Resource_j1053")])
-base_value = 0
