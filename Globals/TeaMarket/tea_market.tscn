@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://dhqv26jwqul0h"]
+
+[ext_resource type="Script" path="res://Globals/TeaMarket/tea_market.gd" id="1_8ohgc"]
+[ext_resource type="PackedScene" uid="uid://du6gw0q8m5gkk" path="res://Globals/TeaMarket/region.tscn" id="3_4glrx"]
+[ext_resource type="Script" path="res://Globals/Economy/buy_offer.gd" id="4_p4qq7"]
+
+[sub_resource type="Resource" id="Resource_kg436"]
+script = ExtResource("4_p4qq7")
+asking_price = 0.0
+quantity = 0
+
+[sub_resource type="Resource" id="Resource_v7fyk"]
+script = ExtResource("4_p4qq7")
+asking_price = 0.0
+quantity = 0
+
+[sub_resource type="Resource" id="Resource_1mbwp"]
+script = ExtResource("4_p4qq7")
+asking_price = 0.0
+quantity = 0
+
+[node name="TeaMarket" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_8ohgc")
+
+[node name="Region" parent="." instance=ExtResource("3_4glrx")]
+city_name = "Nivalis"
+population = 3
+wealth = 4
+fertility = 5
+tea_culture = 2
+buy_offers = Array[ExtResource("4_p4qq7")]([SubResource("Resource_kg436"), SubResource("Resource_v7fyk"), SubResource("Resource_1mbwp")])

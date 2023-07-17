@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var inventory_interface = $UI/InventoryInterface
-@onready var player = $YSort/Player
+@onready var player = $Level/YSort/Player
 @onready var hot_bar_inventory = $UI/HotBarInventory
 @onready var player_inventory = $UI/InventoryInterface/PlayerInventory
 @onready var external_inventory = $UI/InventoryInterface/ExternalInventory

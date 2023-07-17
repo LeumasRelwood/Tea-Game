@@ -7,4 +7,3 @@ class_name CommodityMarket
 @export var sell_offers: Array[SellOffer]
 @export var average_market_price: float
 @export var quantity_of_transactions: int
-

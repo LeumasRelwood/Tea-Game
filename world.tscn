@@ -7,7 +7,6 @@
 [ext_resource type="Script" path="res://world.gd" id="1_pt8ln"]
 [ext_resource type="PackedScene" uid="uid://cu2s67h2xiwbu" path="res://World/bush.tscn" id="2_lj7ph"]
 [ext_resource type="Texture2D" uid="uid://csq0vp641ice4" path="res://World/CliffTileset.png" id="3_7pbrw"]
-[ext_resource type="PackedScene" uid="uid://xmpeve5tqr8b" path="res://Globals/Economy/global_economy.tscn" id="3_eqpr8"]
 [ext_resource type="PackedScene" uid="uid://cka1w1gbejhi2" path="res://World/grass.tscn" id="6_m3pun"]
 [ext_resource type="Script" path="res://InventoryManagers/InventoryInterface.gd" id="6_ofg27"]
 [ext_resource type="PackedScene" uid="uid://dx11eeda1o2rp" path="res://Enemies/bat.tscn" id="7_3o3jl"]
@@ -21,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://dvaoa8lonnk82" path="res://UI/health_ui.tscn" id="12_foq2c"]
 [ext_resource type="LabelSettings" uid="uid://7tgrr3fs72vu" path="res://UI/GUI labels.tres" id="12_l3byq"]
 [ext_resource type="PackedScene" uid="uid://ba3yi75by7i4l" path="res://InventoryManagers/tea_storage_inventory.tscn" id="12_wk2ft"]
+[ext_resource type="PackedScene" uid="uid://dhqv26jwqul0h" path="res://Globals/TeaMarket/tea_market.tscn" id="14_auj6w"]
 [ext_resource type="PackedScene" uid="uid://bxy5ij2avjjte" path="res://InventoryManagers/inventory.tscn" id="15_j1xfr"]
 [ext_resource type="Script" path="res://InventoryManagers/InventoryDataEquip.gd" id="16_es7mm"]
 [ext_resource type="PackedScene" uid="uid://csdjukr06mf1j" path="res://World/Interactables/chest.tscn" id="20_m8i2b"]
@@ -948,16 +948,6 @@ position = Vector2(-128, -64)
 [node name="BottomRight" parent="Camera2D/Limits" index="1"]
 position = Vector2(416, 256)
 
-[node name="GlobalEconomy" parent="." instance=ExtResource("3_eqpr8")]
-
-[node name="City" parent="GlobalEconomy" index="0"]
-population = 6
-wealth = 5
-fertility = 3
-tea_culture = 4
-location = Vector2(1, 1)
-selling_range = 3
-
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="CounterUI" parent="UI" instance=ExtResource("10_b0lvu")]
@@ -1023,122 +1013,130 @@ modulate = Color(1, 1, 1, 0.45098)
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 
-[node name="Background" type="Sprite2D" parent="."]
+[node name="TeaMarket" parent="UI" instance=ExtResource("14_auj6w")]
+
+[node name="Level" type="Node" parent="."]
+
+[node name="Background" type="Sprite2D" parent="Level"]
 texture_repeat = 2
 position = Vector2(165, 89)
 texture = ExtResource("1_7grry")
 region_enabled = true
 region_rect = Rect2(0, 0, 958.272, 628.454)
 
-[node name="DirtPathTileMap" type="TileMap" parent="."]
+[node name="DirtPathTileMap" type="TileMap" parent="Level"]
 tile_set = SubResource("TileSet_sdia7")
 format = 2
 layer_0/tile_data = PackedInt32Array(327690, 131072, 1, 393226, 131072, 1, 458762, 327680, 2, 524298, 65536, 2, 524299, 65536, 2, 524300, 65536, 2, 458764, 65536, 0, 458763, 65536, 0, 393232, 0, 1, 458768, 393216, 4, 524304, 0, 1, 589840, 0, 1, 458767, 65536, 3, 458769, 327680, 4, 458770, 65536, 3, 327696, 0, 1, 458766, 65536, 3, 458765, 327680, 0, 262154, 131072, 1, 196618, 327680, 0, 196617, 393216, 0, 196616, 65536, 3, 196615, 65536, 3, 196614, 262144, 3, 131078, 458752, 0, 262160, 0, 1, 196624, 0, 1, 131088, 0, 1, 65552, 0, 1, 16, 393216, 4, 458771, 65536, 3, 655376, 0, 1, 458761, 393216, 2, 458760, 65536, 0, 458759, 65536, 0, 458758, 65536, 0, 458757, 65536, 0, 458756, 65536, 0, 458755, 327680, 2, 458754, 393216, 4, 458753, 65536, 3, 458752, 65536, 3, 524297, 65536, 2, 524296, 65536, 2, 524295, 65536, 2, 524294, 65536, 2, 524293, 65536, 2, 524292, 65536, 2, 524291, 65536, 2, 524290, 262144, 1, 262144, 65536, 3, 262145, 458752, 0, 327681, 262144, 3, 327682, 458752, 0, 393218, 262144, 2, 393219, 131072, 0, 196619, 458752, 3, 131083, 262144, 0, 131084, 458752, 3, 65548, 262144, 0, 65549, 458752, 3, 13, 262144, 0, 14, 65536, 3, 15, 65536, 3, 131077, 65536, 3, 131076, 262144, 3, 65540, 458752, 0, 65539, 65536, 3, 65538, 262144, 3, 2, 458752, 0, 1, 65536, 3, 0, 65536, 3, 655362, 196608, 1, 589826, 196608, 1, 720898, 196608, 2, 720912, 0, 1, 458772, 131072, 3, 524287, 0, 3, 327679, 0, 3, 65535, 0, 3, -65520, 0, 0, 524301, 131072, 2, 393233, 131072, 1, 327697, 131072, 1, 262161, 131072, 1, 196625, 131072, 1, 131089, 131072, 1, 65553, 131072, 1, 17, 131072, 1, -65519, 131072, 0, 524305, 131072, 1, 589841, 131072, 1, 655377, 131072, 1, 720913, 131072, 1, 786449, 131072, 2, 786448, 0, 2, 393225, 0, 1, 327689, 0, 1, 262153, 0, 1)
 
-[node name="DirtCliffTileMap" type="TileMap" parent="."]
+[node name="DirtCliffTileMap" type="TileMap" parent="Level"]
 tile_set = SubResource("TileSet_3c2r0")
 cell_quadrant_size = 32
 format = 2
 layer_0/tile_data = PackedInt32Array(327682, 0, 3, 327683, 65536, 3, 327684, 65536, 3, 327685, 65536, 3, 327686, 65536, 3, 327687, 458752, 3, 262151, 196608, 0, 131079, 458752, 3, 131078, 0, 3, 65543, 196608, 0, 9, 196608, 0, 65545, 196608, 1, 131081, 196608, 2, 262153, 0, 3, 262154, 131072, 3, 262144, 196608, 0, 327680, 458752, 2, 393216, 131072, 1, 393215, 0, 0, 458751, 0, 1, -65540, 262144, 0, -4, 196608, 1, 65532, 196608, 1, 131068, 196608, 1, 196604, 196608, 1, 262140, 196608, 1, 327676, 196608, 1, 393212, 196608, 1, 458748, 196608, 1, 524284, 262144, 3, 524285, 65536, 3, 524286, 65536, 3, 524287, 393216, 3, 458752, 327680, 3, 458753, 65536, 3, 458754, 65536, 3, 458755, 65536, 3, 458756, 65536, 3, 458757, 65536, 3, 458758, 65536, 3, 458759, 65536, 3, 458760, 65536, 3, 458761, 65536, 3, 458762, 65536, 3, 458763, 65536, 3, 458764, 458752, 3, 393228, 196608, 1, 327692, 196608, 1, 262156, 196608, 1, 196620, 196608, 1, 131084, 196608, 1, 65548, 196608, 1, 12, 196608, 1, -65524, 196608, 1, -131060, 458752, 0, -131061, 65536, 3, -131062, 65536, 3, -131063, 65536, 3, -131064, 65536, 3, -131065, 65536, 3, -131066, 65536, 3, -131067, 65536, 3, -131068, 65536, 3, -131069, 65536, 3, -131070, 65536, 3, -131071, 65536, 3, -131072, 65536, 3, -65537, 65536, 3, -65538, 65536, 3, -65539, 65536, 3)
 
-[node name="Staircase" parent="." instance=ExtResource("30_uu565")]
+[node name="Staircase" parent="Level" instance=ExtResource("30_uu565")]
 position = Vector2(119, 118)
 
-[node name="YSort" type="Node2D" parent="."]
+[node name="YSort" type="Node2D" parent="Level"]
 y_sort_enabled = true
 
-[node name="Player" parent="YSort" instance=ExtResource("1_2whqa")]
+[node name="Player" parent="Level/YSort" instance=ExtResource("1_2whqa")]
 position = Vector2(136, 32)
 equip_inventory_data = SubResource("Resource_v1qws")
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/Player"]
-remote_path = NodePath("../../../Camera2D")
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Level/YSort/Player"]
+remote_path = NodePath("../../../../Camera2D")
 
-[node name="Bushes" type="Node2D" parent="YSort"]
+[node name="Bushes" type="Node2D" parent="Level/YSort"]
 y_sort_enabled = true
 
-[node name="Bush" parent="YSort/Bushes" instance=ExtResource("2_lj7ph")]
+[node name="Bush" parent="Level/YSort/Bushes" instance=ExtResource("2_lj7ph")]
 position = Vector2(48, 48)
 
-[node name="Grass" type="Node2D" parent="YSort"]
+[node name="Grass" type="Node2D" parent="Level/YSort"]
 y_sort_enabled = true
 
-[node name="Grass" parent="YSort/Grass" instance=ExtResource("6_m3pun")]
+[node name="Grass" parent="Level/YSort/Grass" instance=ExtResource("6_m3pun")]
 position = Vector2(64, 96)
 
-[node name="Grass2" parent="YSort/Grass" instance=ExtResource("6_m3pun")]
+[node name="Grass2" parent="Level/YSort/Grass" instance=ExtResource("6_m3pun")]
 position = Vector2(48, 80)
 
-[node name="Grass3" parent="YSort/Grass" instance=ExtResource("6_m3pun")]
+[node name="Grass3" parent="Level/YSort/Grass" instance=ExtResource("6_m3pun")]
 position = Vector2(64, 80)
 
-[node name="Grass4" parent="YSort/Grass" instance=ExtResource("6_m3pun")]
+[node name="Grass4" parent="Level/YSort/Grass" instance=ExtResource("6_m3pun")]
 position = Vector2(176, 96)
 
-[node name="Grass5" parent="YSort/Grass" instance=ExtResource("6_m3pun")]
+[node name="Grass5" parent="Level/YSort/Grass" instance=ExtResource("6_m3pun")]
 position = Vector2(176, 80)
 
-[node name="Grass6" parent="YSort/Grass" instance=ExtResource("6_m3pun")]
+[node name="Grass6" parent="Level/YSort/Grass" instance=ExtResource("6_m3pun")]
 position = Vector2(192, 96)
 
-[node name="Grass7" parent="YSort/Grass" instance=ExtResource("6_m3pun")]
+[node name="Grass7" parent="Level/YSort/Grass" instance=ExtResource("6_m3pun")]
 position = Vector2(144, 144)
 
-[node name="Grass8" parent="YSort/Grass" instance=ExtResource("6_m3pun")]
+[node name="Grass8" parent="Level/YSort/Grass" instance=ExtResource("6_m3pun")]
 position = Vector2(128, 144)
 
-[node name="Grass11" parent="YSort/Grass" instance=ExtResource("6_m3pun")]
+[node name="Grass11" parent="Level/YSort/Grass" instance=ExtResource("6_m3pun")]
 position = Vector2(48, 160)
 
-[node name="Grass12" parent="YSort/Grass" instance=ExtResource("6_m3pun")]
+[node name="Grass12" parent="Level/YSort/Grass" instance=ExtResource("6_m3pun")]
 position = Vector2(48, 144)
 
-[node name="Grass13" parent="YSort/Grass" instance=ExtResource("6_m3pun")]
+[node name="Grass13" parent="Level/YSort/Grass" instance=ExtResource("6_m3pun")]
 position = Vector2(64, 144)
 
-[node name="Bat" parent="YSort" instance=ExtResource("7_3o3jl")]
+[node name="Bats" type="Node2D" parent="Level/YSort"]
+
+[node name="Bat" parent="Level/YSort/Bats" instance=ExtResource("7_3o3jl")]
 position = Vector2(40, 168)
 
-[node name="Bat2" parent="YSort" instance=ExtResource("7_3o3jl")]
+[node name="Bat2" parent="Level/YSort/Bats" instance=ExtResource("7_3o3jl")]
 position = Vector2(272, 160)
 
-[node name="Trees" type="Node2D" parent="YSort"]
+[node name="Trees" type="Node2D" parent="Level/YSort"]
 y_sort_enabled = true
 
-[node name="Tree" parent="YSort/Trees" instance=ExtResource("10_wvl3n")]
+[node name="Tree" parent="Level/YSort/Trees" instance=ExtResource("10_wvl3n")]
 position = Vector2(13, 103)
 
-[node name="Tree2" parent="YSort/Trees" instance=ExtResource("10_wvl3n")]
+[node name="Tree2" parent="Level/YSort/Trees" instance=ExtResource("10_wvl3n")]
 position = Vector2(-2, 51)
 
-[node name="Chest" parent="YSort" instance=ExtResource("20_m8i2b")]
+[node name="Interactables" type="Node2D" parent="Level/YSort"]
+
+[node name="Chest" parent="Level/YSort/Interactables" instance=ExtResource("20_m8i2b")]
 position = Vector2(112, 8)
 inventory_data = SubResource("Resource_fji6u")
 
-[node name="WitheringRack" parent="YSort" instance=ExtResource("26_ffchu")]
+[node name="WitheringRack" parent="Level/YSort/Interactables" instance=ExtResource("26_ffchu")]
 position = Vector2(238, -15)
 inventory_data_input = SubResource("Resource_ooqwl")
 inventory_data_output = SubResource("Resource_w4y4r")
 
-[node name="WitheringRack2" parent="YSort" instance=ExtResource("26_ffchu")]
+[node name="WitheringRack2" parent="Level/YSort/Interactables" instance=ExtResource("26_ffchu")]
 position = Vector2(168, -15)
 inventory_data_input = SubResource("Resource_qwg5n")
 inventory_data_output = SubResource("Resource_mlrbo")
 
-[node name="DryingMat" parent="YSort" instance=ExtResource("29_h4bkp")]
+[node name="DryingMat" parent="Level/YSort/Interactables" instance=ExtResource("29_h4bkp")]
 position = Vector2(201, 50)
 inventory_data_input = SubResource("Resource_eekdn")
 inventory_data_output = SubResource("Resource_x3xmn")
 
-[node name="TeaStorage" parent="YSort" instance=ExtResource("30_ullov")]
+[node name="TeaStorage" parent="Level/YSort/Interactables" instance=ExtResource("30_ullov")]
 position = Vector2(45, -26)
 
-[node name="Cassidy" parent="YSort" instance=ExtResource("31_ijka0")]
+[node name="Characters" type="Node2D" parent="Level/YSort"]
+
+[node name="Cassidy" parent="Level/YSort/Characters" instance=ExtResource("31_ijka0")]
 position = Vector2(202, 147)
 
 [editable path="Camera2D"]
-[editable path="GlobalEconomy"]
-[editable path="GlobalEconomy/City"]
 [editable path="UI/CounterUI"]
 [editable path="UI/HealthUI"]
 [editable path="UI/InventoryInterface/ExternalInventory"]
