@@ -1014,6 +1014,10 @@ self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 
 [node name="TeaMarket" parent="UI" instance=ExtResource("14_auj6w")]
+offset_left = 72.0
+offset_top = 28.0
+offset_right = 72.0
+offset_bottom = 28.0
 
 [node name="Level" type="Node" parent="."]
 

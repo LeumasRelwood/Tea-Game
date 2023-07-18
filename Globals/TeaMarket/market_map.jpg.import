@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjlfhky3d32ex"
-path="res://.godot/imported/Tree.png-14ac646b55f931abf82a3d71f0acdb7a.ctex"
+uid="uid://ee660wor14to"
+path="res://.godot/imported/market_map.jpg-57f7b794713f90ade4042188677253ab.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/Tree.png"
-dest_files=["res://.godot/imported/Tree.png-14ac646b55f931abf82a3d71f0acdb7a.ctex"]
+source_file="res://Globals/TeaMarket/market_map.jpg"
+dest_files=["res://.godot/imported/market_map.jpg-57f7b794713f90ade4042188677253ab.ctex"]
 
 [params]
 

@@ -1,11 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://behomoagxuhtf"]
+[gd_scene load_steps=11 format=3 uid="uid://behomoagxuhtf"]
 
 [ext_resource type="Script" path="res://InventoryManagers/withering_menu.gd" id="1_7atc0"]
 [ext_resource type="PackedScene" uid="uid://bxy5ij2avjjte" path="res://InventoryManagers/inventory.tscn" id="1_33eoi"]
 [ext_resource type="Theme" uid="uid://dbvmo5viem8os" path="res://UI/withering_menu.tres" id="1_bm7xo"]
-[ext_resource type="PackedScene" uid="uid://dao8bny7qec8a" path="res://InventoryManagers/RecipeItemContainers/white_tea_recipe_item_container.tscn" id="3_nsocj"]
-[ext_resource type="PackedScene" uid="uid://dvnhh2swe8mmd" path="res://InventoryManagers/RecipeItemContainers/black_tea_recipe_item_container.tscn" id="4_qj1gl"]
-[ext_resource type="PackedScene" uid="uid://ml838x4n743w" path="res://InventoryManagers/RecipeItemContainers/oolong_tea_recipe_item_container.tscn" id="5_fkq5q"]
+[ext_resource type="PackedScene" uid="uid://bbals1kcraiux" path="res://UI/recipe_scroll_container.tscn" id="4_a846g"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3aja0"]
 font_size = 10
@@ -146,35 +144,7 @@ custom_minimum_size = Vector2(60, 8)
 layout_mode = 2
 theme_override_font_sizes/font_size = 5
 
-[node name="RecipeScrollContainer" type="ScrollContainer" parent="PanelContainer"]
-custom_minimum_size = Vector2(80, 60)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/RecipeScrollContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 3
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/RecipeScrollContainer/MarginContainer"]
-custom_minimum_size = Vector2(70, 40)
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
-
-[node name="WhiteTeaRecipeItemContainer" parent="PanelContainer/RecipeScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_nsocj")]
-layout_mode = 2
-
-[node name="BlackTeaRecipeItemContainer" parent="PanelContainer/RecipeScrollContainer/MarginContainer/VBoxContainer" groups=["withering_recipes"] instance=ExtResource("4_qj1gl")]
-layout_mode = 2
-
-[node name="OolongTeaRecipeItemContainer" parent="PanelContainer/RecipeScrollContainer/MarginContainer/VBoxContainer" groups=["withering_recipes"] instance=ExtResource("5_fkq5q")]
+[node name="RecipeScrollContainer" parent="PanelContainer" instance=ExtResource("4_a846g")]
 layout_mode = 2
 
 [connection signal="pressed" from="PanelContainer/MarginContainer3/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="recipe_selected" from="PanelContainer/RecipeScrollContainer/MarginContainer/VBoxContainer/WhiteTeaRecipeItemContainer" to="." method="_on_white_tea_recipe_item_container_recipe_selected"]
-[connection signal="recipe_selected" from="PanelContainer/RecipeScrollContainer/MarginContainer/VBoxContainer/BlackTeaRecipeItemContainer" to="." method="_on_black_tea_recipe_item_container_recipe_selected"]
-[connection signal="recipe_selected" from="PanelContainer/RecipeScrollContainer/MarginContainer/VBoxContainer/OolongTeaRecipeItemContainer" to="." method="_on_oolong_tea_recipe_item_container_recipe_selected"]
