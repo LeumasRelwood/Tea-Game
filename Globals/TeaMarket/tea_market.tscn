@@ -1,8 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://dhqv26jwqul0h"]
+[gd_scene load_steps=20 format=3 uid="uid://dxqqtfb3ex7oe"]
 
 [ext_resource type="Script" path="res://Globals/TeaMarket/tea_market.gd" id="1_8ohgc"]
 [ext_resource type="Resource" uid="uid://bwl2w43e45pd8" path="res://Items/ITEMS/WhiteTea.tres" id="2_xn7jc"]
-[ext_resource type="PackedScene" uid="uid://du6gw0q8m5gkk" path="res://Globals/TeaMarket/region.tscn" id="3_4glrx"]
 [ext_resource type="Texture2D" uid="uid://ee660wor14to" path="res://Globals/TeaMarket/market_map.jpg" id="3_7164v"]
 [ext_resource type="Theme" uid="uid://dbvmo5viem8os" path="res://UI/withering_menu.tres" id="3_lnf2p"]
 [ext_resource type="Script" path="res://Globals/Economy/commodity_market.gd" id="3_y73ix"]
@@ -10,6 +9,12 @@
 [ext_resource type="Resource" uid="uid://wm0q07dfhg0q" path="res://Items/ITEMS/BlackTea.tres" id="4_tq5x2"]
 [ext_resource type="Resource" uid="uid://ccdr50kfe1w5l" path="res://Items/ITEMS/OolongTea.tres" id="5_c1o6c"]
 [ext_resource type="PackedScene" uid="uid://dcd8dd34ds8iu" path="res://Globals/TeaMarket/white_tea_market_selector.tscn" id="9_rj7fg"]
+[ext_resource type="PackedScene" uid="uid://burmqwrb2x32t" path="res://Globals/TeaMarket/region_nivalis.tscn" id="11_03p1f"]
+[ext_resource type="PackedScene" uid="uid://vs7r655idt8j" path="res://Globals/TeaMarket/region_rambonia.tscn" id="12_x5arb"]
+[ext_resource type="PackedScene" uid="uid://beq1lb7w3qb8c" path="res://Globals/TeaMarket/region_wyrood.tscn" id="13_omw8i"]
+[ext_resource type="PackedScene" uid="uid://bmhkmweq72ui7" path="res://Globals/TeaMarket/region_duk.tscn" id="14_vvnmt"]
+[ext_resource type="PackedScene" uid="uid://bkvowab15aaoe" path="res://Globals/TeaMarket/region_khit_haetia.tscn" id="15_odrrw"]
+[ext_resource type="PackedScene" uid="uid://ckkx08ylksr4f" path="res://Globals/TeaMarket/region_sitgoom.tscn" id="16_btacc"]
 
 [sub_resource type="Resource" id="Resource_b58ki"]
 script = ExtResource("4_p4qq7")
@@ -43,21 +48,6 @@ sell_offers = Array[Resource("res://Globals/Economy/sell_offer.gd")]([])
 average_market_price = 0.0
 quantity_of_transactions = 0
 
-[sub_resource type="Resource" id="Resource_kg436"]
-script = ExtResource("4_p4qq7")
-asking_price = 0.0
-quantity = 0
-
-[sub_resource type="Resource" id="Resource_v7fyk"]
-script = ExtResource("4_p4qq7")
-asking_price = 0.0
-quantity = 0
-
-[sub_resource type="Resource" id="Resource_1mbwp"]
-script = ExtResource("4_p4qq7")
-asking_price = 0.0
-quantity = 0
-
 [node name="TeaMarket" type="Control"]
 layout_mode = 3
 anchors_preset = 0
@@ -65,6 +55,7 @@ offset_left = 38.0
 offset_top = 23.0
 offset_right = 38.0
 offset_bottom = 23.0
+mouse_filter = 1
 script = ExtResource("1_8ohgc")
 selected_item = ExtResource("2_xn7jc")
 tea_market = Array[ExtResource("3_y73ix")]([SubResource("Resource_vhwrq"), SubResource("Resource_gfa5w"), SubResource("Resource_bqot8")])
@@ -76,6 +67,7 @@ offset_top = -23.0
 offset_right = 1290.0
 offset_bottom = 846.0
 scale = Vector2(0.196, 0.196)
+mouse_filter = 1
 theme = ExtResource("3_lnf2p")
 
 [node name="MarginContainer5" type="MarginContainer" parent="PanelContainer"]
@@ -192,36 +184,65 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Tea Market"
 
-[node name="Region" parent="PanelContainer" instance=ExtResource("3_4glrx")]
+[node name="RegionRambonia" parent="PanelContainer" instance=ExtResource("12_x5arb")]
 layout_mode = 2
-theme_override_constants/margin_left = 403
-theme_override_constants/margin_top = 64
-theme_override_constants/margin_bottom = 0
-city_name = "Nivalis"
-population = 3
-wealth = 4
-fertility = 5
-tea_culture = 2
-buy_offers = Array[ExtResource("4_p4qq7")]([SubResource("Resource_kg436"), SubResource("Resource_v7fyk"), SubResource("Resource_1mbwp")])
+theme_override_constants/margin_top = 11
+theme_override_constants/margin_right = 289
 
-[node name="Region2" parent="PanelContainer" instance=ExtResource("3_4glrx")]
-layout_mode = 2
-theme_override_constants/margin_left = -342
-theme_override_constants/margin_bottom = 283
-preffered_product = ExtResource("5_c1o6c")
-population = 5
-wealth = 6
-fertility = 1
-tea_culture = 2
+[node name="MarginContainer4" parent="PanelContainer/RegionRambonia" index="2"]
+theme_override_constants/margin_left = 225
+theme_override_constants/margin_top = -32
 
-[node name="Region3" parent="PanelContainer" instance=ExtResource("3_4glrx")]
+[node name="RegionWyrood" parent="PanelContainer" instance=ExtResource("13_omw8i")]
 layout_mode = 2
-theme_override_constants/margin_top = 13
-theme_override_constants/margin_right = 265
-preffered_product = ExtResource("2_xn7jc")
-population = 3
-wealth = 3
-fertility = 3
-tea_culture = 3
+theme_override_constants/margin_top = 516
+theme_override_constants/margin_right = 406
+
+[node name="MarginContainer4" parent="PanelContainer/RegionWyrood" index="2"]
+theme_override_constants/margin_left = 224
+theme_override_constants/margin_top = -30
+
+[node name="RegionDuk" parent="PanelContainer" instance=ExtResource("14_vvnmt")]
+layout_mode = 2
+theme_override_constants/margin_top = 102
+theme_override_constants/margin_right = 1051
+
+[node name="MarginContainer4" parent="PanelContainer/RegionDuk" index="2"]
+theme_override_constants/margin_left = 141
+theme_override_constants/margin_bottom = -122
+
+[node name="RegionKhit-haetia" parent="PanelContainer" instance=ExtResource("15_odrrw")]
+layout_mode = 2
+theme_override_constants/margin_left = 169
+theme_override_constants/margin_bottom = 439
+
+[node name="MarginContainer4" parent="PanelContainer/RegionKhit-haetia" index="2"]
+theme_override_constants/margin_left = 244
+theme_override_constants/margin_top = -47
+
+[node name="RegionSitgoom" parent="PanelContainer" instance=ExtResource("16_btacc")]
+layout_mode = 2
+theme_override_constants/margin_left = 869
+theme_override_constants/margin_top = 428
+
+[node name="MarginContainer4" parent="PanelContainer/RegionSitgoom" index="2"]
+theme_override_constants/margin_top = -131
+theme_override_constants/margin_right = 10
+
+[node name="RegionNivalis" parent="PanelContainer" instance=ExtResource("11_03p1f")]
+layout_mode = 2
+theme_override_constants/margin_left = -343
+theme_override_constants/margin_bottom = 261
+
+[node name="MarginContainer4" parent="PanelContainer/RegionNivalis" index="2"]
+theme_override_constants/margin_top = -10
+theme_override_constants/margin_right = 208
 
 [connection signal="toggled" from="PanelContainer/MarginContainer3/ShowPreferred" to="." method="_on_show_preferred_toggled"]
+
+[editable path="PanelContainer/RegionRambonia"]
+[editable path="PanelContainer/RegionWyrood"]
+[editable path="PanelContainer/RegionDuk"]
+[editable path="PanelContainer/RegionKhit-haetia"]
+[editable path="PanelContainer/RegionSitgoom"]
+[editable path="PanelContainer/RegionNivalis"]

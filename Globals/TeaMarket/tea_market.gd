@@ -7,14 +7,19 @@ extends Node
 @export var selected_item: ItemData
 @export var tea_market: Array[CommodityMarket]
 
+var selected_city
+
 const Commodity_Market = preload("res://Globals/Economy/commodity_market.gd")
 const Regional_Offer = preload("res://Globals/TeaMarket/regional_offers.gd")
 
 func _ready():
 	for node in get_tree().get_nodes_in_group("regions"):
 		node.add_buy_offer.connect(add_buy_offer)
+		node.city_selected.connect(city_selected)
+	
 	for node in get_tree().get_nodes_in_group("teamarket_selectors"):
 		node.recipe_selected.connect(recipe_item_selected)
+	
 	market_update()
 
 func _physics_process(delta):
@@ -24,27 +29,15 @@ func _physics_process(delta):
 func market_update():
 	for offers in tea_market:
 		offers.buy_offers.clear()
-	for node in get_tree().get_nodes_in_group("regions"):
-		node.market_update()
-	display_buy_offers()
-
-func display_buy_offers():
-	for node in get_tree().get_nodes_in_group("regions"):
-		node.display_buy_offer(selected_item)
-	refresh_interface()
+	
+	get_tree().call_group("regions", "market_update")
 
 func add_buy_offer(index):
 	for commodity in tea_market:
 		if index.item_data == commodity.item_data:
 			commodity.buy_offers.append(index)
-	refresh_interface()
 	
-#func add_buy_offer(buy_offers, city_name):
-	#var regional_offer = Regional_Offer.new()
-	#regional_offer.buy_offers = buy_offers
-	#regional_offer.region = city_name
-	#tea_market.append(regional_offer)
-	#refresh_interface()
+	refresh_interface()
 
 func refresh_interface():
 	var displayed_item: ItemData = selected_item
@@ -66,13 +59,16 @@ func refresh_interface():
 			highest_price.text = str("Highest Price: " + str(high))
 			avg_price.text = str("Avg Price: " + str(avg))
 			lowest_price.text = str("Lowest Price: " + str(low))
+	
+	get_tree().call_group("regions", "display_buy_offer", selected_item)
 
 func recipe_item_selected(_selected_item):
 	selected_item = _selected_item
-	display_buy_offers()
 	refresh_interface()
 
 func _on_show_preferred_toggled(button_pressed):
-	for node in get_tree().get_nodes_in_group("regions"):
-		node.toggle_display_preferred()
-		print("toggle preferred")
+	get_tree().call_group("regions", "toggle_display_preferred")
+
+func city_selected(city_name):
+	selected_city = city_name
+	get_tree().call_group("regions", "selected_city", selected_city)

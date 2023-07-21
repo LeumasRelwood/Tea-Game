@@ -1,0 +1,131 @@
+[gd_scene load_steps=17 format=3 uid="uid://bkvowab15aaoe"]
+
+[ext_resource type="Theme" uid="uid://dbvmo5viem8os" path="res://UI/withering_menu.tres" id="1_iffuv"]
+[ext_resource type="Script" path="res://Globals/TeaMarket/region.gd" id="2_wtlde"]
+[ext_resource type="Resource" uid="uid://bwl2w43e45pd8" path="res://Items/ITEMS/WhiteTea.tres" id="3_g1kfe"]
+[ext_resource type="Script" path="res://InventoryManagers/SlotData.gd" id="4_jqp6y"]
+[ext_resource type="Resource" uid="uid://wm0q07dfhg0q" path="res://Items/ITEMS/BlackTea.tres" id="5_kk4qn"]
+[ext_resource type="Resource" uid="uid://ccdr50kfe1w5l" path="res://Items/ITEMS/OolongTea.tres" id="6_2jyt5"]
+[ext_resource type="Script" path="res://Globals/Economy/buy_offer.gd" id="7_bnk8n"]
+[ext_resource type="Texture2D" uid="uid://dl3362k10u5jm" path="res://Items/item_atlas.tres" id="8_kvgkr"]
+[ext_resource type="Texture2D" uid="uid://dmn2jy84v6ey3" path="res://Globals/TeaMarket/red_circle.png" id="9_tlbps"]
+
+[sub_resource type="Resource" id="Resource_txp76"]
+script = ExtResource("4_jqp6y")
+item_data = ExtResource("3_g1kfe")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_kko6b"]
+script = ExtResource("4_jqp6y")
+item_data = ExtResource("5_kk4qn")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_mor3e"]
+script = ExtResource("4_jqp6y")
+item_data = ExtResource("6_2jyt5")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_pylny"]
+script = ExtResource("7_bnk8n")
+asking_price = 0.0
+quantity = 0
+
+[sub_resource type="Resource" id="Resource_ao4l3"]
+script = ExtResource("7_bnk8n")
+asking_price = 0.0
+quantity = 0
+
+[sub_resource type="Resource" id="Resource_722yq"]
+script = ExtResource("7_bnk8n")
+asking_price = 0.0
+quantity = 0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ltcsp"]
+
+[node name="RegionKhit-haetia" type="MarginContainer" groups=["regions"]]
+custom_minimum_size = Vector2(250, 120)
+offset_right = 250.0
+offset_bottom = 120.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("1_iffuv")
+script = ExtResource("2_wtlde")
+city_name = "Khit-haetia"
+preffered_product = ExtResource("5_kk4qn")
+population = 7
+wealth = 2
+fertility = 3
+tea_culture = 5
+inventory = Array[ExtResource("4_jqp6y")]([SubResource("Resource_txp76"), SubResource("Resource_kko6b"), SubResource("Resource_mor3e")])
+buy_offers = Array[ExtResource("7_bnk8n")]([SubResource("Resource_pylny"), SubResource("Resource_ao4l3"), SubResource("Resource_722yq")])
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Panel" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+theme = ExtResource("1_iffuv")
+
+[node name="ProductInfo" type="Label" parent="MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Price: X, Qty: Y"
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 36
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer2"]
+layout_mode = 2
+
+[node name="PrefferedProductImage" type="TextureRect" parent="MarginContainer2"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("8_kvgkr")
+
+[node name="PrefferedProductLabel" type="Label" parent="MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 12
+text = "White Tea"
+
+[node name="MarginContainer4" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer4"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="Area2D" type="Area2D" parent="MarginContainer4/MarginContainer3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MarginContainer4/MarginContainer3/Area2D"]
+position = Vector2(50, 44)
+scale = Vector2(7.977, 7.977)
+shape = SubResource("CircleShape2D_ltcsp")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer4/MarginContainer3"]
+visible = false
+layout_mode = 2
+texture = ExtResource("9_tlbps")
+expand_mode = 1
+
+[connection signal="input_event" from="MarginContainer4/MarginContainer3/Area2D" to="." method="_on_area_2d_input_event"]

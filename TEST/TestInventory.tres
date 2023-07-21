@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="InventoryData" load_steps=18 format=3 uid="uid://cfgx3dyy6ncic"]
+[gd_resource type="Resource" script_class="InventoryData" load_steps=20 format=3 uid="uid://cfgx3dyy6ncic"]
 
 [ext_resource type="Script" path="res://InventoryManagers/InventoryData.gd" id="1_hc6ak"]
 [ext_resource type="Resource" uid="uid://hqlta75n7whf" path="res://Items/ITEMS/apple.tres" id="2_avyjv"]
@@ -9,6 +9,7 @@
 [ext_resource type="Resource" uid="uid://ccib8o6ibhk8r" path="res://Items/ITEMS/iron_helm.tres" id="6_5lpqg"]
 [ext_resource type="Resource" uid="uid://pmtlla62nuex" path="res://Items/ITEMS/TeaPlant.tres" id="6_oyiir"]
 [ext_resource type="Resource" uid="uid://dk0cqkn21p4u0" path="res://Items/ITEMS/WhiteTea(withered).tres" id="9_71wjq"]
+[ext_resource type="Resource" uid="uid://bwl2w43e45pd8" path="res://Items/ITEMS/WhiteTea.tres" id="10_hefum"]
 
 [sub_resource type="Resource" id="Resource_i6s0n"]
 script = ExtResource("3_ehp30")
@@ -50,6 +51,11 @@ script = ExtResource("3_ehp30")
 item_data = ExtResource("9_71wjq")
 quantity = 65
 
+[sub_resource type="Resource" id="Resource_aol1u"]
+script = ExtResource("3_ehp30")
+item_data = ExtResource("10_hefum")
+quantity = 25
+
 [resource]
 script = ExtResource("1_hc6ak")
-slot_datas = Array[ExtResource("3_ehp30")]([SubResource("Resource_i6s0n"), SubResource("Resource_j0i55"), SubResource("Resource_ka6au"), SubResource("Resource_mapir"), SubResource("Resource_51pvf"), SubResource("Resource_v1gur"), SubResource("Resource_en13h"), SubResource("Resource_utw2c"), null, null, null, null, null, null, null, null, null])
+slot_datas = Array[ExtResource("3_ehp30")]([SubResource("Resource_i6s0n"), SubResource("Resource_j0i55"), SubResource("Resource_ka6au"), SubResource("Resource_mapir"), SubResource("Resource_51pvf"), SubResource("Resource_v1gur"), SubResource("Resource_en13h"), SubResource("Resource_utw2c"), SubResource("Resource_aol1u"), null, null, null, null, null, null, null, null])

@@ -1,12 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://g2nt8tiel1tf"]
+[gd_scene load_steps=8 format=3 uid="uid://myyvafhtgysh"]
 
 [ext_resource type="Script" path="res://World/Interactables/tea_storage.gd" id="1_a3nbo"]
-[ext_resource type="Script" path="res://InventoryManagers/InventoryDataFinishedLeaves.gd" id="2_oa56t"]
 [ext_resource type="Texture2D" uid="uid://5uhksovkb4xm" path="res://World/Interactables/brick house.png" id="2_sypde"]
+[ext_resource type="Script" path="res://InventoryManagers/InventoryDataFinishedLeaves.gd" id="2_v68ma"]
 [ext_resource type="PackedScene" uid="uid://cfh3c2h78s7kr" path="res://Hit and Hurtboxes/hurtbox.tscn" id="3_xubos"]
 
 [sub_resource type="Resource" id="Resource_55s1r"]
-script = ExtResource("2_oa56t")
+script = ExtResource("2_v68ma")
 slot_datas = Array[Resource("res://InventoryManagers/SlotData.gd")]([null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p60bi"]

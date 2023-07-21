@@ -1,0 +1,96 @@
+[gd_scene load_steps=15 format=3 uid="uid://du6gw0q8m5gkk"]
+
+[ext_resource type="Theme" uid="uid://dbvmo5viem8os" path="res://UI/withering_menu.tres" id="1_ukbtt"]
+[ext_resource type="Script" path="res://Globals/TeaMarket/region.gd" id="2_5liaw"]
+[ext_resource type="Resource" uid="uid://wm0q07dfhg0q" path="res://Items/ITEMS/BlackTea.tres" id="3_jbk53"]
+[ext_resource type="Resource" uid="uid://bwl2w43e45pd8" path="res://Items/ITEMS/WhiteTea.tres" id="4_kspd5"]
+[ext_resource type="Script" path="res://InventoryManagers/SlotData.gd" id="5_k2ph6"]
+[ext_resource type="Resource" uid="uid://ccdr50kfe1w5l" path="res://Items/ITEMS/OolongTea.tres" id="6_40aho"]
+[ext_resource type="Script" path="res://Globals/Economy/buy_offer.gd" id="7_2o6bt"]
+[ext_resource type="Texture2D" uid="uid://dl3362k10u5jm" path="res://Items/item_atlas.tres" id="8_rokdq"]
+
+[sub_resource type="Resource" id="Resource_txp76"]
+script = ExtResource("5_k2ph6")
+item_data = ExtResource("4_kspd5")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_kko6b"]
+script = ExtResource("5_k2ph6")
+item_data = ExtResource("3_jbk53")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_mor3e"]
+script = ExtResource("5_k2ph6")
+item_data = ExtResource("6_40aho")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_pylny"]
+script = ExtResource("7_2o6bt")
+asking_price = 0.0
+quantity = 0
+
+[sub_resource type="Resource" id="Resource_ao4l3"]
+script = ExtResource("7_2o6bt")
+asking_price = 0.0
+quantity = 0
+
+[sub_resource type="Resource" id="Resource_722yq"]
+script = ExtResource("7_2o6bt")
+asking_price = 0.0
+quantity = 0
+
+[node name="RegionChed" type="MarginContainer" groups=["regions"]]
+custom_minimum_size = Vector2(250, 120)
+offset_right = 250.0
+offset_bottom = 120.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("1_ukbtt")
+script = ExtResource("2_5liaw")
+city_name = "Ched"
+preffered_product = ExtResource("3_jbk53")
+population = 5
+wealth = 3
+fertility = 8
+tea_culture = 4
+inventory = Array[ExtResource("5_k2ph6")]([SubResource("Resource_txp76"), SubResource("Resource_kko6b"), SubResource("Resource_mor3e")])
+buy_offers = Array[ExtResource("7_2o6bt")]([SubResource("Resource_pylny"), SubResource("Resource_ao4l3"), SubResource("Resource_722yq")])
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Panel" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+theme = ExtResource("1_ukbtt")
+
+[node name="ProductInfo" type="Label" parent="MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Price: X, Qty: Y"
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 36
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer2"]
+layout_mode = 2
+
+[node name="PrefferedProductImage" type="TextureRect" parent="MarginContainer2"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("8_rokdq")
+
+[node name="PrefferedProductLabel" type="Label" parent="MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 12
+text = "White Tea"

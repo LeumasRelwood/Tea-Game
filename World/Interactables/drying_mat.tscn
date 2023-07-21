@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bmety47uiakix"]
+[gd_scene load_steps=10 format=3]
 
 [ext_resource type="Texture2D" uid="uid://brultq5qed3eh" path="res://World/Interactables/drying rack.jpg" id="1_wfjoh"]
 [ext_resource type="Script" path="res://World/Interactables/drying_mat.gd" id="1_y6reh"]

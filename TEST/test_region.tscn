@@ -1,41 +1,41 @@
-[gd_scene load_steps=15 format=3 uid="uid://du6gw0q8m5gkk"]
+[gd_scene load_steps=15 format=3 uid="uid://ds8s1nrgwxkfa"]
 
-[ext_resource type="Script" path="res://Globals/TeaMarket/region.gd" id="1_o0rx1"]
-[ext_resource type="Resource" uid="uid://bwl2w43e45pd8" path="res://Items/ITEMS/WhiteTea.tres" id="2_okriw"]
-[ext_resource type="Script" path="res://InventoryManagers/SlotData.gd" id="3_dqa43"]
-[ext_resource type="Resource" uid="uid://wm0q07dfhg0q" path="res://Items/ITEMS/BlackTea.tres" id="4_nwft0"]
-[ext_resource type="Resource" uid="uid://ccdr50kfe1w5l" path="res://Items/ITEMS/OolongTea.tres" id="5_vrovk"]
-[ext_resource type="Script" path="res://Globals/Economy/buy_offer.gd" id="6_wpouw"]
-[ext_resource type="Theme" uid="uid://dbvmo5viem8os" path="res://UI/withering_menu.tres" id="7_k3ct7"]
-[ext_resource type="Texture2D" uid="uid://dl3362k10u5jm" path="res://Items/item_atlas.tres" id="8_vmwwl"]
+[ext_resource type="Theme" uid="uid://dbvmo5viem8os" path="res://UI/withering_menu.tres" id="1_thikm"]
+[ext_resource type="Script" path="res://Globals/TeaMarket/region.gd" id="2_08tik"]
+[ext_resource type="Resource" uid="uid://wm0q07dfhg0q" path="res://Items/ITEMS/BlackTea.tres" id="3_4igpj"]
+[ext_resource type="Resource" uid="uid://bwl2w43e45pd8" path="res://Items/ITEMS/WhiteTea.tres" id="4_u5tox"]
+[ext_resource type="Script" path="res://InventoryManagers/SlotData.gd" id="5_681cm"]
+[ext_resource type="Resource" uid="uid://ccdr50kfe1w5l" path="res://Items/ITEMS/OolongTea.tres" id="6_2qvjl"]
+[ext_resource type="Script" path="res://Globals/Economy/buy_offer.gd" id="7_dy2xv"]
+[ext_resource type="Texture2D" uid="uid://dl3362k10u5jm" path="res://Items/item_atlas.tres" id="8_v40sn"]
 
 [sub_resource type="Resource" id="Resource_txp76"]
-script = ExtResource("3_dqa43")
-item_data = ExtResource("2_okriw")
+script = ExtResource("5_681cm")
+item_data = ExtResource("4_u5tox")
 quantity = 1
 
 [sub_resource type="Resource" id="Resource_kko6b"]
-script = ExtResource("3_dqa43")
-item_data = ExtResource("4_nwft0")
+script = ExtResource("5_681cm")
+item_data = ExtResource("3_4igpj")
 quantity = 1
 
 [sub_resource type="Resource" id="Resource_mor3e"]
-script = ExtResource("3_dqa43")
-item_data = ExtResource("5_vrovk")
+script = ExtResource("5_681cm")
+item_data = ExtResource("6_2qvjl")
 quantity = 1
 
 [sub_resource type="Resource" id="Resource_pylny"]
-script = ExtResource("6_wpouw")
+script = ExtResource("7_dy2xv")
 asking_price = 0.0
 quantity = 0
 
 [sub_resource type="Resource" id="Resource_ao4l3"]
-script = ExtResource("6_wpouw")
+script = ExtResource("7_dy2xv")
 asking_price = 0.0
 quantity = 0
 
 [sub_resource type="Resource" id="Resource_722yq"]
-script = ExtResource("6_wpouw")
+script = ExtResource("7_dy2xv")
 asking_price = 0.0
 quantity = 0
 
@@ -45,11 +45,11 @@ offset_right = 250.0
 offset_bottom = 120.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme = ExtResource("7_k3ct7")
-script = ExtResource("1_o0rx1")
-preffered_product = ExtResource("4_nwft0")
-inventory = Array[ExtResource("3_dqa43")]([SubResource("Resource_txp76"), SubResource("Resource_kko6b"), SubResource("Resource_mor3e")])
-buy_offers = Array[ExtResource("6_wpouw")]([SubResource("Resource_pylny"), SubResource("Resource_ao4l3"), SubResource("Resource_722yq")])
+theme = ExtResource("1_thikm")
+script = ExtResource("2_08tik")
+preffered_product = ExtResource("3_4igpj")
+inventory = Array[ExtResource("5_681cm")]([SubResource("Resource_txp76"), SubResource("Resource_kko6b"), SubResource("Resource_mor3e")])
+buy_offers = Array[ExtResource("7_dy2xv")]([SubResource("Resource_pylny"), SubResource("Resource_ao4l3"), SubResource("Resource_722yq")])
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -58,7 +58,7 @@ size_flags_vertical = 0
 
 [node name="Panel" type="PanelContainer" parent="MarginContainer"]
 layout_mode = 2
-theme = ExtResource("7_k3ct7")
+theme = ExtResource("1_thikm")
 
 [node name="ProductInfo" type="Label" parent="MarginContainer"]
 layout_mode = 2
@@ -81,7 +81,7 @@ layout_mode = 2
 [node name="PrefferedProductImage" type="TextureRect" parent="MarginContainer2"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-texture = ExtResource("8_vmwwl")
+texture = ExtResource("8_v40sn")
 
 [node name="PrefferedProductLabel" type="Label" parent="MarginContainer2"]
 layout_mode = 2

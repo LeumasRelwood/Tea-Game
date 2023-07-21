@@ -9,18 +9,6 @@ font_size = 6
 [node name="RecipeItemContainer" type="MarginContainer"]
 script = ExtResource("1_mlnbf")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-theme_override_constants/margin_left = 2
-
-[node name="Label" type="Label" parent="MarginContainer"]
-layout_mode = 2
-text = "White tea.
-Value: 15gp"
-label_settings = SubResource("LabelSettings_4x234")
-
 [node name="MarginContainer3" type="MarginContainer" parent="."]
 layout_mode = 2
 size_flags_horizontal = 8
@@ -40,6 +28,21 @@ layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer3/MarginContainer2"]
 layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/margin_left = 2
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 2
+theme_override_font_sizes/font_size = 5
+text = "White tea.
+Value: 15gp"
+label_settings = SubResource("LabelSettings_4x234")
 
 [node name="Button" type="Button" parent="."]
 show_behind_parent = true

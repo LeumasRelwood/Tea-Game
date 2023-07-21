@@ -10,7 +10,7 @@ signal recipe_selected
 func _ready():
 	texture_rect.texture = recipe_item.item_data.texture
 	button.pressed.connect(_on_button_pressed)
-	#label.text = str(str(recipe_item.item_data.name) \n "Base Value: " + str(recipe_item.item_data.base_value))
+	label.text = str(str(recipe_item.item_data.name) + "\nBase Value: " + str(recipe_item.item_data.base_value))
 
 func _on_button_pressed():
 	emit_signal("recipe_selected", recipe_item)
