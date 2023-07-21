@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://biuua27i5nbhe"]
+
+[ext_resource type="Script" path="res://Globals/TeaMarket/tea_market_shipment_selector.gd" id="1_w7m7n"]
+
+[node name="MarginContainer" type="MarginContainer" groups=["shipment_selectors"]]
+custom_minimum_size = Vector2(32, 32)
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_w7m7n")
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/margin_top = 0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 15
+text = "X Tea"
+
+[node name="Button" type="Button" parent="."]
+show_behind_parent = true
+layout_mode = 2
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed" flags=18]

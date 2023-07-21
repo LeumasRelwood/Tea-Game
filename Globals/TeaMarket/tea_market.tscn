@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dxqqtfb3ex7oe"]
+[gd_scene load_steps=21 format=3 uid="uid://dxqqtfb3ex7oe"]
 
 [ext_resource type="Script" path="res://Globals/TeaMarket/tea_market.gd" id="1_8ohgc"]
 [ext_resource type="Resource" uid="uid://bwl2w43e45pd8" path="res://Items/ITEMS/WhiteTea.tres" id="2_xn7jc"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://beq1lb7w3qb8c" path="res://Globals/TeaMarket/region_wyrood.tscn" id="13_omw8i"]
 [ext_resource type="PackedScene" uid="uid://bmhkmweq72ui7" path="res://Globals/TeaMarket/region_duk.tscn" id="14_vvnmt"]
 [ext_resource type="PackedScene" uid="uid://bkvowab15aaoe" path="res://Globals/TeaMarket/region_khit_haetia.tscn" id="15_odrrw"]
+[ext_resource type="PackedScene" uid="uid://biuua27i5nbhe" path="res://Globals/TeaMarket/tea_market_shipment_selector.tscn" id="16_0mgxl"]
 [ext_resource type="PackedScene" uid="uid://ckkx08ylksr4f" path="res://Globals/TeaMarket/region_sitgoom.tscn" id="16_btacc"]
 
 [sub_resource type="Resource" id="Resource_b58ki"]
@@ -84,6 +85,43 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("3_7164v")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/margin_top = 24
+
+[node name="Title" type="Label" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Tea Market"
+
+[node name="MarginContainer6" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/margin_left = 492
+theme_override_constants/margin_top = 55
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer6"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/margin_bottom = 22
+
+[node name="Shipments" type="Label" parent="PanelContainer/MarginContainer6/MarginContainer"]
+layout_mode = 2
+text = "# Available Shipments"
+
+[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/MarginContainer6"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="CheckButton" type="CheckButton" parent="PanelContainer/MarginContainer6/MarginContainer2"]
+layout_mode = 2
+text = "Show Current Shipments"
 
 [node name="MarginContainer2" type="MarginContainer" parent="PanelContainer"]
 layout_mode = 2
@@ -173,17 +211,6 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "Lowest Price: "
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-theme_override_constants/margin_top = 24
-
-[node name="Title" type="Label" parent="PanelContainer/MarginContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "Tea Market"
-
 [node name="RegionRambonia" parent="PanelContainer" instance=ExtResource("12_x5arb")]
 layout_mode = 2
 theme_override_constants/margin_top = 11
@@ -237,6 +264,72 @@ theme_override_constants/margin_bottom = 261
 [node name="MarginContainer4" parent="PanelContainer/RegionNivalis" index="2"]
 theme_override_constants/margin_top = -10
 theme_override_constants/margin_right = 208
+
+[node name="PanelContainer2" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 225.0
+offset_top = -23.0
+offset_right = 305.0
+offset_bottom = 147.0
+theme = ExtResource("3_lnf2p")
+
+[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer2"]
+layout_mode = 2
+
+[node name="CityName" type="Label" parent="PanelContainer2/MarginContainer2"]
+layout_mode = 2
+text = "City Name"
+
+[node name="MarginContainer4" type="MarginContainer" parent="PanelContainer2"]
+layout_mode = 2
+
+[node name="ShippingTime" type="Label" parent="PanelContainer2/MarginContainer4"]
+layout_mode = 2
+text = "Shipping Time:  # Hours"
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer2"]
+layout_mode = 2
+
+[node name="SendOrder" type="Button" parent="PanelContainer2/MarginContainer"]
+layout_mode = 2
+text = "Send Order"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer2"]
+layout_mode = 2
+
+[node name="MarginContainer4" type="MarginContainer" parent="PanelContainer2/ScrollContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer2/ScrollContainer/MarginContainer4"]
+layout_mode = 2
+
+[node name="MarginContainer" parent="PanelContainer2/ScrollContainer/MarginContainer4/VBoxContainer" instance=ExtResource("16_0mgxl")]
+layout_mode = 2
+recipe_item = ExtResource("2_xn7jc")
+
+[node name="MarginContainer2" parent="PanelContainer2/ScrollContainer/MarginContainer4/VBoxContainer" instance=ExtResource("16_0mgxl")]
+layout_mode = 2
+recipe_item = ExtResource("4_tq5x2")
+
+[node name="MarginContainer3" parent="PanelContainer2/ScrollContainer/MarginContainer4/VBoxContainer" instance=ExtResource("16_0mgxl")]
+layout_mode = 2
+recipe_item = ExtResource("5_c1o6c")
+
+[node name="MarginContainer3" type="MarginContainer" parent="PanelContainer2"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer2/MarginContainer3"]
+layout_mode = 2
+
+[node name="QtyToSell" type="Label" parent="PanelContainer2/MarginContainer3/MarginContainer"]
+layout_mode = 2
+text = "Quantity to Sell: #"
+
+[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer2/MarginContainer3"]
+layout_mode = 2
+
+[node name="HSlider" type="HSlider" parent="PanelContainer2/MarginContainer3/MarginContainer2"]
+layout_mode = 2
 
 [connection signal="toggled" from="PanelContainer/MarginContainer3/ShowPreferred" to="." method="_on_show_preferred_toggled"]
 

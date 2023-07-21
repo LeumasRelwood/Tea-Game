@@ -129,3 +129,5 @@ texture = ExtResource("9_35qyt")
 expand_mode = 1
 
 [connection signal="input_event" from="MarginContainer4/MarginContainer3/Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="MarginContainer4/MarginContainer3/Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer4/MarginContainer3/Area2D" to="." method="_on_area_2d_mouse_exited"]

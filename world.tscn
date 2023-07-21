@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://633p3p0a1rtc"]
+[gd_scene load_steps=51 format=3 uid="uid://633p3p0a1rtc"]
 
 [ext_resource type="PackedScene" uid="uid://bpgrgqmsja4op" path="res://Player/player.tscn" id="1_2whqa"]
 [ext_resource type="Texture2D" uid="uid://b3j5ngdc1abij" path="res://World/GrassBackground.png" id="1_7grry"]
@@ -920,14 +920,6 @@ slot_datas = Array[ExtResource("23_gglij")]([null])
 script = ExtResource("29_caewd")
 slot_datas = Array[ExtResource("23_gglij")]([null])
 
-[sub_resource type="Resource" id="Resource_qwg5n"]
-script = ExtResource("28_h5jv4")
-slot_datas = Array[ExtResource("23_gglij")]([null])
-
-[sub_resource type="Resource" id="Resource_mlrbo"]
-script = ExtResource("29_caewd")
-slot_datas = Array[ExtResource("23_gglij")]([null])
-
 [sub_resource type="Resource" id="Resource_eekdn"]
 script = ExtResource("31_b6grp")
 slot_datas = Array[ExtResource("23_gglij")]([null])
@@ -1014,9 +1006,9 @@ self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 
 [node name="TeaMarket" parent="UI" instance=ExtResource("14_auj6w")]
-offset_left = 72.0
+offset_left = 39.0
 offset_top = 28.0
-offset_right = 72.0
+offset_right = 39.0
 offset_bottom = 28.0
 
 [node name="Level" type="Node" parent="."]
@@ -1123,9 +1115,9 @@ inventory_data_input = SubResource("Resource_ooqwl")
 inventory_data_output = SubResource("Resource_w4y4r")
 
 [node name="WitheringRack2" parent="Level/YSort/Interactables" instance=ExtResource("26_ffchu")]
-position = Vector2(168, -15)
-inventory_data_input = SubResource("Resource_qwg5n")
-inventory_data_output = SubResource("Resource_mlrbo")
+position = Vector2(160, -15)
+inventory_data_input = SubResource("Resource_ooqwl")
+inventory_data_output = SubResource("Resource_w4y4r")
 
 [node name="DryingMat" parent="Level/YSort/Interactables" instance=ExtResource("29_h4bkp")]
 position = Vector2(201, 50)

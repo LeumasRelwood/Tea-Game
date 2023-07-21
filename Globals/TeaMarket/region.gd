@@ -8,6 +8,7 @@ signal city_selected(city_name)
 @onready var preffered_product_label = $MarginContainer2/PrefferedProductLabel
 @onready var margin_container_2 = $MarginContainer2
 @onready var texture_rect = $MarginContainer4/MarginContainer3/TextureRect
+@onready var area_2d = $MarginContainer4/MarginContainer3/Area2D
 
 @export var city_name: String
 @export var preffered_product: ItemData
@@ -16,7 +17,7 @@ signal city_selected(city_name)
 @export var fertility: int
 @export var tea_culture: int
 @export var location: Vector2
-@export var selling_range: int
+@export var shipment_time_hours: int
 
 var map_selected = false
 var selected_item
@@ -33,6 +34,10 @@ func _ready():
 	demand = population * tea_culture * wealth
 	preffered_product_image.texture = preffered_product.texture
 	preffered_product_label.text = preffered_product.name
+	
+	area_2d.mouse_entered.connect(_on_area_2d_mouse_entered)
+	area_2d.mouse_exited.connect(_on_area_2d_mouse_exited)
+	area_2d.input_event.connect(_on_area_2d_input_event)
 
 func market_update():
 	make_buy_offers()
@@ -70,3 +75,10 @@ func selected_city(_city_name):
 func _on_area_2d_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		city_selected.emit(city_name)
+
+func _on_area_2d_mouse_entered():
+	texture_rect.visible = true
+
+func _on_area_2d_mouse_exited():
+	if not map_selected:
+		texture_rect.visible = false
