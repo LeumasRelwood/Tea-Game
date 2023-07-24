@@ -8,9 +8,11 @@ extends Node2D
 @onready var withering_menu = $UI/InventoryInterface/WitheringMenu
 @onready var drying_menu = $UI/InventoryInterface/DryingMenu
 @onready var tea_storage_inventory = $UI/InventoryInterface/TeaStorageInventory
+@onready var tea_market = $UI/TeaMarket
 
 func _ready():
 	player.toggle_inventory.connect(toggle_inventory_interface)
+	player.toggle_tea_market.connect(toggle_tea_market)
 	inventory_interface.set_player_inventory_data(player.inventory_data)
 	hot_bar_inventory.set_inventory_data(player.inventory_data)
 	inventory_interface.force_close_external.connect(toggle_external_inventory_interface)
@@ -29,7 +31,9 @@ func _ready():
 		
 	for node in get_tree().get_nodes_in_group("external_tea_storage"):
 		node.toggle_external_tea_storage.connect(toggle_external_tea_storage)
-	
+
+func toggle_tea_market():
+	tea_market.visible = not tea_market.visible
 
 func toggle_inventory_interface(external_inventory_owner = null) -> void:
 	inventory_interface.visible = not inventory_interface.visible

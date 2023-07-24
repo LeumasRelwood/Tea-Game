@@ -8,6 +8,7 @@ const PlayerHurtSound = preload("res://Music and Sounds/player_hurt_sound.tscn")
 @export var FRICTION = 15
 @export var ROLL_SPEED = 100
 
+signal toggle_tea_market
 signal toggle_inventory
 
 enum {
@@ -99,7 +100,9 @@ func move_state():
 	
 	if Input.is_action_just_pressed("inventory"):
 		toggle_inventory.emit()
-
+	
+	if Input.is_action_just_pressed("TeaMarket"):
+		toggle_tea_market.emit()
 
 func roll_state():
 	velocity = roll_vector * ROLL_SPEED

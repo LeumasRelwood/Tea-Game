@@ -1,7 +1,7 @@
 extends Node
 
 signal add_buy_offer(index)
-signal city_selected(city_name)
+signal city_selected(city)
 
 @onready var product_info = $MarginContainer/ProductInfo
 @onready var preffered_product_image = $MarginContainer2/PrefferedProductImage
@@ -62,8 +62,8 @@ func display_buy_offer(item_data):
 func toggle_display_preferred():
 	margin_container_2.visible = not margin_container_2.visible
 
-func selected_city(_city_name):
-	if city_name == _city_name:
+func selected_city(city):
+	if city_name == city.city_name:
 		map_selected = true
 	else: map_selected = false
 	
@@ -74,7 +74,7 @@ func selected_city(_city_name):
 
 func _on_area_2d_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		city_selected.emit(city_name)
+		city_selected.emit(self)
 
 func _on_area_2d_mouse_entered():
 	texture_rect.visible = true

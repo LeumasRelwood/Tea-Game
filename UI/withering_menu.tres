@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=14 format=3 uid="uid://dbvmo5viem8os"]
+[gd_resource type="Theme" load_steps=15 format=3 uid="uid://dbvmo5viem8os"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ns72p"]
 bg_color = Color(0.403922, 0.380392, 0.176471, 0.654902)
@@ -59,6 +59,9 @@ corner_radius_top_left = 1
 corner_radius_top_right = 1
 corner_radius_bottom_right = 1
 corner_radius_bottom_left = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kbtsu"]
+bg_color = Color(0.597352, 0.628287, 0.322137, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_esug6"]
 bg_color = Color(0.717647, 0.721569, 0.419608, 1)
@@ -127,6 +130,7 @@ Button/styles/focus = SubResource("StyleBoxFlat_gpcey")
 Button/styles/hover = SubResource("StyleBoxFlat_oulrm")
 Button/styles/normal = SubResource("StyleBoxFlat_sxebo")
 Button/styles/pressed = SubResource("StyleBoxFlat_hmcdq")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_kbtsu")
 Label/colors/font_shadow_color = Color(0, 0, 0, 0.588235)
 Label/constants/shadow_outline_size = 2
 Label/styles/panel = SubResource("StyleBoxFlat_esug6")
