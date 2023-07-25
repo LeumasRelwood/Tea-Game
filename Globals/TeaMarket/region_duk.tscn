@@ -56,6 +56,8 @@ population = 5
 wealth = 9
 fertility = 1
 tea_culture = 7
+location = Vector2(41, 106)
+shipment_time_hours = 24
 inventory = Array[ExtResource("4_gn5e7")]([SubResource("Resource_txp76"), SubResource("Resource_kko6b"), SubResource("Resource_mor3e")])
 buy_offers = Array[ExtResource("7_5hr4u")]([SubResource("Resource_pylny"), SubResource("Resource_ao4l3"), SubResource("Resource_722yq")])
 

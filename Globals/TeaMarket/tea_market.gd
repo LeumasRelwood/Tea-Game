@@ -1,6 +1,7 @@
 extends Node
 
 const shipment_selector = preload("res://Globals/TeaMarket/tea_market_shipment_selector.tscn")
+const shipment_cart = preload("res://Globals/TeaMarket/shipment_cart.tscn")
 
 @onready var highest_price = $PanelContainer/MarginContainer4/MarginContainer/HighestPrice
 @onready var avg_price = $PanelContainer/MarginContainer4/MarginContainer2/AvgPrice
@@ -16,9 +17,12 @@ const shipment_selector = preload("res://Globals/TeaMarket/tea_market_shipment_s
 @onready var h_slider = $PanelContainer2/MarginContainer3/MarginContainer2/HSlider
 @onready var v_box_container = $PanelContainer2/MarginContainer5/ScrollContainer/MarginContainer4/VBoxContainer
 @onready var send_order = $PanelContainer2/MarginContainer/SendOrder
-
+@onready var panel_container = $PanelContainer
 @onready var panel_container_2 = $PanelContainer2
 
+@export var cart_spawn = Vector2(186, 95)
+@export var cart_speed = 2
+var _shipping_time
 var selected_city
 var selected_offer
 var quantity_to_sell
@@ -75,9 +79,9 @@ func refresh_interface():
 					high = offer.asking_price
 				if offer.asking_price < low:
 					low = offer.asking_price
-			highest_price.text = str("Highest Price: " + str(high))
-			avg_price.text = str("Avg Price: " + str(avg))
-			lowest_price.text = str("Lowest Price: " + str(low))
+			highest_price.text = str("Highest Price: " + str(snapped(high, 0.1)))
+			avg_price.text = str("Avg Price: " + str(snapped(avg, 0.1)))
+			lowest_price.text = str("Lowest Price: " + str(snapped(low, 0.1)))
 	
 	get_tree().call_group("regions", "display_buy_offer", selected_item)
 
@@ -93,7 +97,10 @@ func city_selected(city):
 	if selected_city:
 		panel_container_2.visible = true
 	city_name.text = city.city_name
-	shipping_time.text = str("Shipping Time: " + str(city.shipment_time_hours) + " hours")
+	
+	var distance = cart_spawn.distance_to(selected_city.location)
+	_shipping_time =  snapped(distance / cart_speed / 32, 0.1)
+	shipping_time.text = str("Shipping Time: " + str(_shipping_time) + " hours")
 	get_tree().call_group("regions", "selected_city", selected_city)
 	populate_shipment_options(city)
 	
@@ -131,8 +138,17 @@ func _on_h_slider_value_changed(value):
 func set_qty_to_sell():
 	qty_to_sell.text = str("Qty. to Sell: " + str(quantity_to_sell))
 
-func _on_send_order_pressed():
+func _on_show_shipments_toggled(button_pressed):
+	get_tree().call_group("shipment_carts", "toggle_visibility")
+
+func _on_send_order_pressed():	
 	if quantity_to_sell > 0:
+		var value = quantity_to_sell * selected_offer.asking_price
+		var cart = shipment_cart.instantiate()
+		panel_container.add_child(cart)
+		cart.position = cart_spawn
+		cart.deliver_shipment(selected_city, selected_offer.item_data, quantity_to_sell, value, cart_speed)
+		
 		for buy_offer in selected_city.buy_offers:
 			if buy_offer.item_data == selected_offer.item_data:
 				buy_offer.quantity -= quantity_to_sell

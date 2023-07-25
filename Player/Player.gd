@@ -123,8 +123,6 @@ func _on_player_interact_area_area_entered(area):
 	
 func attack_animation_finished():
 	state = MOVE
-	
-	
 
 func plant_bush():
 	var Bush = bush.instantiate()

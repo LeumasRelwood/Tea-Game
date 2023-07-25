@@ -119,7 +119,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 
-[node name="CheckButton" type="CheckButton" parent="PanelContainer/MarginContainer6/MarginContainer2"]
+[node name="ShowShipments" type="CheckButton" parent="PanelContainer/MarginContainer6/MarginContainer2"]
 layout_mode = 2
 text = "Show Current Shipments"
 
@@ -370,6 +370,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 8
 text = "Send Order"
 
+[connection signal="toggled" from="PanelContainer/MarginContainer6/MarginContainer2/ShowShipments" to="." method="_on_show_shipments_toggled"]
 [connection signal="toggled" from="PanelContainer/MarginContainer3/ShowPreferred" to="." method="_on_show_preferred_toggled"]
 [connection signal="value_changed" from="PanelContainer2/MarginContainer3/MarginContainer2/HSlider" to="." method="_on_h_slider_value_changed"]
 [connection signal="pressed" from="PanelContainer2/MarginContainer/SendOrder" to="." method="_on_send_order_pressed"]

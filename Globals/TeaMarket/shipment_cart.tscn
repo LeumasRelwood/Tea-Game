@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cc3kiu6cmp5qs"]
+
+[ext_resource type="Script" path="res://Globals/TeaMarket/shipment_cart.gd" id="1_6rtks"]
+[ext_resource type="Texture2D" uid="uid://12wgrh5wrg80" path="res://Globals/TeaMarket/shipment_cart_colored.png" id="2_6mtl1"]
+
+[node name="ShipmentCart" type="CharacterBody2D" groups=["shipment_carts"]]
+top_level = true
+script = ExtResource("1_6rtks")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.0186667, 0.0186667)
+texture = ExtResource("2_6mtl1")
+
+[node name="Tooltip" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
