@@ -125,6 +125,9 @@ func _on_hurtbox_area_entered(area):
 	
 	state = TALKING
 
+func conversation_finished():
+	check_for_state()
+
 func _on_stats_no_health():
 	queue_free()
 	var deathEffect = DeathEffect.instantiate()

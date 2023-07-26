@@ -1,8 +1,8 @@
-[gd_scene load_steps=84 format=3 uid="uid://d0oca72y35ap2"]
+[gd_scene load_steps=84 format=3 uid="uid://dgik61ds5a1f"]
 
 [ext_resource type="Script" path="res://NPCs/BackgroundNPC.gd" id="1_cegl4"]
 [ext_resource type="PackedScene" uid="uid://bkw3inrq5wmei" path="res://Globals/PlayerStats.tscn" id="2_fxfl4"]
-[ext_resource type="Resource" uid="uid://d48pmpxvhmse" path="res://Dialogues/main.dialogue" id="2_u7fbm"]
+[ext_resource type="Resource" uid="uid://d48pmpxvhmse" path="res://Dialogues/harbormaster.dialogue" id="2_icuh4"]
 [ext_resource type="Texture2D" uid="uid://vwkmp50rslsv" path="res://Shadows/MediumShadow.png" id="3_6c1ma"]
 [ext_resource type="Shader" path="res://NPCs/CassidyNPC.gdshader" id="4_a10l4"]
 [ext_resource type="Texture2D" uid="uid://c5cg2bkesfk8s" path="res://Player/Player.png" id="4_j7n0h"]
@@ -1220,10 +1220,10 @@ height = 12.0
 radius = 5.0
 height = 16.0
 
-[node name="Cassidy" type="CharacterBody2D"]
+[node name="Cassidy" type="CharacterBody2D" groups=["NPCs"]]
 collision_mask = 2
 script = ExtResource("1_cegl4")
-dialogue_resource = ExtResource("2_u7fbm")
+dialogue_resource = ExtResource("2_icuh4")
 
 [node name="Stats" parent="." instance=ExtResource("2_fxfl4")]
 max_health = 2

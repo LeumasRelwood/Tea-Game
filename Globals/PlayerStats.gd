@@ -7,7 +7,7 @@ signal health_changed(value)
 signal max_health_changed(value)
 signal tealeaves_changed(value)
 
-@export var coins: float
+@export var coins: float = 650
 @export var max_health = 1:
 	set(value):
 		max_health = value
