@@ -20,6 +20,12 @@ config/icon="res://icon.svg"
 Global="*res://Globals/global.tscn"
 PlayerStats="*res://Globals/PlayerStats.tscn"
 GlobalTeaStorage="*res://Globals/global_tea_storage.tscn"
+DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+Gamestate="*res://Dialogues/Gamestate.gd"
+
+[dialogue_manager]
+
+general/states=["State", "Gamestate"]
 
 [display]
 
@@ -28,6 +34,10 @@ window/size/viewport_height=180
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 
 [input]
 
@@ -97,6 +107,10 @@ TeaMarket={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":84,"key_label":0,"unicode":116,"echo":false,"script":null)
 ]
 }
+
+[internationalization]
+
+locale/translations_pot_files=PackedStringArray("res://Dialogues/main.dialogue")
 
 [layer_names]
 

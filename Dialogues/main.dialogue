@@ -1,0 +1,18 @@
+~ start
+
+Harbormaster: Hey Friend!
+if apple_status == "has":
+	Leumas: I have an apple.
+	- Give to Harbormaster
+		set apple_status = "gave"
+		Leumas: Here you go.
+		Harbormaster: Thank you.
+	- Keep it
+		Leumas: But it's all mine.
+		Harbormaster: Fair enough.
+elif apple_status == "gave":
+	Harbormaster: Thanks again for the apple.
+else:
+	Harbormaster: I sure wish I had an apple.  Apparently there's an apple tree around here somewhere.
+
+=> END

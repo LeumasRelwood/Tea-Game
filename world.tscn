@@ -36,7 +36,7 @@
 [ext_resource type="PackedScene" uid="uid://c2oevl0c7sr5c" path="res://World/staircase.tscn" id="30_uu565"]
 [ext_resource type="Script" path="res://InventoryManagers/InventoryDataDryable.gd" id="31_b6grp"]
 [ext_resource type="Script" path="res://InventoryManagers/InventoryDataFinishedLeaves.gd" id="31_cwdqe"]
-[ext_resource type="PackedScene" uid="uid://cp8b380xreq0n" path="res://NPCs/CassidyNPC.tscn" id="31_ijka0"]
+[ext_resource type="PackedScene" uid="uid://d0oca72y35ap2" path="res://NPCs/CassidyNPC.tscn" id="31_ijka0"]
 [ext_resource type="Resource" uid="uid://bwl2w43e45pd8" path="res://Items/ITEMS/WhiteTea.tres" id="37_c1txj"]
 [ext_resource type="Resource" uid="uid://wm0q07dfhg0q" path="res://Items/ITEMS/BlackTea.tres" id="38_k53p4"]
 
@@ -1151,6 +1151,7 @@ position = Vector2(45, -26)
 tea_storage_inventory_data = SubResource("Resource_3qihw")
 
 [node name="Characters" type="Node2D" parent="Level/YSort"]
+y_sort_enabled = true
 
 [node name="Cassidy" parent="Level/YSort/Characters" instance=ExtResource("31_ijka0")]
 position = Vector2(202, 147)

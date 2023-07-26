@@ -1,23 +1,26 @@
 extends CharacterBody2D
 
-const bush = preload("res://World/bush.tscn")
 const PlayerHurtSound = preload("res://Music and Sounds/player_hurt_sound.tscn")
+const DeathEffect = preload("res://Effects/death_effect.tscn")
+const Ballon = preload("res://Dialogues/balloon.tscn")
 
-@export var MAX_SPEED = 100
+@export var dialogue_resource: DialogueResource
+@export var dialogue_start: String = "start"
+
+@export var MAX_SPEED = 10
 @export var ACCELERATION = 15
 @export var FRICTION = 15
 @export var ROLL_SPEED = 100
-
-signal toggle_tea_market
-signal toggle_inventory
+var knockbackvector = Vector2.ZERO
+@export var knockbackamount = 300
 
 enum {
-	MOVE,
-	ROLL,
-	ATTACK
+	IDLE,
+	WANDER,
+	TALKING
 }
 
-var state = MOVE
+var state = IDLE
 var roll_vector = Vector2.DOWN
 var onStair = 0
 var StairFactor = Vector2.ZERO
@@ -25,7 +28,6 @@ var StairAngle = Vector2.ZERO
 var input_vector = Vector2.ZERO
 
 @onready var global = get_node("/root/Global")
-@onready var playerstats = get_node("/root/PlayerStats")
 @onready var animation_player = $AnimationPlayer
 @onready var blink_animation_player = $BlinkAnimationPlayer
 @onready var animation_tree = $AnimationTree
@@ -34,36 +36,52 @@ var input_vector = Vector2.ZERO
 @onready var player_interact_area = $"Hitbox pivot/PlayerInteractArea"
 @onready var swordhitboxcollision = $"Hitbox pivot/SwordHitbox/CollisionShape2D"
 @onready var StairSensor = $StairSensor
-@export var inventory_data: InventoryData
-@export var equip_inventory_data: InventoryDataEquip
+@onready var wanderController = $WanderController
+@onready var stats = $Stats
 
 func _ready():
 	animation_tree.active = true
 	player_interact_area.knockback_vector = roll_vector
-	playerstats.no_health.connect(queue_free)
-	playerstats.player = self
+	check_for_state()
 
 func _physics_process(_delta):
 	match state:
-		MOVE:
-			move_state()
-		ROLL:
-			roll_state()
-		ATTACK:
-			attack_state()
+		IDLE:
+			velocity = velocity.move_toward(Vector2.ZERO, FRICTION)
+			animation_state.travel("Idle")
+			check_for_state()
+		WANDER:
+			wander_state()
+			check_for_state()
+		TALKING:
+			animation_state.travel("Idle")
 
 
-func move_state():
+func check_for_state():
+	if wanderController.get_time_left() == 0:
+		state = pick_random_state([IDLE, WANDER])
+		wanderController.start_wander_timer(randi_range(1, 2))
+
+func pick_random_state(state_list):
+	state_list.shuffle()
+	return state_list.pop_front()
+
+func wander_state():
+	var direction = global_position.direction_to(wanderController.target_position)
+	input_vector = direction
+	
+	if global_position.distance_to(wanderController.target_position) <= MAX_SPEED / 25:
+		velocity = velocity.move_toward(Vector2.ZERO, FRICTION)
+	#print(velocity)
+	
 	if onStair:
-		if Input.is_action_pressed("ui_right"):
+		if velocity.x > 0:
 			StairFactor = abs(StairAngle) * -1
-		elif Input.is_action_pressed("ui_left"):
+		elif velocity.x < 0:
 			StairFactor = abs(StairAngle)
 		else:
 			StairFactor = Vector2.ZERO
 	
-	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
-	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	input_vector += StairFactor
 	input_vector = input_vector.normalized()
 	
@@ -84,52 +102,9 @@ func move_state():
 	
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
 	move_and_slide()
-	
-	if Input.is_action_just_pressed("Attack"):
-		state = ATTACK
-		
-	if Input.is_action_just_pressed("Roll") and input_vector != Vector2.ZERO:
-		state = ROLL
-		
-	if Input.is_action_just_pressed("Interact"):
-		animation_state.travel("Interact")
-		
-	if Input.is_action_just_pressed("Plant"):
-		plant_bush()
-	
-	if Input.is_action_just_pressed("inventory"):
-		toggle_inventory.emit()
-	
-	if Input.is_action_just_pressed("TeaMarket"):
-		toggle_tea_market.emit()
-
-func roll_state():
-	velocity = roll_vector * ROLL_SPEED
-	move_and_slide()
-	animation_state.travel("Roll")
-	
-func roll_animation_finished():
-	velocity = velocity.move_toward(Vector2.ZERO, FRICTION)
-	state = MOVE
-
-func attack_state():
-	velocity = velocity.move_toward(Vector2.ZERO, FRICTION)
-	move_and_slide()
-	animation_state.travel("Attack")
 
 func _on_player_interact_area_area_entered(area):
 	area.player_interact_area()
-	
-func attack_animation_finished():
-	state = MOVE
-
-func plant_bush():
-	var Bush = bush.instantiate()
-	get_parent().add_child(Bush)
-	Bush.global_position = (global_position + input_vector)
-
-
-
 
 func _on_stair_sensor_area_entered(area):
 	onStair = true
@@ -139,20 +114,23 @@ func _on_stair_sensor_area_exited(area):
 	onStair = false
 	StairFactor = Vector2.ZERO
 
-func heal(heal_value: int) -> void:
-	if playerstats.health < playerstats.max_health:
-		playerstats.health += heal_value
-
 func _on_hurtbox_area_entered(area):
-	playerstats.health -= area.damage
-	hurtbox.start_invincibility(0.6)
-	hurtbox.create_hit_effect()
-	var playerHurtSound = PlayerHurtSound.instantiate()
-	get_tree().current_scene.add_child(playerHurtSound)
+	velocity = velocity.move_toward(Vector2.ZERO, FRICTION)
+	var direction = global_position.direction_to(area.get_parent().get_parent().global_position)
+	animation_tree.set("parameters/Idle/blend_position", direction)
+	
+	var balloon: Node = Ballon.instantiate()
+	get_tree().current_scene.add_child(balloon)
+	balloon.start(dialogue_resource, dialogue_start)
+	
+	state = TALKING
 
+func _on_stats_no_health():
+	queue_free()
+	var deathEffect = DeathEffect.instantiate()
+	get_parent().add_child(deathEffect)
+	deathEffect.global_position = global_position
 func _on_hurtbox_invincibility_started():
 	blink_animation_player.play("Start")
-
 func _on_hurtbox_invincibility_ended():
 	blink_animation_player.play("Stop")
-

@@ -5,12 +5,6 @@ extends Area2D
 
 const HitEffect = preload("res://Effects/hit_effect.tscn")
 
-func create_hit_effect():
-		var hitEffect = HitEffect.instantiate()
-		get_parent().add_child(hitEffect)
-		hitEffect.global_position = global_position
-
-
 signal player_interact
 signal invincibility_started
 signal invincibility_ended
@@ -24,6 +18,11 @@ signal invincibility_ended
 			emit_signal("invincibility_started")
 		else:
 			emit_signal("invincibility_ended")
+
+func create_hit_effect():
+		var hitEffect = HitEffect.instantiate()
+		get_parent().add_child(hitEffect)
+		hitEffect.global_position = global_position
 
 func _on_timer_timeout():
 	self.invincible = false
