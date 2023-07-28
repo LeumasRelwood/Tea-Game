@@ -9,6 +9,9 @@ font_size = 4
 custom_minimum_size = Vector2(16, 16)
 offset_right = 16.0
 offset_bottom = 16.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+mouse_filter = 1
 script = ExtResource("1_e1kox")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

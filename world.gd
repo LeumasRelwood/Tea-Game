@@ -10,6 +10,9 @@ extends Node2D
 @onready var tea_storage_inventory = $UI/InventoryInterface/TeaStorageInventory
 @onready var tea_market = $UI/TeaMarket
 
+var mouse_in_build_area = false
+@onready var buildable_tile_map: TileMap = $Level/DirtPathTileMap
+
 func _ready():
 	player.toggle_inventory.connect(toggle_inventory_interface)
 	player.toggle_tea_market.connect(toggle_tea_market)
@@ -134,3 +137,13 @@ func external_tea_storage_controller(external_inventory_owner = null):
 		tea_storage_inventory.show()
 	else:
 		inventory_interface.clear_external_tea_storage()
+
+
+
+func _on_buildable_area_mouse_entered():
+	mouse_in_build_area = true
+	print("buildable area entered")
+
+func _on_buildable_area_mouse_exited():
+	mouse_in_build_area = false
+	print("buildable area exited")

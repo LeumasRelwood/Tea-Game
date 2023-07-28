@@ -16,10 +16,13 @@ var external_inventory_owner = null
 @onready var tea_storage_inventory = $TeaStorageInventory
 
 func _physics_process(delta: float) -> void:
-	
-	if grabbed_slot.visible:
+	if grabbed_slot.visible and get_node("/root/World").mouse_in_build_area and grabbed_slot_data.item_data is ItemDataBuildable:
+		var mouse_tile = get_node("/root/World").buildable_tile_map.local_to_map(get_global_mouse_position())
+		var local_pos = get_node("/root/World").buildable_tile_map.map_to_local(mouse_tile)
+		grabbed_slot.global_position = get_node("/root/World").buildable_tile_map.to_global(local_pos) - Vector2(8, 8)
+	else:
 		grabbed_slot.global_position = get_global_mouse_position() + Vector2(1, 1)
-	
+
 	if external_inventory_owner \
 			and self.visible \
 			and external_inventory_owner.global_position.distance_to(PlayerStats.get_global_position()) > 40:
@@ -135,3 +138,17 @@ func update_grabbed_slot() -> void:
 		grabbed_slot.set_slot_data(grabbed_slot_data)
 	else:
 		grabbed_slot.hide()
+
+func _input(event):
+	if grabbed_slot_data and grabbed_slot_data.item_data is ItemDataBuildable \
+	and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed() \
+	and grabbed_slot.visible and get_node("/root/World").mouse_in_build_area:
+		var Slot_Object = load(grabbed_slot_data.item_data.object_scene)
+		var slot_object = Slot_Object.instantiate()
+		get_node("../../Level/YSort").add_child(slot_object)
+		slot_object.followMouse()
+		
+		grabbed_slot_data.quantity -= 1
+		if grabbed_slot_data.quantity == 0:
+			grabbed_slot_data = null
+		update_grabbed_slot()

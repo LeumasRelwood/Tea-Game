@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-const bush = preload("res://World/bush.tscn")
 const PlayerHurtSound = preload("res://Music and Sounds/player_hurt_sound.tscn")
 
 @export var MAX_SPEED = 100
@@ -87,15 +86,12 @@ func move_state():
 	
 	if Input.is_action_just_pressed("Attack"):
 		state = ATTACK
-		
+	
 	if Input.is_action_just_pressed("Roll") and input_vector != Vector2.ZERO:
 		state = ROLL
-		
+	
 	if Input.is_action_just_pressed("Interact"):
 		animation_state.travel("Interact")
-		
-	if Input.is_action_just_pressed("Plant"):
-		plant_bush()
 	
 	if Input.is_action_just_pressed("inventory"):
 		toggle_inventory.emit()
@@ -122,12 +118,6 @@ func _on_player_interact_area_area_entered(area):
 	
 func attack_animation_finished():
 	state = MOVE
-
-func plant_bush():
-	var Bush = bush.instantiate()
-	get_parent().add_child(Bush)
-	Bush.global_position = (global_position + input_vector)
-
 
 
 

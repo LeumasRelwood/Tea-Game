@@ -49,17 +49,22 @@ func _process(delta):
 		HarvestableArea2D.harvestable = false
 		growthprogress += delta * global.time_multiplier
 		growthstage = clamp(snapped(growthprogress, growthcomplete / numberofstages) / (growthcomplete / numberofstages), 1, numberofstages)
-
+	
 	if MouseSelected:
 		followMouse()
 
 func followMouse():
-	position = get_global_mouse_position() + mouse_offset
+	if get_node("/root/World").mouse_in_build_area:
+		var mouse_tile = get_node("/root/World").buildable_tile_map.local_to_map(get_global_mouse_position())
+		var local_pos = get_node("/root/World").buildable_tile_map.map_to_local(mouse_tile)
+		global_position = get_node("/root/World").buildable_tile_map.to_global(local_pos)
+	else:
+		global_position = get_global_mouse_position() + Vector2(1, 1)
 
 func _on_drag_box_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
 			mouse_offset = position - get_global_mouse_position()
 			MouseSelected = true
-		else:
+		elif get_node("/root/World").mouse_in_build_area:
 			MouseSelected = false

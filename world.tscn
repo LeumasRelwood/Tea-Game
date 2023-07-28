@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://633p3p0a1rtc"]
+[gd_scene load_steps=60 format=3 uid="uid://633p3p0a1rtc"]
 
 [ext_resource type="PackedScene" uid="uid://bpgrgqmsja4op" path="res://Player/player.tscn" id="1_2whqa"]
 [ext_resource type="Texture2D" uid="uid://b3j5ngdc1abij" path="res://World/GrassBackground.png" id="1_7grry"]
@@ -25,10 +25,11 @@
 [ext_resource type="Script" path="res://InventoryManagers/InventoryDataEquip.gd" id="16_es7mm"]
 [ext_resource type="PackedScene" uid="uid://csdjukr06mf1j" path="res://World/Interactables/chest.tscn" id="20_m8i2b"]
 [ext_resource type="Script" path="res://InventoryManagers/InventoryData.gd" id="21_csm58"]
-[ext_resource type="Resource" uid="uid://pmtlla62nuex" path="res://Items/ITEMS/TeaPlant.tres" id="22_65quw"]
 [ext_resource type="Script" path="res://InventoryManagers/SlotData.gd" id="23_gglij"]
 [ext_resource type="Resource" uid="uid://dyy4bd2uene0h" path="res://Items/ITEMS/FreshTeaLeaves.tres" id="24_vqjga"]
 [ext_resource type="PackedScene" uid="uid://28fco0feg03n" path="res://World/Interactables/withering_rack.tscn" id="26_ffchu"]
+[ext_resource type="Script" path="res://Items/Item_data.gd" id="27_7rigi"]
+[ext_resource type="Texture2D" uid="uid://d35pyygihhibx" path="res://Items/#1 - Transparent Icons.png" id="28_fpeda"]
 [ext_resource type="Script" path="res://InventoryManagers/InventoryDataWithering.gd" id="28_h5jv4"]
 [ext_resource type="Script" path="res://InventoryManagers/InventoryDataWithered.gd" id="29_caewd"]
 [ext_resource type="PackedScene" path="res://World/Interactables/drying_mat.tscn" id="29_h4bkp"]
@@ -900,9 +901,22 @@ sources/0 = SubResource("TileSetAtlasSource_mywjx")
 script = ExtResource("16_es7mm")
 slot_datas = Array[ExtResource("23_gglij")]([null, null])
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_4wdpb"]
+atlas = ExtResource("28_fpeda")
+region = Rect2(160, 384, 32, 32)
+
+[sub_resource type="Resource" id="Resource_ftj42"]
+script = ExtResource("27_7rigi")
+name = "Tea Plant"
+description = "Ready to be planted."
+stackable = false
+texture = SubResource("AtlasTexture_4wdpb")
+recipe = Array[ExtResource("23_gglij")]([])
+base_value = 0
+
 [sub_resource type="Resource" id="Resource_rfwx4"]
 script = ExtResource("23_gglij")
-item_data = ExtResource("22_65quw")
+item_data = SubResource("Resource_ftj42")
 quantity = 1
 
 [sub_resource type="Resource" id="Resource_dbqx2"]
@@ -1019,6 +1033,13 @@ visible = false
 modulate = Color(1, 1, 1, 0.45098)
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
+mouse_filter = 2
+
+[node name="MarginContainer" parent="UI/InventoryInterface/GrabbedSlot" index="0"]
+mouse_filter = 2
+
+[node name="TextureRect" parent="UI/InventoryInterface/GrabbedSlot/MarginContainer" index="0"]
+mouse_filter = 2
 
 [node name="TeaMarket" parent="UI" instance=ExtResource("14_auj6w")]
 visible = false
@@ -1033,7 +1054,16 @@ offset_bottom = 28.0
 text = "Timer"
 label_settings = ExtResource("12_l3byq")
 
-[node name="Level" type="Node" parent="."]
+[node name="Level" type="Node2D" parent="."]
+
+[node name="BuildableArea" type="Area2D" parent="Level"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level/BuildableArea"]
+scale = Vector2(1.15164, 0.992483)
+polygon = PackedVector2Array(7, -31, -95, -32, -95, 220, -35, 220, -34, 158, -2, 158, 0, 126)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Level/BuildableArea"]
+polygon = PackedVector2Array(383, -31, 384, 222, 288, 222, 288, 160, 353, 161, 352, 127, 324, 127, 322, 0, 289, 0, 290, -35)
 
 [node name="Background" type="Sprite2D" parent="Level"]
 texture_repeat = 2
@@ -1156,11 +1186,15 @@ y_sort_enabled = true
 [node name="Cassidy" parent="Level/YSort/Characters" instance=ExtResource("31_ijka0")]
 position = Vector2(202, 147)
 
+[connection signal="mouse_entered" from="Level/BuildableArea" to="." method="_on_buildable_area_mouse_entered"]
+[connection signal="mouse_exited" from="Level/BuildableArea" to="." method="_on_buildable_area_mouse_exited"]
+
 [editable path="Camera2D"]
 [editable path="UI/HealthUI"]
 [editable path="UI/InventoryInterface/ExternalInventory"]
 [editable path="UI/InventoryInterface/WitheringMenu"]
 [editable path="UI/InventoryInterface/DryingMenu"]
+[editable path="UI/InventoryInterface/GrabbedSlot"]
 [editable path="UI/TeaMarket"]
 [editable path="UI/TeaMarket/PanelContainer/RegionRambonia"]
 [editable path="UI/TeaMarket/PanelContainer/RegionWyrood"]
