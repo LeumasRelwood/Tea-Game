@@ -1184,7 +1184,7 @@ tea_storage_inventory_data = SubResource("Resource_3qihw")
 y_sort_enabled = true
 
 [node name="Cassidy" parent="Level/YSort/Characters" instance=ExtResource("31_ijka0")]
-position = Vector2(202, 147)
+position = Vector2(101, 50)
 
 [connection signal="mouse_entered" from="Level/BuildableArea" to="." method="_on_buildable_area_mouse_entered"]
 [connection signal="mouse_exited" from="Level/BuildableArea" to="." method="_on_buildable_area_mouse_exited"]

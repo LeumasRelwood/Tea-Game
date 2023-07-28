@@ -3,7 +3,8 @@ extends CanvasLayer
 
 const DIALOGUE_PITCHES = {
 	Nathan = 0.8,
-	Coco = 1
+	Coco = 1,
+	Harbormaster = 0.7
 }
 
 
@@ -45,7 +46,7 @@ var dialogue_line: DialogueLine:
 		
 		character_label.visible = not dialogue_line.character.is_empty()
 		character_label.text = tr(dialogue_line.character, "dialogue")
-		character_portrait.texture = load("res://examples/portraits_balloon/portraits/%s%s.png" % [dialogue_line.character.to_lower(), file_suffix])
+		character_portrait.texture = load("res://addons/dialogue_manager/examples/portraits_balloon/portraits/%s%s.png" % [dialogue_line.character.to_lower(), file_suffix])
 		
 		dialogue_label.modulate.a = 0
 		dialogue_label.custom_minimum_size.x = dialogue_label.get_parent().size.x - 1

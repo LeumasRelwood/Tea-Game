@@ -11,7 +11,7 @@ if has_met_harbormaster == false:
 	
 	- I wanted to ask you about shipping my goods. [if warehouse_unlocked == false].
 		=> unlock_shipping
-		
+
 
 elif has_met_harbormaster == true:
 	Harbormaster: [[Welcome back|Nice to see you again]], friend!  How's the business been going?
@@ -42,6 +42,8 @@ Harbormaster: That little shed on the end there could be yours for the modest su
 		Harbormaster: It ain't much, but it'll get you started for now. You're also gonna need a ship to transport your cargo.
 		Harbormaster: My son Freddy recently bought and restored an old schooner -- he may be taking on new clients right now.
 		Harbormaster: You should go speak with him about taking your tea on board his next journey.  You can probably find him working on the docks. Good luck with your farm!
+		
+		- Thanks, you too!
 		do Gamestate.conversation_finished()
 		=> END
 

@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 const PlayerHurtSound = preload("res://Music and Sounds/player_hurt_sound.tscn")
 const DeathEffect = preload("res://Effects/death_effect.tscn")
-const Ballon = preload("res://Dialogues/balloon.tscn")
+const Balloon = preload("res://addons/dialogue_manager/example_balloon/small_example_balloon.tscn")
 
 @export var dialogue_resource: DialogueResource
 @export var dialogue_start: String = "start"
@@ -119,7 +119,7 @@ func _on_hurtbox_area_entered(area):
 	var direction = global_position.direction_to(area.get_parent().get_parent().global_position)
 	animation_tree.set("parameters/Idle/blend_position", direction)
 	
-	var balloon: Node = Ballon.instantiate()
+	var balloon: Node = Balloon.instantiate()
 	get_tree().current_scene.add_child(balloon)
 	balloon.start(dialogue_resource, dialogue_start)
 	
