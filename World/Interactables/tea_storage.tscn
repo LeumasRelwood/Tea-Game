@@ -10,13 +10,13 @@ script = ExtResource("2_v68ma")
 slot_datas = Array[Resource("res://InventoryManagers/SlotData.gd")]([null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p60bi"]
-size = Vector2(72, 28)
+size = Vector2(72, 29)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wapcj"]
 size = Vector2(72, 65)
 
 [node name="TeaStorage" type="StaticBody2D" groups=["external_tea_storage"]]
-position = Vector2(0, 16)
+position = Vector2(0, -6)
 collision_mask = 2
 script = ExtResource("1_a3nbo")
 tea_storage_inventory_data = SubResource("Resource_55s1r")
@@ -29,7 +29,7 @@ region_enabled = true
 region_rect = Rect2(804.371, 64.6463, 1001.44, 798.873)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 19)
+position = Vector2(0, 18.5)
 shape = SubResource("RectangleShape2D_p60bi")
 
 [node name="Hurtbox" parent="." instance=ExtResource("3_xubos")]

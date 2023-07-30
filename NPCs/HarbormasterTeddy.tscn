@@ -1,22 +1,21 @@
-[gd_scene load_steps=81 format=3 uid="uid://bpgrgqmsja4op"]
+[gd_scene load_steps=83 format=3 uid="uid://dgik61ds5a1f"]
 
-[ext_resource type="Script" path="res://Player/Player.gd" id="1_a5v42"]
-[ext_resource type="Texture2D" uid="uid://c5cg2bkesfk8s" path="res://Player/Player.png" id="2_4s7uj"]
-[ext_resource type="Texture2D" uid="uid://vwkmp50rslsv" path="res://Shadows/MediumShadow.png" id="2_8sqgc"]
-[ext_resource type="Shader" path="res://Shaders/WhiteColorShader.gdshader" id="3_ki0jf"]
-[ext_resource type="PackedScene" uid="uid://db0v1bogdq074" path="res://Hit and Hurtboxes/hitbox.tscn" id="3_wcqxa"]
-[ext_resource type="AudioStream" uid="uid://b1guaq8offf6j" path="res://Music and Sounds/Evade.wav" id="4_nw45r"]
-[ext_resource type="AudioStream" uid="uid://bk7j8efnoa2um" path="res://Music and Sounds/Swipe.wav" id="4_t74y1"]
-[ext_resource type="PackedScene" uid="uid://cfh3c2h78s7kr" path="res://Hit and Hurtboxes/hurtbox.tscn" id="6_kr2dt"]
-[ext_resource type="Script" path="res://Player/StairSensor.gd" id="6_w0aix"]
-[ext_resource type="Script" path="res://Player/PlayerInteractArea.gd" id="8_cyia0"]
-[ext_resource type="Resource" uid="uid://cfgx3dyy6ncic" path="res://TEST/TestInventory.tres" id="9_bicv8"]
+[ext_resource type="Script" path="res://NPCs/BackgroundNPC.gd" id="1_cegl4"]
+[ext_resource type="PackedScene" uid="uid://bkw3inrq5wmei" path="res://Globals/PlayerStats.tscn" id="2_fxfl4"]
+[ext_resource type="Resource" uid="uid://d48pmpxvhmse" path="res://Dialogues/harbormaster.dialogue" id="2_icuh4"]
+[ext_resource type="Texture2D" uid="uid://vwkmp50rslsv" path="res://Shadows/MediumShadow.png" id="3_6c1ma"]
+[ext_resource type="Texture2D" uid="uid://d1ll73gdadxyv" path="res://NPCs/ambrose.jpg" id="3_nvs3r"]
+[ext_resource type="Texture2D" uid="uid://c5cg2bkesfk8s" path="res://Player/Player.png" id="4_j7n0h"]
+[ext_resource type="AudioStream" uid="uid://bk7j8efnoa2um" path="res://Music and Sounds/Swipe.wav" id="6_1632m"]
+[ext_resource type="AudioStream" uid="uid://b1guaq8offf6j" path="res://Music and Sounds/Evade.wav" id="6_vy1fs"]
+[ext_resource type="PackedScene" uid="uid://db0v1bogdq074" path="res://Hit and Hurtboxes/hitbox.tscn" id="7_6vvw0"]
+[ext_resource type="Script" path="res://Player/PlayerInteractArea.gd" id="8_qj5u6"]
+[ext_resource type="Resource" uid="uid://cfgx3dyy6ncic" path="res://TEST/TestInventory.tres" id="9_6fu0r"]
+[ext_resource type="Script" path="res://Player/StairSensor.gd" id="10_n7q6w"]
+[ext_resource type="PackedScene" uid="uid://cfh3c2h78s7kr" path="res://Hit and Hurtboxes/hurtbox.tscn" id="11_81ee8"]
+[ext_resource type="PackedScene" uid="uid://bjxt3n7l6olx8" path="res://Enemies/wander_controller.tscn" id="12_x0oa8"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4mqea"]
-shader = ExtResource("3_ki0jf")
-shader_parameter/active = false
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tdkpv"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v5m8t"]
 radius = 4.0
 height = 12.0
 
@@ -298,7 +297,7 @@ tracks/2/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("4_nw45r")
+"stream": ExtResource("6_vy1fs")
 }],
 "times": PackedFloat32Array(0.1)
 }
@@ -343,7 +342,7 @@ tracks/2/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("4_nw45r")
+"stream": ExtResource("6_vy1fs")
 }],
 "times": PackedFloat32Array(0.1)
 }
@@ -388,7 +387,7 @@ tracks/2/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("4_nw45r")
+"stream": ExtResource("6_vy1fs")
 }],
 "times": PackedFloat32Array(0.1)
 }
@@ -433,7 +432,7 @@ tracks/2/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("4_nw45r")
+"stream": ExtResource("6_vy1fs")
 }],
 "times": PackedFloat32Array(0.1)
 }
@@ -526,7 +525,7 @@ tracks/6/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("4_t74y1")
+"stream": ExtResource("6_1632m")
 }],
 "times": PackedFloat32Array(0.1)
 }
@@ -619,7 +618,7 @@ tracks/6/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("4_t74y1")
+"stream": ExtResource("6_1632m")
 }],
 "times": PackedFloat32Array(0.1)
 }
@@ -712,7 +711,7 @@ tracks/6/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("4_t74y1")
+"stream": ExtResource("6_1632m")
 }],
 "times": PackedFloat32Array(0.1)
 }
@@ -805,7 +804,7 @@ tracks/6/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("4_t74y1")
+"stream": ExtResource("6_1632m")
 }],
 "times": PackedFloat32Array(0.1)
 }
@@ -1189,7 +1188,7 @@ switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dlrhd"]
 
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_yuj0o"]
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_m2gwx"]
 states/Attack/node = SubResource("AnimationNodeBlendSpace2D_cgd5j")
 states/Attack/position = Vector2(195.231, -61)
 states/End/position = Vector2(708, 28)
@@ -1205,37 +1204,42 @@ states/Start/position = Vector2(144, 28)
 transitions = ["Idle", "Run", SubResource("AnimationNodeStateMachineTransition_44f67"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_hoali"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_lgiss"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_kallj"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_ykxui"), "Idle", "Roll", SubResource("AnimationNodeStateMachineTransition_x0fnx"), "Roll", "Idle", SubResource("AnimationNodeStateMachineTransition_ysbmu"), "Idle", "Interact", SubResource("AnimationNodeStateMachineTransition_lxrd7"), "Interact", "Idle", SubResource("AnimationNodeStateMachineTransition_8jks2"), "Interact", "Run", SubResource("AnimationNodeStateMachineTransition_syj0w"), "Run", "Interact", SubResource("AnimationNodeStateMachineTransition_dlrhd")]
 graph_offset = Vector2(-81.769, -119)
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_k1ymp"]
+[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_p0720"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_sclpx"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4824p"]
+height = 32.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ly2c7"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8a6sy"]
 radius = 3.0
 height = 12.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eednf"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_731rj"]
 radius = 5.0
 height = 16.0
 
-[node name="Player" type="CharacterBody2D"]
-collision_layer = 2
-script = ExtResource("1_a5v42")
-inventory_data = ExtResource("9_bicv8")
+[node name="Harbormaster Teddy" type="CharacterBody2D" groups=["NPCs"]]
+collision_mask = 2
+script = ExtResource("1_cegl4")
+dialogue_resource = ExtResource("2_icuh4")
+portrait = ExtResource("3_nvs3r")
+
+[node name="Stats" parent="." instance=ExtResource("2_fxfl4")]
+max_health = 2
 
 [node name="ShadowSprite" type="Sprite2D" parent="."]
 position = Vector2(0, 2)
-texture = ExtResource("2_8sqgc")
+texture = ExtResource("3_6c1ma")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_4mqea")
+modulate = Color(0.639216, 0.501961, 0.0313726, 1)
 position = Vector2(0, -9)
-texture = ExtResource("2_4s7uj")
+texture = ExtResource("4_j7n0h")
 hframes = 60
 frame = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = -1.5708
-shape = SubResource("CapsuleShape2D_tdkpv")
+shape = SubResource("CapsuleShape2D_v5m8t")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -1248,9 +1252,9 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource("AnimationNodeStateMachine_yuj0o")
+tree_root = SubResource("AnimationNodeStateMachine_m2gwx")
 anim_player = NodePath("../AnimationPlayer")
-parameters/playback = SubResource("AnimationNodeStateMachinePlayback_k1ymp")
+parameters/playback = SubResource("AnimationNodeStateMachinePlayback_p0720")
 parameters/Attack/blend_position = Vector2(0, 1)
 parameters/Idle/blend_position = Vector2(0, 1)
 parameters/Interact/blend_position = Vector2(-0.00286531, 0.00360656)
@@ -1259,45 +1263,46 @@ parameters/Run/blend_position = Vector2(0, 1)
 
 [node name="Hitbox pivot" type="Node2D" parent="."]
 position = Vector2(0, -4)
+rotation = -4.71239
 
-[node name="PlayerInteractArea" parent="Hitbox pivot" instance=ExtResource("3_wcqxa")]
-position = Vector2(13, 0)
-collision_layer = 2
-collision_mask = 8
-script = ExtResource("8_cyia0")
-inventory_data = ExtResource("9_bicv8")
+[node name="PlayerInteractArea" parent="Hitbox pivot" instance=ExtResource("7_6vvw0")]
+position = Vector2(15, 0)
+collision_layer = 64
+collision_mask = 32
+script = ExtResource("8_qj5u6")
+inventory_data = ExtResource("9_6fu0r")
 
 [node name="CollisionShape2D" parent="Hitbox pivot/PlayerInteractArea" index="0"]
-scale = Vector2(0.367, 0.367)
-shape = SubResource("CircleShape2D_sclpx")
+shape = SubResource("CapsuleShape2D_4824p")
 disabled = true
 
 [node name="StairSensor" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 128
-script = ExtResource("6_w0aix")
+script = ExtResource("10_n7q6w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StairSensor"]
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_ly2c7")
+shape = SubResource("CapsuleShape2D_8a6sy")
 
-[node name="Hurtbox" parent="." instance=ExtResource("6_kr2dt")]
-collision_layer = 4
-collision_mask = 16
+[node name="Hurtbox" parent="." instance=ExtResource("11_81ee8")]
+collision_layer = 32
+collision_mask = 64
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 position = Vector2(0, -5)
-shape = SubResource("CapsuleShape2D_eednf")
+shape = SubResource("CapsuleShape2D_731rj")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
-[connection signal="area_entered" from="Hitbox pivot/PlayerInteractArea" to="." method="_on_player_interact_area_area_entered"]
-[connection signal="area_entered" from="StairSensor" to="." method="_on_stair_sensor_area_entered"]
-[connection signal="area_exited" from="StairSensor" to="." method="_on_stair_sensor_area_exited"]
+[node name="WanderController" parent="." instance=ExtResource("12_x0oa8")]
+wander_range = 64
+
+[node name="Timer" parent="WanderController" index="0"]
+wait_time = 4.0
+
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
-[connection signal="invincibility_ended" from="Hurtbox" to="." method="_on_hurtbox_invincibility_ended"]
-[connection signal="invincibility_started" from="Hurtbox" to="." method="_on_hurtbox_invincibility_started"]
 
 [editable path="Hitbox pivot/PlayerInteractArea"]
 [editable path="Hurtbox"]
+[editable path="WanderController"]

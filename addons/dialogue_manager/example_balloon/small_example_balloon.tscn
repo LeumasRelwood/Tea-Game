@@ -1,7 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://b361p61jmf257"]
+[gd_scene load_steps=16 format=3 uid="uid://b361p61jmf257"]
 
 [ext_resource type="Script" path="res://addons/dialogue_manager/example_balloon/example_balloon.gd" id="1_4u26j"]
+[ext_resource type="Texture2D" uid="uid://lm5au3s24uxm" path="res://addons/dialogue_manager/assets/parchment texture.jpg" id="2_40dvh"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
+[ext_resource type="Theme" uid="uid://dbvmo5viem8os" path="res://UI/withering_menu.tres" id="2_bgpnu"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ojolx"]
+texture = ExtResource("2_40dvh")
+region_rect = Rect2(41.2715, 1.69247, 958.184, 546.615)
 
 [sub_resource type="Theme" id="Theme_isg48"]
 default_font_size = 9
@@ -26,20 +32,57 @@ content_margin_right = 2.0
 content_margin_bottom = 2.0
 draw_center = false
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_huhk5"]
+bg_color = Color(0.509804, 0.65098, 0.427451, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ba2mk"]
+bg_color = Color(0.666667, 0.803922, 0.584314, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y8k8t"]
+bg_color = Color(0.227451, 0.309804, 0.180392, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1kah4"]
+bg_color = Color(0.0666667, 0.101961, 0.0431373, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1bdqi"]
+bg_color = Color(0.658824, 0.8, 0.580392, 0.34902)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
 [node name="ExampleBalloon" type="CanvasLayer"]
 layer = 100
 script = ExtResource("1_4u26j")
 
-[node name="Balloon" type="ColorRect" parent="."]
-color = Color(0, 0, 0, 1)
+[node name="Balloon" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(300, 0)
+offset_right = 240.0
+offset_bottom = 126.0
+size_flags_vertical = 4
+theme = ExtResource("2_bgpnu")
+theme_override_styles/panel = SubResource("StyleBoxTexture_ojolx")
 
 [node name="Margin" type="MarginContainer" parent="Balloon"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 75.0
-grow_horizontal = 2
-theme_override_constants/margin_left = 20
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/margin_left = 79
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 10
@@ -54,6 +97,14 @@ modulate = Color(1, 1, 1, 0.501961)
 layout_mode = 2
 mouse_filter = 1
 theme = SubResource("Theme_isg48")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_colors/selection_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/table_odd_row_bg = Color(0, 0, 0, 1)
+theme_override_colors/table_even_row_bg = Color(0, 0, 0, 1)
+theme_override_colors/table_border = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 8
 bbcode_enabled = true
 text = "Character"
 fit_content = true
@@ -62,6 +113,14 @@ scroll_active = false
 [node name="DialogueLabel" parent="Balloon/Margin/VBox" instance=ExtResource("2_a8ve6")]
 layout_mode = 2
 theme = SubResource("Theme_owda0")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_colors/selection_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/table_odd_row_bg = Color(0, 0, 0, 1)
+theme_override_colors/table_even_row_bg = Color(0, 0, 0, 1)
+theme_override_colors/table_border = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 8
 text = "Dialogue"
 
 [node name="Responses" type="VBoxContainer" parent="Balloon/Margin/VBox"]
@@ -73,6 +132,14 @@ unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 2
 theme = SubResource("Theme_fakos")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_colors/selection_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/table_odd_row_bg = Color(0, 0, 0, 1)
+theme_override_colors/table_even_row_bg = Color(0, 0, 0, 1)
+theme_override_colors/table_border = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 8
 theme_override_styles/focus = SubResource("StyleBoxFlat_5d24i")
 theme_override_styles/normal = SubResource("StyleBoxFlat_oj3c8")
 bbcode_enabled = true
@@ -82,6 +149,34 @@ scroll_active = false
 shortcut_keys_enabled = false
 meta_underlined = false
 hint_underlined = false
+
+[node name="ResponseBackground" type="Button" parent="Balloon/Margin/VBox/ResponseTemplate"]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 16.0
+mouse_filter = 1
+theme_override_styles/normal = SubResource("StyleBoxFlat_huhk5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ba2mk")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_y8k8t")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_1kah4")
+theme_override_styles/focus = SubResource("StyleBoxFlat_1bdqi")
+
+[node name="MarginContainer" type="MarginContainer" parent="Balloon"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Portrait" type="TextureRect" parent="Balloon/MarginContainer"]
+custom_minimum_size = Vector2(55, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+expand_mode = 1
 
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
 [connection signal="resized" from="Balloon/Margin" to="." method="_on_margin_resized"]

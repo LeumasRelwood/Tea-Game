@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_8"
+type="Resource"
+uid="uid://c8wqk77fkc1vq"
+path="res://.godot/imported/background_npc.dialogue-52c8084bd50ea9a05d07f979a9e855ef.tres"
+
+[deps]
+
+source_file="res://Dialogues/background_npc.dialogue"
+dest_files=["res://.godot/imported/background_npc.dialogue-52c8084bd50ea9a05d07f979a9e855ef.tres"]
+
+[params]
+
+defaults=true

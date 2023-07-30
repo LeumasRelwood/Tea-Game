@@ -13,7 +13,8 @@ signal toggle_inventory
 enum {
 	MOVE,
 	ROLL,
-	ATTACK
+	ATTACK,
+	TALKING
 }
 
 var state = MOVE
@@ -39,6 +40,8 @@ var input_vector = Vector2.ZERO
 func _ready():
 	animation_tree.active = true
 	player_interact_area.knockback_vector = roll_vector
+	player_interact_area.conversation_start.connect(conversation_started)
+	player_interact_area.conversation_finish.connect(conversation_finished)
 	playerstats.no_health.connect(queue_free)
 	playerstats.player = self
 
@@ -50,6 +53,8 @@ func _physics_process(_delta):
 			roll_state()
 		ATTACK:
 			attack_state()
+		TALKING:
+			pass
 
 
 func move_state():
@@ -146,3 +151,9 @@ func _on_hurtbox_invincibility_started():
 func _on_hurtbox_invincibility_ended():
 	blink_animation_player.play("Stop")
 
+func conversation_started():
+	state = TALKING
+
+func conversation_finished():
+	await get_tree().process_frame
+	state = MOVE

@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://633p3p0a1rtc"]
+[gd_scene load_steps=61 format=3 uid="uid://bn3v20pcxftws"]
 
 [ext_resource type="PackedScene" uid="uid://bpgrgqmsja4op" path="res://Player/player.tscn" id="1_2whqa"]
 [ext_resource type="Texture2D" uid="uid://b3j5ngdc1abij" path="res://World/GrassBackground.png" id="1_7grry"]
@@ -37,9 +37,10 @@
 [ext_resource type="PackedScene" uid="uid://c2oevl0c7sr5c" path="res://World/staircase.tscn" id="30_uu565"]
 [ext_resource type="Script" path="res://InventoryManagers/InventoryDataDryable.gd" id="31_b6grp"]
 [ext_resource type="Script" path="res://InventoryManagers/InventoryDataFinishedLeaves.gd" id="31_cwdqe"]
-[ext_resource type="PackedScene" uid="uid://dgik61ds5a1f" path="res://NPCs/CassidyNPC.tscn" id="31_ijka0"]
+[ext_resource type="PackedScene" uid="uid://dgik61ds5a1f" path="res://NPCs/HarbormasterTeddy.tscn" id="31_ijka0"]
 [ext_resource type="Resource" uid="uid://bwl2w43e45pd8" path="res://Items/ITEMS/WhiteTea.tres" id="37_c1txj"]
 [ext_resource type="Resource" uid="uid://wm0q07dfhg0q" path="res://Items/ITEMS/BlackTea.tres" id="38_k53p4"]
+[ext_resource type="PackedScene" uid="uid://cavce8s7q5b7h" path="res://NPCs/background_npc.tscn" id="41_ctll0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vwtus"]
 texture = ExtResource("1_mky7q")
@@ -1156,6 +1157,7 @@ position = Vector2(13, 103)
 position = Vector2(-2, 51)
 
 [node name="Interactables" type="Node2D" parent="Level/YSort"]
+y_sort_enabled = true
 
 [node name="Chest" parent="Level/YSort/Interactables" instance=ExtResource("20_m8i2b")]
 position = Vector2(112, 8)
@@ -1185,6 +1187,9 @@ y_sort_enabled = true
 
 [node name="Cassidy" parent="Level/YSort/Characters" instance=ExtResource("31_ijka0")]
 position = Vector2(101, 50)
+
+[node name="BackgroundNPC" parent="Level/YSort/Characters" instance=ExtResource("41_ctll0")]
+position = Vector2(195, 27)
 
 [connection signal="mouse_entered" from="Level/BuildableArea" to="." method="_on_buildable_area_mouse_entered"]
 [connection signal="mouse_exited" from="Level/BuildableArea" to="." method="_on_buildable_area_mouse_exited"]

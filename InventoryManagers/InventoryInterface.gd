@@ -25,7 +25,7 @@ func _physics_process(delta: float) -> void:
 
 	if external_inventory_owner \
 			and self.visible \
-			and external_inventory_owner.global_position.distance_to(PlayerStats.get_global_position()) > 40:
+			and external_inventory_owner.global_position.distance_to(PlayerStats.get_global_position()) > 64:
 		if external_inventory.visible:
 			force_close_external.emit(external_inventory_owner)
 		elif withering_menu.visible:

@@ -1,0 +1,112 @@
+~ start
+
+if reputation == 0:
+	set random_dialog_options = 6
+	do random_dialog_choose()
+	
+	if random_dialog_line == 1:
+		=> beautiful_day_1
+	elif random_dialog_line == 2
+		=> new_here_1
+	elif random_dialog_line == 3
+		=> stranger_1
+	elif random_dialog_line == 4
+		=> whats_up_1
+	elif random_dialog_line == 5
+		=> um_1
+	elif random_dialog_line == 6
+		=> cant_talk_1
+
+#if reputation == 1:
+
+#if reputation == 2:
+
+#if reputation == 3:
+
+#if reputation == 4:
+
+#if reputation == 5:
+
+#if reputation == 6:
+
+#if reputation == 7:
+
+#if reputation == 8:
+
+#if reputation == 9:
+
+#if reputation == 10:
+
+
+
+~ beautiful_day_1
+{{npc_name}}: Beautiful day today, isn't it?
+- Yep, perfect weather for taking a stroll through town.
+	{{npc_name}}: While you're at it, you should check out the docks!  I love to go down there and watch them work during my lunch break.
+	- Thanks for the tip, {{npc_name}}.
+	do Gamestate.conversation_finished()
+	=> END 
+
+- I've seen better.
+	{{npc_name}}: Uh...nice to meet you, too...
+	do Gamestate.conversation_finished()
+	=> END
+	
+~ new_here_1
+{{npc_name}}: Hello, nice to meet you.  Are you new around here?
+- I grew up in the area, but it's been a while since I came into the city.
+	{{npc_name}}: Well, our doors are always open to newcomers.  Make yourself at home!
+	- I appreciate the warm welcome.  See you around!
+	do Gamestate.conversation_finished()
+	=> END 
+
+- That's none of your business.
+	{{npc_name}}: Fine!  I was just trying to be nice.
+	do Gamestate.conversation_finished()
+	=> END 
+	
+~ stranger_1
+{{npc_name}}: Hi stranger, what's going on?
+- Nothing much, just checking out the town.
+	{{npc_name}}: Sounds like fun!  Make sure you go down and check out the docks while you're here.  We've got the busiest harbor on the east coast!
+	- Thanks for the tip, {{npc_name}}.
+	do Gamestate.conversation_finished()
+	=> END 
+
+- I'm trying to find out who runs things down at the harbor.
+	{{npc_name}}: That would be Harbormaster Teddy.  He's a real great dude, you should go see him!
+	- Thanks for the lead, {{npc_name}}.
+	do Gamestate.conversation_finished()
+	=> END 
+	
+~ whats_up_1
+{{npc_name}}: Hey, what's up?
+- Not much, what's up with you?
+	{{npc_name}}: Just taking a stroll before I get back on the clock.  Work's been real busy lately.
+	- Alright, then, I'll let you be.  Good luck finishing your shift.
+	do Gamestate.conversation_finished()
+	=> END 
+
+- I'm trying to find out who runs things down at the harbor.
+	{{npc_name}}: That would be Harbormaster Teddy.  He's a real great dude, you should go see him!
+	- Thanks for the tip, {{npc_name}}.
+	do Gamestate.conversation_finished()
+	=> END 
+
+~ um_1
+{{npc_name}}: Um...can I help you?
+- I'm trying to find out who runs things down at the harbor.
+	{{npc_name}}: Tough luck.  Get lost, kid.
+	do Gamestate.conversation_finished()
+	=> END 
+
+- I'm new here and am trying to find my way around town.
+	{{npc_name}}: Good luck with that, kid.  Now, if you wouldn't mind moving along...
+	- OK, if you say so.
+	do Gamestate.conversation_finished()
+	=> END 
+
+~ cant_talk_1
+{{npc_name}}: I'm sorry, I can't talk right now.  I've gotta get back to work.
+do Gamestate.conversation_finished()
+=> END

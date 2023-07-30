@@ -6,7 +6,7 @@ const Balloon = preload("res://addons/dialogue_manager/example_balloon/small_exa
 
 @export var dialogue_resource: DialogueResource
 @export var dialogue_start: String = "start"
-
+@export var portrait: Texture
 @export var MAX_SPEED = 10
 @export var ACCELERATION = 15
 @export var FRICTION = 15
@@ -38,8 +38,14 @@ var input_vector = Vector2.ZERO
 @onready var StairSensor = $StairSensor
 @onready var wanderController = $WanderController
 @onready var stats = $Stats
+@onready var sprite_2d = $Sprite2D
+
+var npc_name_list : Array = ["Benjamin", "Alfred", "Earl", "Ralph", "Jacob", "Claude", "Harvey", "Augustus", "Chester", "Edgar", "Guy", "Luther", "Otto", "Theo", "Leonard", "Harold", "Julius", "Milton", "Horace", "Bernard", "Marion", "Nora", "Stella", "Rosa", "Effie", "Mae", "Ellen", "Nettie", "Sadie", "Maud", "Hazel", "Addie", "Harriet", "Olive", "Charolotte", "Eliza", "Amelia", "Jane", "Belle", "Eleanor"]
+@onready var npc_name = npc_name_list[randi()%npc_name_list.size()] #randi_range(0, npc_name_list.size())
 
 func _ready():
+	sprite_2d.modulate = Color.from_hsv((randi() % 12) / 12.0, 1, 1)
+	
 	animation_tree.active = true
 	player_interact_area.knockback_vector = roll_vector
 	check_for_state()
@@ -55,6 +61,7 @@ func _physics_process(_delta):
 			check_for_state()
 		TALKING:
 			animation_state.travel("Idle")
+
 
 
 func check_for_state():
@@ -114,19 +121,31 @@ func _on_stair_sensor_area_exited(area):
 	onStair = false
 	StairFactor = Vector2.ZERO
 
+var player
 func _on_hurtbox_area_entered(area):
-	velocity = velocity.move_toward(Vector2.ZERO, FRICTION)
-	var direction = global_position.direction_to(area.get_parent().get_parent().global_position)
-	animation_tree.set("parameters/Idle/blend_position", direction)
+	player = area
+	player.conversation_started()
+	Gamestate.npc_name = npc_name
 	
-	var balloon: Node = Balloon.instantiate()
-	get_tree().current_scene.add_child(balloon)
-	balloon.start(dialogue_resource, dialogue_start)
+	if state != TALKING:
+		velocity = velocity.move_toward(Vector2.ZERO, FRICTION)
+		var direction = global_position.direction_to(area.get_parent().get_parent().global_position)
+		animation_tree.set("parameters/Idle/blend_position", direction)
+		
+		var balloon: Node = Balloon.instantiate()
+		get_tree().current_scene.add_child(balloon)
+		balloon.start(dialogue_resource, dialogue_start, portrait)
+		
+		state = TALKING
 	
-	state = TALKING
+	elif state == TALKING:
+		get_tree().current_scene.get_node("ExampleBalloon").queue_free()
+		check_for_state()
 
 func conversation_finished():
-	check_for_state()
+	if state == TALKING:
+		player.conversation_finished()
+		check_for_state()
 
 func _on_stats_no_health():
 	queue_free()

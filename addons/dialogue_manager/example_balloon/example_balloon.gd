@@ -1,12 +1,14 @@
 extends CanvasLayer
 
-
-@onready var balloon: ColorRect = $Balloon
+@onready var balloon = $Balloon
+#@onready var balloon: ColorRect = $Balloon
 @onready var margin: MarginContainer = $Balloon/Margin
 @onready var character_label: RichTextLabel = $Balloon/Margin/VBox/CharacterLabel
 @onready var dialogue_label := $Balloon/Margin/VBox/DialogueLabel
 @onready var responses_menu: VBoxContainer = $Balloon/Margin/VBox/Responses
 @onready var response_template: RichTextLabel = %ResponseTemplate
+@onready var portrait = $Balloon/MarginContainer/Portrait
+
 
 ## The dialogue resource
 var resource: DialogueResource
@@ -26,7 +28,8 @@ var dialogue_line: DialogueLine:
 		is_waiting_for_input = false
 
 		if not next_dialogue_line:
-			queue_free()
+			await get_tree().process_frame
+			call_deferred("queue_free")
 			return
 
 		# Remove any previous responses
@@ -57,6 +60,7 @@ var dialogue_line: DialogueLine:
 				item.show()
 				responses_menu.add_child(item)
 
+
 		# Show our balloon
 		balloon.show()
 		will_hide_balloon = false
@@ -85,10 +89,9 @@ var dialogue_line: DialogueLine:
 func _ready() -> void:
 	response_template.hide()
 	balloon.hide()
-	balloon.custom_minimum_size.x = balloon.get_viewport_rect().size.x
+	#balloon.custom_minimum_size.x = balloon.get_viewport_rect().size.x
 
 	Engine.get_singleton("DialogueManager").mutated.connect(_on_mutated)
-
 
 func _unhandled_input(_event: InputEvent) -> void:
 	# Only the balloon is allowed to handle input while it's showing
@@ -96,7 +99,10 @@ func _unhandled_input(_event: InputEvent) -> void:
 
 
 ## Start some dialogue
-func start(dialogue_resource: DialogueResource, title: String, extra_game_states: Array = []) -> void:
+func start(dialogue_resource: DialogueResource, title: String, _portrait, extra_game_states: Array = []) -> void:
+	if _portrait:
+		portrait.texture = _portrait
+	
 	temporary_game_states = extra_game_states
 	is_waiting_for_input = false
 	resource = dialogue_resource
@@ -164,8 +170,11 @@ func handle_resize() -> void:
 	# Force a resize on only the height
 	balloon.size.y = 0
 	var viewport_size = balloon.get_viewport_rect().size
-	balloon.global_position = Vector2((viewport_size.x - balloon.size.x) * 0.5, viewport_size.y - balloon.size.y)
-
+	balloon.global_position = Vector2((viewport_size.x - balloon.size.x) * 0.5, (viewport_size.y - balloon.size.y) - 8)
+	
+	await get_tree().process_frame
+	for child in responses_menu.get_children():
+		child.get_child(0).size.y = child.size.y
 
 ### Signals
 

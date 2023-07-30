@@ -21,7 +21,7 @@ Global="*res://Globals/global.tscn"
 PlayerStats="*res://Globals/PlayerStats.tscn"
 GlobalTeaStorage="*res://Globals/global_tea_storage.tscn"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
-Gamestate="*res://Dialogues/Gamestate.gd"
+Gamestate="*res://Globals/Gamestate.gd"
 
 [dialogue_manager]
 
@@ -105,7 +105,7 @@ TeaMarket={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://Dialogues/main.dialogue", "res://Dialogues/harbormaster.dialogue", "res://addons/dialogue_manager/examples/dialogue.dialogue", "res://addons/dialogue_manager/examples/dialogue_for_point_n_click.dialogue", "res://addons/dialogue_manager/examples/dialogue_for_visual_novel.dialogue", "res://addons/dialogue_manager/examples/dialogue_with_input.dialogue")
+locale/translations_pot_files=PackedStringArray("res://Dialogues/main.dialogue", "res://Dialogues/harbormaster.dialogue", "res://addons/dialogue_manager/examples/dialogue.dialogue", "res://addons/dialogue_manager/examples/dialogue_for_point_n_click.dialogue", "res://addons/dialogue_manager/examples/dialogue_for_visual_novel.dialogue", "res://addons/dialogue_manager/examples/dialogue_with_input.dialogue", "res://Dialogues/background_npc.dialogue")
 
 [layer_names]
 

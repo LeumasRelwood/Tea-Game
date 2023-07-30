@@ -2,21 +2,31 @@
 
 if has_met_harbormaster == false:
 	Harbormaster: Hey pal, nice to meet ya! I'm the Harbormaster of this fine establishment. What brings you down here today?
-	set has_met_harbormaster = true
 	
 	- Just looking around, that's all.
 		Harbormaster: Alright then, I'll let you have at it.  Come back if you need anything.
+		set has_met_harbormaster = true
 		do Gamestate.conversation_finished()
 		=> END
 	
 	- I wanted to ask you about shipping my goods. [if warehouse_unlocked == false].
+		set has_met_harbormaster = true
 		=> unlock_shipping
-
 
 elif has_met_harbormaster == true:
 	Harbormaster: [[Welcome back|Nice to see you again]], friend!  How's the business been going?
 	
-	- I wanted to ask you about shipping my goods [if warehouse_unlocked == false].
+	- Great! Thanks for asking.
+		Harbormaster: That's good to hear.  Keep up the great work, kid!
+		do Gamestate.conversation_finished()
+		=> END
+	
+	- It's been better...
+		Harbormaster: Awe, that's too bad.  Keep your chin up and I'm sure things will come around for ya!
+		do Gamestate.conversation_finished()
+		=> END
+	
+	- I wanted to ask you about shipping my goods. [if warehouse_unlocked == false]
 		=> unlock_shipping
 
 do Gamestate.conversation_finished()
@@ -32,29 +42,44 @@ Harbormaster: What kind of business are you in, anyway?
 - I'm a new tea farmer here in Ched looking to expand my operations.
 
 Harbormaster: Tea? The Missus and I love a good cup of Oolong on the mornings!
-Harbormaster: I've actually got a bit of empty warehouse space I've been trying to fill, but it's going to cost you.
-Harbormaster: That little shed on the end there could be yours for the modest sum of 600 coins.  What do you say?
 
-- You've gotta spend money to make money.  Here you go! [if PlayerStats.coins >= 600]
-		set PlayerStats.coins -= 600
-		set warehouse_unlocked = true
-		Harbormaster: That's the right attitude! It's all yours, now. *HANDS OVER THE KEYS*
-		Harbormaster: It ain't much, but it'll get you started for now. You're also gonna need a ship to transport your cargo.
-		Harbormaster: My son Freddy recently bought and restored an old schooner -- he may be taking on new clients right now.
-		Harbormaster: You should go speak with him about taking your tea on board his next journey.  You can probably find him working on the docks. Good luck with your farm!
-		
-		- Thanks, you too!
-		do Gamestate.conversation_finished()
-		=> END
+if reputation >= 1:
+	Harbormaster: I've actually got a bit of empty warehouse space I've been trying to fill, but it's going to cost you.
+	Harbormaster: That little shed on the end there could be yours for the modest sum of 600 coins.  What do you say?
 
-- I'm not ready to spend that much at the moment, sorry.
+	- You've gotta spend money to make money.  Here you go! [if PlayerStats.coins >= 600]
+			set PlayerStats.coins -= 600
+			set warehouse_unlocked = true
+			Harbormaster: That's the right attitude! It's all yours, now. *HANDS OVER THE KEYS*
+			Harbormaster: It ain't much, but it'll get you started for now. You're also gonna need a ship to transport your cargo.
+			Harbormaster: My son Freddy recently bought and restored an old schooner -- he may be taking on new clients right now.
+			Harbormaster: You should go speak with him about taking your tea on board his next journey.  You can probably find him working on the docks. Good luck with your farm!
+			
+			- Thanks, you too!
+			do Gamestate.conversation_finished()
+			=> END
+
+	- I'm not ready to spend that much at the moment, sorry. [if PlayerStats.coins >= 600]
+			Harbormaster: That's ok, I understand.  Save up for a bit and come back when you're ready!
+			do Gamestate.conversation_finished()
+			=> END
+
+	- I haven't got that much at the moment, sorry. [if PlayerStats.coins < 600]
 		Harbormaster: That's ok, I understand.  Save up for a bit and come back when you're ready!
 		do Gamestate.conversation_finished()
 		=> END
 
 else:
-	- I haven't got that much at the moment, sorry.
-		Harbormaster: That's ok, I understand.  Save up for a bit and come back when you're ready!
+	Harbormaster: Unfortunately, it's against my policy to do business with brand new start-ups.
+	Harbormaster: You should work on raising your shop's reputation for a while, then come back and ask again.
+	Harbormaster: Only once I know you've established a trustworthy, profitable business can I put my own reputation on the line.
+	
+	- Understood, I'll get right to work!
+		Harbormaster: You'll get there before you know it, kid.  Nice meeting you and good luck!
 		do Gamestate.conversation_finished()
-
+		=> END
+	
+	- What! That's unbelievable!
+		Harbormaster: Sorry, kid.  That's the policy.
+		do Gamestate.conversation_finished()
 		=> END
