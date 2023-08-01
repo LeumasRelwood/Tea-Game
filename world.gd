@@ -142,8 +142,6 @@ func external_tea_storage_controller(external_inventory_owner = null):
 
 func _on_buildable_area_mouse_entered():
 	mouse_in_build_area = true
-	print("buildable area entered")
 
 func _on_buildable_area_mouse_exited():
 	mouse_in_build_area = false
-	print("buildable area exited")

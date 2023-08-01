@@ -2,20 +2,28 @@ extends Node2D
 
 signal time_changed(value)
 
-var time_multiplier = 2
+@export var initial_hour = 6
+@export var time_multiplier = 80
+
 var minute = 0
 var hour = 0
 var day = 1
 var month = 1
 var year = 1
+var canvas_value: float
+var time_of_day: float
 var displaytime = 0.0
 var time = 0:
 	set(value):
 		time = value
-		emit_signal("time_changed", value)
+		emit_signal("time_changed", minute, hour, day, month, year)
+
+const hours_per_day: float = 24
+const minutes_per_hour: float = 60
 
 func _ready():
 	randomize()
+	hour = initial_hour
 
 func _process(delta):
 	time += delta * time_multiplier
@@ -35,3 +43,12 @@ func _process(delta):
 					if month == 13:
 						month = 1
 						year += 1
+	
+	time_of_day = (hour / hours_per_day * 2) + (minute / minutes_per_hour / hours_per_day * 2)
+	
+	if time_of_day <= 1:
+		canvas_value = time_of_day
+	if time_of_day > 1:
+		canvas_value = 1 - (time_of_day-1)
+	
+	get_tree().call_group("DayNightModulator", "update_canvas", canvas_value)

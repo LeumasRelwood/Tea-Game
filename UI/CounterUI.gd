@@ -7,5 +7,5 @@ extends Control
 func _ready():
 	global.time_changed.connect(set_time)
 
-func set_time(value):
-	Clock.text = ("minute " + str(global.minute) + " hour " + str(global.hour) + " day " + str(global.day))
+func set_time(minute, hour, day, month, year):
+	Clock.text = ("minute " + str(minute) + " hour " + str(hour) + " day " + str(day))
