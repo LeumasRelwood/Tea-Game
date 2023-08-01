@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=3 uid="uid://bpgrgqmsja4op"]
+[gd_scene load_steps=82 format=3 uid="uid://bpgrgqmsja4op"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_a5v42"]
 [ext_resource type="Texture2D" uid="uid://c5cg2bkesfk8s" path="res://Player/Player.png" id="2_4s7uj"]
@@ -19,6 +19,9 @@ shader_parameter/active = false
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tdkpv"]
 radius = 4.0
 height = 12.0
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_eympf"]
+polygon = PackedVector2Array(0, 3, -8, 1, -9, -9, -4, -19, 4, -17, 7, -7, 6, 1)
 
 [sub_resource type="Animation" id="Animation_ts6yr"]
 resource_name = "InteractDown"
@@ -1237,6 +1240,9 @@ frame = 2
 rotation = -1.5708
 shape = SubResource("CapsuleShape2D_tdkpv")
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_eympf")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_hdsmb")
@@ -1259,11 +1265,12 @@ parameters/Run/blend_position = Vector2(0, 1)
 
 [node name="Hitbox pivot" type="Node2D" parent="."]
 position = Vector2(0, -4)
+rotation = -4.71239
 
 [node name="PlayerInteractArea" parent="Hitbox pivot" instance=ExtResource("3_wcqxa")]
 position = Vector2(13, 0)
-collision_layer = 2
-collision_mask = 8
+collision_layer = 64
+collision_mask = 32
 script = ExtResource("8_cyia0")
 inventory_data = ExtResource("9_bicv8")
 

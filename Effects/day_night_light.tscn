@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://yp4yqs7tmgiq"]
+
+[ext_resource type="Script" path="res://TEST/global_light.gd" id="1_1olqf"]
+[ext_resource type="Texture2D" uid="uid://couh5gekidsp" path="res://Effects/daynightcycle-gradient-texture.tres" id="2_qcic2"]
+
+[node name="DirectionalLight2DDayNight" type="DirectionalLight2D" groups=["DayNightModulator"]]
+color = Color(0.219608, 0.219608, 0.219608, 1)
+height = 0.55
+script = ExtResource("1_1olqf")
+gradient = ExtResource("2_qcic2")
+
+[node name="DirectionalLight2DSubtract" type="DirectionalLight2D" parent="."]
+color = Color(0.952941, 0.835294, 0.627451, 1)
+blend_mode = 1

@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://raunba8bl10j"]
+
+[ext_resource type="Texture2D" uid="uid://ckgkla2bdr2r4" path="res://TEST/lantern.png" id="1_epp56"]
+
+[sub_resource type="Gradient" id="Gradient_04rsy"]
+offsets = PackedFloat32Array(0.0792079, 0.722772)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xsdq5"]
+gradient = SubResource("Gradient_04rsy")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oy5jk"]
+
+[node name="LanternTest" type="StaticBody2D"]
+scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.0516899, 0.0516898)
+texture = ExtResource("1_epp56")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+z_index = 1
+color = Color(0.929412, 0.815686, 0.537255, 1)
+energy = 0.7
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
+shadow_filter = 1
+shadow_filter_smooth = 5.4
+texture = SubResource("GradientTexture2D_xsdq5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 14)
+rotation = 1.5708
+scale = Vector2(0.558, 0.558)
+shape = SubResource("CapsuleShape2D_oy5jk")
