@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c2oevl0c7sr5c"]
 
 [ext_resource type="Script" path="res://World/Staircase.gd" id="1_7go0t"]
-[ext_resource type="Texture2D" uid="uid://bjlfhky3d32ex" path="res://World/tree.png" id="2_nk5gf"]
+[ext_resource type="Texture2D" uid="uid://bjlfhky3d32ex" path="res://World/Tree.png" id="2_nk5gf"]
 
 [node name="Staircase" type="Area2D"]
 collision_layer = 128

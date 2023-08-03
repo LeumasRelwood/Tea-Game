@@ -33,6 +33,7 @@ radius = 14.0
 collision_mask = 2
 script = ExtResource("1_d2thc")
 slot_data = SubResource("Resource_mxl04")
+growth_time = 4.0
 metadata/_edit_group_ = true
 
 [node name="ShadowSprite" type="Sprite2D" parent="."]

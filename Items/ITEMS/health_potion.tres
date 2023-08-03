@@ -31,3 +31,4 @@ stackable = true
 texture = SubResource("AtlasTexture_uon66")
 recipe = Array[ExtResource("2_1emjt")]([SubResource("Resource_f8mwn"), SubResource("Resource_j1053")])
 base_value = 0
+withering_time = 0

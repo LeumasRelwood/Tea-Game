@@ -18,3 +18,4 @@ stackable = true
 texture = SubResource("AtlasTexture_5q0f4")
 recipe = Array[Resource("res://InventoryManagers/SlotData.gd")]([])
 base_value = 65
+withering_time = 0

@@ -21,7 +21,7 @@ font_size = 8
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1qm3q"]
 
-[node name="WitheringMenu" type="Control"]
+[node name="WitheringMenu" type="Control" groups=["inventory_menus"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

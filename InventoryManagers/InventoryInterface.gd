@@ -14,6 +14,7 @@ var external_inventory_owner = null
 @onready var withering_menu = $WitheringMenu
 @onready var drying_menu = $DryingMenu
 @onready var tea_storage_inventory = $TeaStorageInventory
+var buildable_tile_map
 
 func _physics_process(delta: float) -> void:
 	if grabbed_slot.visible and get_node("/root/World").mouse_in_build_area and grabbed_slot_data.item_data is ItemDataBuildable:
@@ -145,8 +146,11 @@ func _input(event):
 	and grabbed_slot.visible and get_node("/root/World").mouse_in_build_area:
 		var Slot_Object = load(grabbed_slot_data.item_data.object_scene)
 		var slot_object = Slot_Object.instantiate()
-		get_node("../../Level/YSort").add_child(slot_object)
+		get_node("../../").get_child(3).get_node("YSort").add_child(slot_object)
+		slot_object.owner = get_node("../../").get_child(3)
 		slot_object.followMouse()
+		if slot_object.has_method("planted"):
+			slot_object.planted()
 		
 		grabbed_slot_data.quantity -= 1
 		if grabbed_slot_data.quantity == 0:

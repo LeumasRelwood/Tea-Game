@@ -12,6 +12,9 @@ extends Control
 var external_inv_owner
 
 func _ready():
+	connect_signals()
+
+func connect_signals():
 	inventory_input.is_start_button_disabled.connect(is_start_button_disabled)
 	inventory_output.is_start_button_disabled.connect(is_start_button_disabled)
 	for node in get_tree().get_nodes_in_group("external_drying"):

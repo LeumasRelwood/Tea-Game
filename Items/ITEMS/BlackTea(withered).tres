@@ -12,6 +12,7 @@ description = ""
 stackable = false
 recipe = Array[ExtResource("2_l2s6y")]([])
 base_value = 0
+withering_time = 0
 
 [sub_resource type="Resource" id="Resource_pwdqh"]
 script = ExtResource("2_l2s6y")
@@ -39,3 +40,4 @@ stackable = true
 texture = SubResource("AtlasTexture_rv0r0")
 recipe = Array[ExtResource("2_l2s6y")]([SubResource("Resource_agj2f")])
 base_value = 0
+withering_time = 3

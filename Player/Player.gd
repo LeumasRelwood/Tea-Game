@@ -127,12 +127,14 @@ func attack_animation_finished():
 
 
 func _on_stair_sensor_area_entered(area):
-	onStair = true
-	StairAngle = area.StairAngle
+	if "StairAngle" in area:
+		onStair = true
+		StairAngle = area.StairAngle
 
 func _on_stair_sensor_area_exited(area):
-	onStair = false
-	StairFactor = Vector2.ZERO
+	if "StairAngle" in area:
+		onStair = false
+		StairFactor = Vector2.ZERO
 
 func heal(heal_value: int) -> void:
 	if playerstats.health < playerstats.max_health:

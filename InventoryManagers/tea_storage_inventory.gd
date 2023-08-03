@@ -8,6 +8,9 @@ extends Control
 var external_inv_owner
 
 func _ready():
+	connect_signals()
+
+func connect_signals():
 	for node in get_tree().get_nodes_in_group("external_tea_storage"):
 		node.update_tea_storage_inventory.connect(update_tea_storage_inventory)
 		node.set_external_inventory_owner.connect(set_external_inventory_owner)

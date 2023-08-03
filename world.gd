@@ -11,9 +11,14 @@ extends Node2D
 @onready var tea_market = $UI/TeaMarket
 
 var mouse_in_build_area = false
-@onready var buildable_tile_map: TileMap = $Level/DirtPathTileMap
+var buildable_tile_map: TileMap
 
 func _ready():
+	connect_signals()
+
+func connect_signals():
+	for p in get_tree().get_nodes_in_group("player"):
+		player = p
 	player.toggle_inventory.connect(toggle_inventory_interface)
 	player.toggle_tea_market.connect(toggle_tea_market)
 	inventory_interface.set_player_inventory_data(player.inventory_data)
@@ -22,6 +27,16 @@ func _ready():
 	inventory_interface.force_close_withering.connect(toggle_external_withering_interface)
 	inventory_interface.force_close_drying.connect(toggle_external_drying_interface)
 	inventory_interface.force_close_tea_storage.connect(toggle_external_tea_storage)
+
+	for node in get_tree().get_nodes_in_group("inventory_menus"):
+		node.connect_signals()
+
+	for node in get_tree().get_nodes_in_group("buildable_tile_maps"):
+		buildable_tile_map = node
+
+	for node in get_tree().get_nodes_in_group("buildable_areas"):
+		node.mouse_entered.connect(_on_buildable_area_mouse_entered)
+		node.mouse_exited.connect(_on_buildable_area_mouse_exited)
 	
 	for node in get_tree().get_nodes_in_group("external_inventory"):
 		node.toggle_external_inventory.connect(toggle_external_inventory_interface)
@@ -34,6 +49,9 @@ func _ready():
 		
 	for node in get_tree().get_nodes_in_group("external_tea_storage"):
 		node.toggle_external_tea_storage.connect(toggle_external_tea_storage)
+	
+	for node in get_tree().get_nodes_in_group("map_changers"):
+		node.change_map.connect(change_map)
 
 func toggle_tea_market():
 	tea_market.visible = not tea_market.visible
@@ -145,3 +163,24 @@ func _on_buildable_area_mouse_entered():
 
 func _on_buildable_area_mouse_exited():
 	mouse_in_build_area = false
+
+func change_map(current_map_path, next_map_path, player_position):
+	save_scene(current_map_path)
+	call_deferred("change_map_deferred", next_map_path, player_position)
+	inventory_interface.external_inventory_owner = null
+
+func change_map_deferred(next_map_path, player_position):
+	var next_map = load(next_map_path)
+	get_child(3).call_deferred("free")
+	var level = next_map.instantiate()
+	add_child(level)
+	
+	for player in get_tree().get_nodes_in_group("player"):
+		player.position = player_position
+	
+	connect_signals()
+
+func save_scene(current_map_path):
+	var scene = PackedScene.new()
+	scene.pack(get_child(3))
+	ResourceSaver.save(scene, current_map_path)

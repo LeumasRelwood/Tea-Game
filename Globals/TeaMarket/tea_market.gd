@@ -33,17 +33,18 @@ const Regional_Offer = preload("res://Globals/TeaMarket/regional_offers.gd")
 func _ready():
 	if not selected_city:
 		panel_container_2.visible = false
-	
+		
+	shipments.text = str("Available Shipments: " + str(available_shipments))
+	connect_signals()
+	market_update()
+
+func connect_signals():
 	for node in get_tree().get_nodes_in_group("regions"):
 		node.add_buy_offer.connect(add_buy_offer)
 		node.city_selected.connect(city_selected)
 	
 	for node in get_tree().get_nodes_in_group("teamarket_selectors"):
 		node.recipe_selected.connect(recipe_item_selected)
-	
-	shipments.text = str("Available Shipments: " + str(available_shipments))
-	
-	market_update()
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("MarketUpdateTest"):
