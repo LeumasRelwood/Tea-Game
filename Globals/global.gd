@@ -2,7 +2,7 @@ extends Node2D
 
 signal time_changed(value)
 
-@export var initial_hour = 1
+@export var initial_hour = 14
 @export var time_multiplier = 20
 
 var total_minutes = 0
@@ -45,9 +45,14 @@ func _process(delta):
 					if month == 13:
 						month = 1
 						year += 1
-						
-		#if day_minutes == 1440:
-			#day_minutes = 0
+	
+	if hour >= 7 and hour < 17:
+		get_tree().call_group("lights", "turn_off")
+	if hour >= 17 or hour < 7:
+		get_tree().call_group("lights", "turn_on")
+		
+	#if day_minutes == 1440:
+		#day_minutes = 0
 	
 	time_of_day = (hour / hours_per_day * 2) + (minute / minutes_per_hour / hours_per_day * 2)
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cw1nro4m5s36s"]
+[gd_scene load_steps=22 format=3 uid="uid://cw1nro4m5s36s"]
 
 [ext_resource type="PackedScene" uid="uid://cj462uvp4qvw7" path="res://camera_2d.tscn" id="1_36ixg"]
 [ext_resource type="Script" path="res://world.gd" id="1_pt8ln"]
@@ -9,13 +9,44 @@
 [ext_resource type="PackedScene" uid="uid://bxeaagi03qgrd" path="res://InventoryManagers/hot_bar_inventory.tscn" id="9_44i8a"]
 [ext_resource type="PackedScene" uid="uid://dqjdvsaiqyrp3" path="res://InventoryManagers/drying_menu.tscn" id="9_wpncx"]
 [ext_resource type="PackedScene" uid="uid://bw18h83q04os2" path="res://UI/CounterUI.tscn" id="10_b0lvu"]
-[ext_resource type="PackedScene" uid="uid://dvaoa8lonnk82" path="res://UI/health_ui.tscn" id="12_foq2c"]
 [ext_resource type="LabelSettings" uid="uid://7tgrr3fs72vu" path="res://UI/GUI labels.tres" id="12_l3byq"]
 [ext_resource type="PackedScene" uid="uid://ba3yi75by7i4l" path="res://InventoryManagers/tea_storage_inventory.tscn" id="12_wk2ft"]
 [ext_resource type="PackedScene" uid="uid://dxqqtfb3ex7oe" path="res://Globals/TeaMarket/tea_market.tscn" id="14_auj6w"]
 [ext_resource type="PackedScene" uid="uid://bxy5ij2avjjte" path="res://InventoryManagers/inventory.tscn" id="15_j1xfr"]
 [ext_resource type="PackedScene" uid="uid://cdhphmp2x8dta" path="res://Maps/HomeFarm.tscn" id="16_7o0ng"]
+[ext_resource type="Shader" path="res://Effects/Water.gdshader" id="16_rwsln"]
 [ext_resource type="PackedScene" uid="uid://yp4yqs7tmgiq" path="res://Effects/day_night_light.tscn" id="43_8rxbt"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_gu36h"]
+noise_type = 4
+seed = 2
+frequency = 0.107
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fewtj"]
+seamless = true
+noise = SubResource("FastNoiseLite_gu36h")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cfa0h"]
+noise_type = 4
+seed = 2
+frequency = 0.08
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tc8bw"]
+seamless = true
+noise = SubResource("FastNoiseLite_cfa0h")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4tw18"]
+resource_local_to_scene = true
+shader = ExtResource("16_rwsln")
+shader_parameter/scroll = Vector2(0.05, 0.05)
+shader_parameter/scroll2 = Vector2(-0.025, -0.025)
+shader_parameter/distortion_strength = 0.2
+shader_parameter/tone_color = Color(0.678431, 0.505882, 0.945098, 1)
+shader_parameter/top_color = Color(0.772549, 0.772549, 0.772549, 1)
+shader_parameter/light_start = 0.275
+shader_parameter/light_end = 0.4
+shader_parameter/noise = SubResource("NoiseTexture2D_fewtj")
+shader_parameter/noise2 = SubResource("NoiseTexture2D_tc8bw")
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_pt8ln")
@@ -32,10 +63,6 @@ position = Vector2(426, 362)
 [node name="DirectionalLight2DDayNight" parent="." instance=ExtResource("43_8rxbt")]
 
 [node name="UI" type="CanvasLayer" parent="."]
-
-[node name="HealthUI" parent="UI" instance=ExtResource("12_foq2c")]
-offset_top = 16.0
-offset_bottom = 29.0
 
 [node name="HotBarInventory" parent="UI" instance=ExtResource("9_44i8a")]
 offset_left = 100.0
@@ -114,8 +141,10 @@ label_settings = ExtResource("12_l3byq")
 
 [node name="DirtPathTileMap" parent="Level" index="3" groups=["buildable_tile_maps"]]
 
+[node name="Water" parent="Level" index="7"]
+material = SubResource("ShaderMaterial_4tw18")
+
 [editable path="Camera2D"]
-[editable path="UI/HealthUI"]
 [editable path="UI/InventoryInterface/ExternalInventory"]
 [editable path="UI/InventoryInterface/WitheringMenu"]
 [editable path="UI/InventoryInterface/DryingMenu"]
@@ -129,3 +158,4 @@ label_settings = ExtResource("12_l3byq")
 [editable path="UI/TeaMarket/PanelContainer/RegionNivalis"]
 [editable path="UI/CounterUI"]
 [editable path="Level"]
+[editable path="Level/Water"]

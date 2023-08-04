@@ -1,45 +1,49 @@
-[gd_scene load_steps=52 format=3]
+[gd_scene load_steps=62 format=3]
 
-[ext_resource type="Texture2D" path="res://World/GrassBackground.png" id="1_lxvo4"]
-[ext_resource type="Texture2D" path="res://World/CliffTileset.png" id="2_bjacb"]
-[ext_resource type="Texture2D" path="res://World/DirtTileset.png" id="3_birhk"]
-[ext_resource type="PackedScene" path="res://World/staircase.tscn" id="4_a5gq7"]
-[ext_resource type="Script" path="res://World/Staircase.gd" id="5_g2af5"]
-[ext_resource type="PackedScene" path="res://Player/player.tscn" id="6_3k7gh"]
-[ext_resource type="Script" path="res://Player/Player.gd" id="7_js7pu"]
-[ext_resource type="Resource" path="res://TEST/TestInventory.tres" id="8_keil6"]
-[ext_resource type="Script" path="res://InventoryManagers/InventoryDataEquip.gd" id="9_ip8fv"]
-[ext_resource type="PackedScene" path="res://World/bush.tscn" id="10_bs4ck"]
-[ext_resource type="Script" path="res://World/bush.gd" id="11_hkvh0"]
-[ext_resource type="Resource" path="res://Items/ITEMS/FreshTeaLeaves.tres" id="12_irdw7"]
-[ext_resource type="Script" path="res://InventoryManagers/SlotData.gd" id="13_76q2o"]
-[ext_resource type="PackedScene" path="res://World/grass.tscn" id="14_vb7hn"]
-[ext_resource type="Script" path="res://World/grass.gd" id="15_76hjb"]
-[ext_resource type="PackedScene" path="res://Enemies/bat.tscn" id="16_01bmw"]
-[ext_resource type="Script" path="res://Enemies/bat.gd" id="17_rgsbn"]
-[ext_resource type="PackedScene" path="res://World/tree.tscn" id="18_c2p3w"]
-[ext_resource type="Script" path="res://World/tree.gd" id="19_x0gal"]
-[ext_resource type="PackedScene" path="res://World/Interactables/chest.tscn" id="20_wojo1"]
-[ext_resource type="Script" path="res://World/Interactables/chest.gd" id="21_6ghs6"]
-[ext_resource type="Script" path="res://InventoryManagers/InventoryData.gd" id="22_1iaf3"]
-[ext_resource type="Script" path="res://Items/Item_data.gd" id="23_xikto"]
-[ext_resource type="Texture2D" path="res://Items/#1 - Transparent Icons.png" id="24_wy8h7"]
-[ext_resource type="PackedScene" path="res://World/Interactables/withering_rack.tscn" id="25_lotpm"]
-[ext_resource type="Script" path="res://World/Interactables/withering_rack.gd" id="26_wqegb"]
-[ext_resource type="Script" path="res://InventoryManagers/InventoryDataWithering.gd" id="27_oagub"]
-[ext_resource type="Script" path="res://InventoryManagers/InventoryDataWithered.gd" id="28_r3x6u"]
-[ext_resource type="PackedScene" path="res://World/Interactables/drying_mat.tscn" id="29_wace6"]
-[ext_resource type="Script" path="res://World/Interactables/drying_mat.gd" id="30_bxl8u"]
-[ext_resource type="Script" path="res://InventoryManagers/InventoryDataDryable.gd" id="31_d5rg2"]
-[ext_resource type="Script" path="res://InventoryManagers/InventoryDataFinishedLeaves.gd" id="32_g0qir"]
-[ext_resource type="PackedScene" path="res://TEST/lantern_test.tscn" id="33_mo63a"]
-[ext_resource type="PackedScene" path="res://Maps/map_changer.tscn" id="34_0hfxg"]
-[ext_resource type="Script" path="res://Maps/MapChanger.gd" id="35_f5nfj"]
+[ext_resource type="Texture2D" path="res://World/GrassBackground.png" id="1_eohl0"]
+[ext_resource type="Texture2D" path="res://World/CliffTileset.png" id="2_r8vgl"]
+[ext_resource type="Texture2D" path="res://World/DirtTileset.png" id="3_xg70a"]
+[ext_resource type="PackedScene" path="res://World/staircase.tscn" id="4_asrw8"]
+[ext_resource type="Script" path="res://World/Staircase.gd" id="5_1ptwd"]
+[ext_resource type="PackedScene" path="res://Player/player.tscn" id="6_nnfmm"]
+[ext_resource type="Script" path="res://Player/Player.gd" id="7_2l563"]
+[ext_resource type="Resource" path="res://TEST/TestInventory.tres" id="8_n6ofw"]
+[ext_resource type="Script" path="res://InventoryManagers/InventoryDataEquip.gd" id="9_rcsmh"]
+[ext_resource type="PackedScene" path="res://World/bush.tscn" id="10_jvjjr"]
+[ext_resource type="Script" path="res://World/bush.gd" id="11_qe66e"]
+[ext_resource type="Resource" path="res://Items/ITEMS/FreshTeaLeaves.tres" id="12_wv3g1"]
+[ext_resource type="Script" path="res://InventoryManagers/SlotData.gd" id="13_b2swh"]
+[ext_resource type="PackedScene" path="res://World/grass.tscn" id="14_rbaam"]
+[ext_resource type="Script" path="res://World/grass.gd" id="15_fml67"]
+[ext_resource type="PackedScene" path="res://World/tree.tscn" id="16_xoonm"]
+[ext_resource type="Script" path="res://World/tree.gd" id="17_8ji3q"]
+[ext_resource type="PackedScene" path="res://World/Interactables/chest.tscn" id="18_63jf5"]
+[ext_resource type="Script" path="res://World/Interactables/chest.gd" id="19_fwbda"]
+[ext_resource type="Script" path="res://InventoryManagers/InventoryData.gd" id="20_lxkke"]
+[ext_resource type="Script" path="res://Items/Item_data.gd" id="21_6diip"]
+[ext_resource type="Texture2D" path="res://Items/#1 - Transparent Icons.png" id="22_ociud"]
+[ext_resource type="PackedScene" path="res://World/Interactables/withering_rack.tscn" id="23_ujn78"]
+[ext_resource type="Script" path="res://World/Interactables/withering_rack.gd" id="24_wpli5"]
+[ext_resource type="Script" path="res://InventoryManagers/InventoryDataWithering.gd" id="25_xlnwf"]
+[ext_resource type="Script" path="res://InventoryManagers/InventoryDataWithered.gd" id="26_jg2mr"]
+[ext_resource type="PackedScene" path="res://World/Interactables/drying_mat.tscn" id="27_lypbr"]
+[ext_resource type="Script" path="res://World/Interactables/drying_mat.gd" id="28_weo5o"]
+[ext_resource type="Script" path="res://InventoryManagers/InventoryDataDryable.gd" id="29_esxu5"]
+[ext_resource type="Script" path="res://InventoryManagers/InventoryDataFinishedLeaves.gd" id="30_hep52"]
+[ext_resource type="PackedScene" path="res://TEST/lantern_test.tscn" id="31_gaj1i"]
+[ext_resource type="Script" path="res://Effects/lantern_test.gd" id="32_o7k17"]
+[ext_resource type="PackedScene" path="res://Maps/map_changer.tscn" id="33_jtiwj"]
+[ext_resource type="Script" path="res://Maps/MapChanger.gd" id="34_3d1iq"]
+[ext_resource type="PackedScene" path="res://World/water.tscn" id="35_6nppl"]
+[ext_resource type="Shader" path="res://Effects/Water.gdshader" id="36_8s81o"]
+[ext_resource type="Texture2D" path="res://icon.svg" id="37_p4ktu"]
+[ext_resource type="Script" path="res://World/water.gd" id="38_jsd1n"]
+[ext_resource type="Texture2D" path="res://TEST/sea_bed.png" id="39_1rhos"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dlgtb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mywjx"]
-texture = ExtResource("2_bjacb")
+texture = ExtResource("2_r8vgl")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/terrain_set = 0
@@ -555,7 +559,7 @@ terrain_set_0/terrain_0/color = Color(0.501961, 0.941176, 0.25098, 1)
 sources/0 = SubResource("TileSetAtlasSource_mywjx")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vwtus"]
-texture = ExtResource("3_birhk")
+texture = ExtResource("3_xg70a")
 0:0/0 = 0
 0:0/0/terrain_set = 0
 0:0/0/terrain = 0
@@ -893,57 +897,92 @@ terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_vwtus")
 
 [sub_resource type="Resource" id="Resource_v1qws"]
-script = ExtResource("9_ip8fv")
-slot_datas = Array[ExtResource("13_76q2o")]([null, null])
+script = ExtResource("9_rcsmh")
+slot_datas = Array[ExtResource("13_b2swh")]([null, null])
 
 [sub_resource type="Resource" id="Resource_mxl04"]
-script = ExtResource("13_76q2o")
-item_data = ExtResource("12_irdw7")
+script = ExtResource("13_b2swh")
+item_data = ExtResource("12_wv3g1")
 quantity = 1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4wdpb"]
-atlas = ExtResource("24_wy8h7")
+atlas = ExtResource("22_ociud")
 region = Rect2(160, 384, 32, 32)
 
 [sub_resource type="Resource" id="Resource_ftj42"]
-script = ExtResource("23_xikto")
+script = ExtResource("21_6diip")
 name = "Tea Plant"
 description = "Ready to be planted."
 stackable = false
 texture = SubResource("AtlasTexture_4wdpb")
-recipe = Array[ExtResource("13_76q2o")]([])
+recipe = Array[ExtResource("13_b2swh")]([])
 base_value = 0
 withering_time = 0
 
 [sub_resource type="Resource" id="Resource_rfwx4"]
-script = ExtResource("13_76q2o")
+script = ExtResource("13_b2swh")
 item_data = SubResource("Resource_ftj42")
 quantity = 1
 
 [sub_resource type="Resource" id="Resource_dbqx2"]
-script = ExtResource("13_76q2o")
-item_data = ExtResource("12_irdw7")
+script = ExtResource("13_b2swh")
+item_data = ExtResource("12_wv3g1")
 quantity = 25
 
 [sub_resource type="Resource" id="Resource_fji6u"]
-script = ExtResource("22_1iaf3")
-slot_datas = Array[ExtResource("13_76q2o")]([SubResource("Resource_rfwx4"), SubResource("Resource_dbqx2"), null, null])
+script = ExtResource("20_lxkke")
+slot_datas = Array[ExtResource("13_b2swh")]([SubResource("Resource_rfwx4"), SubResource("Resource_dbqx2"), null, null])
 
 [sub_resource type="Resource" id="Resource_ooqwl"]
-script = ExtResource("27_oagub")
-slot_datas = Array[ExtResource("13_76q2o")]([null])
+script = ExtResource("25_xlnwf")
+slot_datas = Array[ExtResource("13_b2swh")]([null])
 
 [sub_resource type="Resource" id="Resource_w4y4r"]
-script = ExtResource("28_r3x6u")
-slot_datas = Array[ExtResource("13_76q2o")]([null])
+script = ExtResource("26_jg2mr")
+slot_datas = Array[ExtResource("13_b2swh")]([null])
 
 [sub_resource type="Resource" id="Resource_eekdn"]
-script = ExtResource("31_d5rg2")
-slot_datas = Array[ExtResource("13_76q2o")]([null])
+script = ExtResource("29_esxu5")
+slot_datas = Array[ExtResource("13_b2swh")]([null])
 
 [sub_resource type="Resource" id="Resource_x3xmn"]
-script = ExtResource("32_g0qir")
-slot_datas = Array[ExtResource("13_76q2o")]([null])
+script = ExtResource("30_hep52")
+slot_datas = Array[ExtResource("13_b2swh")]([null])
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cy4bq"]
+noise_type = 2
+frequency = 0.08
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_gu36h"]
+noise_type = 4
+seed = 2
+frequency = 0.107
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fewtj"]
+seamless = true
+noise = SubResource("FastNoiseLite_gu36h")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cfa0h"]
+noise_type = 4
+seed = 2
+frequency = 0.08
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tc8bw"]
+seamless = true
+noise = SubResource("FastNoiseLite_cfa0h")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_alkxl"]
+resource_local_to_scene = true
+shader = ExtResource("36_8s81o")
+shader_parameter/scroll = Vector2(0.05, 0.05)
+shader_parameter/scroll2 = Vector2(-0.025, -0.025)
+shader_parameter/distortion_strength = 0.2
+shader_parameter/tone_color = Color(0.678431, 0.505882, 0.945098, 1)
+shader_parameter/top_color = Color(0.772549, 0.772549, 0.772549, 1)
+shader_parameter/light_start = 0.275
+shader_parameter/light_end = 0.4
+shader_parameter/noise = SubResource("NoiseTexture2D_fewtj")
+shader_parameter/noise2 = SubResource("NoiseTexture2D_tc8bw")
 
 [node name="Level" type="Node2D"]
 
@@ -951,15 +990,12 @@ slot_datas = Array[ExtResource("13_76q2o")]([null])
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BuildableArea"]
 scale = Vector2(1.15164, 0.992483)
-polygon = PackedVector2Array(7, -31, -95, -32, -95, 220, -35, 220, -34, 158, -2, 158, 0, 126)
-
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="BuildableArea"]
-polygon = PackedVector2Array(383, -31, 384, 222, 288, 222, 288, 160, 288, -33)
+polygon = PackedVector2Array(52.0996, 189.424, 52.0996, 155.166, 166.719, 156.174, 167.587, 190.431, 221.423, 189.424, 224.897, 220.659, 332.569, 222.674, 332.569, -30.2272, -81.6227, -32.2424, -81.6227, 222.674, -0.868327, 222.674, -0.868327, 191.439)
 
 [node name="Background" type="Sprite2D" parent="."]
 texture_repeat = 2
 position = Vector2(165, 89)
-texture = ExtResource("1_lxvo4")
+texture = ExtResource("1_eohl0")
 region_enabled = true
 region_rect = Rect2(0, 0, 958.272, 628.454)
 
@@ -967,35 +1003,35 @@ region_rect = Rect2(0, 0, 958.272, 628.454)
 tile_set = SubResource("TileSet_l080q")
 cell_quadrant_size = 32
 format = 2
-layer_0/tile_data = PackedInt32Array(-65540, 655360, 2, 458764, 458752, 3, 393228, 196608, 1, 327692, 196608, 1, 262156, 196608, 1, 196620, 196608, 1, 131084, 196608, 1, 65548, 196608, 1, -131060, 65536, 3, -131061, 65536, 3, -131062, 65536, 3, -131063, 65536, 3, -131064, 65536, 3, -131065, 65536, 3, -131066, 65536, 3, -131067, 65536, 3, -131068, 65536, 3, -131069, 65536, 3, -131070, 65536, 3, -131071, 65536, 3, -131072, 65536, 3, -65537, 65536, 3, -65538, 65536, 3, -65539, 65536, 3, -131076, 196608, 0, 524284, 327680, 3, 524285, 65536, 3, 524286, 65536, 3, 458763, 65536, 3, 458762, 65536, 3, 458761, 65536, 3, 524287, 65536, 3, 458752, 393216, 3, 458753, 65536, 2, 458754, 65536, 2, 458755, 65536, 2, 458756, 65536, 2, 458757, 65536, 2, 458758, 65536, 2, 458759, 327680, 3, 458760, 65536, 3, 393216, 0, 0, 393217, 65536, 0, 393218, 393216, 2, 327682, 0, 0, 327683, 65536, 0, 327684, 65536, 0, 327685, 131072, 0, 393221, 327680, 2, 393220, 65536, 1, 393219, 65536, 1, 393223, 131072, 0, 393222, 65536, 0, 12, 262144, 0, 13, 65536, 3, 14, 65536, 3, -131059, 65536, 3, -131058, 65536, 3, -131057, 131072, 3, 15, 131072, 3, 524283, 0, 2, 458747, 0, 1, 393211, 0, 1, 327675, 0, 1, 262139, 0, 1, 196603, 0, 1, 131067, 0, 1, 65531, 0, 1, -5, 0, 1, -65541, 0, 0, -4, 131072, 1, 65532, 131072, 1, 131068, 131072, 1, 196604, 131072, 1, 262140, 131072, 1, 327676, 131072, 1, 393212, 131072, 1, 458748, 131072, 1)
+layer_0/tile_data = PackedInt32Array(-65540, 327680, 0, 458764, 458752, 3, 393228, 196608, 1, 327692, 196608, 1, 262156, 196608, 1, 196620, 196608, 1, 131084, 196608, 1, 65548, 196608, 1, -131060, 65536, 3, -131061, 65536, 3, -131062, 65536, 3, -131063, 65536, 3, -131064, 65536, 3, -131065, 65536, 3, -131066, 65536, 3, -131067, 65536, 3, -131068, 65536, 3, -131069, 65536, 3, -131070, 65536, 3, -131071, 65536, 3, -131072, 65536, 3, -65537, 65536, 3, -65538, 65536, 3, -65539, 65536, 3, 524284, 327680, 3, 524285, 65536, 3, 524286, 65536, 3, 458763, 65536, 3, 458762, 65536, 3, 458761, 65536, 3, 524287, 65536, 3, 458752, 393216, 3, 458753, 65536, 2, 458754, 65536, 2, 458755, 65536, 2, 458756, 65536, 2, 458757, 65536, 2, 458758, 65536, 2, 458759, 327680, 3, 458760, 65536, 3, 393216, 0, 0, 393217, 65536, 0, 393218, 393216, 2, 327682, 0, 0, 327683, 65536, 0, 327684, 65536, 0, 327685, 131072, 0, 393221, 327680, 2, 393220, 65536, 1, 393219, 65536, 1, 393223, 131072, 0, 393222, 65536, 0, 12, 262144, 0, 13, 65536, 3, 14, 65536, 3, -131059, 65536, 3, -131058, 65536, 3, -131057, 131072, 3, 15, 131072, 3, 524283, 0, 2, 458747, 0, 1, 393211, 0, 1, 327675, 0, 1, 262139, 0, 1, 196603, 0, 1, 131067, 0, 1, 65531, 0, 1, -5, 0, 1, -65541, 0, 0, -4, 131072, 1, 65532, 131072, 1, 131068, 131072, 1, 196604, 131072, 1, 262140, 131072, 1, 327676, 131072, 1, 393212, 131072, 1, 458748, 131072, 1)
 
 [node name="DirtPathTileMap" type="TileMap" parent="." groups=["buildable_tile_maps"]]
 tile_set = SubResource("TileSet_sdia7")
 format = 2
 layer_0/tile_data = PackedInt32Array(327690, 131072, 1, 393226, 131072, 1, 458762, 327680, 2, 524298, 65536, 2, 524299, 65536, 2, 524300, 65536, 2, 458764, 65536, 0, 458763, 65536, 0, 393232, 0, 1, 458768, 393216, 4, 524304, 0, 1, 589840, 0, 1, 458767, 65536, 3, 458769, 131072, 1, 327696, 0, 1, 458766, 65536, 3, 458765, 327680, 0, 262154, 131072, 1, 196618, 327680, 0, 196617, 393216, 0, 196616, 65536, 3, 196615, 65536, 3, 196614, 262144, 3, 131078, 458752, 0, 262160, 0, 1, 196624, 0, 1, 131088, 0, 1, 65552, 0, 1, 16, 393216, 0, 655376, 0, 1, 458761, 393216, 2, 458760, 65536, 0, 458759, 65536, 0, 458758, 65536, 0, 458757, 65536, 0, 458756, 65536, 0, 458755, 327680, 2, 458754, 393216, 4, 458753, 65536, 3, 458752, 65536, 3, 524297, 65536, 2, 524296, 65536, 2, 524295, 65536, 2, 524294, 65536, 2, 524293, 65536, 2, 524292, 65536, 2, 524291, 65536, 2, 524290, 262144, 1, 262144, 65536, 3, 262145, 458752, 0, 327681, 262144, 3, 327682, 458752, 0, 393218, 262144, 2, 393219, 131072, 0, 196619, 458752, 3, 131083, 262144, 0, 131084, 458752, 3, 65548, 262144, 0, 65549, 458752, 3, 13, 262144, 0, 14, 65536, 3, 15, 65536, 3, 131077, 65536, 3, 131076, 262144, 3, 65540, 458752, 0, 65539, 65536, 3, 65538, 262144, 3, 2, 458752, 0, 1, 65536, 3, 0, 65536, 3, 655362, 196608, 1, 589826, 196608, 1, 720898, 196608, 2, 720912, 0, 1, 524287, 0, 3, 327679, 0, 3, 65535, 0, 3, 524301, 131072, 2, 393233, 131072, 1, 327697, 131072, 1, 262161, 131072, 1, 196625, 131072, 1, 131089, 131072, 1, 65553, 327680, 1, 17, 65536, 0, 524305, 131072, 1, 589841, 131072, 1, 655377, 131072, 1, 720913, 131072, 1, 786449, 131072, 1, 786448, 0, 1, 393225, 0, 1, 327689, 0, 1, 262153, 0, 1, 851984, 0, 2, 851985, 131072, 2, -65517, 0, 1, -65516, 327680, 1, -65515, 65536, 2, -65514, 65536, 2, -65513, 65536, 2, -65512, 65536, 2, -65511, 65536, 2, -65510, 65536, 2, -65509, 131072, 2, -131045, 131072, 0, -131046, 65536, 0, -131047, 65536, 0, -131048, 65536, 0, -131049, 65536, 0, -131050, 65536, 0, -131051, 65536, 0, -131052, 65536, 0, -131053, 0, 0, 18, 65536, 0, 19, 393216, 2, 20, 131072, 1, 65556, 131072, 2, 65555, 65536, 2, 65554, 65536, 2)
 
-[node name="Staircase" type="Area2D" parent="." instance=ExtResource("4_a5gq7")]
+[node name="Staircase" type="Area2D" parent="." instance=ExtResource("4_asrw8")]
 position = Vector2(119, 118)
 collision_layer = 128
 collision_mask = 2
-script = ExtResource("5_g2af5")
+script = ExtResource("5_1ptwd")
 StairAngle = Vector2(0, 1)
 metadata/_edit_group_ = true
 
 [node name="YSort" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="Player" type="CharacterBody2D" parent="YSort" groups=["player"] instance=ExtResource("6_3k7gh")]
-position = Vector2(411.509, -15.3152)
+[node name="Player" type="CharacterBody2D" parent="YSort" groups=["player"] instance=ExtResource("6_nnfmm")]
+position = Vector2(410.617, -15.1235)
 collision_layer = 2
 motion_mode = 1
-velocity = Vector2(100, -0.000784849)
-script = ExtResource("7_js7pu")
+velocity = Vector2(100, -0.0497125)
+script = ExtResource("7_2l563")
 MAX_SPEED = 100
 ACCELERATION = 15
 FRICTION = 15
 ROLL_SPEED = 100
-inventory_data = ExtResource("8_keil6")
+inventory_data = ExtResource("8_n6ofw")
 equip_inventory_data = SubResource("Resource_v1qws")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/Player"]
@@ -1004,10 +1040,10 @@ remote_path = NodePath("../../../../Camera2D")
 [node name="Bushes" type="Node2D" parent="YSort"]
 y_sort_enabled = true
 
-[node name="Bush" type="StaticBody2D" parent="YSort/Bushes" instance=ExtResource("10_bs4ck")]
+[node name="Bush" type="StaticBody2D" parent="YSort/Bushes" instance=ExtResource("10_jvjjr")]
 position = Vector2(48, 48)
 collision_mask = 2
-script = ExtResource("11_hkvh0")
+script = ExtResource("11_qe66e")
 slot_data = SubResource("Resource_mxl04")
 growth_time = 4.0
 planted_time_minutes = 0
@@ -1016,96 +1052,85 @@ metadata/_edit_group_ = true
 [node name="Grass" type="Node2D" parent="YSort"]
 y_sort_enabled = true
 
-[node name="Grass" type="Node2D" parent="YSort/Grass" instance=ExtResource("14_vb7hn")]
+[node name="Grass" type="Node2D" parent="YSort/Grass" instance=ExtResource("14_rbaam")]
 position = Vector2(64, 96)
-script = ExtResource("15_76hjb")
+script = ExtResource("15_fml67")
 
-[node name="Grass2" type="Node2D" parent="YSort/Grass" instance=ExtResource("14_vb7hn")]
+[node name="Grass2" type="Node2D" parent="YSort/Grass" instance=ExtResource("14_rbaam")]
 position = Vector2(48, 80)
-script = ExtResource("15_76hjb")
+script = ExtResource("15_fml67")
 
-[node name="Grass3" type="Node2D" parent="YSort/Grass" instance=ExtResource("14_vb7hn")]
+[node name="Grass3" type="Node2D" parent="YSort/Grass" instance=ExtResource("14_rbaam")]
 position = Vector2(64, 80)
-script = ExtResource("15_76hjb")
+script = ExtResource("15_fml67")
 
-[node name="Grass4" type="Node2D" parent="YSort/Grass" instance=ExtResource("14_vb7hn")]
+[node name="Grass4" type="Node2D" parent="YSort/Grass" instance=ExtResource("14_rbaam")]
 position = Vector2(176, 96)
-script = ExtResource("15_76hjb")
+script = ExtResource("15_fml67")
 
-[node name="Grass5" type="Node2D" parent="YSort/Grass" instance=ExtResource("14_vb7hn")]
+[node name="Grass5" type="Node2D" parent="YSort/Grass" instance=ExtResource("14_rbaam")]
 position = Vector2(176, 80)
-script = ExtResource("15_76hjb")
+script = ExtResource("15_fml67")
 
-[node name="Grass6" type="Node2D" parent="YSort/Grass" instance=ExtResource("14_vb7hn")]
+[node name="Grass6" type="Node2D" parent="YSort/Grass" instance=ExtResource("14_rbaam")]
 position = Vector2(192, 96)
-script = ExtResource("15_76hjb")
+script = ExtResource("15_fml67")
 
-[node name="Grass7" type="Node2D" parent="YSort/Grass" instance=ExtResource("14_vb7hn")]
+[node name="Grass7" type="Node2D" parent="YSort/Grass" instance=ExtResource("14_rbaam")]
 position = Vector2(144, 144)
-script = ExtResource("15_76hjb")
+script = ExtResource("15_fml67")
 
-[node name="Grass8" type="Node2D" parent="YSort/Grass" instance=ExtResource("14_vb7hn")]
+[node name="Grass8" type="Node2D" parent="YSort/Grass" instance=ExtResource("14_rbaam")]
 position = Vector2(128, 144)
-script = ExtResource("15_76hjb")
+script = ExtResource("15_fml67")
 
-[node name="Grass11" type="Node2D" parent="YSort/Grass" instance=ExtResource("14_vb7hn")]
+[node name="Grass11" type="Node2D" parent="YSort/Grass" instance=ExtResource("14_rbaam")]
 position = Vector2(48, 160)
-script = ExtResource("15_76hjb")
+script = ExtResource("15_fml67")
 
-[node name="Grass12" type="Node2D" parent="YSort/Grass" instance=ExtResource("14_vb7hn")]
+[node name="Grass12" type="Node2D" parent="YSort/Grass" instance=ExtResource("14_rbaam")]
 position = Vector2(48, 144)
-script = ExtResource("15_76hjb")
+script = ExtResource("15_fml67")
 
-[node name="Grass13" type="Node2D" parent="YSort/Grass" instance=ExtResource("14_vb7hn")]
+[node name="Grass13" type="Node2D" parent="YSort/Grass" instance=ExtResource("14_rbaam")]
 position = Vector2(64, 144)
-script = ExtResource("15_76hjb")
-
-[node name="Bats" type="Node2D" parent="YSort"]
-
-[node name="Bat" type="CharacterBody2D" parent="YSort/Bats" instance=ExtResource("16_01bmw")]
-position = Vector2(31.3592, 137.586)
-collision_layer = 16
-script = ExtResource("17_rgsbn")
-knockbackamount = 250
-acceleration = 15
-max_speed = 60
-friction = 15
-
-[node name="Bat2" type="CharacterBody2D" parent="YSort/Bats" instance=ExtResource("16_01bmw")]
-position = Vector2(241.623, 166.839)
-collision_layer = 16
-velocity = Vector2(9.53674e-07, -2.86102e-06)
-script = ExtResource("17_rgsbn")
-knockbackamount = 250
-acceleration = 15
-max_speed = 60
-friction = 15
+script = ExtResource("15_fml67")
 
 [node name="Trees" type="Node2D" parent="YSort"]
 y_sort_enabled = true
 
-[node name="Tree" type="StaticBody2D" parent="YSort/Trees" instance=ExtResource("18_c2p3w")]
+[node name="Tree" type="StaticBody2D" parent="YSort/Trees" instance=ExtResource("16_xoonm")]
 position = Vector2(13, 103)
 collision_mask = 2
-script = ExtResource("19_x0gal")
+script = ExtResource("17_8ji3q")
 
-[node name="Tree2" type="StaticBody2D" parent="YSort/Trees" instance=ExtResource("18_c2p3w")]
+[node name="Tree2" type="StaticBody2D" parent="YSort/Trees" instance=ExtResource("16_xoonm")]
 position = Vector2(-2, 51)
 collision_mask = 2
-script = ExtResource("19_x0gal")
+script = ExtResource("17_8ji3q")
+
+[node name="Tree3" type="StaticBody2D" parent="YSort/Trees" instance=ExtResource("16_xoonm")]
+position = Vector2(107, 80)
+collision_mask = 2
+script = ExtResource("17_8ji3q")
+
+[node name="Tree4" type="StaticBody2D" parent="YSort/Trees" instance=ExtResource("16_xoonm")]
+position = Vector2(233, 156)
+collision_mask = 2
+script = ExtResource("17_8ji3q")
 
 [node name="Interactables" type="Node2D" parent="YSort"]
 y_sort_enabled = true
 
-[node name="Chest" type="StaticBody2D" parent="YSort/Interactables" groups=["external_inventory"] instance=ExtResource("20_wojo1")]
+[node name="Chest" type="StaticBody2D" parent="YSort/Interactables" groups=["external_inventory"] instance=ExtResource("18_63jf5")]
 position = Vector2(72, -15)
-script = ExtResource("21_6ghs6")
+script = ExtResource("19_fwbda")
 inventory_data = SubResource("Resource_fji6u")
 
-[node name="WitheringRack" type="StaticBody2D" parent="YSort/Interactables" groups=["external_withering"] instance=ExtResource("25_lotpm")]
+[node name="WitheringRack" type="StaticBody2D" parent="YSort/Interactables" groups=["external_withering"] instance=ExtResource("23_ujn78")]
 position = Vector2(238, -15)
 collision_mask = 2
-script = ExtResource("26_wqegb")
+script = ExtResource("24_wpli5")
 inventory_data_input = SubResource("Resource_ooqwl")
 inventory_data_output = SubResource("Resource_w4y4r")
 type = "Bamboo Withering Rack"
@@ -1115,10 +1140,10 @@ capacity = 5
 progress = 0
 selected_recipe = null
 
-[node name="WitheringRack2" type="StaticBody2D" parent="YSort/Interactables" groups=["external_withering"] instance=ExtResource("25_lotpm")]
+[node name="WitheringRack2" type="StaticBody2D" parent="YSort/Interactables" groups=["external_withering"] instance=ExtResource("23_ujn78")]
 position = Vector2(160, -15)
 collision_mask = 2
-script = ExtResource("26_wqegb")
+script = ExtResource("24_wpli5")
 inventory_data_input = SubResource("Resource_ooqwl")
 inventory_data_output = SubResource("Resource_w4y4r")
 type = "Bamboo Withering Rack"
@@ -1128,10 +1153,10 @@ capacity = 5
 progress = 0
 selected_recipe = null
 
-[node name="DryingMat" type="StaticBody2D" parent="YSort/Interactables" groups=["external_drying"] instance=ExtResource("29_wace6")]
+[node name="DryingMat" type="StaticBody2D" parent="YSort/Interactables" groups=["external_drying"] instance=ExtResource("27_lypbr")]
 position = Vector2(201, 50)
 collision_mask = 2
-script = ExtResource("30_bxl8u")
+script = ExtResource("28_weo5o")
 inventory_data_input = SubResource("Resource_eekdn")
 inventory_data_output = SubResource("Resource_x3xmn")
 type = "Bamboo Drying Mat"
@@ -1144,19 +1169,41 @@ selected_recipe = null
 [node name="Characters" type="Node2D" parent="YSort"]
 y_sort_enabled = true
 
-[node name="LanternTest" type="StaticBody2D" parent="YSort" instance=ExtResource("33_mo63a")]
+[node name="LanternTest" type="StaticBody2D" parent="YSort" groups=["lights"] instance=ExtResource("31_gaj1i")]
 position = Vector2(195, 130)
 scale = Vector2(0.5, 0.5)
+script = ExtResource("32_o7k17")
+size = 340
+flicker = SubResource("FastNoiseLite_cy4bq")
 
-[node name="MapChanger" type="Area2D" parent="." groups=["map_changers"] instance=ExtResource("34_0hfxg")]
+[node name="MapChanger" type="Area2D" parent="." groups=["map_changers"] instance=ExtResource("33_jtiwj")]
 position = Vector2(426, -15)
 collision_layer = 128
 collision_mask = 128
-script = ExtResource("35_f5nfj")
+script = ExtResource("34_3d1iq")
 current_map_name = "HomeFarm"
 next_map_name = "ChedCity"
 player_position = Vector2(-72, 7)
 
+[node name="Water" parent="." instance=ExtResource("35_6nppl")]
+material = SubResource("ShaderMaterial_alkxl")
+position = Vector2(165, 297)
+scale = Vector2(8.11864, 1.83594)
+texture = ExtResource("37_p4ktu")
+region_enabled = true
+region_rect = Rect2(5.11697, 14.7553, 118.467, 45.9147)
+script = ExtResource("38_jsd1n")
+metadata/_edit_group_ = true
+
+[node name="SeaBed" parent="Water" index="0"]
+self_modulate = Color(0, 0.729412, 0.929412, 1)
+show_behind_parent = true
+position = Vector2(-2.38419e-06, 3.05176e-05)
+scale = Vector2(0.145281, 0.104408)
+texture = ExtResource("39_1rhos")
+
 [connection signal="area_entered" from="Staircase" to="Staircase" method="_on_area_entered" flags=18]
 [connection signal="toggle_external_drying" from="YSort/Interactables/DryingMat" to="YSort/Interactables/DryingMat" method="_on_toggle_external_drying" flags=18]
 [connection signal="area_entered" from="MapChanger" to="MapChanger" method="_on_area_entered" flags=18]
+
+[editable path="Water"]

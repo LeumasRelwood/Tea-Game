@@ -1,12 +1,11 @@
-[gd_scene load_steps=30 format=3 uid="uid://00ldqndxs0ma"]
+[gd_scene load_steps=29 format=3 uid="uid://00ldqndxs0ma"]
 
 [ext_resource type="Texture2D" uid="uid://b3j5ngdc1abij" path="res://World/GrassBackground.png" id="1_8le0l"]
 [ext_resource type="PackedScene" uid="uid://bgi842o5ef5ut" path="res://InventoryManagers/buildable_area.tscn" id="1_ppxwj"]
-[ext_resource type="Texture2D" uid="uid://btko0i38kcdbw" path="res://TEST/sea_bed.png" id="2_3wjg0"]
 [ext_resource type="Shader" path="res://Effects/Water.gdshader" id="2_bof7g"]
+[ext_resource type="PackedScene" uid="uid://cpsl7vuo1a63u" path="res://World/water.tscn" id="2_e758c"]
 [ext_resource type="Texture2D" uid="uid://b754kwqghuij1" path="res://World/DirtTileset.png" id="2_tb0nl"]
 [ext_resource type="Texture2D" uid="uid://csq0vp641ice4" path="res://World/CliffTileset.png" id="3_q4ypn"]
-[ext_resource type="Texture2D" uid="uid://5xhp7etoqb25" path="res://icon.svg" id="3_wcj0w"]
 [ext_resource type="PackedScene" uid="uid://c2oevl0c7sr5c" path="res://World/staircase.tscn" id="4_8xrvl"]
 [ext_resource type="PackedScene" uid="uid://bpgrgqmsja4op" path="res://Player/player.tscn" id="5_3pqlg"]
 [ext_resource type="Script" path="res://InventoryManagers/InventoryDataEquip.gd" id="6_nubtq"]
@@ -37,7 +36,8 @@ frequency = 0.08
 seamless = true
 noise = SubResource("FastNoiseLite_cfa0h")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_b6g4n"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vdkk2"]
+resource_local_to_scene = true
 shader = ExtResource("2_bof7g")
 shader_parameter/scroll = Vector2(0.05, 0.05)
 shader_parameter/scroll2 = Vector2(-0.025, -0.025)
@@ -914,18 +914,8 @@ slot_datas = Array[Resource("res://InventoryManagers/SlotData.gd")]([null, null]
 [node name="BuildableArea" parent="." instance=ExtResource("1_ppxwj")]
 visible = false
 
-[node name="Water" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_b6g4n")
-position = Vector2(142, 352.5)
-scale = Vector2(4.98438, 1.83594)
-texture = ExtResource("3_wcj0w")
-
-[node name="SeaBed" type="Sprite2D" parent="Water"]
-self_modulate = Color(0, 0.729412, 0.929412, 1)
-show_behind_parent = true
-position = Vector2(0.130346, 3.21649)
-scale = Vector2(0.157314, 0.280755)
-texture = ExtResource("2_3wjg0")
+[node name="Water" parent="." instance=ExtResource("2_e758c")]
+material = SubResource("ShaderMaterial_vdkk2")
 
 [node name="Background" type="Sprite2D" parent="."]
 texture_repeat = 2

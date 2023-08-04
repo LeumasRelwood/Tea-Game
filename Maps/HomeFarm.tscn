@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://cdhphmp2x8dta"]
+[gd_scene load_steps=46 format=3 uid="uid://cdhphmp2x8dta"]
 
 [ext_resource type="Texture2D" uid="uid://b3j5ngdc1abij" path="res://World/GrassBackground.png" id="1_smuwg"]
 [ext_resource type="Texture2D" uid="uid://b754kwqghuij1" path="res://World/DirtTileset.png" id="2_ol4lb"]
@@ -8,7 +8,6 @@
 [ext_resource type="Script" path="res://InventoryManagers/InventoryDataEquip.gd" id="6_3jn37"]
 [ext_resource type="PackedScene" uid="uid://cu2s67h2xiwbu" path="res://World/bush.tscn" id="7_i67t0"]
 [ext_resource type="PackedScene" uid="uid://cka1w1gbejhi2" path="res://World/grass.tscn" id="8_1qnu4"]
-[ext_resource type="PackedScene" uid="uid://dx11eeda1o2rp" path="res://Enemies/bat.tscn" id="9_h2y3p"]
 [ext_resource type="PackedScene" uid="uid://yokjl35u412w" path="res://World/tree.tscn" id="10_8tvxo"]
 [ext_resource type="PackedScene" uid="uid://csdjukr06mf1j" path="res://World/Interactables/chest.tscn" id="11_ncp5u"]
 [ext_resource type="Script" path="res://InventoryManagers/InventoryData.gd" id="12_g5io1"]
@@ -22,6 +21,8 @@
 [ext_resource type="PackedScene" path="res://World/Interactables/drying_mat.tscn" id="20_fxmtk"]
 [ext_resource type="Script" path="res://InventoryManagers/InventoryDataDryable.gd" id="21_4ax66"]
 [ext_resource type="Script" path="res://InventoryManagers/InventoryDataFinishedLeaves.gd" id="22_t8hhu"]
+[ext_resource type="PackedScene" uid="uid://cpsl7vuo1a63u" path="res://World/water.tscn" id="25_lhp1m"]
+[ext_resource type="Shader" path="res://Effects/Water.gdshader" id="26_qrixt"]
 [ext_resource type="PackedScene" uid="uid://raunba8bl10j" path="res://TEST/lantern_test.tscn" id="28_px83s"]
 [ext_resource type="PackedScene" uid="uid://c3bhop76c148c" path="res://Maps/map_changer.tscn" id="29_stmig"]
 
@@ -929,16 +930,44 @@ slot_datas = Array[ExtResource("15_khwi4")]([null])
 script = ExtResource("22_t8hhu")
 slot_datas = Array[ExtResource("15_khwi4")]([null])
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_gu36h"]
+noise_type = 4
+seed = 2
+frequency = 0.107
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fewtj"]
+seamless = true
+noise = SubResource("FastNoiseLite_gu36h")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cfa0h"]
+noise_type = 4
+seed = 2
+frequency = 0.08
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tc8bw"]
+seamless = true
+noise = SubResource("FastNoiseLite_cfa0h")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aogax"]
+resource_local_to_scene = true
+shader = ExtResource("26_qrixt")
+shader_parameter/scroll = Vector2(0.05, 0.05)
+shader_parameter/scroll2 = Vector2(-0.025, -0.025)
+shader_parameter/distortion_strength = 0.2
+shader_parameter/tone_color = Color(0.678431, 0.505882, 0.945098, 1)
+shader_parameter/top_color = Color(0.772549, 0.772549, 0.772549, 1)
+shader_parameter/light_start = 0.275
+shader_parameter/light_end = 0.4
+shader_parameter/noise = SubResource("NoiseTexture2D_fewtj")
+shader_parameter/noise2 = SubResource("NoiseTexture2D_tc8bw")
+
 [node name="Level" type="Node2D"]
 
 [node name="BuildableArea" type="Area2D" parent="." groups=["buildable_areas"]]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BuildableArea"]
 scale = Vector2(1.15164, 0.992483)
-polygon = PackedVector2Array(7, -31, -95, -32, -95, 220, -35, 220, -34, 158, -2, 158, 0, 126)
-
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="BuildableArea"]
-polygon = PackedVector2Array(383, -31, 384, 222, 288, 222, 288, 160, 288, -33)
+polygon = PackedVector2Array(52.0996, 189.424, 52.0996, 155.166, 166.719, 156.174, 167.587, 190.431, 221.423, 189.424, 224.897, 220.659, 332.569, 222.674, 332.569, -30.2272, -81.6227, -32.2424, -81.6227, 222.674, -0.868327, 222.674, -0.868327, 191.439)
 
 [node name="Background" type="Sprite2D" parent="."]
 texture_repeat = 2
@@ -951,7 +980,7 @@ region_rect = Rect2(0, 0, 958.272, 628.454)
 tile_set = SubResource("TileSet_l080q")
 cell_quadrant_size = 32
 format = 2
-layer_0/tile_data = PackedInt32Array(-65540, 655360, 2, 458764, 458752, 3, 393228, 196608, 1, 327692, 196608, 1, 262156, 196608, 1, 196620, 196608, 1, 131084, 196608, 1, 65548, 196608, 1, -131060, 65536, 3, -131061, 65536, 3, -131062, 65536, 3, -131063, 65536, 3, -131064, 65536, 3, -131065, 65536, 3, -131066, 65536, 3, -131067, 65536, 3, -131068, 65536, 3, -131069, 65536, 3, -131070, 65536, 3, -131071, 65536, 3, -131072, 65536, 3, -65537, 65536, 3, -65538, 65536, 3, -65539, 65536, 3, -131076, 196608, 0, 524284, 327680, 3, 524285, 65536, 3, 524286, 65536, 3, 458763, 65536, 3, 458762, 65536, 3, 458761, 65536, 3, 524287, 65536, 3, 458752, 393216, 3, 458753, 65536, 2, 458754, 65536, 2, 458755, 65536, 2, 458756, 65536, 2, 458757, 65536, 2, 458758, 65536, 2, 458759, 327680, 3, 458760, 65536, 3, 393216, 0, 0, 393217, 65536, 0, 393218, 393216, 2, 327682, 0, 0, 327683, 65536, 0, 327684, 65536, 0, 327685, 131072, 0, 393221, 327680, 2, 393220, 65536, 1, 393219, 65536, 1, 393223, 131072, 0, 393222, 65536, 0, 12, 262144, 0, 13, 65536, 3, 14, 65536, 3, -131059, 65536, 3, -131058, 65536, 3, -131057, 131072, 3, 15, 131072, 3, 524283, 0, 2, 458747, 0, 1, 393211, 0, 1, 327675, 0, 1, 262139, 0, 1, 196603, 0, 1, 131067, 0, 1, 65531, 0, 1, -5, 0, 1, -65541, 0, 0, -4, 131072, 1, 65532, 131072, 1, 131068, 131072, 1, 196604, 131072, 1, 262140, 131072, 1, 327676, 131072, 1, 393212, 131072, 1, 458748, 131072, 1)
+layer_0/tile_data = PackedInt32Array(-65540, 327680, 0, 458764, 458752, 3, 393228, 196608, 1, 327692, 196608, 1, 262156, 196608, 1, 196620, 196608, 1, 131084, 196608, 1, 65548, 196608, 1, -131060, 65536, 3, -131061, 65536, 3, -131062, 65536, 3, -131063, 65536, 3, -131064, 65536, 3, -131065, 65536, 3, -131066, 65536, 3, -131067, 65536, 3, -131068, 65536, 3, -131069, 65536, 3, -131070, 65536, 3, -131071, 65536, 3, -131072, 65536, 3, -65537, 65536, 3, -65538, 65536, 3, -65539, 65536, 3, 524284, 327680, 3, 524285, 65536, 3, 524286, 65536, 3, 458763, 65536, 3, 458762, 65536, 3, 458761, 65536, 3, 524287, 65536, 3, 458752, 393216, 3, 458753, 65536, 2, 458754, 65536, 2, 458755, 65536, 2, 458756, 65536, 2, 458757, 65536, 2, 458758, 65536, 2, 458759, 327680, 3, 458760, 65536, 3, 393216, 0, 0, 393217, 65536, 0, 393218, 393216, 2, 327682, 0, 0, 327683, 65536, 0, 327684, 65536, 0, 327685, 131072, 0, 393221, 327680, 2, 393220, 65536, 1, 393219, 65536, 1, 393223, 131072, 0, 393222, 65536, 0, 12, 262144, 0, 13, 65536, 3, 14, 65536, 3, -131059, 65536, 3, -131058, 65536, 3, -131057, 131072, 3, 15, 131072, 3, 524283, 0, 2, 458747, 0, 1, 393211, 0, 1, 327675, 0, 1, 262139, 0, 1, 196603, 0, 1, 131067, 0, 1, 65531, 0, 1, -5, 0, 1, -65541, 0, 0, -4, 131072, 1, 65532, 131072, 1, 131068, 131072, 1, 196604, 131072, 1, 262140, 131072, 1, 327676, 131072, 1, 393212, 131072, 1, 458748, 131072, 1)
 
 [node name="DirtPathTileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_sdia7")
@@ -1014,14 +1043,6 @@ position = Vector2(48, 144)
 [node name="Grass13" parent="YSort/Grass" instance=ExtResource("8_1qnu4")]
 position = Vector2(64, 144)
 
-[node name="Bats" type="Node2D" parent="YSort"]
-
-[node name="Bat" parent="YSort/Bats" instance=ExtResource("9_h2y3p")]
-position = Vector2(40, 168)
-
-[node name="Bat2" parent="YSort/Bats" instance=ExtResource("9_h2y3p")]
-position = Vector2(272, 160)
-
 [node name="Trees" type="Node2D" parent="YSort"]
 y_sort_enabled = true
 
@@ -1030,6 +1051,12 @@ position = Vector2(13, 103)
 
 [node name="Tree2" parent="YSort/Trees" instance=ExtResource("10_8tvxo")]
 position = Vector2(-2, 51)
+
+[node name="Tree3" parent="YSort/Trees" instance=ExtResource("10_8tvxo")]
+position = Vector2(107, 80)
+
+[node name="Tree4" parent="YSort/Trees" instance=ExtResource("10_8tvxo")]
+position = Vector2(233, 156)
 
 [node name="Interactables" type="Node2D" parent="YSort"]
 y_sort_enabled = true
@@ -1064,3 +1091,17 @@ position = Vector2(426, -15)
 current_map_name = "HomeFarm"
 next_map_name = "ChedCity"
 player_position = Vector2(-72, 7)
+
+[node name="Water" parent="." instance=ExtResource("25_lhp1m")]
+material = SubResource("ShaderMaterial_aogax")
+position = Vector2(165, 297)
+scale = Vector2(8.11864, 1.83594)
+region_enabled = true
+region_rect = Rect2(5.11697, 14.7553, 118.467, 45.9147)
+metadata/_edit_group_ = true
+
+[node name="SeaBed" parent="Water" index="0"]
+position = Vector2(-2.38419e-06, 3.05176e-05)
+scale = Vector2(0.145281, 0.104408)
+
+[editable path="Water"]

@@ -1,26 +1,40 @@
-[gd_scene load_steps=35 format=3 uid="uid://c11caoon1rj0k"]
+[gd_scene load_steps=50 format=3]
 
-[ext_resource type="PackedScene" uid="uid://bgi842o5ef5ut" path="res://InventoryManagers/buildable_area.tscn" id="1_jaml4"]
+[ext_resource type="PackedScene" path="res://InventoryManagers/buildable_area.tscn" id="1_jaml4"]
 [ext_resource type="Shader" path="res://Effects/Water.gdshader" id="2_glq5d"]
-[ext_resource type="Texture2D" uid="uid://5xhp7etoqb25" path="res://icon.svg" id="3_g5aq0"]
-[ext_resource type="Texture2D" uid="uid://btko0i38kcdbw" path="res://TEST/sea_bed.png" id="4_jbdo5"]
-[ext_resource type="Texture2D" uid="uid://b3j5ngdc1abij" path="res://World/GrassBackground.png" id="5_6dqr7"]
-[ext_resource type="Texture2D" uid="uid://b754kwqghuij1" path="res://World/DirtTileset.png" id="6_ina7v"]
-[ext_resource type="Texture2D" uid="uid://csq0vp641ice4" path="res://World/CliffTileset.png" id="7_l83mf"]
-[ext_resource type="PackedScene" uid="uid://c2oevl0c7sr5c" path="res://World/staircase.tscn" id="8_7neg4"]
-[ext_resource type="PackedScene" uid="uid://bpgrgqmsja4op" path="res://Player/player.tscn" id="9_rxurp"]
+[ext_resource type="Texture2D" path="res://icon.svg" id="3_g5aq0"]
+[ext_resource type="Texture2D" path="res://TEST/sea_bed.png" id="4_jbdo5"]
+[ext_resource type="Texture2D" path="res://World/GrassBackground.png" id="5_6dqr7"]
+[ext_resource type="Texture2D" path="res://World/DirtTileset.png" id="6_ina7v"]
+[ext_resource type="Texture2D" path="res://World/CliffTileset.png" id="7_l83mf"]
+[ext_resource type="PackedScene" path="res://World/staircase.tscn" id="8_7neg4"]
+[ext_resource type="Script" path="res://World/Staircase.gd" id="9_6ochf"]
+[ext_resource type="PackedScene" path="res://Player/player.tscn" id="9_rxurp"]
 [ext_resource type="Script" path="res://InventoryManagers/InventoryDataEquip.gd" id="10_08aje"]
-[ext_resource type="PackedScene" uid="uid://cu2s67h2xiwbu" path="res://World/bush.tscn" id="11_dhrf6"]
-[ext_resource type="PackedScene" uid="uid://cka1w1gbejhi2" path="res://World/grass.tscn" id="12_6qomv"]
-[ext_resource type="PackedScene" uid="uid://yokjl35u412w" path="res://World/tree.tscn" id="13_nrr3y"]
-[ext_resource type="PackedScene" uid="uid://myyvafhtgysh" path="res://World/Interactables/tea_storage.tscn" id="14_r1yni"]
-[ext_resource type="PackedScene" uid="uid://dgik61ds5a1f" path="res://NPCs/HarbormasterTeddy.tscn" id="15_3hfoy"]
-[ext_resource type="PackedScene" uid="uid://cavce8s7q5b7h" path="res://NPCs/background_npc.tscn" id="16_1mqw8"]
-[ext_resource type="Resource" uid="uid://dyy4bd2uene0h" path="res://Items/ITEMS/FreshTeaLeaves.tres" id="16_crdlk"]
+[ext_resource type="Script" path="res://Player/Player.gd" id="11_3sslg"]
+[ext_resource type="PackedScene" path="res://World/bush.tscn" id="11_dhrf6"]
+[ext_resource type="Resource" path="res://TEST/TestInventory.tres" id="12_2qnht"]
+[ext_resource type="PackedScene" path="res://World/grass.tscn" id="12_6qomv"]
+[ext_resource type="PackedScene" path="res://World/tree.tscn" id="13_nrr3y"]
+[ext_resource type="PackedScene" path="res://World/Interactables/tea_storage.tscn" id="14_r1yni"]
+[ext_resource type="PackedScene" path="res://NPCs/HarbormasterTeddy.tscn" id="15_3hfoy"]
+[ext_resource type="Script" path="res://World/bush.gd" id="15_vo0fh"]
+[ext_resource type="PackedScene" path="res://NPCs/background_npc.tscn" id="16_1mqw8"]
+[ext_resource type="Resource" path="res://Items/ITEMS/FreshTeaLeaves.tres" id="16_crdlk"]
 [ext_resource type="Script" path="res://InventoryManagers/SlotData.gd" id="17_37our"]
-[ext_resource type="PackedScene" uid="uid://raunba8bl10j" path="res://TEST/lantern_test.tscn" id="17_377j4"]
-[ext_resource type="PackedScene" uid="uid://c3bhop76c148c" path="res://Maps/map_changer.tscn" id="18_a2sfb"]
+[ext_resource type="PackedScene" path="res://TEST/lantern_test.tscn" id="17_377j4"]
+[ext_resource type="PackedScene" path="res://Maps/map_changer.tscn" id="18_a2sfb"]
+[ext_resource type="Script" path="res://World/grass.gd" id="19_neptr"]
+[ext_resource type="Script" path="res://World/tree.gd" id="21_c3irg"]
+[ext_resource type="Script" path="res://World/Interactables/tea_storage.gd" id="23_4camc"]
 [ext_resource type="Script" path="res://InventoryManagers/InventoryDataFinishedLeaves.gd" id="24_fcaqk"]
+[ext_resource type="Script" path="res://NPCs/BackgroundNPC.gd" id="26_l6pdm"]
+[ext_resource type="Resource" path="res://Dialogues/harbormaster.dialogue" id="27_fy7uy"]
+[ext_resource type="Texture2D" path="res://NPCs/ambrose.jpg" id="28_s1r37"]
+[ext_resource type="Resource" path="res://Dialogues/background_npc.dialogue" id="30_i5by3"]
+[ext_resource type="Texture2D" path="res://addons/dialogue_manager/examples/portraits_balloon/portraits/harbormaster_small.png" id="31_l2k22"]
+[ext_resource type="Script" path="res://Effects/lantern_test.gd" id="33_ap3ks"]
+[ext_resource type="Script" path="res://Maps/MapChanger.gd" id="35_yv73g"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_gu36h"]
 noise_type = 4
@@ -921,10 +935,21 @@ quantity = 1
 script = ExtResource("24_fcaqk")
 slot_datas = Array[ExtResource("17_37our")]([null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cy4bq"]
+noise_type = 2
+frequency = 0.08
+
 [node name="Level22" type="Node2D"]
 
-[node name="BuildableArea" parent="." instance=ExtResource("1_jaml4")]
+[node name="BuildableArea" parent="." groups=["buildable_areas"] instance=ExtResource("1_jaml4")]
 visible = false
+
+[node name="CollisionPolygon2D" parent="BuildableArea" index="0"]
+scale = Vector2(1.15164, 0.992483)
+polygon = PackedVector2Array(7, -31, -95, -32, -95, 220, -35, 220, -34, 158, -2, 158, 0, 126)
+
+[node name="CollisionPolygon2D2" parent="BuildableArea" index="1"]
+polygon = PackedVector2Array(383, -31, 384, 222, 288, 222, 288, 160, 353, 161, 352, 127, 324, 127, 322, 0, 289, 0, 290, -35)
 
 [node name="Water" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_b6g4n")
@@ -958,17 +983,28 @@ cell_quadrant_size = 32
 format = 2
 layer_0/tile_data = PackedInt32Array(-65540, 262144, 3, 196604, 196608, 1, 262140, 196608, 1, 327676, 196608, 1, 393212, 196608, 1, 458748, 196608, 1, 458764, 131072, 2, 393228, 131072, 1, 327692, 458752, 2, 262156, 196608, 1, 196620, 458752, 1, 131084, 131072, 1, 65548, 458752, 2, 12, 196608, 1, -65524, 196608, 1, -131060, 458752, 0, -131061, 65536, 3, -131062, 65536, 3, -131063, 65536, 3, -131064, 65536, 3, -131065, 65536, 3, -131066, 65536, 3, -131067, 65536, 3, -131068, 65536, 3, -131069, 65536, 3, -131070, 65536, 3, -131071, 65536, 3, -131072, 65536, 3, -65537, 65536, 3, -65538, 65536, 3, -65539, 65536, 3, 65532, 262144, 0, 131068, 196608, 1, 65533, 131072, 3, -131076, 196608, 0, 524284, 262144, 3, 524285, 65536, 3, 524286, 131072, 3, 458763, 65536, 2, 65547, 65536, 0, 65546, 65536, 0, 65545, 0, 0, 131081, 0, 2, 131082, 393216, 1, 131083, 65536, 1, 196618, 0, 2, 196619, 65536, 2, 327690, 0, 0, 327691, 65536, 0, 393227, 65536, 1, 393226, 0, 1, 458762, 393216, 3, 458761, 0, 3)
 
-[node name="Staircase" parent="." instance=ExtResource("8_7neg4")]
+[node name="Staircase" type="Area2D" parent="." instance=ExtResource("8_7neg4")]
 position = Vector2(216, 217)
+collision_layer = 128
+collision_mask = 2
+script = ExtResource("9_6ochf")
 StairAngle = Vector2(0, 1)
+metadata/_edit_group_ = true
 
 [node name="YSort" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="Player" parent="YSort" instance=ExtResource("9_rxurp")]
-position = Vector2(-97.2156, -15.3223)
+[node name="Player" type="CharacterBody2D" parent="YSort" groups=["player"] instance=ExtResource("9_rxurp")]
+position = Vector2(-105.448, -21.601)
+collision_layer = 2
 motion_mode = 1
-velocity = Vector2(-15, 0)
+velocity = Vector2(-99.9945, -1.05348)
+script = ExtResource("11_3sslg")
+MAX_SPEED = 100
+ACCELERATION = 15
+FRICTION = 15
+ROLL_SPEED = 100
+inventory_data = ExtResource("12_2qnht")
 equip_inventory_data = SubResource("Resource_v1qws")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/Player"]
@@ -977,80 +1013,137 @@ remote_path = NodePath("../../../../Camera2D")
 [node name="Bushes" type="Node2D" parent="YSort"]
 y_sort_enabled = true
 
-[node name="Bush" parent="YSort/Bushes" instance=ExtResource("11_dhrf6")]
+[node name="Bush" type="StaticBody2D" parent="YSort/Bushes" instance=ExtResource("11_dhrf6")]
 position = Vector2(48, 48)
+collision_mask = 2
+script = ExtResource("15_vo0fh")
 slot_data = SubResource("Resource_mxl04")
+growth_time = 4.0
+planted_time_minutes = 0
+metadata/_edit_group_ = true
 
 [node name="Grass" type="Node2D" parent="YSort"]
 y_sort_enabled = true
 
-[node name="Grass" parent="YSort/Grass" instance=ExtResource("12_6qomv")]
+[node name="Grass" type="Node2D" parent="YSort/Grass" instance=ExtResource("12_6qomv")]
 position = Vector2(287, 144)
+script = ExtResource("19_neptr")
 
-[node name="Grass2" parent="YSort/Grass" instance=ExtResource("12_6qomv")]
+[node name="Grass2" type="Node2D" parent="YSort/Grass" instance=ExtResource("12_6qomv")]
 position = Vector2(269, 144)
+script = ExtResource("19_neptr")
 
-[node name="Grass3" parent="YSort/Grass" instance=ExtResource("12_6qomv")]
+[node name="Grass3" type="Node2D" parent="YSort/Grass" instance=ExtResource("12_6qomv")]
 position = Vector2(287, 162)
+script = ExtResource("19_neptr")
 
-[node name="Grass4" parent="YSort/Grass" instance=ExtResource("12_6qomv")]
+[node name="Grass4" type="Node2D" parent="YSort/Grass" instance=ExtResource("12_6qomv")]
 position = Vector2(191, 82)
+script = ExtResource("19_neptr")
 
-[node name="Grass5" parent="YSort/Grass" instance=ExtResource("12_6qomv")]
+[node name="Grass5" type="Node2D" parent="YSort/Grass" instance=ExtResource("12_6qomv")]
 position = Vector2(173, 65)
+script = ExtResource("19_neptr")
 
-[node name="Grass6" parent="YSort/Grass" instance=ExtResource("12_6qomv")]
+[node name="Grass6" type="Node2D" parent="YSort/Grass" instance=ExtResource("12_6qomv")]
 position = Vector2(191, 65)
+script = ExtResource("19_neptr")
 
-[node name="Grass7" parent="YSort/Grass" instance=ExtResource("12_6qomv")]
+[node name="Grass7" type="Node2D" parent="YSort/Grass" instance=ExtResource("12_6qomv")]
 position = Vector2(36, 65)
+script = ExtResource("19_neptr")
 
-[node name="Grass8" parent="YSort/Grass" instance=ExtResource("12_6qomv")]
+[node name="Grass8" type="Node2D" parent="YSort/Grass" instance=ExtResource("12_6qomv")]
 position = Vector2(18, 65)
+script = ExtResource("19_neptr")
 
-[node name="Grass11" parent="YSort/Grass" instance=ExtResource("12_6qomv")]
+[node name="Grass11" type="Node2D" parent="YSort/Grass" instance=ExtResource("12_6qomv")]
 position = Vector2(48, 209)
+script = ExtResource("19_neptr")
 
-[node name="Grass12" parent="YSort/Grass" instance=ExtResource("12_6qomv")]
+[node name="Grass12" type="Node2D" parent="YSort/Grass" instance=ExtResource("12_6qomv")]
 position = Vector2(48, 194)
+script = ExtResource("19_neptr")
 
-[node name="Grass13" parent="YSort/Grass" instance=ExtResource("12_6qomv")]
+[node name="Grass13" type="Node2D" parent="YSort/Grass" instance=ExtResource("12_6qomv")]
 position = Vector2(32, 209)
+script = ExtResource("19_neptr")
 
 [node name="Bats" type="Node2D" parent="YSort"]
 
 [node name="Trees" type="Node2D" parent="YSort"]
 y_sort_enabled = true
 
-[node name="Tree" parent="YSort/Trees" instance=ExtResource("13_nrr3y")]
+[node name="Tree" type="StaticBody2D" parent="YSort/Trees" instance=ExtResource("13_nrr3y")]
 position = Vector2(144, 31)
+collision_mask = 2
+script = ExtResource("21_c3irg")
 
-[node name="Tree2" parent="YSort/Trees" instance=ExtResource("13_nrr3y")]
+[node name="Tree2" type="StaticBody2D" parent="YSort/Trees" instance=ExtResource("13_nrr3y")]
 position = Vector2(-46, 136)
+collision_mask = 2
+script = ExtResource("21_c3irg")
 
 [node name="Interactables" type="Node2D" parent="YSort"]
 y_sort_enabled = true
 
-[node name="TeaStorage" parent="YSort/Interactables" instance=ExtResource("14_r1yni")]
+[node name="TeaStorage" type="StaticBody2D" parent="YSort/Interactables" groups=["external_tea_storage"] instance=ExtResource("14_r1yni")]
 position = Vector2(141, 106)
+collision_mask = 2
+script = ExtResource("23_4camc")
 tea_storage_inventory_data = SubResource("Resource_55s1r")
+type = "Tea Storage Shed"
+capacity = 200
 
 [node name="Characters" type="Node2D" parent="YSort"]
 y_sort_enabled = true
 
-[node name="Cassidy" parent="YSort/Characters" instance=ExtResource("15_3hfoy")]
-position = Vector2(0, 194)
+[node name="Cassidy" type="CharacterBody2D" parent="YSort/Characters" groups=["NPCs"] instance=ExtResource("15_3hfoy")]
+position = Vector2(4.50496, 228.181)
+collision_mask = 2
+motion_mode = 1
+velocity = Vector2(3.21414, 9.46939)
+script = ExtResource("26_l6pdm")
+dialogue_resource = ExtResource("27_fy7uy")
+dialogue_start = "start"
+portrait = ExtResource("28_s1r37")
+MAX_SPEED = 10
+ACCELERATION = 15
+FRICTION = 15
+ROLL_SPEED = 100
+knockbackamount = 300
 
-[node name="BackgroundNPC" parent="YSort/Characters" instance=ExtResource("16_1mqw8")]
-position = Vector2(72, 8)
+[node name="BackgroundNPC" type="CharacterBody2D" parent="YSort/Characters" groups=["NPCs"] instance=ExtResource("16_1mqw8")]
+position = Vector2(80.5363, -25.8619)
+collision_mask = 2
+motion_mode = 1
+script = ExtResource("26_l6pdm")
+dialogue_resource = ExtResource("30_i5by3")
+dialogue_start = "start"
+portrait = ExtResource("31_l2k22")
+MAX_SPEED = 10
+ACCELERATION = 15
+FRICTION = 15
+ROLL_SPEED = 100
+knockbackamount = 300
 
-[node name="LanternTest" parent="YSort" instance=ExtResource("17_377j4")]
+[node name="LanternTest" type="StaticBody2D" parent="YSort" groups=["lights"] instance=ExtResource("17_377j4")]
 position = Vector2(64, 90)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("33_ap3ks")
+size = 340
+flicker = SubResource("FastNoiseLite_cy4bq")
 
-[node name="MapChanger" parent="." instance=ExtResource("18_a2sfb")]
+[node name="MapChanger" type="Area2D" parent="." groups=["map_changers"] instance=ExtResource("18_a2sfb")]
 position = Vector2(-121, -12)
+collision_layer = 128
+collision_mask = 128
+script = ExtResource("35_yv73g")
 current_map_name = "ChedCity"
 next_map_name = "HomeFarm"
 player_position = Vector2(398, -10)
+
+[connection signal="area_entered" from="Staircase" to="Staircase" method="_on_area_entered" flags=18]
+[connection signal="area_entered" from="MapChanger" to="MapChanger" method="_on_area_entered" flags=18]
 
 [editable path="BuildableArea"]

@@ -1,9 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://raunba8bl10j"]
+[gd_scene load_steps=7 format=3 uid="uid://raunba8bl10j"]
 
 [ext_resource type="Texture2D" uid="uid://ckgkla2bdr2r4" path="res://TEST/lantern.png" id="1_epp56"]
+[ext_resource type="Script" path="res://Effects/lantern_test.gd" id="1_t18iy"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cy4bq"]
+noise_type = 2
+frequency = 0.08
 
 [sub_resource type="Gradient" id="Gradient_04rsy"]
-offsets = PackedFloat32Array(0.0792079, 0.722772)
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.0792079, 0.718954)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_xsdq5"]
@@ -15,11 +21,13 @@ fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oy5jk"]
 
-[node name="LanternTest" type="StaticBody2D"]
+[node name="LanternTest" type="StaticBody2D" groups=["lights"]]
 scale = Vector2(0.5, 0.5)
+script = ExtResource("1_t18iy")
+flicker = SubResource("FastNoiseLite_cy4bq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.0516899, 0.0516898)
+scale = Vector2(0.029, 0.029)
 texture = ExtResource("1_epp56")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
