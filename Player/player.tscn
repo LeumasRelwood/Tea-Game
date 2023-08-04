@@ -12,6 +12,10 @@
 [ext_resource type="Script" path="res://Player/PlayerInteractArea.gd" id="8_cyia0"]
 [ext_resource type="Resource" uid="uid://cfgx3dyy6ncic" path="res://TEST/TestInventory.tres" id="9_bicv8"]
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_eympf"]
+cull_mode = 2
+polygon = PackedVector2Array(0, 2, -3, 1, -6, -9, -4, -16, 3, -16, 4, -7, 2, 1)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4mqea"]
 shader = ExtResource("3_ki0jf")
 shader_parameter/active = false
@@ -19,9 +23,6 @@ shader_parameter/active = false
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tdkpv"]
 radius = 4.0
 height = 12.0
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_eympf"]
-polygon = PackedVector2Array(0, 3, -8, 1, -9, -9, -4, -19, 4, -17, 7, -7, 6, 1)
 
 [sub_resource type="Animation" id="Animation_ts6yr"]
 resource_name = "InteractDown"
@@ -1225,6 +1226,10 @@ collision_layer = 2
 script = ExtResource("1_a5v42")
 inventory_data = ExtResource("9_bicv8")
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+show_behind_parent = true
+occluder = SubResource("OccluderPolygon2D_eympf")
+
 [node name="ShadowSprite" type="Sprite2D" parent="."]
 position = Vector2(0, 2)
 texture = ExtResource("2_8sqgc")
@@ -1239,9 +1244,6 @@ frame = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = -1.5708
 shape = SubResource("CapsuleShape2D_tdkpv")
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
-occluder = SubResource("OccluderPolygon2D_eympf")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

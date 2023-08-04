@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bn3v20pcxftws"]
+[gd_scene load_steps=17 format=3 uid="uid://cw1nro4m5s36s"]
 
 [ext_resource type="PackedScene" uid="uid://cj462uvp4qvw7" path="res://camera_2d.tscn" id="1_36ixg"]
 [ext_resource type="Script" path="res://world.gd" id="1_pt8ln"]
@@ -14,20 +14,20 @@
 [ext_resource type="PackedScene" uid="uid://ba3yi75by7i4l" path="res://InventoryManagers/tea_storage_inventory.tscn" id="12_wk2ft"]
 [ext_resource type="PackedScene" uid="uid://dxqqtfb3ex7oe" path="res://Globals/TeaMarket/tea_market.tscn" id="14_auj6w"]
 [ext_resource type="PackedScene" uid="uid://bxy5ij2avjjte" path="res://InventoryManagers/inventory.tscn" id="15_j1xfr"]
-[ext_resource type="PackedScene" uid="uid://dogg1xuy0ph4a" path="res://Maps/HomeFarm.tscn" id="16_7o0ng"]
+[ext_resource type="PackedScene" uid="uid://cdhphmp2x8dta" path="res://Maps/HomeFarm.tscn" id="16_7o0ng"]
 [ext_resource type="PackedScene" uid="uid://yp4yqs7tmgiq" path="res://Effects/day_night_light.tscn" id="43_8rxbt"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_pt8ln")
 
 [node name="Camera2D" parent="." instance=ExtResource("1_36ixg")]
-position = Vector2(303, -8)
+position = Vector2(152, 24)
 
 [node name="TopLeft" parent="Camera2D/Limits" index="0"]
 position = Vector2(-128, -64)
 
 [node name="BottomRight" parent="Camera2D/Limits" index="1"]
-position = Vector2(416, 256)
+position = Vector2(426, 362)
 
 [node name="DirectionalLight2DDayNight" parent="." instance=ExtResource("43_8rxbt")]
 
@@ -112,7 +112,7 @@ label_settings = ExtResource("12_l3byq")
 
 [node name="Level" parent="." instance=ExtResource("16_7o0ng")]
 
-[node name="DirtPathTileMap" parent="Level" index="2" groups=["buildable_tile_maps"]]
+[node name="DirtPathTileMap" parent="Level" index="3" groups=["buildable_tile_maps"]]
 
 [editable path="Camera2D"]
 [editable path="UI/HealthUI"]

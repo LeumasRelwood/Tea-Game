@@ -2,7 +2,7 @@ extends Node2D
 
 signal time_changed(value)
 
-@export var initial_hour = 6
+@export var initial_hour = 1
 @export var time_multiplier = 20
 
 var total_minutes = 0
