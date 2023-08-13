@@ -3,9 +3,12 @@ extends Node
 @export var tea_storage_inventory_data: InventoryDataFinishedTea
 
 func _ready():
+	connect_signals()
+	get_tree().call_group("external_tea_storage", "reupdate_tea_storage_inventory")
+
+func connect_signals():
 	for node in get_tree().get_nodes_in_group("external_tea_storage"):
 		node.update_tea_storage_inventory.connect(update_tea_storage_inventory)
-	get_tree().call_group("external_tea_storage", "reupdate_tea_storage_inventory")
 
 func update_tea_storage_inventory(_tea_storage_inventory_data, type, capacity, current_leaf_total):
 	tea_storage_inventory_data = _tea_storage_inventory_data

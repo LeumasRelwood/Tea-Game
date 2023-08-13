@@ -27,7 +27,8 @@ func connect_signals():
 	inventory_interface.force_close_withering.connect(toggle_external_withering_interface)
 	inventory_interface.force_close_drying.connect(toggle_external_drying_interface)
 	inventory_interface.force_close_tea_storage.connect(toggle_external_tea_storage)
-
+	GlobalTeaStorage.connect_signals()
+	
 	for node in get_tree().get_nodes_in_group("inventory_menus"):
 		node.connect_signals()
 

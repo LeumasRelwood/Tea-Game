@@ -15,7 +15,7 @@ size = Vector2(72, 29)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wapcj"]
 size = Vector2(72, 65)
 
-[node name="TeaStorage" type="StaticBody2D" groups=["external_tea_storage"]]
+[node name="TeaStorage" type="StaticBody2D" groups=["external_tea_storage", "inventory_menus"]]
 position = Vector2(0, -6)
 collision_mask = 2
 script = ExtResource("1_a3nbo")

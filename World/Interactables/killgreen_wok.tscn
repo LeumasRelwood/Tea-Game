@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://c6oq8i7wlaux6"]
+
+[ext_resource type="Script" path="res://World/Interactables/killgreen_wok.gd" id="1_0rn6s"]
+[ext_resource type="Texture2D" uid="uid://dikogrps4kwb6" path="res://World/Interactables/wok.PNG" id="4_wwbg4"]
+[ext_resource type="Script" path="res://Hit and Hurtboxes/hurtbox.gd" id="5_dp521"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c0nk1"]
+size = Vector2(47, 19)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_23i67"]
+size = Vector2(44.2561, 28.2486)
+
+[node name="KillgreenWok" type="StaticBody2D" groups=["external_fixing"]]
+collision_mask = 2
+script = ExtResource("1_0rn6s")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="ProgressClickerTimer" type="Timer" parent="Timer"]
+wait_time = 0.5
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.038048, 0.0383142)
+texture = ExtResource("4_wwbg4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 6.5)
+shape = SubResource("RectangleShape2D_c0nk1")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 64
+script = ExtResource("5_dp521")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0.5, -6.85453e-07)
+scale = Vector2(1.062, 1.062)
+shape = SubResource("RectangleShape2D_23i67")
+
+[node name="Timer" type="Timer" parent="Hurtbox"]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout" flags=18]
+[connection signal="timeout" from="Timer/ProgressClickerTimer" to="." method="_on_progress_clicker_timer_timeout" flags=18]
+[connection signal="invincibility_ended" from="Hurtbox" to="Hurtbox" method="_on_invincibility_ended" flags=18]
+[connection signal="invincibility_started" from="Hurtbox" to="Hurtbox" method="_on_invincibility_started" flags=18]
+[connection signal="player_interact" from="Hurtbox" to="." method="_on_hurtbox_player_interact"]
+[connection signal="timeout" from="Hurtbox/Timer" to="Hurtbox" method="_on_timer_timeout" flags=18]

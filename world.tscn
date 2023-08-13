@@ -13,8 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://ba3yi75by7i4l" path="res://InventoryManagers/tea_storage_inventory.tscn" id="12_wk2ft"]
 [ext_resource type="PackedScene" uid="uid://dxqqtfb3ex7oe" path="res://Globals/TeaMarket/tea_market.tscn" id="14_auj6w"]
 [ext_resource type="PackedScene" uid="uid://bxy5ij2avjjte" path="res://InventoryManagers/inventory.tscn" id="15_j1xfr"]
+[ext_resource type="Shader" path="res://Effects/River.gdshader" id="16_5vm54"]
 [ext_resource type="PackedScene" uid="uid://cdhphmp2x8dta" path="res://Maps/HomeFarm.tscn" id="16_7o0ng"]
-[ext_resource type="Shader" path="res://Effects/Water.gdshader" id="16_rwsln"]
 [ext_resource type="PackedScene" uid="uid://yp4yqs7tmgiq" path="res://Effects/day_night_light.tscn" id="43_8rxbt"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_gu36h"]
@@ -35,11 +35,11 @@ frequency = 0.08
 seamless = true
 noise = SubResource("FastNoiseLite_cfa0h")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4tw18"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pux5y"]
 resource_local_to_scene = true
-shader = ExtResource("16_rwsln")
-shader_parameter/scroll = Vector2(0.05, 0.05)
-shader_parameter/scroll2 = Vector2(-0.025, -0.025)
+shader = ExtResource("16_5vm54")
+shader_parameter/scroll = Vector2(-0.025, 0.025)
+shader_parameter/scroll2 = Vector2(-0.02, -0.012)
 shader_parameter/distortion_strength = 0.2
 shader_parameter/tone_color = Color(0.678431, 0.505882, 0.945098, 1)
 shader_parameter/top_color = Color(0.772549, 0.772549, 0.772549, 1)
@@ -142,7 +142,7 @@ label_settings = ExtResource("12_l3byq")
 [node name="DirtPathTileMap" parent="Level" index="3" groups=["buildable_tile_maps"]]
 
 [node name="Water" parent="Level" index="7"]
-material = SubResource("ShaderMaterial_4tw18")
+material = SubResource("ShaderMaterial_pux5y")
 
 [editable path="Camera2D"]
 [editable path="UI/InventoryInterface/ExternalInventory"]

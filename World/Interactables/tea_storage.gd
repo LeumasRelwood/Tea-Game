@@ -13,6 +13,9 @@ signal check_for_new_owner()
 @export var capacity = 200
 
 func _ready():
+	connect_signals()
+
+func connect_signals():
 	tea_storage_inventory_data.inventory_updated.connect(tea_storage_inventory_data_updated)
 
 func _on_hurtbox_player_interact():

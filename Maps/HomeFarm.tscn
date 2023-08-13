@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://cdhphmp2x8dta"]
+[gd_scene load_steps=51 format=3 uid="uid://cdhphmp2x8dta"]
 
 [ext_resource type="Texture2D" uid="uid://b3j5ngdc1abij" path="res://World/GrassBackground.png" id="1_smuwg"]
 [ext_resource type="Texture2D" uid="uid://b754kwqghuij1" path="res://World/DirtTileset.png" id="2_ol4lb"]
@@ -20,9 +20,14 @@
 [ext_resource type="Script" path="res://InventoryManagers/InventoryDataWithered.gd" id="19_plks2"]
 [ext_resource type="PackedScene" path="res://World/Interactables/drying_mat.tscn" id="20_fxmtk"]
 [ext_resource type="Script" path="res://InventoryManagers/InventoryDataDryable.gd" id="21_4ax66"]
+[ext_resource type="PackedScene" uid="uid://bqn4ebu34dk4u" path="res://World/Interactables/rolling_table.tscn" id="22_6tpqk"]
 [ext_resource type="Script" path="res://InventoryManagers/InventoryDataFinishedLeaves.gd" id="22_t8hhu"]
+[ext_resource type="PackedScene" uid="uid://sq2av70xatgh" path="res://World/Interactables/oxidization_pile.tscn" id="23_ou7m5"]
+[ext_resource type="PackedScene" uid="uid://c6oq8i7wlaux6" path="res://World/Interactables/killgreen_wok.tscn" id="24_e86ee"]
 [ext_resource type="PackedScene" uid="uid://cpsl7vuo1a63u" path="res://World/water.tscn" id="25_lhp1m"]
-[ext_resource type="Shader" path="res://Effects/Water.gdshader" id="26_qrixt"]
+[ext_resource type="PackedScene" uid="uid://bmcwhgglkhyb0" path="res://World/Interactables/fermentation_pile.tscn" id="25_ra141"]
+[ext_resource type="Shader" path="res://Effects/River.gdshader" id="25_vc0p3"]
+[ext_resource type="PackedScene" uid="uid://o2r31sd8bj54" path="res://World/Interactables/pressing_machine.tscn" id="26_6r7tn"]
 [ext_resource type="PackedScene" uid="uid://raunba8bl10j" path="res://TEST/lantern_test.tscn" id="28_px83s"]
 [ext_resource type="PackedScene" uid="uid://c3bhop76c148c" path="res://Maps/map_changer.tscn" id="29_stmig"]
 
@@ -898,7 +903,7 @@ stackable = false
 texture = SubResource("AtlasTexture_4wdpb")
 recipe = Array[ExtResource("15_khwi4")]([])
 base_value = 0
-withering_time = 0
+processing_time = 0
 
 [sub_resource type="Resource" id="Resource_rfwx4"]
 script = ExtResource("15_khwi4")
@@ -948,11 +953,11 @@ frequency = 0.08
 seamless = true
 noise = SubResource("FastNoiseLite_cfa0h")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_aogax"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iomw4"]
 resource_local_to_scene = true
-shader = ExtResource("26_qrixt")
-shader_parameter/scroll = Vector2(0.05, 0.05)
-shader_parameter/scroll2 = Vector2(-0.025, -0.025)
+shader = ExtResource("25_vc0p3")
+shader_parameter/scroll = Vector2(-0.025, 0.025)
+shader_parameter/scroll2 = Vector2(-0.02, -0.012)
 shader_parameter/distortion_strength = 0.2
 shader_parameter/tone_color = Color(0.678431, 0.505882, 0.945098, 1)
 shader_parameter/top_color = Color(0.772549, 0.772549, 0.772549, 1)
@@ -1005,7 +1010,7 @@ remote_path = NodePath("../../../../Camera2D")
 y_sort_enabled = true
 
 [node name="Bush" parent="YSort/Bushes" instance=ExtResource("7_i67t0")]
-position = Vector2(48, 48)
+position = Vector2(22, -15)
 
 [node name="Grass" type="Node2D" parent="YSort"]
 y_sort_enabled = true
@@ -1056,7 +1061,7 @@ position = Vector2(-2, 51)
 position = Vector2(107, 80)
 
 [node name="Tree4" parent="YSort/Trees" instance=ExtResource("10_8tvxo")]
-position = Vector2(233, 156)
+position = Vector2(224, 160)
 
 [node name="Interactables" type="Node2D" parent="YSort"]
 y_sort_enabled = true
@@ -1066,25 +1071,40 @@ position = Vector2(72, -15)
 inventory_data = SubResource("Resource_fji6u")
 
 [node name="WitheringRack" parent="YSort/Interactables" instance=ExtResource("17_rya5k")]
-position = Vector2(238, -15)
+position = Vector2(176, -17)
 inventory_data_input = SubResource("Resource_ooqwl")
 inventory_data_output = SubResource("Resource_w4y4r")
 
 [node name="WitheringRack2" parent="YSort/Interactables" instance=ExtResource("17_rya5k")]
-position = Vector2(160, -15)
+position = Vector2(119, -17)
 inventory_data_input = SubResource("Resource_ooqwl")
 inventory_data_output = SubResource("Resource_w4y4r")
 
 [node name="DryingMat" parent="YSort/Interactables" instance=ExtResource("20_fxmtk")]
-position = Vector2(201, 50)
+position = Vector2(233, 48)
 inventory_data_input = SubResource("Resource_eekdn")
 inventory_data_output = SubResource("Resource_x3xmn")
+
+[node name="RollingTable" parent="YSort/Interactables" instance=ExtResource("22_6tpqk")]
+position = Vector2(224, -16)
+
+[node name="OxidizationPile" parent="YSort/Interactables" instance=ExtResource("23_ou7m5")]
+position = Vector2(272, -15)
+
+[node name="KillgreenWok" parent="YSort/Interactables" instance=ExtResource("24_e86ee")]
+position = Vector2(315, 50)
+
+[node name="FermentationPile" parent="YSort/Interactables" instance=ExtResource("25_ra141")]
+position = Vector2(316, 88)
+
+[node name="PressingMachine" parent="YSort/Interactables" instance=ExtResource("26_6r7tn")]
+position = Vector2(233, 88)
 
 [node name="Characters" type="Node2D" parent="YSort"]
 y_sort_enabled = true
 
 [node name="LanternTest" parent="YSort" instance=ExtResource("28_px83s")]
-position = Vector2(195, 130)
+position = Vector2(86, 55)
 
 [node name="MapChanger" parent="." instance=ExtResource("29_stmig")]
 position = Vector2(426, -15)
@@ -1093,7 +1113,7 @@ next_map_name = "ChedCity"
 player_position = Vector2(-72, 7)
 
 [node name="Water" parent="." instance=ExtResource("25_lhp1m")]
-material = SubResource("ShaderMaterial_aogax")
+material = SubResource("ShaderMaterial_iomw4")
 position = Vector2(165, 297)
 scale = Vector2(8.11864, 1.83594)
 region_enabled = true

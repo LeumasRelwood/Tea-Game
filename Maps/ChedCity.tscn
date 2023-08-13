@@ -36,7 +36,7 @@ frequency = 0.08
 seamless = true
 noise = SubResource("FastNoiseLite_cfa0h")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vdkk2"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_63a2e"]
 resource_local_to_scene = true
 shader = ExtResource("2_bof7g")
 shader_parameter/scroll = Vector2(0.05, 0.05)
@@ -915,7 +915,7 @@ slot_datas = Array[Resource("res://InventoryManagers/SlotData.gd")]([null, null]
 visible = false
 
 [node name="Water" parent="." instance=ExtResource("2_e758c")]
-material = SubResource("ShaderMaterial_vdkk2")
+material = SubResource("ShaderMaterial_63a2e")
 
 [node name="Background" type="Sprite2D" parent="."]
 texture_repeat = 2

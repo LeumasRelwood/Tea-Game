@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://bmcwhgglkhyb0"]
+
+[ext_resource type="Script" path="res://World/Interactables/fermentation_pile.gd" id="1_tygiy"]
+[ext_resource type="Texture2D" uid="uid://m4blbm3644ik" path="res://World/Interactables/fermentationpile.jpg" id="4_8nq5k"]
+[ext_resource type="Script" path="res://Hit and Hurtboxes/hurtbox.gd" id="5_1osia"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wjoir"]
+size = Vector2(42, 19)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rtrdu"]
+size = Vector2(40.4896, 30.1318)
+
+[node name="FermentationPile" type="StaticBody2D" groups=["external_fermenting"]]
+collision_mask = 2
+script = ExtResource("1_tygiy")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="ProgressClickerTimer" type="Timer" parent="Timer"]
+wait_time = 0.5
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.0712695, 0.0712695)
+texture = ExtResource("4_8nq5k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6.5)
+shape = SubResource("RectangleShape2D_wjoir")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 64
+script = ExtResource("5_1osia")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0.5, -2.08616e-07)
+scale = Vector2(1.062, 1.062)
+shape = SubResource("RectangleShape2D_rtrdu")
+
+[node name="Timer" type="Timer" parent="Hurtbox"]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout" flags=18]
+[connection signal="timeout" from="Timer/ProgressClickerTimer" to="." method="_on_progress_clicker_timer_timeout" flags=18]
+[connection signal="invincibility_ended" from="Hurtbox" to="Hurtbox" method="_on_invincibility_ended" flags=18]
+[connection signal="invincibility_started" from="Hurtbox" to="Hurtbox" method="_on_invincibility_started" flags=18]
+[connection signal="player_interact" from="Hurtbox" to="." method="_on_hurtbox_player_interact"]
+[connection signal="timeout" from="Hurtbox/Timer" to="Hurtbox" method="_on_timer_timeout" flags=18]

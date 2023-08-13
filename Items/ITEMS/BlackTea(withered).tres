@@ -1,22 +1,13 @@
-[gd_resource type="Resource" script_class="ItemDataWithered" load_steps=10 format=3 uid="uid://c8hyhu406wsuj"]
+[gd_resource type="Resource" script_class="ItemDataRollable" load_steps=9 format=3 uid="uid://c8hyhu406wsuj"]
 
-[ext_resource type="Script" path="res://Items/Item_data.gd" id="1_b6yh3"]
+[ext_resource type="Resource" uid="uid://dh0d8bs2w4qqu" path="res://Items/ITEMS/BlackTea(rolled).tres" id="1_ilk5u"]
 [ext_resource type="Resource" uid="uid://dyy4bd2uene0h" path="res://Items/ITEMS/FreshTeaLeaves.tres" id="1_mhkor"]
 [ext_resource type="Script" path="res://InventoryManagers/SlotData.gd" id="2_l2s6y"]
-[ext_resource type="Script" path="res://Items/item_data_withered.gd" id="3_xqxhs"]
+[ext_resource type="Script" path="res://Items/item_data_rollable.gd" id="4_qy1ap"]
 
-[sub_resource type="Resource" id="Resource_ej3uu"]
-script = ExtResource("1_b6yh3")
-name = ""
-description = ""
-stackable = false
-recipe = Array[ExtResource("2_l2s6y")]([])
-base_value = 0
-withering_time = 0
-
-[sub_resource type="Resource" id="Resource_pwdqh"]
+[sub_resource type="Resource" id="Resource_51iv1"]
 script = ExtResource("2_l2s6y")
-item_data = SubResource("Resource_ej3uu")
+item_data = ExtResource("1_ilk5u")
 quantity = 1
 
 [sub_resource type="Resource" id="Resource_agj2f"]
@@ -24,20 +15,20 @@ script = ExtResource("2_l2s6y")
 item_data = ExtResource("1_mhkor")
 quantity = 1
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4g1dh"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_as026"]
 load_path = "res://.godot/imported/#1 - Transparent Icons.png-8892caa8bbd25309d6ee2c3cb21bced5.ctex"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rv0r0"]
-atlas = SubResource("CompressedTexture2D_4g1dh")
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ymdp"]
+atlas = SubResource("CompressedTexture2D_as026")
 region = Rect2(448, 352, 32, 32)
 
 [resource]
-script = ExtResource("3_xqxhs")
-next_stage = SubResource("Resource_pwdqh")
+script = ExtResource("4_qy1ap")
+next_stage = SubResource("Resource_51iv1")
 name = "Black Tea (withered)"
 description = "Next Step: Rolling"
 stackable = true
-texture = SubResource("AtlasTexture_rv0r0")
+texture = SubResource("AtlasTexture_7ymdp")
 recipe = Array[ExtResource("2_l2s6y")]([SubResource("Resource_agj2f")])
 base_value = 0
 withering_time = 3

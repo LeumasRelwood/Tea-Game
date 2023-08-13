@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ItemDataFermentable" load_steps=9 format=3 uid="uid://1yhhebbnsdwb"]
+
+[ext_resource type="Resource" uid="uid://j2wcewuies1u" path="res://Items/ITEMS/PuerhTea(fermented).tres" id="1_fj570"]
+[ext_resource type="Script" path="res://InventoryManagers/SlotData.gd" id="2_ogccx"]
+[ext_resource type="Resource" uid="uid://dyy4bd2uene0h" path="res://Items/ITEMS/FreshTeaLeaves.tres" id="3_rb2hr"]
+[ext_resource type="Script" path="res://Items/item_data_fermentable.gd" id="4_3mnm2"]
+
+[sub_resource type="Resource" id="Resource_74lwh"]
+script = ExtResource("2_ogccx")
+item_data = ExtResource("1_fj570")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_agj2f"]
+script = ExtResource("2_ogccx")
+item_data = ExtResource("3_rb2hr")
+quantity = 1
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4g1dh"]
+load_path = "res://.godot/imported/#1 - Transparent Icons.png-8892caa8bbd25309d6ee2c3cb21bced5.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_da15x"]
+atlas = SubResource("CompressedTexture2D_4g1dh")
+region = Rect2(0, 384, 32, 32)
+
+[resource]
+script = ExtResource("4_3mnm2")
+next_stage = SubResource("Resource_74lwh")
+name = "Pu-erh Tea (rolled)"
+description = "Next Step: Fermenting"
+stackable = true
+texture = SubResource("AtlasTexture_da15x")
+recipe = Array[ExtResource("2_ogccx")]([SubResource("Resource_agj2f")])
+base_value = 0
+processing_time = 1

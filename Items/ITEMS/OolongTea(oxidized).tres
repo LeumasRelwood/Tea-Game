@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="ItemDataFixable" load_steps=7 format=3 uid="uid://ch36du727fleh"]
+
+[ext_resource type="Resource" uid="uid://fjw0x3h3klr5" path="res://Items/ITEMS/OolongTea(fixed).tres" id="1_gv0qw"]
+[ext_resource type="Script" path="res://InventoryManagers/SlotData.gd" id="2_kgjdc"]
+[ext_resource type="Resource" uid="uid://dyy4bd2uene0h" path="res://Items/ITEMS/FreshTeaLeaves.tres" id="3_1vc5g"]
+[ext_resource type="Script" path="res://Items/item_data_fixable.gd" id="4_mn1ug"]
+
+[sub_resource type="Resource" id="Resource_sindr"]
+script = ExtResource("2_kgjdc")
+item_data = ExtResource("1_gv0qw")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_agj2f"]
+script = ExtResource("2_kgjdc")
+item_data = ExtResource("3_1vc5g")
+quantity = 1
+
+[resource]
+script = ExtResource("4_mn1ug")
+next_stage = SubResource("Resource_sindr")
+name = "Oolong Tea (oxidized)"
+description = "Next Step: Fixing"
+stackable = true
+recipe = Array[ExtResource("2_kgjdc")]([SubResource("Resource_agj2f")])
+base_value = 0
+processing_time = 1

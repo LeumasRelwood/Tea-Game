@@ -7,7 +7,7 @@ class_name ItemData
 @export var texture : AtlasTexture
 @export var recipe : Array[SlotData]
 @export var base_value: int
-@export var withering_time: int
+@export var processing_time: int
 
 #enum ItemType { GENERIC, CONSUMABLE, QUEST, EQUIPMENT}
 #@export var type : ItemType

@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="ItemDataDryable" load_steps=7 format=3 uid="uid://fjw0x3h3klr5"]
+
+[ext_resource type="Resource" uid="uid://ccdr50kfe1w5l" path="res://Items/ITEMS/OolongTea.tres" id="1_itmfd"]
+[ext_resource type="Script" path="res://InventoryManagers/SlotData.gd" id="2_bva0o"]
+[ext_resource type="Resource" uid="uid://dyy4bd2uene0h" path="res://Items/ITEMS/FreshTeaLeaves.tres" id="3_mmrc5"]
+[ext_resource type="Script" path="res://Items/item_data_dryable.gd" id="4_e5jlh"]
+
+[sub_resource type="Resource" id="Resource_o2qxx"]
+script = ExtResource("2_bva0o")
+item_data = ExtResource("1_itmfd")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_agj2f"]
+script = ExtResource("2_bva0o")
+item_data = ExtResource("3_mmrc5")
+quantity = 1
+
+[resource]
+script = ExtResource("4_e5jlh")
+next_stage = SubResource("Resource_o2qxx")
+name = "Oolong Tea (fixed)"
+description = "Next Step: Drying"
+stackable = true
+recipe = Array[ExtResource("2_bva0o")]([SubResource("Resource_agj2f")])
+base_value = 0
+processing_time = 1

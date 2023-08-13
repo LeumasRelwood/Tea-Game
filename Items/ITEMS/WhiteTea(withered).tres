@@ -19,7 +19,7 @@ region = Rect2(32, 384, 32, 32)
 [resource]
 script = ExtResource("3_ph6na")
 next_stage = SubResource("Resource_eedof")
-name = "White Tea (Withered)"
+name = "White Tea (withered)"
 description = "Next step: Drying"
 stackable = true
 texture = SubResource("AtlasTexture_oxt60")

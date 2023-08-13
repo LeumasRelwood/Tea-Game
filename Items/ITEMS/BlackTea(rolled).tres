@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ItemDataOxidizable" load_steps=9 format=3 uid="uid://dh0d8bs2w4qqu"]
+
+[ext_resource type="Resource" uid="uid://dismit7o4qfsn" path="res://Items/ITEMS/BlackTea(oxidized).tres" id="1_6mldg"]
+[ext_resource type="Script" path="res://InventoryManagers/SlotData.gd" id="2_bragj"]
+[ext_resource type="Resource" uid="uid://dyy4bd2uene0h" path="res://Items/ITEMS/FreshTeaLeaves.tres" id="3_e5hoe"]
+[ext_resource type="Script" path="res://Items/item_data_oxidizable.gd" id="4_8hlfy"]
+
+[sub_resource type="Resource" id="Resource_n5854"]
+script = ExtResource("2_bragj")
+item_data = ExtResource("1_6mldg")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_agj2f"]
+script = ExtResource("2_bragj")
+item_data = ExtResource("3_e5hoe")
+quantity = 1
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_as026"]
+load_path = "res://.godot/imported/#1 - Transparent Icons.png-8892caa8bbd25309d6ee2c3cb21bced5.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3830f"]
+atlas = SubResource("CompressedTexture2D_as026")
+region = Rect2(448, 352, 32, 32)
+
+[resource]
+script = ExtResource("4_8hlfy")
+next_stage = SubResource("Resource_n5854")
+name = "Black Tea (rolled)"
+description = "Next Step: Oxidizing"
+stackable = true
+texture = SubResource("AtlasTexture_3830f")
+recipe = Array[ExtResource("2_bragj")]([SubResource("Resource_agj2f")])
+base_value = 0
+withering_time = 1

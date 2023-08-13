@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ItemDataRollable" load_steps=9 format=3 uid="uid://bdmn2t0casinf"]
+
+[ext_resource type="Resource" uid="uid://1yhhebbnsdwb" path="res://Items/ITEMS/PuerhTea(rolled).tres" id="1_l5up5"]
+[ext_resource type="Script" path="res://InventoryManagers/SlotData.gd" id="2_roygw"]
+[ext_resource type="Resource" uid="uid://dyy4bd2uene0h" path="res://Items/ITEMS/FreshTeaLeaves.tres" id="3_gfhqf"]
+[ext_resource type="Script" path="res://Items/item_data_rollable.gd" id="4_0efps"]
+
+[sub_resource type="Resource" id="Resource_tc2hi"]
+script = ExtResource("2_roygw")
+item_data = ExtResource("1_l5up5")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_agj2f"]
+script = ExtResource("2_roygw")
+item_data = ExtResource("3_gfhqf")
+quantity = 1
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4g1dh"]
+load_path = "res://.godot/imported/#1 - Transparent Icons.png-8892caa8bbd25309d6ee2c3cb21bced5.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vstia"]
+atlas = SubResource("CompressedTexture2D_4g1dh")
+region = Rect2(0, 384, 32, 32)
+
+[resource]
+script = ExtResource("4_0efps")
+next_stage = SubResource("Resource_tc2hi")
+name = "Pu-erh Tea (fixed)"
+description = "Next Step: Rolling"
+stackable = true
+texture = SubResource("AtlasTexture_vstia")
+recipe = Array[ExtResource("2_roygw")]([SubResource("Resource_agj2f")])
+base_value = 0
+processing_time = 1
