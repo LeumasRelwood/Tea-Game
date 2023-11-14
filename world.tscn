@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cw1nro4m5s36s"]
+[gd_scene load_steps=23 format=3 uid="uid://cw1nro4m5s36s"]
 
 [ext_resource type="PackedScene" uid="uid://cj462uvp4qvw7" path="res://camera_2d.tscn" id="1_36ixg"]
 [ext_resource type="Script" path="res://world.gd" id="1_pt8ln"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bxeaagi03qgrd" path="res://InventoryManagers/hot_bar_inventory.tscn" id="9_44i8a"]
 [ext_resource type="PackedScene" uid="uid://dqjdvsaiqyrp3" path="res://InventoryManagers/drying_menu.tscn" id="9_wpncx"]
 [ext_resource type="PackedScene" uid="uid://bw18h83q04os2" path="res://UI/CounterUI.tscn" id="10_b0lvu"]
+[ext_resource type="PackedScene" uid="uid://l25qph12k0uo" path="res://InventoryManagers/plant_shop_menu.tscn" id="12_6fbfy"]
 [ext_resource type="LabelSettings" uid="uid://7tgrr3fs72vu" path="res://UI/GUI labels.tres" id="12_l3byq"]
 [ext_resource type="PackedScene" uid="uid://ba3yi75by7i4l" path="res://InventoryManagers/tea_storage_inventory.tscn" id="12_wk2ft"]
 [ext_resource type="PackedScene" uid="uid://dxqqtfb3ex7oe" path="res://Globals/TeaMarket/tea_market.tscn" id="14_auj6w"]
@@ -123,6 +124,11 @@ mouse_filter = 2
 
 [node name="TextureRect" parent="UI/InventoryInterface/GrabbedSlot/MarginContainer" index="0"]
 mouse_filter = 2
+
+[node name="PlantShopMenu" parent="UI/InventoryInterface" instance=ExtResource("12_6fbfy")]
+layout_mode = 1
+offset_left = -35.0
+offset_right = -35.0
 
 [node name="TeaMarket" parent="UI" instance=ExtResource("14_auj6w")]
 visible = false

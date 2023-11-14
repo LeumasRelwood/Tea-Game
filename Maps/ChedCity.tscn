@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://00ldqndxs0ma"]
+[gd_scene load_steps=37 format=3 uid="uid://00ldqndxs0ma"]
 
 [ext_resource type="Texture2D" uid="uid://b3j5ngdc1abij" path="res://World/GrassBackground.png" id="1_8le0l"]
 [ext_resource type="PackedScene" uid="uid://bgi842o5ef5ut" path="res://InventoryManagers/buildable_area.tscn" id="1_ppxwj"]
@@ -14,6 +14,11 @@
 [ext_resource type="PackedScene" uid="uid://yokjl35u412w" path="res://World/tree.tscn" id="10_uxwuy"]
 [ext_resource type="PackedScene" uid="uid://myyvafhtgysh" path="res://World/Interactables/tea_storage.tscn" id="11_fc3wr"]
 [ext_resource type="PackedScene" uid="uid://c3bhop76c148c" path="res://Maps/map_changer.tscn" id="13_0coaq"]
+[ext_resource type="PackedScene" uid="uid://dbljht41tjllw" path="res://World/Interactables/plant_shop.tscn" id="14_2wgte"]
+[ext_resource type="Script" path="res://InventoryManagers/InventoryDataFinishedLeaves.gd" id="15_7k3rt"]
+[ext_resource type="Resource" uid="uid://dny5i36xocnvi" path="res://Items/ITEMS/tea_bush.tres" id="16_x0i4g"]
+[ext_resource type="Script" path="res://InventoryManagers/SlotData.gd" id="17_65jyr"]
+[ext_resource type="Resource" uid="uid://dyy4bd2uene0h" path="res://Items/ITEMS/FreshTeaLeaves.tres" id="18_kl8py"]
 [ext_resource type="PackedScene" uid="uid://dgik61ds5a1f" path="res://NPCs/HarbormasterTeddy.tscn" id="26_3cqqc"]
 [ext_resource type="PackedScene" uid="uid://cavce8s7q5b7h" path="res://NPCs/background_npc.tscn" id="27_hb36v"]
 [ext_resource type="PackedScene" uid="uid://raunba8bl10j" path="res://TEST/lantern_test.tscn" id="28_b2tes"]
@@ -36,7 +41,7 @@ frequency = 0.08
 seamless = true
 noise = SubResource("FastNoiseLite_cfa0h")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_63a2e"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5hfhf"]
 resource_local_to_scene = true
 shader = ExtResource("2_bof7g")
 shader_parameter/scroll = Vector2(0.05, 0.05)
@@ -907,7 +912,21 @@ sources/0 = SubResource("TileSetAtlasSource_mywjx")
 
 [sub_resource type="Resource" id="Resource_v1qws"]
 script = ExtResource("6_nubtq")
-slot_datas = Array[Resource("res://InventoryManagers/SlotData.gd")]([null, null])
+slot_datas = Array[ExtResource("17_65jyr")]([null, null])
+
+[sub_resource type="Resource" id="Resource_tbxn3"]
+script = ExtResource("17_65jyr")
+item_data = ExtResource("16_x0i4g")
+quantity = 10
+
+[sub_resource type="Resource" id="Resource_iv073"]
+script = ExtResource("17_65jyr")
+item_data = ExtResource("18_kl8py")
+quantity = 10
+
+[sub_resource type="Resource" id="Resource_k2wax"]
+script = ExtResource("15_7k3rt")
+slot_datas = Array[ExtResource("17_65jyr")]([SubResource("Resource_tbxn3"), SubResource("Resource_iv073"), null, null, null])
 
 [node name="Level" type="Node2D"]
 
@@ -915,7 +934,7 @@ slot_datas = Array[Resource("res://InventoryManagers/SlotData.gd")]([null, null]
 visible = false
 
 [node name="Water" parent="." instance=ExtResource("2_e758c")]
-material = SubResource("ShaderMaterial_63a2e")
+material = SubResource("ShaderMaterial_5hfhf")
 
 [node name="Background" type="Sprite2D" parent="."]
 texture_repeat = 2
@@ -1008,6 +1027,10 @@ y_sort_enabled = true
 
 [node name="TeaStorage" parent="YSort/Interactables" instance=ExtResource("11_fc3wr")]
 position = Vector2(141, 106)
+
+[node name="PlantShop" parent="YSort/Interactables" instance=ExtResource("14_2wgte")]
+position = Vector2(259, 0)
+shop_inventory_data = SubResource("Resource_k2wax")
 
 [node name="Characters" type="Node2D" parent="YSort"]
 y_sort_enabled = true

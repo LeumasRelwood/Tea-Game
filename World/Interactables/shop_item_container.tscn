@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://crhpmdxw2k4a3"]
+
+[ext_resource type="PackedScene" uid="uid://c85dkxf7abl0u" path="res://InventoryManagers/RecipeItemContainers/recipe_item_container.tscn" id="1_aogqm"]
+[ext_resource type="Script" path="res://World/Interactables/shop_item_container.gd" id="2_l5rtd"]
+
+[node name="ShopItemContainer" groups=["shop_items"] instance=ExtResource("1_aogqm")]
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource("2_l5rtd")
+shop_item = null
+
+[node name="Label" parent="MarginContainer" index="0"]
+text = "Tea Bush.
+Cost - 75; Qty - 10"
+
+[node name="Button" parent="." index="2"]
+action_mode = 0
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed" flags=18]

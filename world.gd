@@ -9,6 +9,8 @@ extends Node2D
 @onready var drying_menu = $UI/InventoryInterface/DryingMenu
 @onready var tea_storage_inventory = $UI/InventoryInterface/TeaStorageInventory
 @onready var tea_market = $UI/TeaMarket
+@onready var plant_shop_menu = $UI/InventoryInterface/PlantShopMenu
+
 
 var mouse_in_build_area = false
 var buildable_tile_map: TileMap
@@ -53,6 +55,9 @@ func connect_signals():
 	
 	for node in get_tree().get_nodes_in_group("map_changers"):
 		node.change_map.connect(change_map)
+	
+	for node in get_tree().get_nodes_in_group("external_shop"):
+		node.toggle_external_shop.connect(toggle_external_shop_interface)
 
 func toggle_tea_market():
 	tea_market.visible = not tea_market.visible
@@ -157,6 +162,26 @@ func external_tea_storage_controller(external_inventory_owner = null):
 	else:
 		inventory_interface.clear_external_tea_storage()
 
+func toggle_external_shop_interface(external_inventory_owner = null):
+	if not player_inventory.visible:
+		inventory_interface.visible = not inventory_interface.visible
+		player_inventory.visible = not player_inventory.visible
+		external_shop_controller(external_inventory_owner)
+	else:
+		inventory_interface.set_external_shop(external_inventory_owner)
+		plant_shop_menu.visible = not plant_shop_menu.visible
+	
+	if inventory_interface.visible:
+		hot_bar_inventory.hide()
+	else:
+		hot_bar_inventory.show()
+
+func external_shop_controller(external_inventory_owner = null):
+	if external_inventory_owner and inventory_interface:
+		inventory_interface.set_external_shop(external_inventory_owner)
+		plant_shop_menu.show()
+	else:
+		inventory_interface.clear_external_shop()
 
 
 func _on_buildable_area_mouse_entered():

@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://dbljht41tjllw"]
+
+[ext_resource type="Script" path="res://World/Interactables/plant_shop.gd" id="1_dtf40"]
+[ext_resource type="Texture2D" uid="uid://ck1joou0t83ej" path="res://World/Interactables/shop png.png" id="3_jp50n"]
+[ext_resource type="PackedScene" uid="uid://cfh3c2h78s7kr" path="res://Hit and Hurtboxes/hurtbox.tscn" id="4_b6m3p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p60bi"]
+size = Vector2(72, 29)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wapcj"]
+size = Vector2(72, 65)
+
+[node name="PlantShop" type="StaticBody2D" groups=["external_shop", "inventory_menus"]]
+position = Vector2(0, -6)
+collision_mask = 2
+script = ExtResource("1_dtf40")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(7.15256e-07, 9.53674e-07)
+scale = Vector2(0.0857143, 0.0745052)
+texture = ExtResource("3_jp50n")
+region_rect = Rect2(804.371, 64.6463, 1001.44, 798.873)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 18.5)
+shape = SubResource("RectangleShape2D_p60bi")
+
+[node name="Hurtbox" parent="." instance=ExtResource("4_b6m3p")]
+collision_layer = 32
+collision_mask = 64
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_wapcj")
+
+[connection signal="player_interact" from="Hurtbox" to="." method="_on_hurtbox_player_interact" flags=18]
+
+[editable path="Hurtbox"]

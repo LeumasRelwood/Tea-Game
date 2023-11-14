@@ -953,7 +953,7 @@ frequency = 0.08
 seamless = true
 noise = SubResource("FastNoiseLite_cfa0h")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_iomw4"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1p0m2"]
 resource_local_to_scene = true
 shader = ExtResource("25_vc0p3")
 shader_parameter/scroll = Vector2(-0.025, 0.025)
@@ -1113,7 +1113,7 @@ next_map_name = "ChedCity"
 player_position = Vector2(-72, 7)
 
 [node name="Water" parent="." instance=ExtResource("25_lhp1m")]
-material = SubResource("ShaderMaterial_iomw4")
+material = SubResource("ShaderMaterial_1p0m2")
 position = Vector2(165, 297)
 scale = Vector2(8.11864, 1.83594)
 region_enabled = true

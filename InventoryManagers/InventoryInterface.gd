@@ -14,6 +14,7 @@ var external_inventory_owner = null
 @onready var withering_menu = $WitheringMenu
 @onready var drying_menu = $DryingMenu
 @onready var tea_storage_inventory = $TeaStorageInventory
+@onready var plant_shop_menu = $PlantShopMenu
 var buildable_tile_map
 
 func _physics_process(delta: float) -> void:
@@ -119,6 +120,28 @@ func clear_external_tea_storage() -> void:
 		
 		tea_storage_inventory.hide()
 		external_inventory_owner = null
+
+
+
+func set_external_shop(_external_inventory_owner) -> void:
+	external_inventory_owner = _external_inventory_owner
+	var shop_inventory_data = external_inventory_owner.shop_inventory_data
+	
+	shop_inventory_data.inventory_interact.connect(on_inventory_interact)
+	#plant_shop_menu.shop_inventory.set_inventory_data(shop_inventory_data)
+	plant_shop_menu.set_shop_inventory(shop_inventory_data, external_inventory_owner)
+
+func clear_external_shop() -> void:
+	if external_inventory_owner:
+		var shop_inventory_data = external_inventory_owner.shop_inventory_data
+		
+		shop_inventory_data.inventory_interact.disconnect(on_inventory_interact)
+		plant_shop_menu.clear_shop_inventory(shop_inventory_data)
+		
+		plant_shop_menu.hide()
+		external_inventory_owner = null
+
+
 
 func on_inventory_interact(inventory_data: InventoryData, index: int, button: int) -> void:
 	match [grabbed_slot_data, button]:

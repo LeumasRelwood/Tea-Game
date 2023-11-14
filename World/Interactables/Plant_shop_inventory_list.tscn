@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://tkpls1e0smis"]
+
+[ext_resource type="PackedScene" uid="uid://crhpmdxw2k4a3" path="res://World/Interactables/shop_item_container.tscn" id="1_v7pf5"]
+
+[node name="ShopScrollContainer" type="ScrollContainer"]
+custom_minimum_size = Vector2(70, 60)
+offset_right = 80.0
+offset_bottom = 60.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(70, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="ShopItemContainer" parent="MarginContainer/VBoxContainer" instance=ExtResource("1_v7pf5")]
+layout_mode = 2
