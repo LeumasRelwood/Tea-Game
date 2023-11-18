@@ -1,11 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://cqndqk3iydtcb"]
+[gd_scene load_steps=6 format=3 uid="uid://cqndqk3iydtcb"]
 
-[ext_resource type="PackedScene" uid="uid://crhpmdxw2k4a3" path="res://World/Interactables/shop_item_container.tscn" id="1_4sarc"]
+[ext_resource type="Script" path="res://World/Interactables/selected_shop_scroll_container.gd" id="1_5qmix"]
+[ext_resource type="Script" path="res://InventoryManagers/InventoryData.gd" id="2_juwga"]
+[ext_resource type="Script" path="res://InventoryManagers/SlotData.gd" id="3_4est5"]
+
+[sub_resource type="Resource" id="Resource_e0rf2"]
+script = ExtResource("3_4est5")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_nbek5"]
+script = ExtResource("2_juwga")
+slot_datas = Array[ExtResource("3_4est5")]([SubResource("Resource_e0rf2")])
 
 [node name="SelectedShopScrollContainer" type="ScrollContainer"]
-custom_minimum_size = Vector2(70, 60)
+custom_minimum_size = Vector2(70, 80)
 size_flags_horizontal = 4
 size_flags_vertical = 4
+script = ExtResource("1_5qmix")
+inventoryData = SubResource("Resource_nbek5")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -15,10 +27,7 @@ theme_override_constants/margin_right = 1
 theme_override_constants/margin_bottom = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-custom_minimum_size = Vector2(70, 40)
+custom_minimum_size = Vector2(50, 40)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-
-[node name="ShopItemContainer" parent="MarginContainer/VBoxContainer" instance=ExtResource("1_4sarc")]
-layout_mode = 2

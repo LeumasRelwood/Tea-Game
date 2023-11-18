@@ -126,9 +126,12 @@ mouse_filter = 2
 mouse_filter = 2
 
 [node name="PlantShopMenu" parent="UI/InventoryInterface" instance=ExtResource("12_6fbfy")]
+visible = false
 layout_mode = 1
-offset_left = -35.0
-offset_right = -35.0
+offset_left = 64.0
+offset_top = 17.0
+offset_right = 64.0
+offset_bottom = 17.0
 
 [node name="TeaMarket" parent="UI" instance=ExtResource("14_auj6w")]
 visible = false
@@ -146,6 +149,9 @@ label_settings = ExtResource("12_l3byq")
 [node name="Level" parent="." instance=ExtResource("16_7o0ng")]
 
 [node name="DirtPathTileMap" parent="Level" index="3" groups=["buildable_tile_maps"]]
+
+[node name="PlantShop" parent="Level/YSort/Interactables" index="9"]
+position = Vector2(-51, 57)
 
 [node name="Water" parent="Level" index="7"]
 material = SubResource("ShaderMaterial_pux5y")

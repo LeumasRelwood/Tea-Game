@@ -126,8 +126,7 @@ func clear_external_tea_storage() -> void:
 func set_external_shop(_external_inventory_owner) -> void:
 	external_inventory_owner = _external_inventory_owner
 	var shop_inventory_data = external_inventory_owner.shop_inventory_data
-	
-	shop_inventory_data.inventory_interact.connect(on_inventory_interact)
+	#shop_inventory_data.inventory_interact.connect(on_inventory_interact)
 	#plant_shop_menu.shop_inventory.set_inventory_data(shop_inventory_data)
 	plant_shop_menu.set_shop_inventory(shop_inventory_data, external_inventory_owner)
 

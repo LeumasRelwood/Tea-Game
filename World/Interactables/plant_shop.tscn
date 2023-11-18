@@ -1,8 +1,26 @@
-[gd_scene load_steps=6 format=3 uid="uid://dbljht41tjllw"]
+[gd_scene load_steps=13 format=3 uid="uid://dbljht41tjllw"]
 
 [ext_resource type="Script" path="res://World/Interactables/plant_shop.gd" id="1_dtf40"]
+[ext_resource type="Script" path="res://InventoryManagers/InventoryData.gd" id="2_u54rp"]
+[ext_resource type="Resource" uid="uid://dny5i36xocnvi" path="res://Items/ITEMS/tea_bush.tres" id="3_bjvlx"]
 [ext_resource type="Texture2D" uid="uid://ck1joou0t83ej" path="res://World/Interactables/shop png.png" id="3_jp50n"]
 [ext_resource type="PackedScene" uid="uid://cfh3c2h78s7kr" path="res://Hit and Hurtboxes/hurtbox.tscn" id="4_b6m3p"]
+[ext_resource type="Script" path="res://InventoryManagers/SlotData.gd" id="4_uj5ck"]
+[ext_resource type="Resource" uid="uid://dyy4bd2uene0h" path="res://Items/ITEMS/FreshTeaLeaves.tres" id="5_3u0t3"]
+
+[sub_resource type="Resource" id="Resource_f1og7"]
+script = ExtResource("4_uj5ck")
+item_data = ExtResource("3_bjvlx")
+quantity = 15
+
+[sub_resource type="Resource" id="Resource_4a5ar"]
+script = ExtResource("4_uj5ck")
+item_data = ExtResource("5_3u0t3")
+quantity = 65
+
+[sub_resource type="Resource" id="Resource_ig1ij"]
+script = ExtResource("2_u54rp")
+slot_datas = Array[ExtResource("4_uj5ck")]([SubResource("Resource_f1og7"), SubResource("Resource_4a5ar")])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p60bi"]
 size = Vector2(72, 29)
@@ -14,6 +32,7 @@ size = Vector2(72, 65)
 position = Vector2(0, -6)
 collision_mask = 2
 script = ExtResource("1_dtf40")
+shop_inventory_data = SubResource("Resource_ig1ij")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(7.15256e-07, 9.53674e-07)

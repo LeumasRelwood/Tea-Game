@@ -35,7 +35,7 @@ func _process(delta):
 		total_minutes += 1
 		if minute == 60:
 			minute = 0
-			hour += 1 
+			hour += 1
 			if hour == 24:
 				hour = 0
 				day += 1

@@ -1,9 +1,27 @@
-[gd_scene load_steps=7 format=3 uid="uid://l25qph12k0uo"]
+[gd_scene load_steps=14 format=3 uid="uid://l25qph12k0uo"]
 
 [ext_resource type="Theme" uid="uid://dbvmo5viem8os" path="res://UI/withering_menu.tres" id="1_st65t"]
 [ext_resource type="Script" path="res://InventoryManagers/plant_shop_menu.gd" id="2_ms45m"]
+[ext_resource type="Script" path="res://InventoryManagers/InventoryData.gd" id="3_r58c3"]
 [ext_resource type="PackedScene" uid="uid://tkpls1e0smis" path="res://World/Interactables/Plant_shop_inventory_list.tscn" id="3_t8mja"]
+[ext_resource type="Resource" uid="uid://dny5i36xocnvi" path="res://Items/ITEMS/tea_bush.tres" id="4_b065n"]
 [ext_resource type="PackedScene" uid="uid://cqndqk3iydtcb" path="res://World/Interactables/selected_shop_scroll_container.tscn" id="4_gx80j"]
+[ext_resource type="Script" path="res://InventoryManagers/SlotData.gd" id="4_tmsgk"]
+[ext_resource type="Resource" uid="uid://dyy4bd2uene0h" path="res://Items/ITEMS/FreshTeaLeaves.tres" id="6_sspcj"]
+
+[sub_resource type="Resource" id="Resource_rrb8r"]
+script = ExtResource("4_tmsgk")
+item_data = ExtResource("6_sspcj")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_caxs5"]
+script = ExtResource("4_tmsgk")
+item_data = ExtResource("4_b065n")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_7wuvv"]
+script = ExtResource("3_r58c3")
+slot_datas = Array[ExtResource("4_tmsgk")]([SubResource("Resource_rrb8r"), SubResource("Resource_caxs5")])
 
 [sub_resource type="LabelSettings" id="LabelSettings_3aja0"]
 font_size = 10
@@ -24,11 +42,12 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_st65t")
 script = ExtResource("2_ms45m")
+shopping_cart = SubResource("Resource_7wuvv")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 0
 offset_right = 150.0
-offset_bottom = 118.0
+offset_bottom = 141.0
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
 layout_mode = 2
@@ -51,11 +70,24 @@ layout_mode = 2
 text = "\"Welcome, what can I get you?\""
 label_settings = SubResource("LabelSettings_0wmcg")
 
+[node name="MarginContainer6" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="CostLabel" type="Label" parent="PanelContainer/MarginContainer6"]
+layout_mode = 2
+text = "Total Cost: 69"
+label_settings = SubResource("LabelSettings_0wmcg")
+
 [node name="MarginContainer3" type="MarginContainer" parent="PanelContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
-theme_override_constants/margin_bottom = 12
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 14
 
 [node name="BuyButton" type="Button" parent="PanelContainer/MarginContainer3"]
 layout_mode = 2
@@ -69,7 +101,7 @@ size_flags_horizontal = 0
 theme_override_constants/margin_left = 2
 theme_override_constants/margin_right = 0
 
-[node name="RecipeScrollContainer" parent="PanelContainer/MarginContainer4" instance=ExtResource("3_t8mja")]
+[node name="InventoryScrollContainer" parent="PanelContainer/MarginContainer4" instance=ExtResource("3_t8mja")]
 layout_mode = 2
 
 [node name="MarginContainer5" type="MarginContainer" parent="PanelContainer"]
@@ -81,3 +113,5 @@ theme_override_constants/margin_right = 2
 layout_mode = 2
 
 [connection signal="pressed" from="PanelContainer/MarginContainer3/BuyButton" to="." method="_on_start_button_pressed" flags=18]
+
+[editable path="PanelContainer/MarginContainer4/InventoryScrollContainer"]

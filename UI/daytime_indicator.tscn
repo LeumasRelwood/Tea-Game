@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cve8gybeq6wy0"]
+
+[ext_resource type="Texture2D" uid="uid://btko0i38kcdbw" path="res://TEST/sea_bed.png" id="1_lede7"]
+[ext_resource type="Script" path="res://UI/daytime_indicator.gd" id="1_ykjhj"]
+
+[node name="TextureRect" type="Control" groups=["DayNightModulator"]]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 27.0
+offset_bottom = 16.0
+script = ExtResource("1_ykjhj")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_top = 0.077
+offset_right = 27.0
+offset_bottom = 88.077
+texture = ExtResource("1_lede7")
+expand_mode = 1

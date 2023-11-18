@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://cdhphmp2x8dta"]
+[gd_scene load_steps=56 format=3 uid="uid://cdhphmp2x8dta"]
 
 [ext_resource type="Texture2D" uid="uid://b3j5ngdc1abij" path="res://World/GrassBackground.png" id="1_smuwg"]
 [ext_resource type="Texture2D" uid="uid://b754kwqghuij1" path="res://World/DirtTileset.png" id="2_ol4lb"]
@@ -28,7 +28,9 @@
 [ext_resource type="PackedScene" uid="uid://bmcwhgglkhyb0" path="res://World/Interactables/fermentation_pile.tscn" id="25_ra141"]
 [ext_resource type="Shader" path="res://Effects/River.gdshader" id="25_vc0p3"]
 [ext_resource type="PackedScene" uid="uid://o2r31sd8bj54" path="res://World/Interactables/pressing_machine.tscn" id="26_6r7tn"]
+[ext_resource type="PackedScene" uid="uid://dbljht41tjllw" path="res://World/Interactables/plant_shop.tscn" id="27_t5bw8"]
 [ext_resource type="PackedScene" uid="uid://raunba8bl10j" path="res://TEST/lantern_test.tscn" id="28_px83s"]
+[ext_resource type="Resource" uid="uid://dny5i36xocnvi" path="res://Items/ITEMS/tea_bush.tres" id="28_squl8"]
 [ext_resource type="PackedScene" uid="uid://c3bhop76c148c" path="res://Maps/map_changer.tscn" id="29_stmig"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dlgtb"]
@@ -935,6 +937,20 @@ slot_datas = Array[ExtResource("15_khwi4")]([null])
 script = ExtResource("22_t8hhu")
 slot_datas = Array[ExtResource("15_khwi4")]([null])
 
+[sub_resource type="Resource" id="Resource_7u1ov"]
+script = ExtResource("15_khwi4")
+item_data = ExtResource("28_squl8")
+quantity = 12
+
+[sub_resource type="Resource" id="Resource_xp4am"]
+script = ExtResource("15_khwi4")
+item_data = ExtResource("16_g2s67")
+quantity = 65
+
+[sub_resource type="Resource" id="Resource_agt3b"]
+script = ExtResource("12_g5io1")
+slot_datas = Array[ExtResource("15_khwi4")]([SubResource("Resource_7u1ov"), SubResource("Resource_xp4am")])
+
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_gu36h"]
 noise_type = 4
 seed = 2
@@ -953,7 +969,7 @@ frequency = 0.08
 seamless = true
 noise = SubResource("FastNoiseLite_cfa0h")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1p0m2"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8nxt0"]
 resource_local_to_scene = true
 shader = ExtResource("25_vc0p3")
 shader_parameter/scroll = Vector2(-0.025, 0.025)
@@ -1100,6 +1116,10 @@ position = Vector2(316, 88)
 [node name="PressingMachine" parent="YSort/Interactables" instance=ExtResource("26_6r7tn")]
 position = Vector2(233, 88)
 
+[node name="PlantShop" parent="YSort/Interactables" instance=ExtResource("27_t5bw8")]
+position = Vector2(-51, 3)
+shop_inventory_data = SubResource("Resource_agt3b")
+
 [node name="Characters" type="Node2D" parent="YSort"]
 y_sort_enabled = true
 
@@ -1113,7 +1133,7 @@ next_map_name = "ChedCity"
 player_position = Vector2(-72, 7)
 
 [node name="Water" parent="." instance=ExtResource("25_lhp1m")]
-material = SubResource("ShaderMaterial_1p0m2")
+material = SubResource("ShaderMaterial_8nxt0")
 position = Vector2(165, 297)
 scale = Vector2(8.11864, 1.83594)
 region_enabled = true
