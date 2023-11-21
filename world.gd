@@ -29,6 +29,7 @@ func connect_signals():
 	inventory_interface.force_close_withering.connect(toggle_external_withering_interface)
 	inventory_interface.force_close_drying.connect(toggle_external_drying_interface)
 	inventory_interface.force_close_tea_storage.connect(toggle_external_tea_storage)
+	inventory_interface.force_close_shop.connect(clear_external_shop)
 	GlobalTeaStorage.connect_signals()
 	
 	for node in get_tree().get_nodes_in_group("inventory_menus"):
@@ -66,10 +67,10 @@ func toggle_inventory_interface(external_inventory_owner = null) -> void:
 	inventory_interface.visible = not inventory_interface.visible
 	player_inventory.visible = not player_inventory.visible
 	
-	if inventory_interface.visible:
-		hot_bar_inventory.hide()
-	else:
-		hot_bar_inventory.show()
+	#if inventory_interface.visible:
+		#hot_bar_inventory.hide()
+	#else:
+		#hot_bar_inventory.show()
 	
 	if external_inventory.visible:
 		external_inventory_controller(external_inventory_owner)
@@ -87,10 +88,10 @@ func toggle_external_inventory_interface(external_inventory_owner = null) -> voi
 		inventory_interface.set_external_inventory(external_inventory_owner)
 		external_inventory.visible = not external_inventory.visible
 	
-	if inventory_interface.visible:
-		hot_bar_inventory.hide()
-	else:
-		hot_bar_inventory.show()
+	#if inventory_interface.visible:
+		#hot_bar_inventory.hide()
+	#else:
+		#hot_bar_inventory.show()
 
 func external_inventory_controller(external_inventory_owner = null):
 	if external_inventory_owner and inventory_interface:
@@ -108,10 +109,10 @@ func toggle_external_withering_interface(external_inventory_owner = null) -> voi
 		inventory_interface.set_external_withering(external_inventory_owner)
 		withering_menu.visible = not withering_menu.visible
 	
-	if inventory_interface.visible:
-		hot_bar_inventory.hide()
-	else:
-		hot_bar_inventory.show()
+	#if inventory_interface.visible:
+		#hot_bar_inventory.hide()
+	#else:
+		#hot_bar_inventory.show()
 
 func external_withering_controller(external_inventory_owner = null):
 	if external_inventory_owner and inventory_interface:
@@ -129,10 +130,10 @@ func toggle_external_drying_interface(external_inventory_owner = null):
 		inventory_interface.set_external_drying(external_inventory_owner)
 		drying_menu.visible = not drying_menu.visible
 	
-	if inventory_interface.visible:
-		hot_bar_inventory.hide()
-	else:
-		hot_bar_inventory.show()
+	#if inventory_interface.visible:
+		#hot_bar_inventory.hide()
+	#else:
+		#hot_bar_inventory.show()
 
 func external_drying_controller(external_inventory_owner = null):
 	if external_inventory_owner and inventory_interface:
@@ -150,10 +151,10 @@ func toggle_external_tea_storage(external_inventory_owner = null):
 		inventory_interface.set_external_tea_storage(external_inventory_owner)
 		tea_storage_inventory.visible = not tea_storage_inventory.visible
 	
-	if inventory_interface.visible:
-		hot_bar_inventory.hide()
-	else:
-		hot_bar_inventory.show()
+	#if inventory_interface.visible:
+		#hot_bar_inventory.hide()
+	#else:
+		#hot_bar_inventory.show()
 
 func external_tea_storage_controller(external_inventory_owner = null):
 	if external_inventory_owner and inventory_interface:
@@ -171,10 +172,13 @@ func toggle_external_shop_interface(user, external_inventory_owner = null):
 		inventory_interface.set_external_shop(user, external_inventory_owner)
 		plant_shop_menu.visible = not plant_shop_menu.visible
 	
-	if inventory_interface.visible:
-		hot_bar_inventory.hide()
-	else:
-		hot_bar_inventory.show()
+	if plant_shop_menu.visible == false:
+		inventory_interface.clear_external_shop()
+	
+	#if inventory_interface.visible:
+		#hot_bar_inventory.hide()
+	#else:
+		#hot_bar_inventory.show()
 
 func external_shop_controller(user, external_inventory_owner = null):
 	if external_inventory_owner and inventory_interface:
@@ -182,6 +186,10 @@ func external_shop_controller(user, external_inventory_owner = null):
 		plant_shop_menu.show()
 	else:
 		inventory_interface.clear_external_shop()
+
+func clear_external_shop(external_inventory_owner):
+	plant_shop_menu.hide()
+	inventory_interface.clear_external_shop()
 
 
 func _on_buildable_area_mouse_entered():

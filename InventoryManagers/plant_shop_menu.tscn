@@ -1,39 +1,14 @@
-[gd_scene load_steps=16 format=3 uid="uid://l25qph12k0uo"]
+[gd_scene load_steps=9 format=3 uid="uid://l25qph12k0uo"]
 
 [ext_resource type="Theme" uid="uid://dbvmo5viem8os" path="res://UI/withering_menu.tres" id="1_st65t"]
 [ext_resource type="Script" path="res://InventoryManagers/plant_shop_menu.gd" id="2_ms45m"]
 [ext_resource type="Script" path="res://InventoryManagers/InventoryData.gd" id="3_r58c3"]
 [ext_resource type="PackedScene" uid="uid://tkpls1e0smis" path="res://World/Interactables/Plant_shop_inventory_list.tscn" id="3_t8mja"]
 [ext_resource type="PackedScene" uid="uid://cqndqk3iydtcb" path="res://World/Interactables/selected_shop_scroll_container.tscn" id="4_gx80j"]
-[ext_resource type="Script" path="res://InventoryManagers/SlotData.gd" id="4_tmsgk"]
-
-[sub_resource type="Resource" id="Resource_2e7vl"]
-script = ExtResource("4_tmsgk")
-quantity = 1
-
-[sub_resource type="Resource" id="Resource_8qc72"]
-script = ExtResource("4_tmsgk")
-quantity = 1
-
-[sub_resource type="Resource" id="Resource_58c2w"]
-script = ExtResource("4_tmsgk")
-quantity = 1
-
-[sub_resource type="Resource" id="Resource_otxdn"]
-script = ExtResource("4_tmsgk")
-quantity = 1
-
-[sub_resource type="Resource" id="Resource_j0u5p"]
-script = ExtResource("4_tmsgk")
-quantity = 1
-
-[sub_resource type="Resource" id="Resource_dowuw"]
-script = ExtResource("4_tmsgk")
-quantity = 1
 
 [sub_resource type="Resource" id="Resource_pepal"]
 script = ExtResource("3_r58c3")
-slot_datas = Array[ExtResource("4_tmsgk")]([SubResource("Resource_2e7vl"), SubResource("Resource_8qc72"), SubResource("Resource_58c2w"), SubResource("Resource_otxdn"), SubResource("Resource_j0u5p"), SubResource("Resource_dowuw")])
+slot_datas = Array[Resource("res://InventoryManagers/SlotData.gd")]([])
 
 [sub_resource type="LabelSettings" id="LabelSettings_3aja0"]
 font_size = 10
@@ -59,7 +34,7 @@ shopping_cart = SubResource("Resource_pepal")
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 0
 offset_right = 150.0
-offset_bottom = 141.0
+offset_bottom = 149.0
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
 layout_mode = 2
@@ -82,12 +57,36 @@ layout_mode = 2
 text = "\"Welcome, what can I get you?\""
 label_settings = SubResource("LabelSettings_0wmcg")
 
+[node name="MarginContainer7" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_bottom = 90
+
+[node name="InventoryLabel" type="Label" parent="PanelContainer/MarginContainer7"]
+layout_mode = 2
+text = "Store Inventory"
+label_settings = SubResource("LabelSettings_0wmcg")
+
+[node name="MarginContainer8" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 90
+
+[node name="ShoppingCartLabel" type="Label" parent="PanelContainer/MarginContainer8"]
+layout_mode = 2
+text = "Shopping Cart"
+label_settings = SubResource("LabelSettings_0wmcg")
+
 [node name="MarginContainer6" type="MarginContainer" parent="PanelContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_override_constants/margin_left = 0
-theme_override_constants/margin_bottom = 0
+theme_override_constants/margin_bottom = -1
 
 [node name="CostLabel" type="Label" parent="PanelContainer/MarginContainer6"]
 layout_mode = 2
@@ -97,6 +96,7 @@ label_settings = SubResource("LabelSettings_0wmcg")
 [node name="MarginContainer4" type="MarginContainer" parent="PanelContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
+size_flags_vertical = 4
 theme_override_constants/margin_left = 2
 theme_override_constants/margin_right = 0
 
@@ -106,6 +106,7 @@ layout_mode = 2
 [node name="MarginContainer5" type="MarginContainer" parent="PanelContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
+size_flags_vertical = 4
 theme_override_constants/margin_right = 2
 
 [node name="SelectedShopScrollContainer" parent="PanelContainer/MarginContainer5" instance=ExtResource("4_gx80j")]
@@ -124,7 +125,7 @@ theme_override_font_sizes/font_size = 10
 disabled = true
 text = "Buy Selected"
 
-[connection signal="pressed" from="PanelContainer/MarginContainer3/BuyButton" to="." method="_on_start_button_pressed" flags=18]
 [connection signal="pressed" from="PanelContainer/MarginContainer3/BuyButton" to="." method="_on_buy_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer3/BuyButton" to="." method="_on_start_button_pressed" flags=18]
 
 [editable path="PanelContainer/MarginContainer4/InventoryScrollContainer"]

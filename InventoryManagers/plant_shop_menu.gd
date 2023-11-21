@@ -29,15 +29,19 @@ func connect_signals():
 
 func _on_buy_button_pressed():
 	if not buy_button.disabled:
+		PlayerStats.coins -= shopping_cart_total
 		user.add_bought_items(shopping_cart.slot_datas)
 		shopping_cart.slot_datas.clear()
 		update_menu()
 
 func is_buy_button_disabled() -> bool :
-	if shopping_cart_total >= PlayerStats.coins:
-		return true
+	if shopping_cart.slot_datas.size() > 0:
+		if shopping_cart_total >= PlayerStats.coins:
+			return true
+		else:
+			return false
 	else:
-		return false
+		return true
 	#buy_button.disabled = external_inv_owner.is_buy_button_disabled()
 
 func cart_item_selected(cart_item: SlotData):
@@ -64,22 +68,16 @@ func shop_item_selected(shop_item: SlotData):
 			has_item_already = true
 			slot_data.quantity += added_quantity
 	if has_item_already == not true:
-		for slot_data in shopping_cart.slot_datas:
-			if not slot_data.item_data and has_item_already == not true:
-				has_item_already = true
-				slot_data.item_data = shop_item.item_data
-				slot_data.quantity = added_quantity
+		has_item_already = true
+		var slot = SlotData.new()
+		slot.item_data = shop_item.item_data
+		slot.quantity = added_quantity
+		shopping_cart.slot_datas.append(slot)
 
-		#shopping_cart.slot_datas.append(shop_item)
-		#shopping_cart.slot_datas[-1].quantity = added_quantity
-	
 	external_inv_owner.shop_item_selected(shop_item, added_quantity)
 	update_menu()
 
-	# ADJUST FOR SELECTED ITEM external_inv_owner.selected_recipe = shop_item
-
 func update_menu():
-	#ADJUST FOR BUY BUTTON start_button.disabled = external_inv_owner.is_start_button_disabled()
 	shopping_cart_total = 0
 	for slot_data in shopping_cart.slot_datas:
 		if slot_data and slot_data.item_data:
@@ -104,7 +102,19 @@ func set_shop_inventory(_user, shop_inventory_data, external_inventory_owner):
 	update_menu()
 
 func clear_shop_inventory(shop_inventory_data):
-	shop_inventory = null
+	for slot_data in shopping_cart.slot_datas:
+		external_inv_owner.cart_item_selected(slot_data, slot_data.quantity)
+		#if slot_data.item_data and slot_data.item_data.name == cart_item.item_data.name:
+			#if slot_data.quantity > 1:
+				#slot_data.quantity -= added_quantity
+			#elif slot_data.quantity == 1:
+				#shopping_cart.slot_datas.erase(slot_data)
+
+	external_inv_owner = null
+	shopping_cart.slot_datas.clear()
+	#shop_inventory.slot_datas.clear()
+	#inventory_scroll_container.set_inventory_data(shop_inventory)
+	update_menu()
 
 
 

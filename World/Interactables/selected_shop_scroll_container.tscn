@@ -16,6 +16,7 @@ inventoryData = SubResource("Resource_nbek5")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/margin_left = 1
 theme_override_constants/margin_top = 3
 theme_override_constants/margin_right = 1

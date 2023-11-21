@@ -4,6 +4,7 @@ signal force_close_external
 signal force_close_withering
 signal force_close_drying
 signal force_close_tea_storage
+signal force_close_shop
 
 var grabbed_slot_data: SlotData
 var external_inventory_owner = null
@@ -36,6 +37,8 @@ func _physics_process(delta: float) -> void:
 			force_close_drying.emit(external_inventory_owner)
 		elif tea_storage_inventory.visible:
 			force_close_tea_storage.emit(external_inventory_owner)
+		elif plant_shop_menu.visible:
+			force_close_shop.emit(external_inventory_owner)
 
 func set_player_inventory_data(inventory_data: InventoryData) -> void:
 	inventory_data.inventory_interact.connect(on_inventory_interact)
@@ -134,7 +137,6 @@ func clear_external_shop() -> void:
 	if external_inventory_owner:
 		var shop_inventory_data = external_inventory_owner.shop_inventory_data
 		
-		shop_inventory_data.inventory_interact.disconnect(on_inventory_interact)
 		plant_shop_menu.clear_shop_inventory(shop_inventory_data)
 		
 		plant_shop_menu.hide()

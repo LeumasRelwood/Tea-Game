@@ -25,7 +25,7 @@ func _ready():
 	timer.wait_time = process_time
 	progress_clicker_timer.wait_time = progress_clicker_time
 
-func _on_hurtbox_player_interact():
+func _on_hurtbox_player_interact(user):
 		set_external_inventory_owner.emit(self)
 		toggle_external_drying.emit(self)
 		update_drying_menu.emit(inventory_data_input, inventory_data_output, type, capacity)

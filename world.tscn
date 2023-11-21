@@ -71,6 +71,7 @@ position = Vector2(426, 362)
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="HotBarInventory" parent="UI" instance=ExtResource("9_44i8a")]
+visible = false
 offset_left = 100.0
 offset_top = 147.0
 offset_right = 180.0
@@ -157,9 +158,6 @@ label_settings = ExtResource("12_l3byq")
 
 [node name="Player" parent="Level/YSort" index="0"]
 equip_inventory_data = SubResource("Resource_v3mrh")
-
-[node name="PlantShop" parent="Level/YSort/Interactables" index="9"]
-position = Vector2(-51, 57)
 
 [node name="Water" parent="Level" index="7"]
 material = SubResource("ShaderMaterial_pux5y")

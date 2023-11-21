@@ -6,5 +6,5 @@ signal toggle_external_inventory(external_inventory_owner)
 @onready var hurtbox = $Hurtbox
 @export var inventory_data: InventoryData
 
-func _on_hurtbox_player_interact():
+func _on_hurtbox_player_interact(user):
 		toggle_external_inventory.emit(self)
