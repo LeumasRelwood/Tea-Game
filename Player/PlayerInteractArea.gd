@@ -13,4 +13,3 @@ func conversation_started():
 
 func conversation_finished():
 	conversation_finish.emit()
-	

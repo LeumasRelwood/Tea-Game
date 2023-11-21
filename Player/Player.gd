@@ -6,6 +6,8 @@ const PlayerHurtSound = preload("res://Music and Sounds/player_hurt_sound.tscn")
 @export var ACCELERATION = 15
 @export var FRICTION = 15
 @export var ROLL_SPEED = 100
+@export var inventory_data: InventoryData
+@export var equip_inventory_data: InventoryDataEquip
 
 signal toggle_tea_market
 signal toggle_inventory
@@ -34,8 +36,7 @@ var input_vector = Vector2.ZERO
 @onready var player_interact_area = $"Hitbox pivot/PlayerInteractArea"
 @onready var swordhitboxcollision = $"Hitbox pivot/SwordHitbox/CollisionShape2D"
 @onready var StairSensor = $StairSensor
-@export var inventory_data: InventoryData
-@export var equip_inventory_data: InventoryDataEquip
+
 
 func _ready():
 	animation_tree.active = true
@@ -119,7 +120,7 @@ func attack_state():
 	animation_state.travel("Attack")
 
 func _on_player_interact_area_area_entered(area):
-	area.player_interact_area()
+	area.player_interact_area(self)
 	
 func attack_animation_finished():
 	state = MOVE
@@ -159,3 +160,16 @@ func conversation_started():
 func conversation_finished():
 	await get_tree().process_frame
 	state = MOVE
+
+func add_bought_items(shopping_cart):
+	for item in shopping_cart:
+		var has_item = false
+		for slot_data in inventory_data.slot_datas:
+			if has_item == not true and slot_data and slot_data.item_data and item.item_data.name == slot_data.item_data.name:
+				slot_data.quantity += item.quantity
+				has_item = true
+		if has_item == not true:
+			var empty_slot = inventory_data.slot_datas.find(null)
+			inventory_data.slot_datas[empty_slot] = item
+			has_item = true
+	inventory_data.signal_inventory_updated()

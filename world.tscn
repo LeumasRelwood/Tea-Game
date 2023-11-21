@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cw1nro4m5s36s"]
+[gd_scene load_steps=25 format=3 uid="uid://cw1nro4m5s36s"]
 
 [ext_resource type="PackedScene" uid="uid://cj462uvp4qvw7" path="res://camera_2d.tscn" id="1_36ixg"]
 [ext_resource type="Script" path="res://world.gd" id="1_pt8ln"]
@@ -16,7 +16,12 @@
 [ext_resource type="PackedScene" uid="uid://bxy5ij2avjjte" path="res://InventoryManagers/inventory.tscn" id="15_j1xfr"]
 [ext_resource type="Shader" path="res://Effects/River.gdshader" id="16_5vm54"]
 [ext_resource type="PackedScene" uid="uid://cdhphmp2x8dta" path="res://Maps/HomeFarm.tscn" id="16_7o0ng"]
+[ext_resource type="Script" path="res://InventoryManagers/InventoryDataEquip.gd" id="18_isipt"]
 [ext_resource type="PackedScene" uid="uid://yp4yqs7tmgiq" path="res://Effects/day_night_light.tscn" id="43_8rxbt"]
+
+[sub_resource type="Resource" id="Resource_v3mrh"]
+script = ExtResource("18_isipt")
+slot_datas = Array[Resource("res://InventoryManagers/SlotData.gd")]([null, null])
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_gu36h"]
 noise_type = 4
@@ -149,6 +154,9 @@ label_settings = ExtResource("12_l3byq")
 [node name="Level" parent="." instance=ExtResource("16_7o0ng")]
 
 [node name="DirtPathTileMap" parent="Level" index="3" groups=["buildable_tile_maps"]]
+
+[node name="Player" parent="Level/YSort" index="0"]
+equip_inventory_data = SubResource("Resource_v3mrh")
 
 [node name="PlantShop" parent="Level/YSort/Interactables" index="9"]
 position = Vector2(-51, 57)

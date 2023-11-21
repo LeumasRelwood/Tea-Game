@@ -28,7 +28,7 @@ func populate_item_grid(inventory_data: InventoryData) -> void:
 		child.queue_free()
 	
 	for slot_data in inventory_data.slot_datas:
-		if slot_data:
+		if slot_data and slot_data.item_data:
 			var Shop_Item_Container = shop_item_container.instantiate()
 			v_box_container.add_child(Shop_Item_Container)
 		

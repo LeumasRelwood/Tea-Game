@@ -37,5 +37,5 @@ func _on_invincibility_started():
 func _on_invincibility_ended():
 	collisionShape.set_deferred("disabled", false)
 
-func player_interact_area():
-	emit_signal("player_interact")
+func player_interact_area(user):
+	emit_signal("player_interact", user)

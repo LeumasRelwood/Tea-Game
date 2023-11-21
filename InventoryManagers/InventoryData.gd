@@ -6,6 +6,9 @@ signal inventory_interact(inventory_data: InventoryData, index: int, button: int
 
 @export var slot_datas: Array[SlotData]
 
+func signal_inventory_updated():
+	inventory_updated.emit(self)
+
 func grab_slot_data(index: int) -> SlotData:
 	var slot_data = slot_datas[index]
 	

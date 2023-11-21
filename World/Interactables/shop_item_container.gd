@@ -9,11 +9,12 @@ signal item_selected
 
 func set_container_data(slot_data: SlotData) -> void:
 	shop_item = slot_data
-	var item_data = slot_data.item_data
-	texture_rect.texture = item_data.texture
+	if slot_data.item_data:
+		var item_data = slot_data.item_data
+		texture_rect.texture = item_data.texture
+		label.text = str(str(shop_item.item_data.name) + "\nCost: " + str(shop_item.item_data.base_value) + ", Qty: " + str(shop_item.quantity))
+		tooltip_text = "%s\n%s" % [item_data.name, item_data.description]
 	button.pressed.connect(_on_button_pressed)
-	label.text = str(str(shop_item.item_data.name) + "\nCost: " + str(shop_item.item_data.base_value) + ", Qty: " + str(shop_item.quantity))
-	tooltip_text = "%s\n%s" % [item_data.name, item_data.description]
 	if shop_item.quantity <= 0:
 		button.disabled = true
 	else:

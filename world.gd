@@ -162,13 +162,13 @@ func external_tea_storage_controller(external_inventory_owner = null):
 	else:
 		inventory_interface.clear_external_tea_storage()
 
-func toggle_external_shop_interface(external_inventory_owner = null):
+func toggle_external_shop_interface(user, external_inventory_owner = null):
 	if not player_inventory.visible:
 		inventory_interface.visible = not inventory_interface.visible
 		player_inventory.visible = not player_inventory.visible
-		external_shop_controller(external_inventory_owner)
+		external_shop_controller(user, external_inventory_owner)
 	else:
-		inventory_interface.set_external_shop(external_inventory_owner)
+		inventory_interface.set_external_shop(user, external_inventory_owner)
 		plant_shop_menu.visible = not plant_shop_menu.visible
 	
 	if inventory_interface.visible:
@@ -176,9 +176,9 @@ func toggle_external_shop_interface(external_inventory_owner = null):
 	else:
 		hot_bar_inventory.show()
 
-func external_shop_controller(external_inventory_owner = null):
+func external_shop_controller(user, external_inventory_owner = null):
 	if external_inventory_owner and inventory_interface:
-		inventory_interface.set_external_shop(external_inventory_owner)
+		inventory_interface.set_external_shop(user, external_inventory_owner)
 		plant_shop_menu.show()
 	else:
 		inventory_interface.clear_external_shop()

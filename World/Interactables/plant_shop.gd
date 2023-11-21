@@ -18,9 +18,9 @@ func _ready():
 func connect_signals():
 	shop_inventory_data.inventory_updated.connect(shop_inventory_data_updated)
 
-func _on_hurtbox_player_interact():
-		set_external_inventory_owner.emit(self)
-		toggle_external_shop.emit(self)
+func _on_hurtbox_player_interact(user):
+	set_external_inventory_owner.emit(self)
+	toggle_external_shop.emit(user, self)
 
 func shop_item_selected(shop_item, added_quantity):
 	var has_item_already = false
@@ -34,6 +34,17 @@ func shop_item_selected(shop_item, added_quantity):
 		#has_item_already = true
 		#shop_inventory_data.slot_datas.append(added_shop_item)
 
+func cart_item_selected(cart_item, added_quantity):
+	var has_item_already = false
+	for slot_data in shop_inventory_data.slot_datas:
+		if has_item_already == not true and slot_data.item_data and slot_data.item_data.name == cart_item.item_data.name:
+			has_item_already = true
+			slot_data.quantity += added_quantity
+	if has_item_already == not true:
+		has_item_already = true
+		cart_item.quantity = added_quantity
+		shop_inventory_data.slot_datas.append(cart_item)
+	shop_inventory_data_updated(shop_inventory_data)
 #func subtract_item_from_shop(added_shop_item):
 	#for slot_data in shop_inventory_data.slot_datas:
 		#if slot_data and slot_data.item_data and slot_data.item_data.name == added_shop_item.item_data.name:
