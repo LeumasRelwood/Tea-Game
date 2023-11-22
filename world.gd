@@ -10,6 +10,12 @@ extends Node2D
 @onready var tea_storage_inventory = $UI/InventoryInterface/TeaStorageInventory
 @onready var tea_market = $UI/TeaMarket
 @onready var plant_shop_menu = $UI/InventoryInterface/PlantShopMenu
+@onready var fermenting_menu = $UI/InventoryInterface/FermentingMenu
+@onready var killgreen_menu = $UI/InventoryInterface/KillgreenMenu
+@onready var oxidization_menu = $UI/InventoryInterface/OxidizationMenu
+@onready var pressing_menu = $UI/InventoryInterface/PressingMenu
+@onready var rolling_menu = $UI/InventoryInterface/RollingMenu
+
 
 
 var mouse_in_build_area = false
@@ -29,6 +35,11 @@ func connect_signals():
 	inventory_interface.force_close_external.connect(toggle_external_inventory_interface)
 	inventory_interface.force_close_withering.connect(toggle_external_withering_interface)
 	inventory_interface.force_close_drying.connect(toggle_external_drying_interface)
+	inventory_interface.force_close_fermenting.connect(toggle_external_fermentation_interface)
+	inventory_interface.force_close_fixing.connect(toggle_external_fixing_interface)
+	inventory_interface.force_close_oxidizing.connect(toggle_external_oxidizing_interface)
+	inventory_interface.force_close_pressing.connect(toggle_external_pressing_interface)
+	inventory_interface.force_close_rolling.connect(toggle_external_rolling_interface)
 	inventory_interface.force_close_tea_storage.connect(toggle_external_tea_storage)
 	inventory_interface.force_close_shop.connect(clear_external_shop)
 	GlobalTeaStorage.connect_signals()
@@ -51,7 +62,22 @@ func connect_signals():
 	
 	for node in get_tree().get_nodes_in_group("external_drying"):
 		node.toggle_external_drying.connect(toggle_external_drying_interface)
-		
+	
+	for node in get_tree().get_nodes_in_group("external_fermenting"):
+		node.toggle_external_fermentation.connect(toggle_external_fermentation_interface)
+	
+	for node in get_tree().get_nodes_in_group("external_fixing"):
+		node.toggle_external_fixing.connect(toggle_external_fixing_interface)
+	
+	for node in get_tree().get_nodes_in_group("external_oxidizing"):
+		node.toggle_external_oxidizing.connect(toggle_external_oxidizing_interface)
+	
+	for node in get_tree().get_nodes_in_group("external_pressing"):
+		node.toggle_external_pressing.connect(toggle_external_pressing_interface)
+	
+	for node in get_tree().get_nodes_in_group("external_rolling"):
+		node.toggle_external_rolling.connect(toggle_external_rolling_interface)
+	
 	for node in get_tree().get_nodes_in_group("external_tea_storage"):
 		node.toggle_external_tea_storage.connect(toggle_external_tea_storage)
 	
@@ -192,6 +218,86 @@ func clear_external_shop(external_inventory_owner):
 	plant_shop_menu.hide()
 	inventory_interface.clear_external_shop()
 
+func toggle_external_fermentation_interface(external_inventory_owner = null):
+	if not player_inventory.visible:
+		inventory_interface.visible = not inventory_interface.visible
+		player_inventory.visible = not player_inventory.visible
+		external_fermentation_controller(external_inventory_owner)
+	else:
+		inventory_interface.set_external_fermentation(external_inventory_owner)
+		fermenting_menu.visible = not fermenting_menu.visible
+
+func external_fermentation_controller(external_inventory_owner = null):
+	if external_inventory_owner and inventory_interface:
+		inventory_interface.set_external_fermentation(external_inventory_owner)
+		fermenting_menu.show()
+	else:
+		inventory_interface.clear_external_fermentation()
+
+func toggle_external_fixing_interface(external_inventory_owner = null):
+	if not player_inventory.visible:
+		inventory_interface.visible = not inventory_interface.visible
+		player_inventory.visible = not player_inventory.visible
+		external_fixing_controller(external_inventory_owner)
+	else:
+		inventory_interface.set_external_fixing(external_inventory_owner)
+		killgreen_menu.visible = not killgreen_menu.visible
+
+func external_fixing_controller(external_inventory_owner = null):
+	if external_inventory_owner and inventory_interface:
+		inventory_interface.set_external_fixing(external_inventory_owner)
+		killgreen_menu.show()
+	else:
+		inventory_interface.clear_external_fixing()
+
+func toggle_external_oxidizing_interface(external_inventory_owner = null):
+	if not player_inventory.visible:
+		inventory_interface.visible = not inventory_interface.visible
+		player_inventory.visible = not player_inventory.visible
+		external_oxidizing_controller(external_inventory_owner)
+	else:
+		inventory_interface.set_external_oxidizing(external_inventory_owner)
+		oxidization_menu.visible = not oxidization_menu.visible
+
+func external_oxidizing_controller(external_inventory_owner = null):
+	if external_inventory_owner and inventory_interface:
+		inventory_interface.set_external_oxidizing(external_inventory_owner)
+		oxidization_menu.show()
+	else:
+		inventory_interface.clear_external_oxidizing()
+
+func toggle_external_pressing_interface(external_inventory_owner = null):
+	if not player_inventory.visible:
+		inventory_interface.visible = not inventory_interface.visible
+		player_inventory.visible = not player_inventory.visible
+		external_pressing_controller(external_inventory_owner)
+	else:
+		inventory_interface.set_external_pressing(external_inventory_owner)
+		pressing_menu.visible = not pressing_menu.visible
+
+func external_pressing_controller(external_inventory_owner = null):
+	if external_inventory_owner and inventory_interface:
+		inventory_interface.set_external_pressing(external_inventory_owner)
+		pressing_menu.show()
+	else:
+		inventory_interface.clear_external_pressing()
+
+func toggle_external_rolling_interface(external_inventory_owner = null):
+	print("toggle rolling")
+	if not player_inventory.visible:
+		inventory_interface.visible = not inventory_interface.visible
+		player_inventory.visible = not player_inventory.visible
+		external_rolling_controller(external_inventory_owner)
+	else:
+		inventory_interface.set_external_rolling(external_inventory_owner)
+		rolling_menu.visible = not rolling_menu.visible
+
+func external_rolling_controller(external_inventory_owner = null):
+	if external_inventory_owner and inventory_interface:
+		inventory_interface.set_external_rolling(external_inventory_owner)
+		rolling_menu.show()
+	else:
+		inventory_interface.clear_external_rolling()
 
 func _on_buildable_area_mouse_entered():
 	mouse_in_build_area = true

@@ -1,17 +1,17 @@
 [gd_scene load_steps=11 format=3 uid="uid://bqn4ebu34dk4u"]
 
 [ext_resource type="Script" path="res://World/Interactables/rolling_table.gd" id="1_n78mi"]
-[ext_resource type="Script" path="res://InventoryManagers/InventoryDataWithering.gd" id="2_hbyn0"]
-[ext_resource type="Script" path="res://InventoryManagers/InventoryDataWithered.gd" id="3_ut5ur"]
+[ext_resource type="Script" path="res://InventoryManagers/InventoryDataRollable.gd" id="2_rfkjy"]
+[ext_resource type="Script" path="res://InventoryManagers/InventoryDataOxidizable.gd" id="3_yt4ad"]
 [ext_resource type="Texture2D" uid="uid://ba0njaieg4vs7" path="res://World/Interactables/rolling_table.png" id="4_inim8"]
 [ext_resource type="Script" path="res://Hit and Hurtboxes/hurtbox.gd" id="5_rhmdk"]
 
-[sub_resource type="Resource" id="Resource_kmw0n"]
-script = ExtResource("2_hbyn0")
+[sub_resource type="Resource" id="Resource_enwff"]
+script = ExtResource("2_rfkjy")
 slot_datas = Array[Resource("res://InventoryManagers/SlotData.gd")]([null])
 
-[sub_resource type="Resource" id="Resource_hlv0g"]
-script = ExtResource("3_ut5ur")
+[sub_resource type="Resource" id="Resource_g36sq"]
+script = ExtResource("3_yt4ad")
 slot_datas = Array[Resource("res://InventoryManagers/SlotData.gd")]([null])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yvv6v"]
@@ -26,8 +26,9 @@ size = Vector2(28.2486, 28.2486)
 [node name="RollingTable" type="StaticBody2D" groups=["external_rolling"]]
 collision_mask = 2
 script = ExtResource("1_n78mi")
-inventory_data_input = SubResource("Resource_kmw0n")
-inventory_data_output = SubResource("Resource_hlv0g")
+inventory_data_input = SubResource("Resource_enwff")
+inventory_data_output = SubResource("Resource_g36sq")
+type = "Wooden Rolling Table"
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0

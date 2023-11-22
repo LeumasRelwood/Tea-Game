@@ -1,13 +1,13 @@
 extends StaticBody2D
 
-signal toggle_external_withering(external_inventory_owner)
-signal update_withering_menu(inventory_data_input, inventory_data_output, type, craft_quantity)
+signal toggle_external_fermentation(external_inventory_owner)
+signal update_fermentation_menu(inventory_data_input, inventory_data_output, type, craft_quantity)
 signal update_progress_bar(progress)
 signal set_external_inventory_owner()
 signal check_for_new_owner()
 
-@export var inventory_data_input: InventoryDataWithering
-@export var inventory_data_output: InventoryDataWithered
+@export var inventory_data_input: InventoryDataFermentable
+@export var inventory_data_output: InventoryDataDryable
 @onready var global = get_node("/root/Global")
 @onready var hurtbox = $Hurtbox
 @onready var timer = $Timer
@@ -27,13 +27,13 @@ func _ready():
 
 func _on_hurtbox_player_interact(user):
 		set_external_inventory_owner.emit(self)
-		toggle_external_withering.emit(self)
-		update_withering_menu.emit(inventory_data_input, inventory_data_output, type, capacity)
+		toggle_external_fermentation.emit(self)
+		update_fermentation_menu.emit(inventory_data_input, inventory_data_output, type, capacity)
 		update_progress_bar.emit(progress)
 		is_start_button_disabled()
 
-func reupdate_withering_menu():
-	update_withering_menu.emit(inventory_data_input, inventory_data_output, type, capacity)
+func reupdate_fermentation_menu():
+	update_fermentation_menu.emit(inventory_data_input, inventory_data_output, type, capacity)
 
 func _on_timer_timeout():
 	if inventory_data_output.set_item_output(selected_recipe, craft_quantity, 0):
@@ -50,7 +50,7 @@ func _on_progress_clicker_timer_timeout():
 	update_progress_bar.emit(progress)
 
 func is_start_button_disabled():
-	if selected_recipe and in_progress == false:
+	if in_progress == false:
 		for slot_data in inventory_data_input.slot_datas:
 			if not slot_data:
 				return true
@@ -61,6 +61,9 @@ func is_start_button_disabled():
 					return true
 	else:
 		return true
+
+func set_recipe():
+	selected_recipe = inventory_data_input.slot_datas[0].item_data.next_stage
 
 func craft_with_slot_data(index):
 	craft_quantity = clamp(inventory_data_input.slot_datas[index].quantity, 1, capacity)

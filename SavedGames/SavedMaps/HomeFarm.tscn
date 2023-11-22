@@ -1,70 +1,79 @@
-[gd_scene load_steps=106 format=3]
+[gd_scene load_steps=124 format=3]
 
-[ext_resource type="Texture2D" path="res://World/GrassBackground.png" id="1_2d22b"]
-[ext_resource type="Texture2D" path="res://World/CliffTileset.png" id="2_oeby0"]
-[ext_resource type="Texture2D" path="res://World/DirtTileset.png" id="3_whmdc"]
-[ext_resource type="PackedScene" path="res://World/staircase.tscn" id="4_mgxq5"]
-[ext_resource type="Script" path="res://World/Staircase.gd" id="5_1opq4"]
-[ext_resource type="PackedScene" path="res://Player/player.tscn" id="6_lt3u5"]
-[ext_resource type="Script" path="res://Player/Player.gd" id="7_i7t17"]
-[ext_resource type="Resource" path="res://TEST/TestInventory.tres" id="8_e2hhe"]
-[ext_resource type="Script" path="res://InventoryManagers/InventoryDataEquip.gd" id="9_4ftvn"]
-[ext_resource type="PackedScene" path="res://World/bush.tscn" id="10_3b1la"]
-[ext_resource type="Script" path="res://World/bush.gd" id="11_espdw"]
-[ext_resource type="Resource" path="res://Items/ITEMS/FreshTeaLeaves.tres" id="12_58xf7"]
-[ext_resource type="Script" path="res://InventoryManagers/SlotData.gd" id="13_hvu1k"]
-[ext_resource type="PackedScene" path="res://World/grass.tscn" id="14_dom32"]
-[ext_resource type="Script" path="res://World/grass.gd" id="15_m8unh"]
-[ext_resource type="PackedScene" path="res://World/tree.tscn" id="16_bg418"]
-[ext_resource type="Script" path="res://World/tree.gd" id="17_mnxje"]
-[ext_resource type="PackedScene" path="res://World/Interactables/chest.tscn" id="18_y84wq"]
-[ext_resource type="Script" path="res://World/Interactables/chest.gd" id="19_l2a2i"]
-[ext_resource type="Script" path="res://InventoryManagers/InventoryData.gd" id="20_uvj5p"]
-[ext_resource type="Script" path="res://Items/Item_data.gd" id="21_ngkn3"]
-[ext_resource type="Texture2D" path="res://Items/#1 - Transparent Icons.png" id="22_v8hkh"]
-[ext_resource type="PackedScene" path="res://World/Interactables/withering_rack.tscn" id="23_6g458"]
-[ext_resource type="Script" path="res://InventoryManagers/InventoryDataWithering.gd" id="24_oyvsj"]
-[ext_resource type="Script" path="res://InventoryManagers/InventoryDataWithered.gd" id="25_3jr11"]
-[ext_resource type="PackedScene" path="res://World/Interactables/drying_mat.tscn" id="26_kwfi3"]
-[ext_resource type="Script" path="res://World/Interactables/drying_mat.gd" id="27_cdd2p"]
-[ext_resource type="Script" path="res://InventoryManagers/InventoryDataDryable.gd" id="28_hcp6p"]
-[ext_resource type="Script" path="res://InventoryManagers/InventoryDataFinishedLeaves.gd" id="29_igcnq"]
-[ext_resource type="PackedScene" path="res://World/Interactables/rolling_table.tscn" id="30_ja8ou"]
-[ext_resource type="Script" path="res://World/Interactables/rolling_table.gd" id="31_fl5jg"]
-[ext_resource type="PackedScene" path="res://World/Interactables/oxidization_pile.tscn" id="32_ovn5c"]
-[ext_resource type="Script" path="res://World/Interactables/oxidization_pile.gd" id="33_s0hl4"]
-[ext_resource type="PackedScene" path="res://World/Interactables/killgreen_wok.tscn" id="34_cgnwb"]
-[ext_resource type="Script" path="res://World/Interactables/killgreen_wok.gd" id="35_oatkt"]
-[ext_resource type="PackedScene" path="res://World/Interactables/fermentation_pile.tscn" id="36_crkr0"]
-[ext_resource type="Script" path="res://World/Interactables/fermentation_pile.gd" id="37_vnqox"]
-[ext_resource type="PackedScene" path="res://World/Interactables/pressing_machine.tscn" id="38_e22jv"]
-[ext_resource type="Script" path="res://World/Interactables/pressing_machine.gd" id="39_wlj7j"]
-[ext_resource type="PackedScene" path="res://World/Interactables/plant_shop.tscn" id="40_86o50"]
-[ext_resource type="Script" path="res://World/Interactables/plant_shop.gd" id="41_c8uio"]
-[ext_resource type="Resource" path="res://Items/ITEMS/tea_bush.tres" id="42_xmsmu"]
-[ext_resource type="PackedScene" path="res://World/Interactables/equipment_shop.tscn" id="43_d6xe3"]
-[ext_resource type="Resource" path="res://Items/ITEMS/withering_rack.tres" id="44_77euv"]
-[ext_resource type="Resource" path="res://Items/ITEMS/drying_mat.tres" id="45_wkxap"]
-[ext_resource type="Resource" path="res://Items/ITEMS/rolling_table.tres" id="46_lg4jp"]
-[ext_resource type="Resource" path="res://Items/ITEMS/chest.tres" id="47_0ybcf"]
-[ext_resource type="Resource" path="res://Items/ITEMS/oxidization_pile.tres" id="48_4roi5"]
-[ext_resource type="Resource" path="res://Items/ITEMS/pressing_machine.tres" id="49_7f1q8"]
-[ext_resource type="Resource" path="res://Items/ITEMS/fermentation_pile.tres" id="50_nbmrr"]
-[ext_resource type="Resource" path="res://Items/ITEMS/killgreen_wok.tres" id="51_b7t21"]
-[ext_resource type="PackedScene" path="res://TEST/lantern_test.tscn" id="52_qdj5m"]
-[ext_resource type="Script" path="res://Effects/lantern_test.gd" id="53_px0fv"]
-[ext_resource type="PackedScene" path="res://Maps/map_changer.tscn" id="54_ajhjq"]
-[ext_resource type="Script" path="res://Maps/MapChanger.gd" id="55_yulcj"]
-[ext_resource type="PackedScene" path="res://World/water.tscn" id="56_snsir"]
-[ext_resource type="Shader" path="res://Effects/River.gdshader" id="57_nql52"]
-[ext_resource type="Texture2D" path="res://icon.svg" id="58_h83gq"]
-[ext_resource type="Script" path="res://World/water.gd" id="59_w04rp"]
-[ext_resource type="Texture2D" path="res://TEST/sea_bed.png" id="60_ff658"]
+[ext_resource type="Texture2D" path="res://World/GrassBackground.png" id="1_qsjde"]
+[ext_resource type="Texture2D" path="res://World/CliffTileset.png" id="2_u1x8h"]
+[ext_resource type="Texture2D" path="res://World/DirtTileset.png" id="3_5nto2"]
+[ext_resource type="PackedScene" path="res://World/staircase.tscn" id="4_x6140"]
+[ext_resource type="Script" path="res://World/Staircase.gd" id="5_p1unk"]
+[ext_resource type="PackedScene" path="res://Player/player.tscn" id="6_bg7rd"]
+[ext_resource type="Script" path="res://Player/Player.gd" id="7_owgnh"]
+[ext_resource type="Resource" path="res://TEST/TestInventory.tres" id="8_c2paf"]
+[ext_resource type="Script" path="res://InventoryManagers/InventoryDataEquip.gd" id="9_2e5la"]
+[ext_resource type="PackedScene" path="res://World/bush.tscn" id="10_b60es"]
+[ext_resource type="Script" path="res://World/bush.gd" id="11_52le2"]
+[ext_resource type="Resource" path="res://Items/ITEMS/FreshTeaLeaves.tres" id="12_uge00"]
+[ext_resource type="Script" path="res://InventoryManagers/SlotData.gd" id="13_d3n3m"]
+[ext_resource type="PackedScene" path="res://World/grass.tscn" id="14_nc612"]
+[ext_resource type="Script" path="res://World/grass.gd" id="15_nptuj"]
+[ext_resource type="PackedScene" path="res://World/tree.tscn" id="16_4qy6l"]
+[ext_resource type="Script" path="res://World/tree.gd" id="17_ajx3l"]
+[ext_resource type="PackedScene" path="res://World/Interactables/chest.tscn" id="18_v76qa"]
+[ext_resource type="Script" path="res://World/Interactables/chest.gd" id="19_ipfl5"]
+[ext_resource type="Script" path="res://InventoryManagers/InventoryData.gd" id="20_hvxqt"]
+[ext_resource type="Script" path="res://Items/Item_data.gd" id="21_gbnly"]
+[ext_resource type="Texture2D" path="res://Items/#1 - Transparent Icons.png" id="22_xfjdd"]
+[ext_resource type="PackedScene" path="res://World/Interactables/withering_rack.tscn" id="23_57i4y"]
+[ext_resource type="Script" path="res://InventoryManagers/InventoryDataWithering.gd" id="24_11vur"]
+[ext_resource type="Script" path="res://InventoryManagers/InventoryDataWithered.gd" id="25_vihii"]
+[ext_resource type="PackedScene" path="res://World/Interactables/drying_mat.tscn" id="26_14uh3"]
+[ext_resource type="Script" path="res://World/Interactables/drying_mat.gd" id="27_xv8j0"]
+[ext_resource type="Script" path="res://InventoryManagers/InventoryDataDryable.gd" id="28_xkxmr"]
+[ext_resource type="Script" path="res://InventoryManagers/InventoryDataFinishedLeaves.gd" id="29_3pdtp"]
+[ext_resource type="PackedScene" path="res://World/Interactables/rolling_table.tscn" id="30_gjkwf"]
+[ext_resource type="Script" path="res://World/Interactables/rolling_table.gd" id="31_6pust"]
+[ext_resource type="Script" path="res://InventoryManagers/InventoryDataRollable.gd" id="32_bho60"]
+[ext_resource type="Script" path="res://InventoryManagers/InventoryDataOxidizable.gd" id="33_v1fjo"]
+[ext_resource type="PackedScene" path="res://World/Interactables/oxidization_pile.tscn" id="34_ndeqh"]
+[ext_resource type="Script" path="res://World/Interactables/oxidization_pile.gd" id="35_iylr6"]
+[ext_resource type="Resource" path="res://Items/ITEMS/BlackTea(oxidized).tres" id="36_iktyi"]
+[ext_resource type="PackedScene" path="res://World/Interactables/killgreen_wok.tscn" id="37_asyio"]
+[ext_resource type="Script" path="res://World/Interactables/killgreen_wok.gd" id="38_nugw6"]
+[ext_resource type="Script" path="res://InventoryManagers/InventoryDataFixable.gd" id="39_ulvbf"]
+[ext_resource type="PackedScene" path="res://World/Interactables/fermentation_pile.tscn" id="40_5kyr4"]
+[ext_resource type="Script" path="res://World/Interactables/fermentation_pile.gd" id="41_locyi"]
+[ext_resource type="Script" path="res://InventoryManagers/InventoryDataFermentable.gd" id="42_o4y8d"]
+[ext_resource type="PackedScene" path="res://World/Interactables/pressing_machine.tscn" id="43_vw6es"]
+[ext_resource type="Script" path="res://World/Interactables/pressing_machine.gd" id="44_cpnai"]
+[ext_resource type="Script" path="res://InventoryManagers/InventoryDataPressable.gd" id="45_0vw3t"]
+[ext_resource type="PackedScene" path="res://World/Interactables/plant_shop.tscn" id="46_iaxdv"]
+[ext_resource type="Script" path="res://World/Interactables/plant_shop.gd" id="47_50ugi"]
+[ext_resource type="Resource" path="res://Items/ITEMS/tea_bush.tres" id="48_6jelo"]
+[ext_resource type="PackedScene" path="res://World/Interactables/equipment_shop.tscn" id="49_ntn4b"]
+[ext_resource type="Resource" path="res://Items/ITEMS/withering_rack.tres" id="50_tdb21"]
+[ext_resource type="Resource" path="res://Items/ITEMS/drying_mat.tres" id="51_jtut3"]
+[ext_resource type="Resource" path="res://Items/ITEMS/rolling_table.tres" id="52_8o6ct"]
+[ext_resource type="Resource" path="res://Items/ITEMS/chest.tres" id="53_qmi2y"]
+[ext_resource type="Resource" path="res://Items/ITEMS/oxidization_pile.tres" id="54_cu0jr"]
+[ext_resource type="Resource" path="res://Items/ITEMS/pressing_machine.tres" id="55_ukbka"]
+[ext_resource type="Resource" path="res://Items/ITEMS/fermentation_pile.tres" id="56_vtm1h"]
+[ext_resource type="Resource" path="res://Items/ITEMS/killgreen_wok.tres" id="57_e6xdh"]
+[ext_resource type="PackedScene" path="res://TEST/lantern_test.tscn" id="58_41nov"]
+[ext_resource type="Script" path="res://Effects/lantern_test.gd" id="59_fmrhh"]
+[ext_resource type="Resource" path="res://Items/ITEMS/BlackTea(withered).tres" id="60_5fsk4"]
+[ext_resource type="Resource" path="res://Items/ITEMS/BlackTea.tres" id="61_ubmxp"]
+[ext_resource type="Resource" path="res://Items/ITEMS/BlackTea(rolled).tres" id="62_8jy8m"]
+[ext_resource type="PackedScene" path="res://Maps/map_changer.tscn" id="63_de1at"]
+[ext_resource type="Script" path="res://Maps/MapChanger.gd" id="64_h553l"]
+[ext_resource type="PackedScene" path="res://World/water.tscn" id="65_2ff3n"]
+[ext_resource type="Shader" path="res://Effects/River.gdshader" id="66_0pbu6"]
+[ext_resource type="Texture2D" path="res://icon.svg" id="67_m4txj"]
+[ext_resource type="Script" path="res://World/water.gd" id="68_3lnvy"]
+[ext_resource type="Texture2D" path="res://TEST/sea_bed.png" id="69_iqycl"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dlgtb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mywjx"]
-texture = ExtResource("2_oeby0")
+texture = ExtResource("2_u1x8h")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/terrain_set = 0
@@ -580,7 +589,7 @@ terrain_set_0/terrain_0/color = Color(0.501961, 0.941176, 0.25098, 1)
 sources/0 = SubResource("TileSetAtlasSource_mywjx")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vwtus"]
-texture = ExtResource("3_whmdc")
+texture = ExtResource("3_5nto2")
 0:0/0 = 0
 0:0/0/terrain_set = 0
 0:0/0/terrain = 0
@@ -918,41 +927,41 @@ terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_vwtus")
 
 [sub_resource type="Resource" id="Resource_v3mrh"]
-script = ExtResource("9_4ftvn")
-slot_datas = Array[ExtResource("13_hvu1k")]([null, null])
+script = ExtResource("9_2e5la")
+slot_datas = Array[ExtResource("13_d3n3m")]([null, null])
 
 [sub_resource type="Resource" id="Resource_mxl04"]
-script = ExtResource("13_hvu1k")
-item_data = ExtResource("12_58xf7")
+script = ExtResource("13_d3n3m")
+item_data = ExtResource("12_uge00")
 quantity = 1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4wdpb"]
-atlas = ExtResource("22_v8hkh")
+atlas = ExtResource("22_xfjdd")
 region = Rect2(160, 384, 32, 32)
 
 [sub_resource type="Resource" id="Resource_ftj42"]
-script = ExtResource("21_ngkn3")
+script = ExtResource("21_gbnly")
 name = "Tea Plant"
 description = "Ready to be planted."
 stackable = false
 texture = SubResource("AtlasTexture_4wdpb")
-recipe = Array[ExtResource("13_hvu1k")]([])
+recipe = Array[ExtResource("13_d3n3m")]([])
 base_value = 0
 processing_time = 0
 
 [sub_resource type="Resource" id="Resource_rfwx4"]
-script = ExtResource("13_hvu1k")
+script = ExtResource("13_d3n3m")
 item_data = SubResource("Resource_ftj42")
 quantity = 1
 
 [sub_resource type="Resource" id="Resource_dbqx2"]
-script = ExtResource("13_hvu1k")
-item_data = ExtResource("12_58xf7")
+script = ExtResource("13_d3n3m")
+item_data = ExtResource("12_uge00")
 quantity = 25
 
 [sub_resource type="Resource" id="Resource_fji6u"]
-script = ExtResource("20_uvj5p")
-slot_datas = Array[ExtResource("13_hvu1k")]([SubResource("Resource_rfwx4"), SubResource("Resource_dbqx2"), null, null])
+script = ExtResource("20_hvxqt")
+slot_datas = Array[ExtResource("13_d3n3m")]([SubResource("Resource_rfwx4"), SubResource("Resource_dbqx2"), null, null])
 
 [sub_resource type="GDScript" id="GDScript_kvbl4"]
 script/source = "extends StaticBody2D
@@ -983,7 +992,6 @@ func _ready():
 	progress_clicker_timer.wait_time = progress_clicker_time
 
 func _on_hurtbox_player_interact(user):
-		print(\"player interact\")
 		set_external_inventory_owner.emit(self)
 		toggle_external_withering.emit(self)
 		update_withering_menu.emit(inventory_data_input, inventory_data_output, type, capacity)
@@ -1051,123 +1059,164 @@ func _on_drag_box_input_event(viewport, event, shape_idx):
 "
 
 [sub_resource type="Resource" id="Resource_ooqwl"]
-script = ExtResource("24_oyvsj")
-slot_datas = Array[ExtResource("13_hvu1k")]([null])
+script = ExtResource("24_11vur")
+slot_datas = Array[ExtResource("13_d3n3m")]([null])
 
 [sub_resource type="Resource" id="Resource_w4y4r"]
-script = ExtResource("25_3jr11")
-slot_datas = Array[ExtResource("13_hvu1k")]([null])
+script = ExtResource("25_vihii")
+slot_datas = Array[ExtResource("13_d3n3m")]([null])
 
 [sub_resource type="Resource" id="Resource_eekdn"]
-script = ExtResource("28_hcp6p")
-slot_datas = Array[ExtResource("13_hvu1k")]([null])
+script = ExtResource("28_xkxmr")
+slot_datas = Array[ExtResource("13_d3n3m")]([null])
 
 [sub_resource type="Resource" id="Resource_x3xmn"]
-script = ExtResource("29_igcnq")
-slot_datas = Array[ExtResource("13_hvu1k")]([null])
+script = ExtResource("29_3pdtp")
+slot_datas = Array[ExtResource("13_d3n3m")]([null])
 
-[sub_resource type="Resource" id="Resource_kmw0n"]
-script = ExtResource("24_oyvsj")
-slot_datas = Array[ExtResource("13_hvu1k")]([null])
+[sub_resource type="Resource" id="Resource_enwff"]
+script = ExtResource("32_bho60")
+slot_datas = Array[ExtResource("13_d3n3m")]([null])
 
-[sub_resource type="Resource" id="Resource_hlv0g"]
-script = ExtResource("25_3jr11")
-slot_datas = Array[ExtResource("13_hvu1k")]([null])
+[sub_resource type="Resource" id="Resource_g36sq"]
+script = ExtResource("33_v1fjo")
+slot_datas = Array[ExtResource("13_d3n3m")]([null])
 
-[sub_resource type="Resource" id="Resource_tqrl2"]
-script = ExtResource("24_oyvsj")
-slot_datas = Array[ExtResource("13_hvu1k")]([null])
+[sub_resource type="Resource" id="Resource_6brww"]
+script = ExtResource("33_v1fjo")
+slot_datas = Array[ExtResource("13_d3n3m")]([null])
 
 [sub_resource type="Resource" id="Resource_jgqqg"]
-script = ExtResource("25_3jr11")
-slot_datas = Array[ExtResource("13_hvu1k")]([null])
+script = ExtResource("25_vihii")
+slot_datas = Array[ExtResource("13_d3n3m")]([null])
 
-[sub_resource type="Resource" id="Resource_akd51"]
-script = ExtResource("24_oyvsj")
-slot_datas = Array[ExtResource("13_hvu1k")]([null])
+[sub_resource type="Resource" id="Resource_n5854"]
+script = ExtResource("13_d3n3m")
+item_data = ExtResource("36_iktyi")
+quantity = 0
 
-[sub_resource type="Resource" id="Resource_itlp2"]
-script = ExtResource("25_3jr11")
-slot_datas = Array[ExtResource("13_hvu1k")]([null])
+[sub_resource type="Resource" id="Resource_kpb6b"]
+script = ExtResource("39_ulvbf")
+slot_datas = Array[ExtResource("13_d3n3m")]([null])
 
-[sub_resource type="Resource" id="Resource_1fmmc"]
-script = ExtResource("24_oyvsj")
-slot_datas = Array[ExtResource("13_hvu1k")]([null])
+[sub_resource type="Resource" id="Resource_8wnto"]
+script = ExtResource("32_bho60")
+slot_datas = Array[ExtResource("13_d3n3m")]([null])
 
-[sub_resource type="Resource" id="Resource_kbqqc"]
-script = ExtResource("25_3jr11")
-slot_datas = Array[ExtResource("13_hvu1k")]([null])
+[sub_resource type="Resource" id="Resource_4l8xh"]
+script = ExtResource("42_o4y8d")
+slot_datas = Array[ExtResource("13_d3n3m")]([null])
 
-[sub_resource type="Resource" id="Resource_gskle"]
-script = ExtResource("24_oyvsj")
-slot_datas = Array[ExtResource("13_hvu1k")]([null])
+[sub_resource type="Resource" id="Resource_hemei"]
+script = ExtResource("28_xkxmr")
+slot_datas = Array[ExtResource("13_d3n3m")]([null])
 
-[sub_resource type="Resource" id="Resource_70wl8"]
-script = ExtResource("25_3jr11")
-slot_datas = Array[ExtResource("13_hvu1k")]([null])
+[sub_resource type="Resource" id="Resource_s23jp"]
+script = ExtResource("45_0vw3t")
+slot_datas = Array[ExtResource("13_d3n3m")]([null])
+
+[sub_resource type="Resource" id="Resource_mmxtg"]
+script = ExtResource("29_3pdtp")
+slot_datas = Array[ExtResource("13_d3n3m")]([null])
 
 [sub_resource type="Resource" id="Resource_7u1ov"]
-script = ExtResource("13_hvu1k")
-item_data = ExtResource("42_xmsmu")
-quantity = 12
+script = ExtResource("13_d3n3m")
+item_data = ExtResource("48_6jelo")
+quantity = 8
 
 [sub_resource type="Resource" id="Resource_xp4am"]
-script = ExtResource("13_hvu1k")
-item_data = ExtResource("12_58xf7")
+script = ExtResource("13_d3n3m")
+item_data = ExtResource("12_uge00")
 quantity = 65
 
 [sub_resource type="Resource" id="Resource_agt3b"]
-script = ExtResource("20_uvj5p")
-slot_datas = Array[ExtResource("13_hvu1k")]([SubResource("Resource_7u1ov"), SubResource("Resource_xp4am")])
+script = ExtResource("20_hvxqt")
+slot_datas = Array[ExtResource("13_d3n3m")]([SubResource("Resource_7u1ov"), SubResource("Resource_xp4am")])
 
 [sub_resource type="Resource" id="Resource_f1og7"]
-script = ExtResource("13_hvu1k")
-item_data = ExtResource("44_77euv")
-quantity = 8
+script = ExtResource("13_d3n3m")
+item_data = ExtResource("50_tdb21")
+quantity = 7
 
 [sub_resource type="Resource" id="Resource_4a5ar"]
-script = ExtResource("13_hvu1k")
-item_data = ExtResource("45_wkxap")
-quantity = 12
+script = ExtResource("13_d3n3m")
+item_data = ExtResource("51_jtut3")
+quantity = 11
 
 [sub_resource type="Resource" id="Resource_id64k"]
-script = ExtResource("13_hvu1k")
-item_data = ExtResource("46_lg4jp")
-quantity = 9
+script = ExtResource("13_d3n3m")
+item_data = ExtResource("52_8o6ct")
+quantity = 8
 
 [sub_resource type="Resource" id="Resource_hvjsl"]
-script = ExtResource("13_hvu1k")
-item_data = ExtResource("47_0ybcf")
+script = ExtResource("13_d3n3m")
+item_data = ExtResource("53_qmi2y")
 quantity = 14
 
 [sub_resource type="Resource" id="Resource_e1wwc"]
-script = ExtResource("13_hvu1k")
-item_data = ExtResource("48_4roi5")
+script = ExtResource("13_d3n3m")
+item_data = ExtResource("54_cu0jr")
 quantity = 8
 
 [sub_resource type="Resource" id="Resource_sasyy"]
-script = ExtResource("13_hvu1k")
-item_data = ExtResource("49_7f1q8")
+script = ExtResource("13_d3n3m")
+item_data = ExtResource("55_ukbka")
 quantity = 1
 
 [sub_resource type="Resource" id="Resource_mpg26"]
-script = ExtResource("13_hvu1k")
-item_data = ExtResource("50_nbmrr")
+script = ExtResource("13_d3n3m")
+item_data = ExtResource("56_vtm1h")
 quantity = 9
 
 [sub_resource type="Resource" id="Resource_m0h7i"]
-script = ExtResource("13_hvu1k")
-item_data = ExtResource("51_b7t21")
+script = ExtResource("13_d3n3m")
+item_data = ExtResource("57_e6xdh")
 quantity = 2
 
-[sub_resource type="Resource" id="Resource_akpvp"]
+[sub_resource type="Resource" id="Resource_gyxwr"]
 resource_local_to_scene = true
-script = ExtResource("20_uvj5p")
-slot_datas = Array[ExtResource("13_hvu1k")]([SubResource("Resource_f1og7"), SubResource("Resource_4a5ar"), SubResource("Resource_id64k"), SubResource("Resource_hvjsl"), SubResource("Resource_e1wwc"), SubResource("Resource_sasyy"), SubResource("Resource_mpg26"), SubResource("Resource_m0h7i")])
+script = ExtResource("20_hvxqt")
+slot_datas = Array[ExtResource("13_d3n3m")]([SubResource("Resource_f1og7"), SubResource("Resource_4a5ar"), SubResource("Resource_id64k"), SubResource("Resource_hvjsl"), SubResource("Resource_e1wwc"), SubResource("Resource_sasyy"), SubResource("Resource_mpg26"), SubResource("Resource_m0h7i")])
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_cy4bq"]
 noise_type = 2
 frequency = 0.08
+
+[sub_resource type="Resource" id="Resource_i6s0n"]
+script = ExtResource("13_d3n3m")
+item_data = ExtResource("12_uge00")
+quantity = 53
+
+[sub_resource type="Resource" id="Resource_4omxb"]
+script = ExtResource("24_11vur")
+slot_datas = Array[ExtResource("13_d3n3m")]([SubResource("Resource_i6s0n")])
+
+[sub_resource type="Resource" id="Resource_vrnf0"]
+script = ExtResource("25_vihii")
+slot_datas = Array[ExtResource("13_d3n3m")]([null])
+
+[sub_resource type="Resource" id="Resource_5qkie"]
+script = ExtResource("13_d3n3m")
+item_data = ExtResource("60_5fsk4")
+quantity = 0
+
+[sub_resource type="Resource" id="Resource_kaoiv"]
+script = ExtResource("28_xkxmr")
+slot_datas = Array[ExtResource("13_d3n3m")]([null])
+
+[sub_resource type="Resource" id="Resource_21fht"]
+script = ExtResource("29_3pdtp")
+slot_datas = Array[ExtResource("13_d3n3m")]([null])
+
+[sub_resource type="Resource" id="Resource_egvur"]
+script = ExtResource("13_d3n3m")
+item_data = ExtResource("61_ubmxp")
+quantity = 5
+
+[sub_resource type="Resource" id="Resource_51iv1"]
+script = ExtResource("13_d3n3m")
+item_data = ExtResource("62_8jy8m")
+quantity = 0
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_gu36h"]
 noise_type = 4
@@ -1187,9 +1236,9 @@ frequency = 0.08
 seamless = true
 noise = SubResource("FastNoiseLite_cfa0h")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ljdo8"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_psvah"]
 resource_local_to_scene = true
-shader = ExtResource("57_nql52")
+shader = ExtResource("66_0pbu6")
 shader_parameter/scroll = Vector2(-0.025, 0.025)
 shader_parameter/scroll2 = Vector2(-0.02, -0.012)
 shader_parameter/distortion_strength = 0.2
@@ -1211,7 +1260,7 @@ polygon = PackedVector2Array(52.0996, 189.424, 52.0996, 155.166, 166.719, 156.17
 [node name="Background" type="Sprite2D" parent="."]
 texture_repeat = 2
 position = Vector2(165, 89)
-texture = ExtResource("1_2d22b")
+texture = ExtResource("1_qsjde")
 region_enabled = true
 region_rect = Rect2(0, 0, 958.272, 628.454)
 
@@ -1226,28 +1275,28 @@ tile_set = SubResource("TileSet_sdia7")
 format = 2
 layer_0/tile_data = PackedInt32Array(327690, 131072, 1, 393226, 131072, 1, 458762, 327680, 2, 524298, 65536, 2, 524299, 65536, 2, 524300, 65536, 2, 458764, 65536, 0, 458763, 65536, 0, 393232, 0, 1, 458768, 393216, 4, 524304, 0, 1, 589840, 0, 1, 458767, 65536, 3, 458769, 131072, 1, 327696, 0, 1, 458766, 65536, 3, 458765, 327680, 0, 262154, 131072, 1, 196618, 327680, 0, 196617, 393216, 0, 196616, 65536, 3, 196615, 65536, 3, 196614, 262144, 3, 131078, 458752, 0, 262160, 0, 1, 196624, 0, 1, 131088, 0, 1, 65552, 0, 1, 16, 393216, 0, 655376, 0, 1, 458761, 393216, 2, 458760, 65536, 0, 458759, 65536, 0, 458758, 65536, 0, 458757, 65536, 0, 458756, 65536, 0, 458755, 327680, 2, 458754, 393216, 4, 458753, 65536, 3, 458752, 65536, 3, 524297, 65536, 2, 524296, 65536, 2, 524295, 65536, 2, 524294, 65536, 2, 524293, 65536, 2, 524292, 65536, 2, 524291, 65536, 2, 524290, 262144, 1, 262144, 65536, 3, 262145, 458752, 0, 327681, 262144, 3, 327682, 458752, 0, 393218, 262144, 2, 393219, 131072, 0, 196619, 458752, 3, 131083, 262144, 0, 131084, 458752, 3, 65548, 262144, 0, 65549, 458752, 3, 13, 262144, 0, 14, 65536, 3, 15, 65536, 3, 131077, 65536, 3, 131076, 262144, 3, 65540, 458752, 0, 65539, 65536, 3, 65538, 262144, 3, 2, 458752, 0, 1, 65536, 3, 0, 65536, 3, 655362, 196608, 1, 589826, 196608, 1, 720898, 196608, 2, 720912, 0, 1, 524287, 0, 3, 327679, 0, 3, 65535, 0, 3, 524301, 131072, 2, 393233, 131072, 1, 327697, 131072, 1, 262161, 131072, 1, 196625, 131072, 1, 131089, 131072, 1, 65553, 327680, 1, 17, 65536, 0, 524305, 131072, 1, 589841, 131072, 1, 655377, 131072, 1, 720913, 131072, 1, 786449, 131072, 1, 786448, 0, 1, 393225, 0, 1, 327689, 0, 1, 262153, 0, 1, 851984, 0, 2, 851985, 131072, 2, -65517, 0, 1, -65516, 327680, 1, -65515, 65536, 2, -65514, 65536, 2, -65513, 65536, 2, -65512, 65536, 2, -65511, 65536, 2, -65510, 65536, 2, -65509, 131072, 2, -131045, 131072, 0, -131046, 65536, 0, -131047, 65536, 0, -131048, 65536, 0, -131049, 65536, 0, -131050, 65536, 0, -131051, 65536, 0, -131052, 65536, 0, -131053, 0, 0, 18, 65536, 0, 19, 393216, 2, 20, 131072, 1, 65556, 131072, 2, 65555, 65536, 2, 65554, 65536, 2)
 
-[node name="Staircase" type="Area2D" parent="." instance=ExtResource("4_mgxq5")]
+[node name="Staircase" type="Area2D" parent="." instance=ExtResource("4_x6140")]
 position = Vector2(119, 118)
 collision_layer = 128
 collision_mask = 2
-script = ExtResource("5_1opq4")
+script = ExtResource("5_p1unk")
 StairAngle = Vector2(0, 1)
 metadata/_edit_group_ = true
 
 [node name="YSort" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="Player" type="CharacterBody2D" parent="YSort" groups=["player"] instance=ExtResource("6_lt3u5")]
-position = Vector2(411.043, -14.4909)
+[node name="Player" type="CharacterBody2D" parent="YSort" groups=["player"] instance=ExtResource("6_bg7rd")]
+position = Vector2(410.085, -19.5176)
 collision_layer = 2
 motion_mode = 1
-velocity = Vector2(100, -0.0178437)
-script = ExtResource("7_i7t17")
+velocity = Vector2(99.9998, -0.187284)
+script = ExtResource("7_owgnh")
 MAX_SPEED = 100
 ACCELERATION = 15
 FRICTION = 15
 ROLL_SPEED = 100
-inventory_data = ExtResource("8_e2hhe")
+inventory_data = ExtResource("8_c2paf")
 equip_inventory_data = SubResource("Resource_v3mrh")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/Player"]
@@ -1256,10 +1305,10 @@ remote_path = NodePath("../../../../Camera2D")
 [node name="Bushes" type="Node2D" parent="YSort"]
 y_sort_enabled = true
 
-[node name="Bush" type="StaticBody2D" parent="YSort/Bushes" instance=ExtResource("10_3b1la")]
+[node name="Bush" type="StaticBody2D" parent="YSort/Bushes" instance=ExtResource("10_b60es")]
 position = Vector2(22, -15)
 collision_mask = 2
-script = ExtResource("11_espdw")
+script = ExtResource("11_52le2")
 slot_data = SubResource("Resource_mxl04")
 growth_time = 4.0
 planted_time_minutes = 0
@@ -1268,82 +1317,82 @@ metadata/_edit_group_ = true
 [node name="Grass" type="Node2D" parent="YSort"]
 y_sort_enabled = true
 
-[node name="Grass" type="Node2D" parent="YSort/Grass" instance=ExtResource("14_dom32")]
+[node name="Grass" type="Node2D" parent="YSort/Grass" instance=ExtResource("14_nc612")]
 position = Vector2(64, 96)
-script = ExtResource("15_m8unh")
+script = ExtResource("15_nptuj")
 
-[node name="Grass2" type="Node2D" parent="YSort/Grass" instance=ExtResource("14_dom32")]
+[node name="Grass2" type="Node2D" parent="YSort/Grass" instance=ExtResource("14_nc612")]
 position = Vector2(48, 80)
-script = ExtResource("15_m8unh")
+script = ExtResource("15_nptuj")
 
-[node name="Grass3" type="Node2D" parent="YSort/Grass" instance=ExtResource("14_dom32")]
+[node name="Grass3" type="Node2D" parent="YSort/Grass" instance=ExtResource("14_nc612")]
 position = Vector2(64, 80)
-script = ExtResource("15_m8unh")
+script = ExtResource("15_nptuj")
 
-[node name="Grass4" type="Node2D" parent="YSort/Grass" instance=ExtResource("14_dom32")]
+[node name="Grass4" type="Node2D" parent="YSort/Grass" instance=ExtResource("14_nc612")]
 position = Vector2(176, 96)
-script = ExtResource("15_m8unh")
+script = ExtResource("15_nptuj")
 
-[node name="Grass5" type="Node2D" parent="YSort/Grass" instance=ExtResource("14_dom32")]
+[node name="Grass5" type="Node2D" parent="YSort/Grass" instance=ExtResource("14_nc612")]
 position = Vector2(176, 80)
-script = ExtResource("15_m8unh")
+script = ExtResource("15_nptuj")
 
-[node name="Grass6" type="Node2D" parent="YSort/Grass" instance=ExtResource("14_dom32")]
+[node name="Grass6" type="Node2D" parent="YSort/Grass" instance=ExtResource("14_nc612")]
 position = Vector2(192, 96)
-script = ExtResource("15_m8unh")
+script = ExtResource("15_nptuj")
 
-[node name="Grass7" type="Node2D" parent="YSort/Grass" instance=ExtResource("14_dom32")]
+[node name="Grass7" type="Node2D" parent="YSort/Grass" instance=ExtResource("14_nc612")]
 position = Vector2(144, 144)
-script = ExtResource("15_m8unh")
+script = ExtResource("15_nptuj")
 
-[node name="Grass8" type="Node2D" parent="YSort/Grass" instance=ExtResource("14_dom32")]
+[node name="Grass8" type="Node2D" parent="YSort/Grass" instance=ExtResource("14_nc612")]
 position = Vector2(128, 144)
-script = ExtResource("15_m8unh")
+script = ExtResource("15_nptuj")
 
-[node name="Grass11" type="Node2D" parent="YSort/Grass" instance=ExtResource("14_dom32")]
+[node name="Grass11" type="Node2D" parent="YSort/Grass" instance=ExtResource("14_nc612")]
 position = Vector2(48, 160)
-script = ExtResource("15_m8unh")
+script = ExtResource("15_nptuj")
 
-[node name="Grass12" type="Node2D" parent="YSort/Grass" instance=ExtResource("14_dom32")]
+[node name="Grass12" type="Node2D" parent="YSort/Grass" instance=ExtResource("14_nc612")]
 position = Vector2(48, 144)
-script = ExtResource("15_m8unh")
+script = ExtResource("15_nptuj")
 
-[node name="Grass13" type="Node2D" parent="YSort/Grass" instance=ExtResource("14_dom32")]
+[node name="Grass13" type="Node2D" parent="YSort/Grass" instance=ExtResource("14_nc612")]
 position = Vector2(64, 144)
-script = ExtResource("15_m8unh")
+script = ExtResource("15_nptuj")
 
 [node name="Trees" type="Node2D" parent="YSort"]
 y_sort_enabled = true
 
-[node name="Tree" type="StaticBody2D" parent="YSort/Trees" instance=ExtResource("16_bg418")]
+[node name="Tree" type="StaticBody2D" parent="YSort/Trees" instance=ExtResource("16_4qy6l")]
 position = Vector2(13, 103)
 collision_mask = 2
-script = ExtResource("17_mnxje")
+script = ExtResource("17_ajx3l")
 
-[node name="Tree2" type="StaticBody2D" parent="YSort/Trees" instance=ExtResource("16_bg418")]
+[node name="Tree2" type="StaticBody2D" parent="YSort/Trees" instance=ExtResource("16_4qy6l")]
 position = Vector2(-2, 51)
 collision_mask = 2
-script = ExtResource("17_mnxje")
+script = ExtResource("17_ajx3l")
 
-[node name="Tree3" type="StaticBody2D" parent="YSort/Trees" instance=ExtResource("16_bg418")]
+[node name="Tree3" type="StaticBody2D" parent="YSort/Trees" instance=ExtResource("16_4qy6l")]
 position = Vector2(107, 80)
 collision_mask = 2
-script = ExtResource("17_mnxje")
+script = ExtResource("17_ajx3l")
 
-[node name="Tree4" type="StaticBody2D" parent="YSort/Trees" instance=ExtResource("16_bg418")]
+[node name="Tree4" type="StaticBody2D" parent="YSort/Trees" instance=ExtResource("16_4qy6l")]
 position = Vector2(224, 160)
 collision_mask = 2
-script = ExtResource("17_mnxje")
+script = ExtResource("17_ajx3l")
 
 [node name="Interactables" type="Node2D" parent="YSort"]
 y_sort_enabled = true
 
-[node name="Chest" type="StaticBody2D" parent="YSort/Interactables" groups=["external_inventory"] instance=ExtResource("18_y84wq")]
+[node name="Chest" type="StaticBody2D" parent="YSort/Interactables" groups=["external_inventory"] instance=ExtResource("18_v76qa")]
 position = Vector2(72, -15)
-script = ExtResource("19_l2a2i")
+script = ExtResource("19_ipfl5")
 inventory_data = SubResource("Resource_fji6u")
 
-[node name="WitheringRack" type="StaticBody2D" parent="YSort/Interactables" groups=["external_withering"] instance=ExtResource("23_6g458")]
+[node name="WitheringRack" type="StaticBody2D" parent="YSort/Interactables" groups=["external_withering"] instance=ExtResource("23_57i4y")]
 position = Vector2(176, -17)
 collision_mask = 2
 script = SubResource("GDScript_kvbl4")
@@ -1356,7 +1405,7 @@ capacity = 5
 progress = 0
 selected_recipe = null
 
-[node name="WitheringRack2" type="StaticBody2D" parent="YSort/Interactables" groups=["external_withering"] instance=ExtResource("23_6g458")]
+[node name="WitheringRack2" type="StaticBody2D" parent="YSort/Interactables" groups=["external_withering"] instance=ExtResource("23_57i4y")]
 position = Vector2(119, -17)
 collision_mask = 2
 script = SubResource("GDScript_kvbl4")
@@ -1369,10 +1418,10 @@ capacity = 5
 progress = 0
 selected_recipe = null
 
-[node name="DryingMat" type="StaticBody2D" parent="YSort/Interactables" groups=["external_drying"] instance=ExtResource("26_kwfi3")]
+[node name="DryingMat" type="StaticBody2D" parent="YSort/Interactables" groups=["external_drying"] instance=ExtResource("26_14uh3")]
 position = Vector2(233, 48)
 collision_mask = 2
-script = ExtResource("27_cdd2p")
+script = ExtResource("27_xv8j0")
 inventory_data_input = SubResource("Resource_eekdn")
 inventory_data_output = SubResource("Resource_x3xmn")
 type = "Bamboo Drying Mat"
@@ -1382,85 +1431,85 @@ capacity = 5
 progress = 0
 selected_recipe = null
 
-[node name="RollingTable" type="StaticBody2D" parent="YSort/Interactables" groups=["external_rolling"] instance=ExtResource("30_ja8ou")]
+[node name="RollingTable" type="StaticBody2D" parent="YSort/Interactables" groups=["external_rolling"] instance=ExtResource("30_gjkwf")]
 position = Vector2(224, -16)
 collision_mask = 2
-script = ExtResource("31_fl5jg")
-inventory_data_input = SubResource("Resource_kmw0n")
-inventory_data_output = SubResource("Resource_hlv0g")
-type = "Bamboo Withering Rack"
+script = ExtResource("31_6pust")
+inventory_data_input = SubResource("Resource_enwff")
+inventory_data_output = SubResource("Resource_g36sq")
+type = "Wooden Rolling Table"
 process_time = 5
 progress_clicker_time = 0.1
 capacity = 5
 progress = 0
 selected_recipe = null
 
-[node name="OxidizationPile" type="StaticBody2D" parent="YSort/Interactables" groups=["external_oxidizing"] instance=ExtResource("32_ovn5c")]
+[node name="OxidizationPile" type="StaticBody2D" parent="YSort/Interactables" groups=["external_oxidizing"] instance=ExtResource("34_ndeqh")]
 position = Vector2(272, -15)
 collision_mask = 2
-script = ExtResource("33_s0hl4")
-inventory_data_input = SubResource("Resource_tqrl2")
+script = ExtResource("35_iylr6")
+inventory_data_input = SubResource("Resource_6brww")
 inventory_data_output = SubResource("Resource_jgqqg")
-type = "Bamboo Withering Rack"
+type = "Small Oxidization Pile"
 process_time = 5
 progress_clicker_time = 0.1
 capacity = 5
 progress = 0
-selected_recipe = null
+selected_recipe = SubResource("Resource_n5854")
 
-[node name="KillgreenWok" type="StaticBody2D" parent="YSort/Interactables" groups=["external_fixing"] instance=ExtResource("34_cgnwb")]
+[node name="KillgreenWok" type="StaticBody2D" parent="YSort/Interactables" groups=["external_fixing"] instance=ExtResource("37_asyio")]
 position = Vector2(315, 50)
 collision_mask = 2
-script = ExtResource("35_oatkt")
-inventory_data_input = SubResource("Resource_akd51")
-inventory_data_output = SubResource("Resource_itlp2")
-type = "Bamboo Withering Rack"
+script = ExtResource("38_nugw6")
+inventory_data_input = SubResource("Resource_kpb6b")
+inventory_data_output = SubResource("Resource_8wnto")
+type = "Wood-fired Wok"
 process_time = 5
 progress_clicker_time = 0.1
 capacity = 5
 progress = 0
 selected_recipe = null
 
-[node name="FermentationPile" type="StaticBody2D" parent="YSort/Interactables" groups=["external_fermenting"] instance=ExtResource("36_crkr0")]
+[node name="FermentationPile" type="StaticBody2D" parent="YSort/Interactables" groups=["external_fermenting"] instance=ExtResource("40_5kyr4")]
 position = Vector2(316, 88)
 collision_mask = 2
-script = ExtResource("37_vnqox")
-inventory_data_input = SubResource("Resource_1fmmc")
-inventory_data_output = SubResource("Resource_kbqqc")
-type = "Bamboo Withering Rack"
+script = ExtResource("41_locyi")
+inventory_data_input = SubResource("Resource_4l8xh")
+inventory_data_output = SubResource("Resource_hemei")
+type = "Small Fermentation Pile"
 process_time = 5
 progress_clicker_time = 0.1
 capacity = 5
 progress = 0
 selected_recipe = null
 
-[node name="PressingMachine" type="StaticBody2D" parent="YSort/Interactables" groups=["external_fermenting"] instance=ExtResource("38_e22jv")]
+[node name="PressingMachine" type="StaticBody2D" parent="YSort/Interactables" groups=["external_pressing"] instance=ExtResource("43_vw6es")]
 position = Vector2(233, 88)
 collision_mask = 2
-script = ExtResource("39_wlj7j")
-inventory_data_input = SubResource("Resource_gskle")
-inventory_data_output = SubResource("Resource_70wl8")
-type = "Bamboo Withering Rack"
+script = ExtResource("44_cpnai")
+inventory_data_input = SubResource("Resource_s23jp")
+inventory_data_output = SubResource("Resource_mmxtg")
+type = "Manual Pressing Machine"
 process_time = 5
 progress_clicker_time = 0.1
 capacity = 5
 progress = 0
 selected_recipe = null
 
-[node name="PlantShop" type="StaticBody2D" parent="YSort/Interactables" groups=["external_shop", "inventory_menus"] instance=ExtResource("40_86o50")]
+[node name="PlantShop" type="StaticBody2D" parent="YSort/Interactables" groups=["external_shop", "inventory_menus"] instance=ExtResource("46_iaxdv")]
 position = Vector2(-51, 3)
 collision_mask = 2
-script = ExtResource("41_c8uio")
+script = ExtResource("47_50ugi")
 shop_inventory_data = SubResource("Resource_agt3b")
 shop_name = "Leyla's Plant Shop"
 welcome_text = "Welcome, what can I get you?"
 type = "Plant Shop"
 
-[node name="EquipmentShop" type="StaticBody2D" parent="YSort/Interactables" groups=["external_shop", "inventory_menus"] instance=ExtResource("43_d6xe3")]
+[node name="EquipmentShop" type="StaticBody2D" parent="YSort/Interactables" groups=["external_shop", "inventory_menus"] instance=ExtResource("49_ntn4b")]
 position = Vector2(-51, 119)
 collision_mask = 2
-script = ExtResource("41_c8uio")
-shop_inventory_data = SubResource("Resource_akpvp")
+script = ExtResource("47_50ugi")
+shop_inventory_data = SubResource("Resource_gyxwr")
 shop_name = "Buster's Gear Shop"
 welcome_text = "Howdy, waddya need?"
 type = "Equipment Shop"
@@ -1468,30 +1517,105 @@ type = "Equipment Shop"
 [node name="Characters" type="Node2D" parent="YSort"]
 y_sort_enabled = true
 
-[node name="LanternTest" type="StaticBody2D" parent="YSort" groups=["lights"] instance=ExtResource("52_qdj5m")]
+[node name="LanternTest" type="StaticBody2D" parent="YSort" groups=["lights"] instance=ExtResource("58_41nov")]
 position = Vector2(86, 55)
 scale = Vector2(0.5, 0.5)
-script = ExtResource("53_px0fv")
+script = ExtResource("59_fmrhh")
 size = 340
 flicker = SubResource("FastNoiseLite_cy4bq")
 
-[node name="MapChanger" type="Area2D" parent="." groups=["map_changers"] instance=ExtResource("54_ajhjq")]
+[node name="Bush" type="StaticBody2D" parent="YSort" instance=ExtResource("10_b60es")]
+position = Vector2(-72, 168)
+collision_mask = 2
+script = ExtResource("11_52le2")
+slot_data = SubResource("Resource_mxl04")
+growth_time = 4.0
+planted_time_minutes = 856
+metadata/_edit_group_ = true
+
+[node name="@Bush@101" type="StaticBody2D" parent="YSort" instance=ExtResource("10_b60es")]
+position = Vector2(-40, 168)
+collision_mask = 2
+script = ExtResource("11_52le2")
+slot_data = SubResource("Resource_mxl04")
+growth_time = 4.0
+planted_time_minutes = 839
+metadata/_edit_group_ = true
+
+[node name="@Bush@123" type="StaticBody2D" parent="YSort" instance=ExtResource("10_b60es")]
+position = Vector2(-72, 200)
+collision_mask = 2
+script = ExtResource("11_52le2")
+slot_data = SubResource("Resource_mxl04")
+growth_time = 4.0
+planted_time_minutes = 917
+metadata/_edit_group_ = true
+
+[node name="@Bush@147" type="StaticBody2D" parent="YSort" instance=ExtResource("10_b60es")]
+position = Vector2(-40, 200)
+collision_mask = 2
+script = ExtResource("11_52le2")
+slot_data = SubResource("Resource_mxl04")
+growth_time = 4.0
+planted_time_minutes = 885
+metadata/_edit_group_ = true
+
+[node name="WitheringRack" type="StaticBody2D" parent="YSort" groups=["external_withering"] instance=ExtResource("23_57i4y")]
+position = Vector2(184, 24)
+collision_mask = 2
+script = SubResource("GDScript_kvbl4")
+inventory_data_input = SubResource("Resource_4omxb")
+inventory_data_output = SubResource("Resource_vrnf0")
+type = "Bamboo Withering Rack"
+process_time = 5
+progress_clicker_time = 0.1
+capacity = 5
+progress = 0
+selected_recipe = SubResource("Resource_5qkie")
+
+[node name="DryingMat" type="StaticBody2D" parent="YSort" groups=["external_drying"] instance=ExtResource("26_14uh3")]
+position = Vector2(88, 24)
+collision_mask = 2
+script = ExtResource("27_xv8j0")
+inventory_data_input = SubResource("Resource_kaoiv")
+inventory_data_output = SubResource("Resource_21fht")
+type = "Bamboo Drying Mat"
+process_time = 5
+progress_clicker_time = 0.1
+capacity = 5
+progress = 0
+selected_recipe = SubResource("Resource_egvur")
+
+[node name="RollingTable" type="StaticBody2D" parent="YSort" groups=["external_rolling"] instance=ExtResource("30_gjkwf")]
+position = Vector2(136, 24)
+collision_mask = 2
+script = ExtResource("31_6pust")
+inventory_data_input = SubResource("Resource_enwff")
+inventory_data_output = SubResource("Resource_g36sq")
+type = "Wooden Rolling Table"
+process_time = 5
+progress_clicker_time = 0.1
+capacity = 5
+progress = 0
+selected_recipe = SubResource("Resource_51iv1")
+
+[node name="MapChanger" type="Area2D" parent="." groups=["map_changers"] instance=ExtResource("63_de1at")]
 position = Vector2(426, -15)
 collision_layer = 128
 collision_mask = 128
-script = ExtResource("55_yulcj")
+script = ExtResource("64_h553l")
 current_map_name = "HomeFarm"
 next_map_name = "ChedCity"
 player_position = Vector2(-72, 7)
 
-[node name="Water" parent="." instance=ExtResource("56_snsir")]
-material = SubResource("ShaderMaterial_ljdo8")
+[node name="Water" parent="." instance=ExtResource("65_2ff3n")]
+material = SubResource("ShaderMaterial_psvah")
 position = Vector2(165, 297)
 scale = Vector2(8.11864, 1.83594)
-texture = ExtResource("58_h83gq")
+texture = ExtResource("67_m4txj")
 region_enabled = true
 region_rect = Rect2(5.11697, 14.7553, 118.467, 45.9147)
-script = ExtResource("59_w04rp")
+script = ExtResource("68_3lnvy")
 metadata/_edit_group_ = true
 
 [node name="SeaBed" parent="Water" index="0"]
@@ -1499,10 +1623,11 @@ self_modulate = Color(0, 0.729412, 0.929412, 1)
 show_behind_parent = true
 position = Vector2(-2.38419e-06, 3.05176e-05)
 scale = Vector2(0.145281, 0.104408)
-texture = ExtResource("60_ff658")
+texture = ExtResource("69_iqycl")
 
 [connection signal="area_entered" from="Staircase" to="Staircase" method="_on_area_entered" flags=18]
 [connection signal="toggle_external_drying" from="YSort/Interactables/DryingMat" to="YSort/Interactables/DryingMat" method="_on_toggle_external_drying" flags=18]
+[connection signal="toggle_external_drying" from="YSort/DryingMat" to="YSort/DryingMat" method="_on_toggle_external_drying" flags=18]
 [connection signal="area_entered" from="MapChanger" to="MapChanger" method="_on_area_entered" flags=18]
 
 [editable path="Water"]

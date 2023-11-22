@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://cw1nro4m5s36s"]
+[gd_scene load_steps=49 format=3 uid="uid://cw1nro4m5s36s"]
 
 [ext_resource type="PackedScene" uid="uid://cj462uvp4qvw7" path="res://camera_2d.tscn" id="1_36ixg"]
 [ext_resource type="Script" path="res://world.gd" id="1_pt8ln"]
@@ -9,10 +9,15 @@
 [ext_resource type="PackedScene" uid="uid://bxeaagi03qgrd" path="res://InventoryManagers/hot_bar_inventory.tscn" id="9_44i8a"]
 [ext_resource type="PackedScene" uid="uid://dqjdvsaiqyrp3" path="res://InventoryManagers/drying_menu.tscn" id="9_wpncx"]
 [ext_resource type="PackedScene" uid="uid://bw18h83q04os2" path="res://UI/CounterUI.tscn" id="10_b0lvu"]
+[ext_resource type="PackedScene" uid="uid://rcng63ff7ifx" path="res://InventoryManagers/fermenting_menu.tscn" id="10_qqvje"]
+[ext_resource type="PackedScene" uid="uid://dihnvoxi14v84" path="res://InventoryManagers/killgreen_menu.tscn" id="11_bumea"]
 [ext_resource type="PackedScene" uid="uid://l25qph12k0uo" path="res://InventoryManagers/plant_shop_menu.tscn" id="12_6fbfy"]
+[ext_resource type="PackedScene" uid="uid://btofobrjb2odb" path="res://InventoryManagers/oxidization_menu.tscn" id="12_cavgj"]
 [ext_resource type="LabelSettings" uid="uid://7tgrr3fs72vu" path="res://UI/GUI labels.tres" id="12_l3byq"]
 [ext_resource type="PackedScene" uid="uid://ba3yi75by7i4l" path="res://InventoryManagers/tea_storage_inventory.tscn" id="12_wk2ft"]
+[ext_resource type="PackedScene" uid="uid://dg68djqmtvyra" path="res://InventoryManagers/pressing_menu.tscn" id="13_0mpfd"]
 [ext_resource type="PackedScene" uid="uid://dxqqtfb3ex7oe" path="res://Globals/TeaMarket/tea_market.tscn" id="14_auj6w"]
+[ext_resource type="PackedScene" uid="uid://c4sj5qscd67f" path="res://InventoryManagers/rolling_menu.tscn" id="14_g7op3"]
 [ext_resource type="PackedScene" uid="uid://bxy5ij2avjjte" path="res://InventoryManagers/inventory.tscn" id="15_j1xfr"]
 [ext_resource type="Shader" path="res://Effects/River.gdshader" id="16_5vm54"]
 [ext_resource type="PackedScene" uid="uid://cdhphmp2x8dta" path="res://Maps/HomeFarm.tscn" id="16_7o0ng"]
@@ -169,9 +174,37 @@ offset_bottom = 27.0
 visible = false
 layout_mode = 1
 
+[node name="FermentingMenu" parent="UI/InventoryInterface" instance=ExtResource("10_qqvje")]
+visible = false
+layout_mode = 1
+
+[node name="KillgreenMenu" parent="UI/InventoryInterface" instance=ExtResource("11_bumea")]
+visible = false
+layout_mode = 1
+
+[node name="OxidizationMenu" parent="UI/InventoryInterface" instance=ExtResource("12_cavgj")]
+visible = false
+layout_mode = 1
+
+[node name="PressingMenu" parent="UI/InventoryInterface" instance=ExtResource("13_0mpfd")]
+visible = false
+layout_mode = 1
+
+[node name="RollingMenu" parent="UI/InventoryInterface" instance=ExtResource("14_g7op3")]
+visible = false
+layout_mode = 1
+
 [node name="TeaStorageInventory" parent="UI/InventoryInterface" instance=ExtResource("12_wk2ft")]
 visible = false
 layout_mode = 1
+
+[node name="PlantShopMenu" parent="UI/InventoryInterface" instance=ExtResource("12_6fbfy")]
+visible = false
+layout_mode = 1
+offset_left = 64.0
+offset_top = 17.0
+offset_right = 64.0
+offset_bottom = 17.0
 
 [node name="GrabbedSlot" parent="UI/InventoryInterface" instance=ExtResource("8_m71rl")]
 visible = false
@@ -185,14 +218,6 @@ mouse_filter = 2
 
 [node name="TextureRect" parent="UI/InventoryInterface/GrabbedSlot/MarginContainer" index="0"]
 mouse_filter = 2
-
-[node name="PlantShopMenu" parent="UI/InventoryInterface" instance=ExtResource("12_6fbfy")]
-visible = false
-layout_mode = 1
-offset_left = 64.0
-offset_top = 17.0
-offset_right = 64.0
-offset_bottom = 17.0
 
 [node name="TeaMarket" parent="UI" instance=ExtResource("14_auj6w")]
 visible = false

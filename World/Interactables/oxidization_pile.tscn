@@ -1,13 +1,13 @@
 [gd_scene load_steps=11 format=3 uid="uid://sq2av70xatgh"]
 
 [ext_resource type="Script" path="res://World/Interactables/oxidization_pile.gd" id="1_ji6dt"]
-[ext_resource type="Script" path="res://InventoryManagers/InventoryDataWithering.gd" id="2_0afpm"]
+[ext_resource type="Script" path="res://InventoryManagers/InventoryDataOxidizable.gd" id="2_0vjxw"]
 [ext_resource type="Script" path="res://InventoryManagers/InventoryDataWithered.gd" id="3_ipd5g"]
 [ext_resource type="Texture2D" uid="uid://tjanvx1iq740" path="res://World/Interactables/pile.png" id="4_ksdy7"]
 [ext_resource type="Script" path="res://Hit and Hurtboxes/hurtbox.gd" id="5_idvrx"]
 
-[sub_resource type="Resource" id="Resource_tqrl2"]
-script = ExtResource("2_0afpm")
+[sub_resource type="Resource" id="Resource_6brww"]
+script = ExtResource("2_0vjxw")
 slot_datas = Array[Resource("res://InventoryManagers/SlotData.gd")]([null])
 
 [sub_resource type="Resource" id="Resource_jgqqg"]
@@ -26,8 +26,9 @@ size = Vector2(43.3145, 27.307)
 [node name="OxidizationPile" type="StaticBody2D" groups=["external_oxidizing"]]
 collision_mask = 2
 script = ExtResource("1_ji6dt")
-inventory_data_input = SubResource("Resource_tqrl2")
+inventory_data_input = SubResource("Resource_6brww")
 inventory_data_output = SubResource("Resource_jgqqg")
+type = "Small Oxidization Pile"
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0

@@ -3,6 +3,11 @@ extends Control
 signal force_close_external
 signal force_close_withering
 signal force_close_drying
+signal force_close_fermenting
+signal force_close_fixing
+signal force_close_oxidizing
+signal force_close_pressing
+signal force_close_rolling
 signal force_close_tea_storage
 signal force_close_shop
 signal connect_signals
@@ -17,6 +22,12 @@ var external_inventory_owner = null
 @onready var drying_menu = $DryingMenu
 @onready var tea_storage_inventory = $TeaStorageInventory
 @onready var plant_shop_menu = $PlantShopMenu
+@onready var fermenting_menu = $FermentingMenu
+@onready var killgreen_menu = $KillgreenMenu
+@onready var oxidization_menu = $OxidizationMenu
+@onready var pressing_menu = $PressingMenu
+@onready var rolling_menu = $RollingMenu
+
 var buildable_tile_map
 
 func _physics_process(delta: float) -> void:
@@ -40,6 +51,16 @@ func _physics_process(delta: float) -> void:
 			force_close_tea_storage.emit(external_inventory_owner)
 		elif plant_shop_menu.visible:
 			force_close_shop.emit(external_inventory_owner)
+		elif fermenting_menu.visible:
+			force_close_fermenting.emit(external_inventory_owner)
+		elif killgreen_menu.visible:
+			force_close_fixing.emit(external_inventory_owner)
+		elif oxidization_menu.visible:
+			force_close_oxidizing.emit(external_inventory_owner)
+		elif pressing_menu.visible:
+			force_close_pressing.emit(external_inventory_owner)
+		elif rolling_menu.visible:
+			force_close_rolling.emit(external_inventory_owner)
 
 func set_player_inventory_data(inventory_data: InventoryData) -> void:
 	inventory_data.inventory_interact.connect(on_inventory_interact)
@@ -141,7 +162,120 @@ func clear_external_shop() -> void:
 		plant_shop_menu.hide()
 		external_inventory_owner = null
 
+func set_external_fermentation(_external_inventory_owner) -> void:
+	external_inventory_owner = _external_inventory_owner
+	var inventory_data_input = external_inventory_owner.inventory_data_input
+	var inventory_data_output = external_inventory_owner.inventory_data_output
+	
+	inventory_data_input.inventory_interact.connect(on_inventory_interact)
+	inventory_data_output.inventory_interact.connect(on_inventory_interact)
+	fermenting_menu.inventory_input.set_inventory_data(inventory_data_input)
+	fermenting_menu.inventory_output.set_inventory_data(inventory_data_output)
 
+func clear_external_fermentation() -> void:
+	if external_inventory_owner:
+		var inventory_data_input = external_inventory_owner.inventory_data_input
+		var inventory_data_output = external_inventory_owner.inventory_data_output
+		
+		inventory_data_input.inventory_interact.disconnect(on_inventory_interact)
+		inventory_data_output.inventory_interact.disconnect(on_inventory_interact)
+		fermenting_menu.inventory_input.clear_inventory_data(inventory_data_input)
+		fermenting_menu.inventory_output.clear_inventory_data(inventory_data_output)
+		
+		fermenting_menu.hide()
+		external_inventory_owner = null
+
+func set_external_fixing(_external_inventory_owner) -> void:
+	external_inventory_owner = _external_inventory_owner
+	var inventory_data_input = external_inventory_owner.inventory_data_input
+	var inventory_data_output = external_inventory_owner.inventory_data_output
+	
+	inventory_data_input.inventory_interact.connect(on_inventory_interact)
+	inventory_data_output.inventory_interact.connect(on_inventory_interact)
+	killgreen_menu.inventory_input.set_inventory_data(inventory_data_input)
+	killgreen_menu.inventory_output.set_inventory_data(inventory_data_output)
+
+func clear_external_fixing() -> void:
+	if external_inventory_owner:
+		var inventory_data_input = external_inventory_owner.inventory_data_input
+		var inventory_data_output = external_inventory_owner.inventory_data_output
+		
+		inventory_data_input.inventory_interact.disconnect(on_inventory_interact)
+		inventory_data_output.inventory_interact.disconnect(on_inventory_interact)
+		killgreen_menu.inventory_input.clear_inventory_data(inventory_data_input)
+		killgreen_menu.inventory_output.clear_inventory_data(inventory_data_output)
+		
+		killgreen_menu.hide()
+		external_inventory_owner = null
+
+func set_external_oxidizing(_external_inventory_owner) -> void:
+	external_inventory_owner = _external_inventory_owner
+	var inventory_data_input = external_inventory_owner.inventory_data_input
+	var inventory_data_output = external_inventory_owner.inventory_data_output
+	
+	inventory_data_input.inventory_interact.connect(on_inventory_interact)
+	inventory_data_output.inventory_interact.connect(on_inventory_interact)
+	oxidization_menu.inventory_input.set_inventory_data(inventory_data_input)
+	oxidization_menu.inventory_output.set_inventory_data(inventory_data_output)
+
+func clear_external_oxidizing() -> void:
+	if external_inventory_owner:
+		var inventory_data_input = external_inventory_owner.inventory_data_input
+		var inventory_data_output = external_inventory_owner.inventory_data_output
+		
+		inventory_data_input.inventory_interact.disconnect(on_inventory_interact)
+		inventory_data_output.inventory_interact.disconnect(on_inventory_interact)
+		oxidization_menu.inventory_input.clear_inventory_data(inventory_data_input)
+		oxidization_menu.inventory_output.clear_inventory_data(inventory_data_output)
+		
+		oxidization_menu.hide()
+		external_inventory_owner = null
+
+func set_external_pressing(_external_inventory_owner) -> void:
+	external_inventory_owner = _external_inventory_owner
+	var inventory_data_input = external_inventory_owner.inventory_data_input
+	var inventory_data_output = external_inventory_owner.inventory_data_output
+	
+	inventory_data_input.inventory_interact.connect(on_inventory_interact)
+	inventory_data_output.inventory_interact.connect(on_inventory_interact)
+	pressing_menu.inventory_input.set_inventory_data(inventory_data_input)
+	pressing_menu.inventory_output.set_inventory_data(inventory_data_output)
+
+func clear_external_pressing() -> void:
+	if external_inventory_owner:
+		var inventory_data_input = external_inventory_owner.inventory_data_input
+		var inventory_data_output = external_inventory_owner.inventory_data_output
+		
+		inventory_data_input.inventory_interact.disconnect(on_inventory_interact)
+		inventory_data_output.inventory_interact.disconnect(on_inventory_interact)
+		pressing_menu.inventory_input.clear_inventory_data(inventory_data_input)
+		pressing_menu.inventory_output.clear_inventory_data(inventory_data_output)
+		
+		pressing_menu.hide()
+		external_inventory_owner = null
+
+func set_external_rolling(_external_inventory_owner) -> void:
+	external_inventory_owner = _external_inventory_owner
+	var inventory_data_input = external_inventory_owner.inventory_data_input
+	var inventory_data_output = external_inventory_owner.inventory_data_output
+	
+	inventory_data_input.inventory_interact.connect(on_inventory_interact)
+	inventory_data_output.inventory_interact.connect(on_inventory_interact)
+	rolling_menu.inventory_input.set_inventory_data(inventory_data_input)
+	rolling_menu.inventory_output.set_inventory_data(inventory_data_output)
+
+func clear_external_rolling() -> void:
+	if external_inventory_owner:
+		var inventory_data_input = external_inventory_owner.inventory_data_input
+		var inventory_data_output = external_inventory_owner.inventory_data_output
+		
+		inventory_data_input.inventory_interact.disconnect(on_inventory_interact)
+		inventory_data_output.inventory_interact.disconnect(on_inventory_interact)
+		rolling_menu.inventory_input.clear_inventory_data(inventory_data_input)
+		rolling_menu.inventory_output.clear_inventory_data(inventory_data_output)
+		
+		rolling_menu.hide()
+		external_inventory_owner = null
 
 func on_inventory_interact(inventory_data: InventoryData, index: int, button: int) -> void:
 	match [grabbed_slot_data, button]:
