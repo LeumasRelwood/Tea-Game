@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="ItemDataBuildable" load_steps=4 format=3 uid="uid://khc340miiid1"]
+
+[ext_resource type="Script" path="res://Items/item_data_buildable.gd" id="1_b6u47"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4g1dh"]
+load_path = "res://.godot/imported/#1 - Transparent Icons.png-8892caa8bbd25309d6ee2c3cb21bced5.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f7158"]
+atlas = SubResource("CompressedTexture2D_4g1dh")
+region = Rect2(416, 512, 32, 32)
+
+[resource]
+script = ExtResource("1_b6u47")
+object_scene = "res://World/Interactables/pressing_machine.tscn"
+name = "Pressing Machine"
+description = "Press your finished tea leaves into stylish circular tea cakes for storage and transport."
+stackable = true
+texture = SubResource("AtlasTexture_f7158")
+recipe = Array[Resource("res://InventoryManagers/SlotData.gd")]([])
+base_value = 250
+processing_time = 0

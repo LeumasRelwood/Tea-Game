@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://csdjukr06mf1j"]
+[gd_scene load_steps=9 format=3 uid="uid://csdjukr06mf1j"]
 
 [ext_resource type="Texture2D" uid="uid://dosb5mdqi8wbx" path="res://World/Interactables/chest-131982518657265365.png" id="1_phm6u"]
 [ext_resource type="Script" path="res://World/Interactables/chest.gd" id="1_yu0re"]
@@ -14,6 +14,9 @@ size = Vector2(26, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k1f8y"]
 size = Vector2(28, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wvfvx"]
+size = Vector2(15.0659, 15.0659)
 
 [node name="Chest" type="StaticBody2D" groups=["external_inventory"]]
 script = ExtResource("1_yu0re")
@@ -36,6 +39,15 @@ harvestable = false
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 shape = SubResource("RectangleShape2D_k1f8y")
 
+[node name="DragBox" type="Area2D" parent="."]
+position = Vector2(0, 1.5)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DragBox"]
+position = Vector2(0, -1.5)
+scale = Vector2(1.062, 1.062)
+shape = SubResource("RectangleShape2D_wvfvx")
+
 [connection signal="player_interact" from="Hurtbox" to="." method="_on_hurtbox_player_interact"]
+[connection signal="input_event" from="DragBox" to="." method="_on_drag_box_input_event"]
 
 [editable path="Hurtbox"]

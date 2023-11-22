@@ -1,27 +1,63 @@
-[gd_scene load_steps=13 format=3 uid="uid://dbljht41tjllw"]
+[gd_scene load_steps=25 format=3 uid="uid://dbljht41tjllw"]
 
 [ext_resource type="Script" path="res://World/Interactables/plant_shop.gd" id="1_dtf40"]
 [ext_resource type="Script" path="res://InventoryManagers/InventoryData.gd" id="2_u54rp"]
-[ext_resource type="Resource" uid="uid://dny5i36xocnvi" path="res://Items/ITEMS/tea_bush.tres" id="3_bjvlx"]
+[ext_resource type="Resource" uid="uid://qdalm436h7jg" path="res://Items/ITEMS/withering_rack.tres" id="3_6yq25"]
 [ext_resource type="Texture2D" uid="uid://ck1joou0t83ej" path="res://World/Interactables/shop png.png" id="3_jp50n"]
 [ext_resource type="PackedScene" uid="uid://cfh3c2h78s7kr" path="res://Hit and Hurtboxes/hurtbox.tscn" id="4_b6m3p"]
 [ext_resource type="Script" path="res://InventoryManagers/SlotData.gd" id="4_uj5ck"]
-[ext_resource type="Resource" uid="uid://dyy4bd2uene0h" path="res://Items/ITEMS/FreshTeaLeaves.tres" id="5_3u0t3"]
+[ext_resource type="Resource" uid="uid://dhnw5e86ui6ku" path="res://Items/ITEMS/drying_mat.tres" id="5_kqtby"]
+[ext_resource type="Resource" uid="uid://c8kuqnhugc3b5" path="res://Items/ITEMS/rolling_table.tres" id="6_igy40"]
+[ext_resource type="Resource" uid="uid://b6igd1tji408w" path="res://Items/ITEMS/chest.tres" id="7_sbpbu"]
+[ext_resource type="Resource" uid="uid://co5m5s8oxi1so" path="res://Items/ITEMS/oxidization_pile.tres" id="8_ypvnc"]
+[ext_resource type="Resource" uid="uid://khc340miiid1" path="res://Items/ITEMS/pressing_machine.tres" id="9_67skh"]
+[ext_resource type="Resource" uid="uid://diwticop84u5r" path="res://Items/ITEMS/fermentation_pile.tres" id="10_q358p"]
+[ext_resource type="Resource" uid="uid://dnxxe8qt1h7e4" path="res://Items/ITEMS/killgreen_wok.tres" id="11_3xses"]
 
 [sub_resource type="Resource" id="Resource_f1og7"]
 script = ExtResource("4_uj5ck")
-item_data = ExtResource("3_bjvlx")
-quantity = 15
+item_data = ExtResource("3_6yq25")
+quantity = 8
 
 [sub_resource type="Resource" id="Resource_4a5ar"]
 script = ExtResource("4_uj5ck")
-item_data = ExtResource("5_3u0t3")
-quantity = 65
+item_data = ExtResource("5_kqtby")
+quantity = 12
+
+[sub_resource type="Resource" id="Resource_id64k"]
+script = ExtResource("4_uj5ck")
+item_data = ExtResource("6_igy40")
+quantity = 9
+
+[sub_resource type="Resource" id="Resource_hvjsl"]
+script = ExtResource("4_uj5ck")
+item_data = ExtResource("7_sbpbu")
+quantity = 14
+
+[sub_resource type="Resource" id="Resource_e1wwc"]
+script = ExtResource("4_uj5ck")
+item_data = ExtResource("8_ypvnc")
+quantity = 8
+
+[sub_resource type="Resource" id="Resource_sasyy"]
+script = ExtResource("4_uj5ck")
+item_data = ExtResource("9_67skh")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_mpg26"]
+script = ExtResource("4_uj5ck")
+item_data = ExtResource("10_q358p")
+quantity = 9
+
+[sub_resource type="Resource" id="Resource_m0h7i"]
+script = ExtResource("4_uj5ck")
+item_data = ExtResource("11_3xses")
+quantity = 2
 
 [sub_resource type="Resource" id="Resource_ig1ij"]
 resource_local_to_scene = true
 script = ExtResource("2_u54rp")
-slot_datas = Array[ExtResource("4_uj5ck")]([SubResource("Resource_f1og7"), SubResource("Resource_4a5ar")])
+slot_datas = Array[ExtResource("4_uj5ck")]([SubResource("Resource_f1og7"), SubResource("Resource_4a5ar"), SubResource("Resource_id64k"), SubResource("Resource_hvjsl"), SubResource("Resource_e1wwc"), SubResource("Resource_sasyy"), SubResource("Resource_mpg26"), SubResource("Resource_m0h7i")])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p60bi"]
 size = Vector2(72, 29)

@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="ItemDataBuildable" load_steps=4 format=3 uid="uid://c8kuqnhugc3b5"]
+
+[ext_resource type="Script" path="res://Items/item_data_buildable.gd" id="1_28dmd"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4g1dh"]
+load_path = "res://.godot/imported/#1 - Transparent Icons.png-8892caa8bbd25309d6ee2c3cb21bced5.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t7ck6"]
+atlas = SubResource("CompressedTexture2D_4g1dh")
+region = Rect2(128, 128, 32, 32)
+
+[resource]
+script = ExtResource("1_28dmd")
+object_scene = "res://World/Interactables/rolling_table.tscn"
+name = "Rolling Table"
+description = "Here you bruise your leaves to facilitate better oxidization, as well as providing shape."
+stackable = true
+texture = SubResource("AtlasTexture_t7ck6")
+recipe = Array[Resource("res://InventoryManagers/SlotData.gd")]([])
+base_value = 150
+processing_time = 0

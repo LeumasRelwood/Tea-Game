@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3]
+[gd_scene load_steps=11 format=3 uid="uid://cpry8o2rbft3p"]
 
 [ext_resource type="Texture2D" uid="uid://brultq5qed3eh" path="res://World/Interactables/drying rack.jpg" id="1_wfjoh"]
 [ext_resource type="Script" path="res://World/Interactables/drying_mat.gd" id="1_y6reh"]
@@ -19,6 +19,9 @@ size = Vector2(46, 19)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wapcj"]
 size = Vector2(47, 31)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ds25u"]
+size = Vector2(43.3145, 28.2486)
 
 [node name="DryingMat" type="StaticBody2D" groups=["external_drying"]]
 position = Vector2(0, 16)
@@ -52,9 +55,18 @@ collision_mask = 64
 position = Vector2(0.5, -0.5)
 shape = SubResource("RectangleShape2D_wapcj")
 
+[node name="DragBox" type="Area2D" parent="."]
+position = Vector2(0, 1.5)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DragBox"]
+position = Vector2(7.15256e-07, -1.5)
+scale = Vector2(1.062, 1.062)
+shape = SubResource("RectangleShape2D_ds25u")
+
 [connection signal="toggle_external_drying" from="." to="." method="_on_toggle_external_drying"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer/ProgressClickerTimer" to="." method="_on_progress_clicker_timer_timeout"]
 [connection signal="player_interact" from="Hurtbox" to="." method="_on_hurtbox_player_interact"]
+[connection signal="input_event" from="DragBox" to="." method="_on_drag_box_input_event"]
 
 [editable path="Hurtbox"]

@@ -1,8 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://bmcwhgglkhyb0"]
+[gd_scene load_steps=11 format=3 uid="uid://bmcwhgglkhyb0"]
 
 [ext_resource type="Script" path="res://World/Interactables/fermentation_pile.gd" id="1_tygiy"]
+[ext_resource type="Script" path="res://InventoryManagers/InventoryDataWithering.gd" id="2_v25bd"]
+[ext_resource type="Script" path="res://InventoryManagers/InventoryDataWithered.gd" id="3_do5lu"]
 [ext_resource type="Texture2D" uid="uid://m4blbm3644ik" path="res://World/Interactables/fermentationpile.jpg" id="4_8nq5k"]
 [ext_resource type="Script" path="res://Hit and Hurtboxes/hurtbox.gd" id="5_1osia"]
+
+[sub_resource type="Resource" id="Resource_1fmmc"]
+script = ExtResource("2_v25bd")
+slot_datas = Array[Resource("res://InventoryManagers/SlotData.gd")]([null])
+
+[sub_resource type="Resource" id="Resource_kbqqc"]
+script = ExtResource("3_do5lu")
+slot_datas = Array[Resource("res://InventoryManagers/SlotData.gd")]([null])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wjoir"]
 size = Vector2(42, 19)
@@ -10,9 +20,14 @@ size = Vector2(42, 19)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rtrdu"]
 size = Vector2(40.4896, 30.1318)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lcjl7"]
+size = Vector2(43.3145, 28.2486)
+
 [node name="FermentationPile" type="StaticBody2D" groups=["external_fermenting"]]
 collision_mask = 2
 script = ExtResource("1_tygiy")
+inventory_data_input = SubResource("Resource_1fmmc")
+inventory_data_output = SubResource("Resource_kbqqc")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
@@ -41,9 +56,18 @@ shape = SubResource("RectangleShape2D_rtrdu")
 
 [node name="Timer" type="Timer" parent="Hurtbox"]
 
+[node name="DragBox" type="Area2D" parent="."]
+position = Vector2(0, 1.5)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DragBox"]
+position = Vector2(7.15256e-07, -1.5)
+scale = Vector2(1.062, 1.062)
+shape = SubResource("RectangleShape2D_lcjl7")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout" flags=18]
 [connection signal="timeout" from="Timer/ProgressClickerTimer" to="." method="_on_progress_clicker_timer_timeout" flags=18]
 [connection signal="invincibility_ended" from="Hurtbox" to="Hurtbox" method="_on_invincibility_ended" flags=18]
 [connection signal="invincibility_started" from="Hurtbox" to="Hurtbox" method="_on_invincibility_started" flags=18]
 [connection signal="player_interact" from="Hurtbox" to="." method="_on_hurtbox_player_interact"]
 [connection signal="timeout" from="Hurtbox/Timer" to="Hurtbox" method="_on_timer_timeout" flags=18]
+[connection signal="input_event" from="DragBox" to="." method="_on_drag_box_input_event"]

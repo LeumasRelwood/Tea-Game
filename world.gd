@@ -19,6 +19,7 @@ func _ready():
 	connect_signals()
 
 func connect_signals():
+	inventory_interface.connect_signals.connect(connect_signals)
 	for p in get_tree().get_nodes_in_group("player"):
 		player = p
 	player.toggle_inventory.connect(toggle_inventory_interface)

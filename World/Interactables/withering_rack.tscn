@@ -1,5 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://28fco0feg03n"]
+[gd_scene load_steps=10 format=3 uid="uid://28fco0feg03n"]
 
+[ext_resource type="Script" path="res://InventoryManagers/InventoryDataWithering.gd" id="1_obpoq"]
+[ext_resource type="Script" path="res://InventoryManagers/InventoryDataWithered.gd" id="2_f8aew"]
 [ext_resource type="Script" path="res://Hit and Hurtboxes/hurtbox.gd" id="2_semco"]
 [ext_resource type="Texture2D" uid="uid://2tvapvqdxy0n" path="res://World/Interactables/witheringrack.jpg" id="2_v17pa"]
 
@@ -32,6 +34,7 @@ func _ready():
 	progress_clicker_timer.wait_time = progress_clicker_time
 
 func _on_hurtbox_player_interact(user):
+		print(\"player interact\")
 		set_external_inventory_owner.emit(self)
 		toggle_external_withering.emit(self)
 		update_withering_menu.emit(inventory_data_input, inventory_data_output, type, capacity)
@@ -71,17 +74,52 @@ func is_start_button_disabled():
 func craft_with_slot_data(index):
 	craft_quantity = clamp(inventory_data_input.slot_datas[index].quantity, 1, capacity)
 	inventory_data_input.craft_with_slot_data(craft_quantity, index)
+
+
+
+var MouseSelected = false
+var mouse_offset = Vector2.ZERO
+
+func _process(delta):
+	if MouseSelected:
+		followMouse()
+
+func followMouse():
+	if get_node(\"/root/World\").mouse_in_build_area:
+		var mouse_tile = get_node(\"/root/World\").buildable_tile_map.local_to_map(get_global_mouse_position())
+		var local_pos = get_node(\"/root/World\").buildable_tile_map.map_to_local(mouse_tile)
+		global_position = get_node(\"/root/World\").buildable_tile_map.to_global(local_pos)
+	else:
+		global_position = get_global_mouse_position() + Vector2(1, 1)
+
+func _on_drag_box_input_event(viewport, event, shape_idx):
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		if event.pressed:
+			mouse_offset = position - get_global_mouse_position()
+			MouseSelected = true
+		elif get_node(\"/root/World\").mouse_in_build_area:
+			MouseSelected = false
 "
+
+[sub_resource type="Resource" id="Resource_4omxb"]
+script = ExtResource("1_obpoq")
+slot_datas = Array[Resource("res://InventoryManagers/SlotData.gd")]([null])
+
+[sub_resource type="Resource" id="Resource_vrnf0"]
+script = ExtResource("2_f8aew")
+slot_datas = Array[Resource("res://InventoryManagers/SlotData.gd")]([null])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0vjeg"]
 size = Vector2(45.5, 19)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jpjlc"]
-size = Vector2(43.3145, 28.2486)
+size = Vector2(43.3145, 30.1318)
 
 [node name="WitheringRack" type="StaticBody2D" groups=["external_withering"]]
 collision_mask = 2
 script = SubResource("GDScript_kvbl4")
+inventory_data_input = SubResource("Resource_4omxb")
+inventory_data_output = SubResource("Resource_vrnf0")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
@@ -103,12 +141,20 @@ collision_layer = 32
 collision_mask = 64
 script = ExtResource("2_semco")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(7.15256e-07, -6.85453e-07)
+[node name="Timer" type="Timer" parent="Hurtbox"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(7.15256e-07, -1.19209e-07)
 scale = Vector2(1.062, 1.062)
 shape = SubResource("RectangleShape2D_jpjlc")
 
-[node name="Timer" type="Timer" parent="Hurtbox"]
+[node name="DragBox" type="Area2D" parent="."]
+position = Vector2(0, 1.5)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DragBox"]
+position = Vector2(7.15256e-07, -1.5)
+scale = Vector2(1.062, 1.062)
+shape = SubResource("RectangleShape2D_jpjlc")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer/ProgressClickerTimer" to="." method="_on_progress_clicker_timer_timeout"]
@@ -116,3 +162,4 @@ shape = SubResource("RectangleShape2D_jpjlc")
 [connection signal="invincibility_started" from="Hurtbox" to="Hurtbox" method="_on_invincibility_started" flags=18]
 [connection signal="player_interact" from="Hurtbox" to="." method="_on_hurtbox_player_interact"]
 [connection signal="timeout" from="Hurtbox/Timer" to="Hurtbox" method="_on_timer_timeout" flags=18]
+[connection signal="input_event" from="DragBox" to="." method="_on_drag_box_input_event"]

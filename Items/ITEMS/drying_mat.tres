@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="ItemDataBuildable" load_steps=4 format=3 uid="uid://dhnw5e86ui6ku"]
+
+[ext_resource type="Script" path="res://Items/item_data_buildable.gd" id="1_5k78u"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4g1dh"]
+load_path = "res://.godot/imported/#1 - Transparent Icons.png-8892caa8bbd25309d6ee2c3cb21bced5.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qmynp"]
+atlas = SubResource("CompressedTexture2D_4g1dh")
+region = Rect2(32, 352, 32, 32)
+
+[resource]
+script = ExtResource("1_5k78u")
+object_scene = "res://World/Interactables/drying_mat.tscn"
+name = "Drying Mat"
+description = "Spread your leaves out under the sun to let them dry completely before storage or consumption."
+stackable = true
+texture = SubResource("AtlasTexture_qmynp")
+recipe = Array[Resource("res://InventoryManagers/SlotData.gd")]([])
+base_value = 50
+processing_time = 0

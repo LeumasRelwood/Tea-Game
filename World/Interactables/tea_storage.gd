@@ -18,7 +18,7 @@ func _ready():
 func connect_signals():
 	tea_storage_inventory_data.inventory_updated.connect(tea_storage_inventory_data_updated)
 
-func _on_hurtbox_player_interact():
+func _on_hurtbox_player_interact(user):
 		set_external_inventory_owner.emit(self)
 		toggle_external_tea_storage.emit(self)
 		check_current_leaf_total()

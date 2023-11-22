@@ -5,6 +5,7 @@ signal force_close_withering
 signal force_close_drying
 signal force_close_tea_storage
 signal force_close_shop
+signal connect_signals
 
 var grabbed_slot_data: SlotData
 var external_inventory_owner = null
@@ -124,8 +125,6 @@ func clear_external_tea_storage() -> void:
 		tea_storage_inventory.hide()
 		external_inventory_owner = null
 
-
-
 func set_external_shop(user, _external_inventory_owner) -> void:
 	external_inventory_owner = _external_inventory_owner
 	var shop_inventory_data = external_inventory_owner.shop_inventory_data
@@ -180,3 +179,4 @@ func _input(event):
 		if grabbed_slot_data.quantity == 0:
 			grabbed_slot_data = null
 		update_grabbed_slot()
+		emit_signal("connect_signals")

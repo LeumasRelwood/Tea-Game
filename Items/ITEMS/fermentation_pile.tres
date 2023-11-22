@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="ItemDataBuildable" load_steps=4 format=3 uid="uid://diwticop84u5r"]
+
+[ext_resource type="Script" path="res://Items/item_data_buildable.gd" id="1_2d822"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4g1dh"]
+load_path = "res://.godot/imported/#1 - Transparent Icons.png-8892caa8bbd25309d6ee2c3cb21bced5.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kns3f"]
+atlas = SubResource("CompressedTexture2D_4g1dh")
+region = Rect2(384, 448, 32, 32)
+
+[resource]
+script = ExtResource("1_2d822")
+object_scene = "res://World/Interactables/fermentation_pile.tscn"
+name = "Fermentation Pile"
+description = "Pile up your Pu-erh tea and let it develop its distinct, aged flavor."
+stackable = true
+texture = SubResource("AtlasTexture_kns3f")
+recipe = Array[Resource("res://InventoryManagers/SlotData.gd")]([])
+base_value = 70
+processing_time = 0

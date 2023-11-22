@@ -1,0 +1,98 @@
+[gd_scene load_steps=25 format=3 uid="uid://bfdbnr5l6cc3e"]
+
+[ext_resource type="Script" path="res://World/Interactables/plant_shop.gd" id="1_uj01q"]
+[ext_resource type="Script" path="res://InventoryManagers/InventoryData.gd" id="2_gh35m"]
+[ext_resource type="Resource" uid="uid://qdalm436h7jg" path="res://Items/ITEMS/withering_rack.tres" id="3_pf47b"]
+[ext_resource type="Script" path="res://InventoryManagers/SlotData.gd" id="4_l11le"]
+[ext_resource type="Resource" uid="uid://dhnw5e86ui6ku" path="res://Items/ITEMS/drying_mat.tres" id="5_irdln"]
+[ext_resource type="Resource" uid="uid://c8kuqnhugc3b5" path="res://Items/ITEMS/rolling_table.tres" id="6_30otg"]
+[ext_resource type="Texture2D" uid="uid://ck1joou0t83ej" path="res://World/Interactables/shop png.png" id="6_rhd1v"]
+[ext_resource type="PackedScene" uid="uid://cfh3c2h78s7kr" path="res://Hit and Hurtboxes/hurtbox.tscn" id="7_s627u"]
+[ext_resource type="Resource" uid="uid://b6igd1tji408w" path="res://Items/ITEMS/chest.tres" id="7_v1ecp"]
+[ext_resource type="Resource" uid="uid://co5m5s8oxi1so" path="res://Items/ITEMS/oxidization_pile.tres" id="8_6qxok"]
+[ext_resource type="Resource" uid="uid://khc340miiid1" path="res://Items/ITEMS/pressing_machine.tres" id="9_jvyg3"]
+[ext_resource type="Resource" uid="uid://diwticop84u5r" path="res://Items/ITEMS/fermentation_pile.tres" id="10_r8p0u"]
+[ext_resource type="Resource" uid="uid://dnxxe8qt1h7e4" path="res://Items/ITEMS/killgreen_wok.tres" id="11_xonh5"]
+
+[sub_resource type="Resource" id="Resource_f1og7"]
+script = ExtResource("4_l11le")
+item_data = ExtResource("3_pf47b")
+quantity = 8
+
+[sub_resource type="Resource" id="Resource_4a5ar"]
+script = ExtResource("4_l11le")
+item_data = ExtResource("5_irdln")
+quantity = 12
+
+[sub_resource type="Resource" id="Resource_id64k"]
+script = ExtResource("4_l11le")
+item_data = ExtResource("6_30otg")
+quantity = 9
+
+[sub_resource type="Resource" id="Resource_hvjsl"]
+script = ExtResource("4_l11le")
+item_data = ExtResource("7_v1ecp")
+quantity = 14
+
+[sub_resource type="Resource" id="Resource_e1wwc"]
+script = ExtResource("4_l11le")
+item_data = ExtResource("8_6qxok")
+quantity = 8
+
+[sub_resource type="Resource" id="Resource_sasyy"]
+script = ExtResource("4_l11le")
+item_data = ExtResource("9_jvyg3")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_mpg26"]
+script = ExtResource("4_l11le")
+item_data = ExtResource("10_r8p0u")
+quantity = 9
+
+[sub_resource type="Resource" id="Resource_m0h7i"]
+script = ExtResource("4_l11le")
+item_data = ExtResource("11_xonh5")
+quantity = 2
+
+[sub_resource type="Resource" id="Resource_ig1ij"]
+resource_local_to_scene = true
+script = ExtResource("2_gh35m")
+slot_datas = Array[ExtResource("4_l11le")]([SubResource("Resource_f1og7"), SubResource("Resource_4a5ar"), SubResource("Resource_id64k"), SubResource("Resource_hvjsl"), SubResource("Resource_e1wwc"), SubResource("Resource_sasyy"), SubResource("Resource_mpg26"), SubResource("Resource_m0h7i")])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p60bi"]
+size = Vector2(72, 29)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wapcj"]
+size = Vector2(72, 65)
+
+[node name="EquipmentShop" type="StaticBody2D" groups=["external_shop", "inventory_menus"]]
+position = Vector2(0, -6)
+collision_mask = 2
+script = ExtResource("1_uj01q")
+shop_inventory_data = SubResource("Resource_ig1ij")
+shop_name = "Buster's Gear Shop"
+welcome_text = "Howdy, waddya need?"
+type = "Equipment Shop"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0.223529, 0.235294, 0.780392, 1)
+position = Vector2(7.15256e-07, 9.53674e-07)
+scale = Vector2(0.0857143, 0.0745052)
+texture = ExtResource("6_rhd1v")
+region_rect = Rect2(804.371, 64.6463, 1001.44, 798.873)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 18.5)
+shape = SubResource("RectangleShape2D_p60bi")
+
+[node name="Hurtbox" parent="." instance=ExtResource("7_s627u")]
+collision_layer = 32
+collision_mask = 64
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_wapcj")
+
+[connection signal="player_interact" from="Hurtbox" to="." method="_on_hurtbox_player_interact" flags=18]
+
+[editable path="Hurtbox"]
