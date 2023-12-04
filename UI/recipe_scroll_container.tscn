@@ -1,13 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://bbals1kcraiux"]
+[gd_scene load_steps=3 format=3 uid="uid://bbals1kcraiux"]
 
-[ext_resource type="PackedScene" uid="uid://dao8bny7qec8a" path="res://InventoryManagers/RecipeItemContainers/white_tea_recipe_item_container.tscn" id="1_7mniu"]
-[ext_resource type="PackedScene" uid="uid://dvnhh2swe8mmd" path="res://InventoryManagers/RecipeItemContainers/black_tea_recipe_item_container.tscn" id="2_wxkyr"]
-[ext_resource type="PackedScene" uid="uid://ml838x4n743w" path="res://InventoryManagers/RecipeItemContainers/oolong_tea_recipe_item_container.tscn" id="3_vxh3u"]
+[ext_resource type="Script" path="res://InventoryManagers/recipe_scroll_container.gd" id="1_62j2a"]
+[ext_resource type="PackedScene" uid="uid://c85dkxf7abl0u" path="res://InventoryManagers/RecipeItemContainers/recipe_item_container.tscn" id="2_p06co"]
 
 [node name="RecipeScrollContainer" type="ScrollContainer"]
 custom_minimum_size = Vector2(80, 60)
 size_flags_horizontal = 4
 size_flags_vertical = 4
+script = ExtResource("1_62j2a")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -22,11 +22,5 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="WhiteTeaRecipeItemContainer" parent="MarginContainer/VBoxContainer" instance=ExtResource("1_7mniu")]
-layout_mode = 2
-
-[node name="BlackTeaRecipeItemContainer" parent="MarginContainer/VBoxContainer" groups=["withering_recipes"] instance=ExtResource("2_wxkyr")]
-layout_mode = 2
-
-[node name="OolongTeaRecipeItemContainer" parent="MarginContainer/VBoxContainer" groups=["withering_recipes"] instance=ExtResource("3_vxh3u")]
+[node name="RecipeItemContainer" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_p06co")]
 layout_mode = 2

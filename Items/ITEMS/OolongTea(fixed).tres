@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemDataDryable" load_steps=7 format=3 uid="uid://fjw0x3h3klr5"]
+[gd_resource type="Resource" script_class="ItemDataDryable" load_steps=9 format=3 uid="uid://fjw0x3h3klr5"]
 
 [ext_resource type="Resource" uid="uid://ccdr50kfe1w5l" path="res://Items/ITEMS/OolongTea.tres" id="1_itmfd"]
 [ext_resource type="Script" path="res://InventoryManagers/SlotData.gd" id="2_bva0o"]
@@ -15,12 +15,20 @@ script = ExtResource("2_bva0o")
 item_data = ExtResource("3_mmrc5")
 quantity = 1
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4g1dh"]
+load_path = "res://.godot/imported/#1 - Transparent Icons.png-8892caa8bbd25309d6ee2c3cb21bced5.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qksgh"]
+atlas = SubResource("CompressedTexture2D_4g1dh")
+region = Rect2(480, 352, 32, 32)
+
 [resource]
 script = ExtResource("4_e5jlh")
 next_stage = SubResource("Resource_o2qxx")
 name = "Oolong Tea (fixed)"
 description = "Next Step: Drying"
 stackable = true
+texture = SubResource("AtlasTexture_qksgh")
 recipe = Array[ExtResource("2_bva0o")]([SubResource("Resource_agj2f")])
 base_value = 0
 processing_time = 1

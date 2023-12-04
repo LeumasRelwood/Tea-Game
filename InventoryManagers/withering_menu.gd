@@ -1,5 +1,6 @@
 extends Control
 
+@export var UnlockedTeaRecipes: Array[TeaRecipeData]
 @onready var inventory_input = $PanelContainer/MarginContainer8/MarginContainer6/InventoryInput
 @onready var inventory_output = $PanelContainer/MarginContainer6/MarginContainer7/InventoryOutput
 @onready var inventory_data_input: InventoryData
@@ -10,7 +11,9 @@ extends Control
 @onready var header_label = $PanelContainer/MarginContainer/HeaderLabel
 @onready var capacity_label = $PanelContainer/MarginContainer2/CapacityLabel
 @onready var craft_quantity = null
+@onready var recipe_scroll_container = $PanelContainer/RecipeScrollContainer
 var external_inv_owner
+@export var slot_item: SlotData
 
 func _ready():
 	connect_signals()
@@ -18,8 +21,7 @@ func _ready():
 func connect_signals():
 	inventory_input.is_start_button_disabled.connect(is_start_button_disabled)
 	inventory_output.is_start_button_disabled.connect(is_start_button_disabled)
-	for node in get_tree().get_nodes_in_group("withering_recipes"):
-		node.recipe_selected.connect(whithering_recipe_selected)
+	recipe_scroll_container.shop_item_selected.connect(whithering_recipe_selected)
 	for node in get_tree().get_nodes_in_group("external_withering"):
 		node.update_withering_menu.connect(update_withering_menu)
 		node.update_progress_bar.connect(update_progress_bar)
@@ -36,8 +38,9 @@ func _on_start_button_pressed():
 		start_button.disabled = true
 		external_inv_owner.craft_with_slot_data(0)
 
-func whithering_recipe_selected(recipe_item: SlotData):
-	external_inv_owner.selected_recipe = recipe_item
+func whithering_recipe_selected(recipe_item: ItemData):
+	slot_item.item_data = recipe_item
+	external_inv_owner.selected_recipe = slot_item
 	start_button.disabled = external_inv_owner.is_start_button_disabled()
 
 func set_external_inventory_owner(external_inventory_owner):
@@ -52,6 +55,7 @@ func update_withering_menu(_inventory_data_input, _inventory_data_output, type, 
 	start_button.disabled = external_inv_owner.is_start_button_disabled()
 	header_label.text = str(type)
 	capacity_label.text = ("Capacity: " +  str(craft_quantity) + " Fresh Tea Leaves")
+	recipe_scroll_container.set_inventory_data(UnlockedTeaRecipes)
 
 func update_progress_bar(progress):
 	progress_bar.value = external_inv_owner.progress
