@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dxqqtfb3ex7oe"]
+[gd_scene load_steps=27 format=3 uid="uid://dxqqtfb3ex7oe"]
 
 [ext_resource type="Script" path="res://Globals/TeaMarket/tea_market.gd" id="1_8ohgc"]
 [ext_resource type="Resource" uid="uid://bwl2w43e45pd8" path="res://Items/ITEMS/WhiteTea.tres" id="2_xn7jc"]
@@ -8,7 +8,10 @@
 [ext_resource type="Script" path="res://Globals/Economy/buy_offer.gd" id="4_p4qq7"]
 [ext_resource type="Resource" uid="uid://wm0q07dfhg0q" path="res://Items/ITEMS/BlackTea.tres" id="4_tq5x2"]
 [ext_resource type="Resource" uid="uid://ccdr50kfe1w5l" path="res://Items/ITEMS/OolongTea.tres" id="5_c1o6c"]
+[ext_resource type="Resource" uid="uid://cqdtf3phvip60" path="res://Items/ITEMS/GreenTea.tres" id="7_lm83y"]
+[ext_resource type="Resource" uid="uid://b0ihsv4vue3vt" path="res://Items/ITEMS/PuerhTea.tres" id="8_wl010"]
 [ext_resource type="PackedScene" uid="uid://dcd8dd34ds8iu" path="res://Globals/TeaMarket/white_tea_market_selector.tscn" id="9_rj7fg"]
+[ext_resource type="Script" path="res://Globals/TeaMarket/GridContainer.gd" id="9_rv3qg"]
 [ext_resource type="PackedScene" uid="uid://burmqwrb2x32t" path="res://Globals/TeaMarket/region_nivalis.tscn" id="11_03p1f"]
 [ext_resource type="PackedScene" uid="uid://vs7r655idt8j" path="res://Globals/TeaMarket/region_rambonia.tscn" id="12_x5arb"]
 [ext_resource type="PackedScene" uid="uid://beq1lb7w3qb8c" path="res://Globals/TeaMarket/region_wyrood.tscn" id="13_omw8i"]
@@ -16,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://bkvowab15aaoe" path="res://Globals/TeaMarket/region_khit_haetia.tscn" id="15_odrrw"]
 [ext_resource type="PackedScene" uid="uid://biuua27i5nbhe" path="res://Globals/TeaMarket/tea_market_shipment_selector.tscn" id="16_0mgxl"]
 [ext_resource type="PackedScene" uid="uid://ckkx08ylksr4f" path="res://Globals/TeaMarket/region_sitgoom.tscn" id="16_btacc"]
+[ext_resource type="Script" path="res://Globals/TeaMarket/VBoxContainer.gd" id="17_3gka2"]
 
 [sub_resource type="Resource" id="Resource_b58ki"]
 script = ExtResource("4_p4qq7")
@@ -49,6 +53,24 @@ sell_offers = Array[Resource("res://Globals/Economy/sell_offer.gd")]([])
 average_market_price = 0.0
 quantity_of_transactions = 0
 
+[sub_resource type="Resource" id="Resource_u2kb2"]
+script = ExtResource("3_y73ix")
+commodity_name = ""
+item_data = ExtResource("7_lm83y")
+buy_offers = Array[ExtResource("4_p4qq7")]([])
+sell_offers = Array[Resource("res://Globals/Economy/sell_offer.gd")]([])
+average_market_price = 0.0
+quantity_of_transactions = 0
+
+[sub_resource type="Resource" id="Resource_6x4lp"]
+script = ExtResource("3_y73ix")
+commodity_name = ""
+item_data = ExtResource("8_wl010")
+buy_offers = Array[ExtResource("4_p4qq7")]([])
+sell_offers = Array[Resource("res://Globals/Economy/sell_offer.gd")]([])
+average_market_price = 0.0
+quantity_of_transactions = 0
+
 [node name="TeaMarket" type="Control" groups=["inventory_menus"]]
 layout_mode = 3
 anchors_preset = 0
@@ -59,7 +81,7 @@ offset_bottom = 23.0
 mouse_filter = 1
 script = ExtResource("1_8ohgc")
 selected_item = ExtResource("2_xn7jc")
-tea_market = Array[ExtResource("3_y73ix")]([SubResource("Resource_vhwrq"), SubResource("Resource_gfa5w"), SubResource("Resource_bqot8")])
+tea_market = Array[ExtResource("3_y73ix")]([SubResource("Resource_vhwrq"), SubResource("Resource_gfa5w"), SubResource("Resource_bqot8"), SubResource("Resource_u2kb2"), SubResource("Resource_6x4lp")])
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 0
@@ -127,7 +149,7 @@ text = "Show Current Shipments"
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
-theme_override_constants/margin_top = 32
+theme_override_constants/margin_top = 13
 theme_override_constants/margin_right = 24
 
 [node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/MarginContainer2"]
@@ -149,18 +171,26 @@ theme_override_constants/margin_top = 24
 [node name="GridContainer" type="GridContainer" parent="PanelContainer/MarginContainer2/MarginContainer3"]
 layout_mode = 2
 size_flags_vertical = 0
-columns = 8
+columns = 3
+script = ExtResource("9_rv3qg")
 
 [node name="MarginContainer" parent="PanelContainer/MarginContainer2/MarginContainer3/GridContainer" instance=ExtResource("9_rj7fg")]
 layout_mode = 2
 
-[node name="MarginContainer2" parent="PanelContainer/MarginContainer2/MarginContainer3/GridContainer" instance=ExtResource("9_rj7fg")]
+[node name="MarginContainer4" parent="PanelContainer/MarginContainer2/MarginContainer3/GridContainer" instance=ExtResource("9_rj7fg")]
 layout_mode = 2
-recipe_item = ExtResource("4_tq5x2")
 
-[node name="MarginContainer3" parent="PanelContainer/MarginContainer2/MarginContainer3/GridContainer" instance=ExtResource("9_rj7fg")]
+[node name="MarginContainer5" parent="PanelContainer/MarginContainer2/MarginContainer3/GridContainer" instance=ExtResource("9_rj7fg")]
 layout_mode = 2
-recipe_item = ExtResource("5_c1o6c")
+
+[node name="MarginContainer6" parent="PanelContainer/MarginContainer2/MarginContainer3/GridContainer" instance=ExtResource("9_rj7fg")]
+layout_mode = 2
+
+[node name="MarginContainer7" parent="PanelContainer/MarginContainer2/MarginContainer3/GridContainer" instance=ExtResource("9_rj7fg")]
+layout_mode = 2
+
+[node name="MarginContainer8" parent="PanelContainer/MarginContainer2/MarginContainer3/GridContainer" instance=ExtResource("9_rj7fg")]
+layout_mode = 2
 
 [node name="MarginContainer3" type="MarginContainer" parent="PanelContainer"]
 layout_mode = 2
@@ -317,6 +347,7 @@ theme_override_constants/margin_left = 2
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+script = ExtResource("17_3gka2")
 
 [node name="MarginContainer" parent="PanelContainer2/MarginContainer5/ScrollContainer/MarginContainer4/VBoxContainer" instance=ExtResource("16_0mgxl")]
 custom_minimum_size = Vector2(16, 16)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://beq1lb7w3qb8c"]
+[gd_scene load_steps=23 format=3 uid="uid://beq1lb7w3qb8c"]
 
 [ext_resource type="Theme" uid="uid://dbvmo5viem8os" path="res://UI/withering_menu.tres" id="1_ivlbj"]
 [ext_resource type="Script" path="res://Globals/TeaMarket/region.gd" id="2_ewhw6"]
@@ -7,6 +7,8 @@
 [ext_resource type="Resource" uid="uid://wm0q07dfhg0q" path="res://Items/ITEMS/BlackTea.tres" id="5_hv42u"]
 [ext_resource type="Resource" uid="uid://ccdr50kfe1w5l" path="res://Items/ITEMS/OolongTea.tres" id="6_clmte"]
 [ext_resource type="Script" path="res://Globals/Economy/buy_offer.gd" id="7_8yclb"]
+[ext_resource type="Resource" uid="uid://cqdtf3phvip60" path="res://Items/ITEMS/GreenTea.tres" id="7_nucgq"]
+[ext_resource type="Resource" uid="uid://b0ihsv4vue3vt" path="res://Items/ITEMS/PuerhTea.tres" id="8_f7gsw"]
 [ext_resource type="Texture2D" uid="uid://dl3362k10u5jm" path="res://Items/item_atlas.tres" id="8_pkccw"]
 [ext_resource type="Texture2D" uid="uid://dmn2jy84v6ey3" path="res://Globals/TeaMarket/red_circle.png" id="9_53ckh"]
 
@@ -25,6 +27,16 @@ script = ExtResource("4_i6p0y")
 item_data = ExtResource("6_clmte")
 quantity = 1
 
+[sub_resource type="Resource" id="Resource_v4lh8"]
+script = ExtResource("4_i6p0y")
+item_data = ExtResource("7_nucgq")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_pexry"]
+script = ExtResource("4_i6p0y")
+item_data = ExtResource("8_f7gsw")
+quantity = 1
+
 [sub_resource type="Resource" id="Resource_pylny"]
 script = ExtResource("7_8yclb")
 asking_price = 0.0
@@ -36,6 +48,16 @@ asking_price = 0.0
 quantity = 0
 
 [sub_resource type="Resource" id="Resource_722yq"]
+script = ExtResource("7_8yclb")
+asking_price = 0.0
+quantity = 0
+
+[sub_resource type="Resource" id="Resource_p37y3"]
+script = ExtResource("7_8yclb")
+asking_price = 0.0
+quantity = 0
+
+[sub_resource type="Resource" id="Resource_rhsq0"]
 script = ExtResource("7_8yclb")
 asking_price = 0.0
 quantity = 0
@@ -58,8 +80,8 @@ fertility = 9
 tea_culture = 9
 location = Vector2(112, 131)
 shipment_time_hours = 14
-inventory = Array[ExtResource("4_i6p0y")]([SubResource("Resource_txp76"), SubResource("Resource_kko6b"), SubResource("Resource_mor3e")])
-buy_offers = Array[ExtResource("7_8yclb")]([SubResource("Resource_pylny"), SubResource("Resource_ao4l3"), SubResource("Resource_722yq")])
+inventory = Array[ExtResource("4_i6p0y")]([SubResource("Resource_txp76"), SubResource("Resource_kko6b"), SubResource("Resource_mor3e"), SubResource("Resource_v4lh8"), SubResource("Resource_pexry")])
+buy_offers = Array[ExtResource("7_8yclb")]([SubResource("Resource_pylny"), SubResource("Resource_ao4l3"), SubResource("Resource_722yq"), SubResource("Resource_p37y3"), SubResource("Resource_rhsq0")])
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2

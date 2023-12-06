@@ -2,6 +2,7 @@ extends Node
 
 const shipment_selector = preload("res://Globals/TeaMarket/tea_market_shipment_selector.tscn")
 const shipment_cart = preload("res://Globals/TeaMarket/shipment_cart.tscn")
+const market_selector = preload("res://Globals/TeaMarket/white_tea_market_selector.tscn")
 
 @onready var highest_price = $PanelContainer/MarginContainer4/MarginContainer/HighestPrice
 @onready var avg_price = $PanelContainer/MarginContainer4/MarginContainer2/AvgPrice
@@ -19,6 +20,7 @@ const shipment_cart = preload("res://Globals/TeaMarket/shipment_cart.tscn")
 @onready var send_order = $PanelContainer2/MarginContainer/SendOrder
 @onready var panel_container = $PanelContainer
 @onready var panel_container_2 = $PanelContainer2
+@onready var grid_container = $PanelContainer/MarginContainer2/MarginContainer3/GridContainer
 
 @export var cart_spawn = Vector2(186, 95)
 @export var cart_speed = 2
@@ -29,6 +31,12 @@ var quantity_to_sell
 
 const Commodity_Market = preload("res://Globals/Economy/commodity_market.gd")
 const Regional_Offer = preload("res://Globals/TeaMarket/regional_offers.gd")
+
+####TEST FEATURE
+func _physics_process(delta):
+	if Input.is_action_just_pressed("MarketUpdateTest"):
+		market_update()
+####TEST FEATURE
 
 func _ready():
 	if not selected_city:
@@ -42,13 +50,6 @@ func connect_signals():
 	for node in get_tree().get_nodes_in_group("regions"):
 		node.add_buy_offer.connect(add_buy_offer)
 		node.city_selected.connect(city_selected)
-	
-	for node in get_tree().get_nodes_in_group("teamarket_selectors"):
-		node.recipe_selected.connect(recipe_item_selected)
-
-func _physics_process(delta):
-	if Input.is_action_just_pressed("MarketUpdateTest"):
-		market_update()
 
 func market_update():
 	for offers in tea_market:
@@ -64,6 +65,16 @@ func add_buy_offer(index):
 	refresh_interface()
 
 func refresh_interface():
+	print(tea_market)
+	
+	for child in grid_container.get_children():
+		child.queue_free()
+	for commodity in tea_market:
+		var selector = market_selector.instantiate()
+		grid_container.add_child(selector)
+		selector.set_container_data(commodity.item_data)
+		selector.recipe_selected.connect(recipe_item_selected)
+	
 	var displayed_item: ItemData = selected_item
 	var sum: float
 	var avg: float

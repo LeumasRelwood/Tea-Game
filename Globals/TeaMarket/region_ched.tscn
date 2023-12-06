@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://du6gw0q8m5gkk"]
+[gd_scene load_steps=19 format=3 uid="uid://du6gw0q8m5gkk"]
 
 [ext_resource type="Theme" uid="uid://dbvmo5viem8os" path="res://UI/withering_menu.tres" id="1_ukbtt"]
 [ext_resource type="Script" path="res://Globals/TeaMarket/region.gd" id="2_5liaw"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" path="res://InventoryManagers/SlotData.gd" id="5_k2ph6"]
 [ext_resource type="Resource" uid="uid://ccdr50kfe1w5l" path="res://Items/ITEMS/OolongTea.tres" id="6_40aho"]
 [ext_resource type="Script" path="res://Globals/Economy/buy_offer.gd" id="7_2o6bt"]
+[ext_resource type="Resource" uid="uid://cqdtf3phvip60" path="res://Items/ITEMS/GreenTea.tres" id="7_i80oa"]
+[ext_resource type="Resource" uid="uid://b0ihsv4vue3vt" path="res://Items/ITEMS/PuerhTea.tres" id="8_cb1xx"]
 [ext_resource type="Texture2D" uid="uid://dl3362k10u5jm" path="res://Items/item_atlas.tres" id="8_rokdq"]
 
 [sub_resource type="Resource" id="Resource_txp76"]
@@ -22,6 +24,16 @@ quantity = 1
 [sub_resource type="Resource" id="Resource_mor3e"]
 script = ExtResource("5_k2ph6")
 item_data = ExtResource("6_40aho")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_v4lh8"]
+script = ExtResource("5_k2ph6")
+item_data = ExtResource("7_i80oa")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_pexry"]
+script = ExtResource("5_k2ph6")
+item_data = ExtResource("8_cb1xx")
 quantity = 1
 
 [sub_resource type="Resource" id="Resource_pylny"]
@@ -53,7 +65,7 @@ population = 5
 wealth = 3
 fertility = 8
 tea_culture = 4
-inventory = Array[ExtResource("5_k2ph6")]([SubResource("Resource_txp76"), SubResource("Resource_kko6b"), SubResource("Resource_mor3e")])
+inventory = Array[ExtResource("5_k2ph6")]([SubResource("Resource_txp76"), SubResource("Resource_kko6b"), SubResource("Resource_mor3e"), SubResource("Resource_v4lh8"), SubResource("Resource_pexry")])
 buy_offers = Array[ExtResource("7_2o6bt")]([SubResource("Resource_pylny"), SubResource("Resource_ao4l3"), SubResource("Resource_722yq")])
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

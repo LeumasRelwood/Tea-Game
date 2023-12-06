@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://burmqwrb2x32t"]
+[gd_scene load_steps=23 format=3 uid="uid://burmqwrb2x32t"]
 
 [ext_resource type="Theme" uid="uid://dbvmo5viem8os" path="res://UI/withering_menu.tres" id="1_20s6v"]
 [ext_resource type="Script" path="res://Globals/TeaMarket/region.gd" id="2_cy16r"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" path="res://InventoryManagers/SlotData.gd" id="5_gwha5"]
 [ext_resource type="Resource" uid="uid://ccdr50kfe1w5l" path="res://Items/ITEMS/OolongTea.tres" id="6_d1vxj"]
 [ext_resource type="Script" path="res://Globals/Economy/buy_offer.gd" id="7_2yoqm"]
+[ext_resource type="Resource" uid="uid://cqdtf3phvip60" path="res://Items/ITEMS/GreenTea.tres" id="7_64vjn"]
+[ext_resource type="Resource" uid="uid://b0ihsv4vue3vt" path="res://Items/ITEMS/PuerhTea.tres" id="8_53lyk"]
 [ext_resource type="Texture2D" uid="uid://dl3362k10u5jm" path="res://Items/item_atlas.tres" id="8_rkg8t"]
 [ext_resource type="Texture2D" uid="uid://dmn2jy84v6ey3" path="res://Globals/TeaMarket/red_circle.png" id="9_ga0ef"]
 
@@ -25,6 +27,16 @@ script = ExtResource("5_gwha5")
 item_data = ExtResource("6_d1vxj")
 quantity = 1
 
+[sub_resource type="Resource" id="Resource_v4lh8"]
+script = ExtResource("5_gwha5")
+item_data = ExtResource("7_64vjn")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_pexry"]
+script = ExtResource("5_gwha5")
+item_data = ExtResource("8_53lyk")
+quantity = 1
+
 [sub_resource type="Resource" id="Resource_pylny"]
 script = ExtResource("7_2yoqm")
 asking_price = 0.0
@@ -36,6 +48,16 @@ asking_price = 0.0
 quantity = 0
 
 [sub_resource type="Resource" id="Resource_722yq"]
+script = ExtResource("7_2yoqm")
+asking_price = 0.0
+quantity = 0
+
+[sub_resource type="Resource" id="Resource_7abwt"]
+script = ExtResource("7_2yoqm")
+asking_price = 0.0
+quantity = 0
+
+[sub_resource type="Resource" id="Resource_j63cr"]
 script = ExtResource("7_2yoqm")
 asking_price = 0.0
 quantity = 0
@@ -60,8 +82,8 @@ fertility = 1
 tea_culture = 3
 location = Vector2(76, 52)
 shipment_time_hours = 18
-inventory = Array[ExtResource("5_gwha5")]([SubResource("Resource_txp76"), SubResource("Resource_kko6b"), SubResource("Resource_mor3e")])
-buy_offers = Array[ExtResource("7_2yoqm")]([SubResource("Resource_pylny"), SubResource("Resource_ao4l3"), SubResource("Resource_722yq")])
+inventory = Array[ExtResource("5_gwha5")]([SubResource("Resource_txp76"), SubResource("Resource_kko6b"), SubResource("Resource_mor3e"), SubResource("Resource_v4lh8"), SubResource("Resource_pexry")])
+buy_offers = Array[ExtResource("7_2yoqm")]([SubResource("Resource_pylny"), SubResource("Resource_ao4l3"), SubResource("Resource_722yq"), SubResource("Resource_7abwt"), SubResource("Resource_j63cr")])
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2

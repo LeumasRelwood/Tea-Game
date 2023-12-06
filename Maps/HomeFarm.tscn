@@ -995,7 +995,7 @@ script = ExtResource("15_khwi4")
 item_data = ExtResource("36_g3d5b")
 quantity = 2
 
-[sub_resource type="Resource" id="Resource_7287f"]
+[sub_resource type="Resource" id="Resource_jpry3"]
 resource_local_to_scene = true
 script = ExtResource("12_g5io1")
 slot_datas = Array[ExtResource("15_khwi4")]([SubResource("Resource_f1og7"), SubResource("Resource_4a5ar"), SubResource("Resource_id64k"), SubResource("Resource_hvjsl"), SubResource("Resource_e1wwc"), SubResource("Resource_sasyy"), SubResource("Resource_mpg26"), SubResource("Resource_m0h7i")])
@@ -1018,7 +1018,7 @@ frequency = 0.08
 seamless = true
 noise = SubResource("FastNoiseLite_cfa0h")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qfpsl"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ryk2b"]
 resource_local_to_scene = true
 shader = ExtResource("25_vc0p3")
 shader_parameter/scroll = Vector2(-0.025, 0.025)
@@ -1170,7 +1170,7 @@ shop_inventory_data = SubResource("Resource_agt3b")
 
 [node name="EquipmentShop" parent="YSort/Interactables" instance=ExtResource("28_m2jt0")]
 position = Vector2(-51, 119)
-shop_inventory_data = SubResource("Resource_7287f")
+shop_inventory_data = SubResource("Resource_jpry3")
 
 [node name="Characters" type="Node2D" parent="YSort"]
 y_sort_enabled = true
@@ -1185,7 +1185,7 @@ next_map_name = "ChedCity"
 player_position = Vector2(-72, 7)
 
 [node name="Water" parent="." instance=ExtResource("25_lhp1m")]
-material = SubResource("ShaderMaterial_qfpsl")
+material = SubResource("ShaderMaterial_ryk2b")
 position = Vector2(165, 297)
 scale = Vector2(8.11864, 1.83594)
 region_enabled = true
