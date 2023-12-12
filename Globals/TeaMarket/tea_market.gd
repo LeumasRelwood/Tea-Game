@@ -65,8 +65,6 @@ func add_buy_offer(index):
 	refresh_interface()
 
 func refresh_interface():
-	print(tea_market)
-	
 	for child in grid_container.get_children():
 		child.queue_free()
 	for commodity in tea_market:

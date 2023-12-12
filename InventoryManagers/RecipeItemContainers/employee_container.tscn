@@ -1,0 +1,48 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlke82y4rb52q"]
+
+[ext_resource type="PackedScene" uid="uid://bxy5ij2avjjte" path="res://InventoryManagers/inventory.tscn" id="2_g5611"]
+
+[node name="EmployeeContainer" type="MarginContainer"]
+offset_right = 51.0
+offset_bottom = 24.0
+
+[node name="MarginContainer3" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/margin_right = 3
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer3"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/margin_right = 0
+
+[node name="Inventory" parent="MarginContainer3/MarginContainer2" instance=ExtResource("2_g5611")]
+visible = false
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer3/MarginContainer2"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/margin_left = 2
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 2
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 5
+text = "Gretchen Folsworth.
+Level: 2
+Wages: 8 / Day"
+
+[node name="Button" type="Button" parent="."]
+show_behind_parent = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 10

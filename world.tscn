@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://cw1nro4m5s36s"]
+[gd_scene load_steps=50 format=3 uid="uid://cw1nro4m5s36s"]
 
 [ext_resource type="PackedScene" uid="uid://cj462uvp4qvw7" path="res://camera_2d.tscn" id="1_36ixg"]
 [ext_resource type="Script" path="res://world.gd" id="1_pt8ln"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://bxy5ij2avjjte" path="res://InventoryManagers/inventory.tscn" id="15_j1xfr"]
 [ext_resource type="Shader" path="res://Effects/River.gdshader" id="16_5vm54"]
 [ext_resource type="PackedScene" uid="uid://cdhphmp2x8dta" path="res://Maps/HomeFarm.tscn" id="16_7o0ng"]
+[ext_resource type="PackedScene" uid="uid://ckxpovuoiogvk" path="res://InventoryManagers/tea_shop_menu.tscn" id="16_uivo7"]
 [ext_resource type="Script" path="res://InventoryManagers/InventoryDataEquip.gd" id="18_isipt"]
 [ext_resource type="Script" path="res://InventoryManagers/InventoryData.gd" id="18_ogw14"]
 [ext_resource type="Resource" uid="uid://qdalm436h7jg" path="res://Items/ITEMS/withering_rack.tres" id="19_w0qju"]
@@ -118,7 +119,7 @@ shader_parameter/noise2 = SubResource("NoiseTexture2D_tc8bw")
 script = ExtResource("1_pt8ln")
 
 [node name="Camera2D" parent="." instance=ExtResource("1_36ixg")]
-position = Vector2(152, 24)
+position = Vector2(64, 24)
 
 [node name="TopLeft" parent="Camera2D/Limits" index="0"]
 position = Vector2(-128, -64)
@@ -139,13 +140,11 @@ offset_bottom = 167.0
 theme = ExtResource("8_i4wk2")
 
 [node name="InventoryInterface" type="Control" parent="UI"]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("6_ofg27")
 
 [node name="PlayerInventory" parent="UI/InventoryInterface" instance=ExtResource("15_j1xfr")]
-visible = false
 layout_mode = 0
 offset_left = 235.0
 offset_top = 16.0
@@ -196,6 +195,9 @@ layout_mode = 1
 
 [node name="TeaStorageInventory" parent="UI/InventoryInterface" instance=ExtResource("12_wk2ft")]
 visible = false
+layout_mode = 1
+
+[node name="TeaShopMenu" parent="UI/InventoryInterface" instance=ExtResource("16_uivo7")]
 layout_mode = 1
 
 [node name="PlantShopMenu" parent="UI/InventoryInterface" instance=ExtResource("12_6fbfy")]

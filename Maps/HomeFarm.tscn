@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://cdhphmp2x8dta"]
+[gd_scene load_steps=73 format=3 uid="uid://cdhphmp2x8dta"]
 
 [ext_resource type="Texture2D" uid="uid://b3j5ngdc1abij" path="res://World/GrassBackground.png" id="1_smuwg"]
 [ext_resource type="Texture2D" uid="uid://b754kwqghuij1" path="res://World/DirtTileset.png" id="2_ol4lb"]
@@ -40,6 +40,7 @@
 [ext_resource type="Resource" uid="uid://khc340miiid1" path="res://Items/ITEMS/pressing_machine.tres" id="34_bgr48"]
 [ext_resource type="Resource" uid="uid://diwticop84u5r" path="res://Items/ITEMS/fermentation_pile.tres" id="35_hsibr"]
 [ext_resource type="Resource" uid="uid://dnxxe8qt1h7e4" path="res://Items/ITEMS/killgreen_wok.tres" id="36_g3d5b"]
+[ext_resource type="PackedScene" uid="uid://dla83ah0u13vm" path="res://World/Interactables/tea_shop.tscn" id="37_18hpt"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dlgtb"]
 
@@ -995,7 +996,7 @@ script = ExtResource("15_khwi4")
 item_data = ExtResource("36_g3d5b")
 quantity = 2
 
-[sub_resource type="Resource" id="Resource_jpry3"]
+[sub_resource type="Resource" id="Resource_3gqu5"]
 resource_local_to_scene = true
 script = ExtResource("12_g5io1")
 slot_datas = Array[ExtResource("15_khwi4")]([SubResource("Resource_f1og7"), SubResource("Resource_4a5ar"), SubResource("Resource_id64k"), SubResource("Resource_hvjsl"), SubResource("Resource_e1wwc"), SubResource("Resource_sasyy"), SubResource("Resource_mpg26"), SubResource("Resource_m0h7i")])
@@ -1018,7 +1019,7 @@ frequency = 0.08
 seamless = true
 noise = SubResource("FastNoiseLite_cfa0h")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ryk2b"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qixo6"]
 resource_local_to_scene = true
 shader = ExtResource("25_vc0p3")
 shader_parameter/scroll = Vector2(-0.025, 0.025)
@@ -1065,7 +1066,7 @@ StairAngle = Vector2(0, 1)
 y_sort_enabled = true
 
 [node name="Player" parent="YSort" instance=ExtResource("5_8qpxi")]
-position = Vector2(152, 24)
+position = Vector2(64, 24)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/Player"]
 remote_path = NodePath("../../../../Camera2D")
@@ -1165,12 +1166,15 @@ position = Vector2(316, 88)
 position = Vector2(233, 88)
 
 [node name="PlantShop" parent="YSort/Interactables" instance=ExtResource("27_t5bw8")]
-position = Vector2(-51, 3)
+position = Vector2(-57, 101)
 shop_inventory_data = SubResource("Resource_agt3b")
 
 [node name="EquipmentShop" parent="YSort/Interactables" instance=ExtResource("28_m2jt0")]
-position = Vector2(-51, 119)
-shop_inventory_data = SubResource("Resource_jpry3")
+position = Vector2(-57, 184)
+shop_inventory_data = SubResource("Resource_3gqu5")
+
+[node name="TeaShop" parent="YSort/Interactables" instance=ExtResource("37_18hpt")]
+position = Vector2(-49, -4)
 
 [node name="Characters" type="Node2D" parent="YSort"]
 y_sort_enabled = true
@@ -1185,7 +1189,7 @@ next_map_name = "ChedCity"
 player_position = Vector2(-72, 7)
 
 [node name="Water" parent="." instance=ExtResource("25_lhp1m")]
-material = SubResource("ShaderMaterial_ryk2b")
+material = SubResource("ShaderMaterial_qixo6")
 position = Vector2(165, 297)
 scale = Vector2(8.11864, 1.83594)
 region_enabled = true
